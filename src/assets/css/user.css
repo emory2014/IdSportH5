@@ -1,0 +1,289 @@
+@font-face
+{
+    font-family: SourceHanSansCN-Regular;
+    src: url(../assets/font/SourceHanSansCN-Regular.otf);
+}
+
+@font-face
+{
+    font-family: SourceHanSansCN-Medium;
+    src: url(../assets/font/SourceHanSansCN-Medium.otf);
+}
+
+body{
+    padding: 0;
+    margin: 0;
+    background: #f5f5f5;
+    font-family: SourceHanSansCN-Regular;
+}
+
+.show{
+  display: block!important;
+}
+
+.hide{
+  display: none!important;
+}
+
+.header {
+    position: relative;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 16px;
+    color: #333333;
+    background: #fff;
+    margin-bottom: 8px;
+    font-family: SourceHanSansCN-Medium;
+}
+
+.nc-icon-prev{
+    position: absolute;
+    left: 15px;
+    top: 13px;
+    display: block;
+    background: url(../assets/images/prev.png);
+    height: 25px;
+    width: 20px;
+    background-size: 20px 25px;
+}
+
+.nc-ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background: #fff;
+    margin-bottom: 12px;
+}
+
+.nc-ul li{
+    height: 50px;
+}
+
+.nc-ul li:last-child .nc-item {
+    border-bottom: none;
+}
+
+.nc-item {
+    position: relative;
+    height: 50px;
+    line-height: 50px;
+    margin-left: 15px;
+    border-bottom: 1px solid #ddd;
+    color: #666;
+    font-size: 16px;
+    font-family: SourceHanSansCN-Regular;
+}
+.icon-next{
+    position: absolute;
+    right: 15px;
+    top: 16px;
+    width: 10px;
+    height: 18px;
+    background: url(../assets/images/next.png);
+    background-size: 10px 18px;
+}
+
+.pic-box {
+    position: absolute;
+    right: 38px;
+    top: 7px;
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    border-radius: 100%;
+    overflow: hidden;
+}
+
+.header-pic {
+    width: 100%;
+    height: 100%;
+}
+
+.item-right {
+    display: inline-block;
+    width: 65%;
+    position: absolute;
+    right: 32px;
+    color: #999;
+    font-size: 15px;
+    text-align: right;
+}
+.nc-btn {
+    width: 90%;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    color: #fff;
+    border-radius: 25px;
+    background: #ffc21e;
+    font-size: 18px;
+    box-shadow: 0 5px 6px #f9e3a8;
+    margin: 50px auto;
+    font-family: SourceHanSansCN-Regular;
+}
+
+.item-right.default {
+    color: #ffc000;
+}
+
+.mask{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+    display: none;
+}
+
+.pop-hobby-cont {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: #fff;
+    height: 145px;
+    padding: 15px;
+}
+
+.btn-box {
+    font-size: 15px;
+    font-family: SourceHanSansCN-Medium;
+    color: #999;
+    width: 100%;
+    margin: 0;
+}
+
+.btn-ok{
+    color: #ffc000;
+    float: right;
+}
+
+.nic-name-input {
+    width: 100%;
+    height: 50px;
+    padding-left: 15px;
+    box-sizing: border-box;
+    margin: 15px 15px 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    color: #666;
+}
+
+.tips {
+    font-size: 14px;
+    color: #ddd;
+    margin: 0;
+}
+
+.icon-tip {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background: url(../assets/images/tip.png) center;
+    background-size: 15px 15px;
+    vertical-align: baseline;
+    margin-right: 10px;
+}
+
+::-webkit-input-placeholder {
+    color: #ddd;
+}
+
+.pop-sex-cont {
+    position: absolute;
+    left: 15px;
+    right: 15px;
+    bottom: 0;
+}
+
+.sex-item {
+    height: 50px;
+    border-radius: 5px;
+    background: #fff;
+    margin-bottom: 10px;
+    line-height: 50px;
+    text-align: center;
+    color: #ffc000;
+    font-family: SourceHanSansCN-Regular;
+}
+
+.sex-item:first-child{
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    margin-bottom: 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.sex-item:nth-child(2){
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.sex-item:nth-child(3){
+    font-family: SourceHanSansCN-Medium;
+}
+
+.mask-hobby {
+    background: #fff;
+}
+
+.mask-hobby .header {
+    box-shadow: 1px 1px 1px 1px rgba(255, 194, 30, 0.1)
+}
+
+.hobby-ul {
+    list-style: none;
+    margin: 0 15px 0 15px;
+    padding: 0  0  0 15px;
+}
+
+.hobby-ul li {
+    display: inline-block;
+    color: #999999;
+    font-size: 14px;
+    padding: 8px 18px;
+    border: 1px solid #999999;
+    border-radius: 25px;
+    margin: 15px 15px 0 0;
+    cursor: pointer;
+}
+
+.hobby-ul li.active {
+    background: #ffc000;
+    color: #fff;
+    border: 1px solid #ffc000;
+}
+
+.toast-text {
+    position: fixed;
+    width: 70%;
+    left: 15%;
+    right: 15%;
+    bottom: 30px;
+    background: rgba(0, 0, 0, 0.6);
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 25px;
+    color: #fff;
+    font-size: 15px;
+    z-index: 10;
+    display: none;
+}
+
+.nc-item .tag {
+    background: #ffc000;
+    font-size: 12px;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+
+.name-ok {
+    padding-left: 20px;
+}
