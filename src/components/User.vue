@@ -1,7 +1,7 @@
 <template>
   <div class="user">
     <header class="header">
-            　<i class="nc-icon-prev"></i>
+            　<i class="nc-icon-prev" @click="goBack()"></i>
               Selesaikan data Pribadi
         </header>
         <div class="nc-body">
@@ -71,7 +71,7 @@
                         </li>
               </ul>
 
-              <div class="nc-btn">Selesai</div>
+              <div class="nc-btn" @click="sendAjax()">Selesai</div>
         </div>
         <div class="mask mask-profil" v-bind:class="[profleShow? 'show':'hide']">
               <div class="pop-sex-cont">
@@ -119,6 +119,7 @@ export default {
   name: 'User',
   data () {
     return {
+      data: null,
       name: '',
       profleShow: false,
       nameShow: false,
@@ -132,10 +133,14 @@ export default {
       hobbyArr: ['Olahraga','keuangan','kuliner','Fashion','Travel','Permainan',
       'Cerpen','Hewan','Pendidikan','Entertainment','Kesehatan','Teknologi','Humor','Bola'],
       arr:[],
-      seletedHobbyArr:[]
+      seletedHobbyArr:[],
+      ajaxFlag: true
     }
   },
   methods: {
+    goBack(){
+      window.history.go(-1)
+    },
     selectProfle(){
       this.profleShow = true
     },
@@ -336,7 +341,7 @@ formatDate(){
        for (var i = nowYear - 110; i <= nowYear ; i++) {
            arr.push({
                id: i + '',
-               value: i + '年'
+               value: i + ' Tahun'
            });
        }
        return arr;
@@ -346,7 +351,7 @@ formatDate(){
        for (var i = 1; i <= 12; i++) {
            arr.push({
                id: i + '',
-               value: i + '月'
+               value: i + ' bulan'
            });
        }
        return arr;
@@ -356,7 +361,7 @@ formatDate(){
        for (var i = 1; i <= count; i++) {
            arr.push({
                id: i + '',
-               value: i + '日'
+               value: i + ' tanggal'
            });
        }
        return arr;
@@ -428,9 +433,53 @@ formatDate(){
        });
    });
 },
-takePhoto(){
+  takePhoto(){
 
-},
+  },
+  sendAjax(){
+    let birthdate =  document.querySelector('#showDate').innerHTML.replace("Tahun","-").replace("bulan","-").replace("tanggal","").replace(/ /g,"");
+    let education =  document.querySelector('#showEdu').innerHTML;
+    let profession = document.querySelector('#showOccupation').innerHTML;
+    let gender = this.sexVal == "Laki-laki" ? "male" : "female";
+
+  //防止重复发送请求
+    if (!this.ajaxFlag) {
+      return false;
+    }
+    this.ajaxFlag = false;
+
+    if (this.name && birthdate && education && profession && gender && this.seletedHobbyArr.length) {
+      this.$http({
+          url: '/api/personal/info/perfect',
+          method: 'post',
+          data: {
+            token: '9e43494fd46bfac1445bc781c06d576b',
+            nickname: this.name,
+            avatar: 'http://192.168.1.88/media/article/1521255346_ktp.jpeg',
+            gender: gender,
+            birthdate: birthdate,
+            education: education,
+            profession: profession,
+            interest: this.seletedHobbyArr
+          }
+      }).then((res) => {
+        if (res.status.code == 200) {
+          this.data = res.data
+          console.log(this.data)
+
+        }else if (res.data.status.code == 204) {
+          //this.$router.push({path: '/login'});
+          //this.isLogin = false;
+        }
+
+      }).catch((res) => {
+          console.log('error: ', res);
+      });
+    }else {
+      this.toastPop("您还有信息没填写完整")
+    }
+
+  },
   },
   mounted(){
       this.initFun();
@@ -440,21 +489,33 @@ takePhoto(){
   },
   created(){
     // this.$http({
-    //     url: '/api/user/profile',
-    //     method: 'get',
+    //     url: '/api/personal/info/perfect',
+    //     method: 'post',
+    //     data: {
+    //       token: '9e43494fd46bfac1445bc781c06d576b',
+    //       nickname: this.name,
+    //       avatar: 'http://192.168.1.88/media/article/1521255346_ktp.jpeg',
+    //       gender: 'male',
+    //       birthdate: '2015年12月12',
+    //       education: 'S1',
+    //       profession: 'sd',
+    //       interest: this.seletedHobbyArr
+    //     }
     // }).then((res) => {
-    //   if (res.data.status.code == 200) {
-    //     this.name = res.data.data.tel;
-    //     this.isLogin = true;
+    //   if (res.status.code == 200) {
+    //     this.data = res.data
+    //     console.log(this.data)
+    //     // this.name = res.data.data.tel;
+    //     // this.isLogin = true;
     //   }else if (res.data.status.code == 204) {
     //     //this.$router.push({path: '/login'});
-    //     this.isLogin = false;
+    //     //this.isLogin = false;
     //   }
     //
     // }).catch((res) => {
     //     console.log('error: ', res);
     // });
-    //
+
     // this.$http({
     //     url: '/api/user/profile/info',
     //     method: 'get',
