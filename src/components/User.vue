@@ -8,8 +8,10 @@
             <ul class="nc-ul">
                 <li @click="selectProfle()">
                     <div class="nc-item" id="profil">
-                          Profil
-                          <span class="pic-box"><img class="header-pic" src="../assets/images/header.png"></span>
+
+                          <label for="uploads">Profil</label>
+                          <input type="file" id="uploads" style="position:absolute; clip:rect(0 0 0 0);" accept="image/png, image/jpeg, image/jpg" @change="uploadImg($event, 1)">
+                          <span class="pic-box"><img class="header-pic" src="../assets/images/header.png" ></span>
                           <i class="icon-next"></i>
                     </div>
                 </li>
@@ -73,13 +75,13 @@
 
               <div class="nc-btn" @click="sendAjax()">Selesai</div>
         </div>
-        <div class="mask mask-profil" v-bind:class="[profleShow? 'show':'hide']">
+        <!-- <div class="mask mask-profil" v-bind:class="[profleShow? 'show':'hide']">
               <div class="pop-sex-cont">
                     <div class="sex-item" @click="takePhoto()"><input type="file" id='image' accept="image/*" capture='camera'>Kamera</div>
                     <div class="sex-item">Galery</div>
                     <div class="sex-item cancel" @click = "cancelShow()">Bata</div>
               </div>
-          </div>
+          </div> -->
         <div class="mask mask-nicName" v-bind:class="[nameShow? 'show':'hide']">
             <div class="pop-hobby-cont">
               <p class="btn-box"><span class="btn-cancel cancel" @click = "cancelShow()">Bata</span>
@@ -114,12 +116,21 @@
 
 <script>
 import IosSelect from 'iosselect'
+import vueCropper from 'vue-cropper'
 
 export default {
   name: 'User',
   data () {
     return {
-      data: null,
+      data: {
+        src: '',
+        name: '',
+        gender: '',
+        brith: '',
+        edu: '',
+        profession: '',
+        hobby: []
+      },
       name: '',
       profleShow: false,
       nameShow: false,
@@ -433,8 +444,33 @@ formatDate(){
        });
    });
 },
-  takePhoto(){
-
+uploadImg (e, num) {
+    //上传图片
+    // this.option.img
+    var file = e.target.files[0]
+    if (!/\.(jpg|jpeg|png|JPG|PNG)$/.test(e.target.value)) {
+       this.toastPop('图片类型必须是.gif,jpeg,jpg,png中的一种')
+       return false
+     }
+    var reader = new FileReader()
+    reader.onload = (e) => {
+      let data
+      if (typeof e.target.result === 'object') {
+        // 把Array Buffer转化为blob 如果是base64不需要
+        data = window.URL.createObjectURL(new Blob([e.target.result]))
+      } else {
+        data = e.target.result
+      }
+      if (num === 1) {
+        this.option.img = data
+      } else if (num === 2) {
+        this.example2.img = data
+      }
+    }
+    // 转化为base64
+    // reader.readAsDataURL(file)
+    // 转化为blob
+    reader.readAsArrayBuffer(file)
   },
   sendAjax(){
     let birthdate =  document.querySelector('#showDate').innerHTML.replace("Tahun","-").replace("bulan","-").replace("tanggal","").replace(/ /g,"");
