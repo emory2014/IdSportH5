@@ -1,5 +1,14 @@
 <template>
   <div class="user">
+    <vueCropper
+		ref="cropper3"
+		:img="headerPic.img"
+		:autoCrop="headerPic.autoCrop"
+		:autoCropWidth="headerPic.autoCropWidth"
+		:autoCropHeight="headerPic.autoCropHeight"
+		:fixedBox="headerPic.fixedBox"
+	></vueCropper>
+
     <header class="header">
             　<i class="nc-icon-prev" @click="goBack()"></i>
               Selesaikan data Pribadi
@@ -118,6 +127,8 @@
 import IosSelect from 'iosselect'
 import vueCropper from 'vue-cropper'
 
+
+
 export default {
   name: 'User',
   data () {
@@ -145,7 +156,14 @@ export default {
       'Cerpen','Hewan','Pendidikan','Entertainment','Kesehatan','Teknologi','Humor','Bola'],
       arr:[],
       seletedHobbyArr:[],
-      ajaxFlag: true
+      ajaxFlag: true,
+      headerPic: {
+      				img: 'https://o90cnn3g2.qnssl.com/0C3ABE8D05322EAC3120DDB11F9D1F72.png',
+      				autoCrop: true,
+      				autoCropWidth: 200,
+      				autoCropHeight: 200,
+      				fixedBox: true
+      			}
     }
   },
   methods: {
@@ -462,9 +480,9 @@ uploadImg (e, num) {
         data = e.target.result
       }
       if (num === 1) {
-        this.option.img = data
+        this.headerPic.img = data
       } else if (num === 2) {
-        this.example2.img = data
+        this.headerPic.img = data
       }
     }
     // 转化为base64
