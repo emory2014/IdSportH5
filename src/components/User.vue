@@ -3,7 +3,7 @@
   <div class="user">
 
 
-    <header class="header">
+    <header class="header" v-if="param == 12">
             　<i class="nc-icon-prev" @click="goBack()"></i>
               Selesaikan data Pribadi
         </header>
@@ -137,6 +137,7 @@ export default {
   data () {
     return {
       load: true,
+      param: this.getparam("id"),
       src: '',
       // data: {
       //   src: '',
@@ -556,13 +557,21 @@ uploadImg (e, num) {
   },
   parseDate(date){
     return date.replace("-"," Tahun ").replace("-"," bulan ") + " tanggal "
-  }
+  },
+  getparam(name){
+        let reg = new RegExp("(^|\\?|&)" + name + "=([^&]*)(\\s|&|$)","i");
+        if(reg.test(window.location.href)){
+            return unescape(RegExp.$2.replace(/\+/g," "))
+        }
+        return undefined
+    }
   },
   mounted(){
       this.initFun();
       this.formatEdu();
       this.formatOccupation();
       this.formatDate();
+      console.log(this.getparam("id"))
   },
   created(){
     this.$http({
