@@ -1,0 +1,126 @@
+@font-face
+{
+    font-family: SourceHanSansCN-Regular;
+    src: url(../../assets/font/SourceHanSansCN-Regular.otf);
+}
+
+ @font-face
+{
+    font-family: SourceHanSansCN-Medium;
+    src: url(../../assets/font/SourceHanSansCN-Medium.otf);
+} 
+
+body{
+    margin: 0;
+    padding: 0;
+}
+.game-container{
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 50px;
+    background: url(../../assets/images/bg.png) center no-repeat;
+    background-size: cover;
+}
+
+.btn-group {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.game-btn {
+    width: 90%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 23px;
+    font-family: SourceHanSansCN-Medium; 
+    background: -webkit-linear-gradient(#f9fcf9,#50b651);
+    border-radius: 25px;
+    margin: 30px auto;
+    color: #00680c;
+    clear: both;
+    box-shadow: 0 2px 2px 1px rgba(4, 76, 28, 0.15);
+}
+
+.rule-box {
+    background: url(../../assets/images/rule.png) center no-repeat;
+    background-size: 100%;
+    float: right;
+    color: #00680c;
+    font-size: 18px;
+    text-align: center;
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+}
+
+.scroll-box {
+    height: 25px;
+    background: #20a229;
+    padding: 0 20px;
+    box-sizing: border-box;
+    line-height: 25px;
+}
+
+.icon-tip {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background: url(../../assets/images/tip.png);
+    background-size: 18px 18px;
+    margin-right: 10px;
+    vertical-align: super;
+    position: relative;
+    top: 2px;
+}
+
+.scroll-ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 85%;
+    display: inline-block;
+    height: 25px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.scroll-ul li{
+    display: inline-block;
+    font-size: 12px;
+    color: #c3ff8d;
+    line-height: 25px;
+    height: 25px;
+    margin-right: 10px;
+}
+
+.rule-mask {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.rule-cont {
+    width: 93%;
+    margin: 5% auto;
+    background: #fff;
+    border-radius: 5px;
+    background: url(../../assets//images/rule-title-bg.png) top center no-repeat,#fff;
+    background-size: 100%;
+    padding-top: 50px;
+}
+.rule-mask .title{
+    text-align: center;
+    font-size: 18px;
+    font-family: SourceHanSansCN-Medium;
+    color: #00680c;
+    margin-bottom: 30px;
+}
