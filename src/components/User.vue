@@ -1,26 +1,20 @@
 <template>
+
   <div class="user">
-    <vueCropper
-		ref="cropper3"
-		:img="headerPic.img"
-		:autoCrop="headerPic.autoCrop"
-		:autoCropWidth="headerPic.autoCropWidth"
-		:autoCropHeight="headerPic.autoCropHeight"
-		:fixedBox="headerPic.fixedBox"
-	></vueCropper>
+
 
     <header class="header">
             　<i class="nc-icon-prev" @click="goBack()"></i>
               Selesaikan data Pribadi
         </header>
-        <div class="nc-body">
+        <div class="nc-body" :class="[!load ? 'show':'hide']">
             <ul class="nc-ul">
                 <li @click="selectProfle()">
                     <div class="nc-item" id="profil">
 
                           <label for="uploads">Profil</label>
                           <input type="file" id="uploads" style="position:absolute; clip:rect(0 0 0 0);" accept="image/png, image/jpeg, image/jpg" @change="uploadImg($event, 1)">
-                          <span class="pic-box"><img class="header-pic" src="../assets/images/header.png" ></span>
+                          <span class="pic-box"><img id="avatar" class="header-pic" src = "../assets/images/header.png" ></span>
                           <i class="icon-next"></i>
                     </div>
                 </li>
@@ -84,6 +78,7 @@
 
               <div class="nc-btn" @click="sendAjax()">Selesai</div>
         </div>
+        <Loading :class = "[load ? 'show':'hide']" />
         <!-- <div class="mask mask-profil" v-bind:class="[profleShow? 'show':'hide']">
               <div class="pop-sex-cont">
                     <div class="sex-item" @click="takePhoto()"><input type="file" id='image' accept="image/*" capture='camera'>Kamera</div>
@@ -91,6 +86,12 @@
                     <div class="sex-item cancel" @click = "cancelShow()">Bata</div>
               </div>
           </div> -->
+          <div class="mask " id="canvasBox" >
+            <div class="picBox">
+              <img id="photo" src="" />
+            </div>
+            <canvas id="canvas" width="100%" height="320"></canvas>
+          </div>
         <div class="mask mask-nicName" v-bind:class="[nameShow? 'show':'hide']">
             <div class="pop-hobby-cont">
               <p class="btn-box"><span class="btn-cancel cancel" @click = "cancelShow()">Bata</span>
@@ -126,22 +127,26 @@
 <script>
 import IosSelect from 'iosselect'
 import vueCropper from 'vue-cropper'
-
-
+import Loading from './Loading'
 
 export default {
   name: 'User',
+  components: {
+    Loading
+  },
   data () {
     return {
-      data: {
-        src: '',
-        name: '',
-        gender: '',
-        brith: '',
-        edu: '',
-        profession: '',
-        hobby: []
-      },
+      load: true,
+      src: '',
+      // data: {
+      //   src: '',
+      //   name: '',
+      //   gender: '',
+      //   brith: '',
+      //   edu: '',
+      //   profession: '',
+      //   hobby: []
+      // },
       name: '',
       profleShow: false,
       nameShow: false,
@@ -157,13 +162,6 @@ export default {
       arr:[],
       seletedHobbyArr:[],
       ajaxFlag: true,
-      headerPic: {
-      				img: 'https://o90cnn3g2.qnssl.com/0C3ABE8D05322EAC3120DDB11F9D1F72.png',
-      				autoCrop: true,
-      				autoCropWidth: 200,
-      				autoCropHeight: 200,
-      				fixedBox: true
-      			}
     }
   },
   methods: {
@@ -264,7 +262,7 @@ formatEdu(){
   ];
   var showDom = document.querySelector('#showEdu');// 绑定一个触发元素
   var valDom = document.querySelector('#EduId');  // 绑定一个存储结果的元素
-  showDom.addEventListener('click', function () {  // 添加监听事件
+   showDom.addEventListener('click', function () {  // 添加监听事件
       var val = showDom.dataset['id'];             // 获取元素的data-id属性值
       var title = showDom.dataset['value'];        // 获取元素的data-value属性值
   	// 实例化组件
@@ -465,51 +463,75 @@ formatDate(){
 uploadImg (e, num) {
     //上传图片
     // this.option.img
-    var file = e.target.files[0]
-    if (!/\.(jpg|jpeg|png|JPG|PNG)$/.test(e.target.value)) {
-       this.toastPop('图片类型必须是.gif,jpeg,jpg,png中的一种')
+    var file = e.target.files[0];
+
+    if (!/\.(gif|jpg|jpeg|png|bmp|GIF|JPG|PNG)$/.test(e.target.value)) {
+       this.toastPop('foto yang di unggah harus gif bmp jpeg,jpg,dan png')
        return false
      }
-    var reader = new FileReader()
+    //  let canvas = document.getElementById('canvas');
+    // let context = canvas.getContext('2d');
+    // var img = new Image();
+    //img.src = e.target.value;
+    //document.getElementById("canvasBox").classList = "show mask"
+    // img.onload = function(){
+    //   context.drawImage(img, 0, 0, 300, 250);
+    //
+    // }
+    var reader = new FileReader();
+     reader.readAsDataURL(file);
     reader.onload = (e) => {
-      let data
-      if (typeof e.target.result === 'object') {
-        // 把Array Buffer转化为blob 如果是base64不需要
-        data = window.URL.createObjectURL(new Blob([e.target.result]))
-      } else {
-        data = e.target.result
-      }
-      if (num === 1) {
-        this.headerPic.img = data
-      } else if (num === 2) {
-        this.headerPic.img = data
-      }
+
+      var img = document.getElementById("avatar");
+     //加载图片，此处的this.result为base64格式
+     img.src = e.currentTarget.result;
+     this.src = e.currentTarget.result
+     //this.Zoom(img,150,100)
+
     }
     // 转化为base64
     // reader.readAsDataURL(file)
     // 转化为blob
-    reader.readAsArrayBuffer(file)
+
+  //reader.readAsArrayBuffer(file);
+
   },
+ Zoom(obj,width, height)
+{
+    var img = new Image();
+    img.src = obj.src;
+    var scale = Math.max(width/img.width, height/img.height);
+    var newWidth = img.width*scale;
+    var newHeight = img.height*scale;
+    var div = obj.parentNode;
+    obj.width = newWidth;
+    obj.height = newHeight;
+    div.style.width = width+"px";
+    div.style.height = height+"px";
+    div.style.overflow = "hidden";
+    obj.style.marginLeft = (width-newWidth)/2+"px";
+    obj.style.marginTop = (height-newHeight)/2+"px";
+},
+
   sendAjax(){
     let birthdate =  document.querySelector('#showDate').innerHTML.replace("Tahun","-").replace("bulan","-").replace("tanggal","").replace(/ /g,"");
     let education =  document.querySelector('#showEdu').innerHTML;
     let profession = document.querySelector('#showOccupation').innerHTML;
     let gender = this.sexVal == "Laki-laki" ? "male" : "female";
 
-  //防止重复发送请求
-    if (!this.ajaxFlag) {
-      return false;
-    }
-    this.ajaxFlag = false;
-
     if (this.name && birthdate && education && profession && gender && this.seletedHobbyArr.length) {
+      //防止重复发送请求
+        if (!this.ajaxFlag) {
+          return false;
+        }
+        this.ajaxFlag = false;
+
       this.$http({
           url: '/api/personal/info/perfect',
           method: 'post',
           data: {
-            token: '9e43494fd46bfac1445bc781c06d576b',
             nickname: this.name,
-            avatar: 'http://192.168.1.88/media/article/1521255346_ktp.jpeg',
+            avatar: this.src,
             gender: gender,
             birthdate: birthdate,
             education: education,
@@ -517,23 +539,24 @@ uploadImg (e, num) {
             interest: this.seletedHobbyArr
           }
       }).then((res) => {
-        if (res.status.code == 200) {
-          this.data = res.data
-          console.log(this.data)
-
-        }else if (res.data.status.code == 204) {
+        if (res.data.status.code == 200) {
+         this.toastPop("berhasil")
+      }else if (res.data.status.code == 401) {
           //this.$router.push({path: '/login'});
-          //this.isLogin = false;
+          window.AndroidWebView.loginApp();
         }
 
       }).catch((res) => {
           console.log('error: ', res);
       });
     }else {
-      this.toastPop("您还有信息没填写完整")
+      this.toastPop("anda masih belum pilih")
     }
 
   },
+  parseDate(date){
+    return date.replace("-"," Tahun ").replace("-"," bulan ") + " tanggal "
+  }
   },
   mounted(){
       this.initFun();
@@ -542,48 +565,34 @@ uploadImg (e, num) {
       this.formatDate();
   },
   created(){
-    // this.$http({
-    //     url: '/api/personal/info/perfect',
-    //     method: 'post',
-    //     data: {
-    //       token: '9e43494fd46bfac1445bc781c06d576b',
-    //       nickname: this.name,
-    //       avatar: 'http://192.168.1.88/media/article/1521255346_ktp.jpeg',
-    //       gender: 'male',
-    //       birthdate: '2015年12月12',
-    //       education: 'S1',
-    //       profession: 'sd',
-    //       interest: this.seletedHobbyArr
-    //     }
-    // }).then((res) => {
-    //   if (res.status.code == 200) {
-    //     this.data = res.data
-    //     console.log(this.data)
-    //     // this.name = res.data.data.tel;
-    //     // this.isLogin = true;
-    //   }else if (res.data.status.code == 204) {
-    //     //this.$router.push({path: '/login'});
-    //     //this.isLogin = false;
-    //   }
-    //
-    // }).catch((res) => {
-    //     console.log('error: ', res);
-    // });
+    this.$http({
+        url: '/api/personal/info',
+        method: 'get',
+    }).then((res) => {
+      this.load = false;
 
-    // this.$http({
-    //     url: '/api/user/profile/info',
-    //     method: 'get',
-    // }).then((res) => {
-    //   if (res.data.status.code == 200) {
-    //     this.hasProfile = true;
-    //   }else if (res.data.status.code == 201) {
-    //     //this.$router.push({path: '/login'});
-    //     this.hasProfile = false;
-    //   }
-    //
-    // }).catch((res) => {
-    //     console.log('error: ', res);
-    // });
+      if (res.data.status.code == 200) {
+        if(res.data.data.nickname) {
+          this.name = res.data.data.nickname
+          this.sexVal = res.data.data.gender
+          this.seletedHobbyArr = res.data.data.interest
+          document.getElementById("avatar").src = res.data.data.avatar
+          document.getElementById("showDate").innerHTML = this.parseDate(res.data.data.birthdate)
+          document.getElementById("showDate").classList = "item-right"
+           document.getElementById("showEdu").innerHTML = res.data.data.education
+           document.getElementById("showEdu").classList = "item-right"
+           document.getElementById("showOccupation").innerHTML = res.data.data.education
+           document.getElementById("showOccupation").classList = "item-right"
+        }
+
+      }else if (res.status.code == 401) {
+        //this.$router.push({path: '/login'});
+        window.AndroidWebView.loginApp();
+      }
+
+    }).catch((res) => {
+        console.log('error: ', res);
+    });
 
   }
 
