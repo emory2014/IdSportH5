@@ -86,6 +86,14 @@
                     <div class="sex-item cancel" @click = "cancelShow()">Bata</div>
               </div>
           </div> -->
+          <div class="new-user-container" v-bind:class="[newUser? 'show':'hide']">
+            <!-- <header class="header">
+                      　<i class="nc-icon-prev cancel" @click = "cancelUserShow()"></i>
+                        
+                  </header> -->
+              <img src="../assets/images/new-user-bg.png">
+          </div>
+
           <div class="mask " id="canvasBox" >
             <div class="picBox">
               <img id="photo" src="" />
@@ -139,6 +147,7 @@ export default {
       load: true,
       param: this.getparam("from"),
       src: '',
+      newUser: false,
       // data: {
       //   src: '',
       //   name: '',
@@ -185,11 +194,9 @@ export default {
     selectHobby(){
       this.hobbyShow = true
     },
-    cancelShow(){
-      this.profleShow = false
-      this.nameShow = false
-      this.sexShow = false
-      this.hobbyShow = false
+    cancelUserShow(){
+      this.newUser = false
+    
     },
     hobbyOK(){
       if (this.seletedHobbyArr.length) {
@@ -200,7 +207,7 @@ export default {
 
     },
     nameComplete(){
-      let reg = /^[A-Za-z0-9]+$/;
+      let reg = /^[A-Za-z0-9]{8,50}$/;
       let sreg = /(^\s+)|(\s+$)|\s+/g;
       if (this.name) {
         if(!reg.test(this.name.trim()) && !sreg.test(this.name.trim())){
@@ -470,7 +477,7 @@ formatDate(){
                    showDateDom.setAttribute('data-year', selectOneObj.id);
                    showDateDom.setAttribute('data-month', selectTwoObj.id);
                    showDateDom.setAttribute('data-date', selectThreeObj.id);
-                   showDateDom.innerHTML =(selectOneObj.value + ' ' + selectTwoObj.value + ' ' + selectThreeObj.value);
+                   showDateDom.innerHTML =(selectOneObj.value.replace(" Tahun","-") + '' + selectTwoObj.value.replace(" bulan","-") + '' + selectThreeObj.value).replace("tanggal","");
                    showDateDom.classList = "item-right"
                }
        });
@@ -541,6 +548,7 @@ uploadImg (e, num) {
           return false;
         }
         this.ajaxFlag = false;
+         document.querySelector('.nc-btn').style.opacity='0.5';
 
       this.$http({
           url: '/api/personal/info/perfect',
@@ -555,9 +563,15 @@ uploadImg (e, num) {
             interest: this.seletedHobbyArr
           }
       }).then((res) => {
+          this.ajaxFlag = true;
         if (res.data.status.code == 200) {
          this.toastPop("berhasil");
-         document.querySelector('.nc-btn').style.opacity='0.5';
+         document.querySelector('.nc-btn').style.opacity='1';
+         if(res.data.data.isPopup){
+          this.newUser = true
+         }else{
+          this.newUser = false
+         }
       }else if (res.data.status.code == 401) {
           //this.$router.push({path: '/login'});
           window.AndroidWebView.loginApp();
@@ -589,10 +603,7 @@ uploadImg (e, num) {
       this.formatOccupation();
       this.formatDate();
       
-     
-  },
-  created(){
-    this.$http({
+      this.$http({
         url: '/api/personal/info',
         method: 'get',
     }).then((res) => {
@@ -604,7 +615,7 @@ uploadImg (e, num) {
           this.sexVal = res.data.data.gender
           this.seletedHobbyArr = res.data.data.interest
           document.getElementById("avatar").src = res.data.data.avatar
-          document.getElementById("showDate").innerHTML = this.parseDate(res.data.data.birthdate)
+          document.getElementById("showDate").innerHTML = res.data.data.birthdate
           document.getElementById("showDate").classList = "item-right"
           document.getElementById("showEdu").innerHTML = res.data.data.education
           document.getElementById("showEdu").classList = "item-right"
@@ -622,7 +633,40 @@ uploadImg (e, num) {
     }).catch((res) => {
         console.log('error: ', res);
     });
+  },
+  created(){
+   
+ // this.$http({
+ //        url: '/api/personal/info',
+ //        method: 'get',
+ //    }).then((res) => {
+ //      this.load = false;
 
+ //      if (res.data.status.code == 200) {
+ //        if(res.data.data.nickname) {
+ //          this.name = res.data.data.nickname
+ //          this.sexVal = res.data.data.gender
+ //          this.seletedHobbyArr = res.data.data.interest
+ //          document.getElementById("avatar").src = res.data.data.avatar
+ //          document.getElementById("showDate").innerHTML = this.parseDate(res.data.data.birthdate)
+ //          document.getElementById("showDate").classList = "item-right"
+ //          document.getElementById("showEdu").innerHTML = res.data.data.education
+ //          document.getElementById("showEdu").classList = "item-right"
+ //          document.getElementById("showOccupation").innerHTML = res.data.data.profession
+ //          document.getElementById("showOccupation").classList = "item-right"
+ //          //已选兴趣标签
+ //          this.hobbyTag();
+ //        }
+
+ //      }else if (res.status.code == 401) {
+ //        //this.$router.push({path: '/login'});
+ //        window.AndroidWebView.loginApp();
+ //      }
+
+ //    }).catch((res) => {
+ //        console.log('error: ', res);
+ //    });
+ //    
   }
 
 
