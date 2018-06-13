@@ -27,15 +27,15 @@
                 <i class="icon-plus"></i>
                 <i class="icon-subtraction" @click="showErrMask()"></i>
                 <div class="rule-mask " :class="[errMaskShow? 'show':'hide']">
-                    <div class="err-mask-cont">
+                    <div class="err-mask-cont cont">
                         <p class="title">Anda Punya 2 kali ksempatan</p>
                         <div class="mask-btn">Coba Lagi</div>
-                        <div class="mask-btn">Undang Teman Ikut Bermain</div>
+                        <div class="mask-btn" @click="inviteMaskToShow()">Undang Teman Ikut Bermain</div>
                         <i @click="closeErrMask()" class="icon-close">×</i>        
                     </div>
                 </div>
-                <div class="rule-mask show" :class="[inviteMaskShow ? 'show':'show']">
-                    <div class="invite-mask-cont">
+                <div class="rule-mask " :class="[inviteMaskShow ? 'show':'hide']">
+                    <div class="invite-mask-cont cont">
                         <p class="text">Setiap mengundang 1 teman, Anda memiliki 
                             1 kali acara untuk mengik-uti kuis.</p>
                         <p class="text">Mengundang semakin banyak teman, kese-
@@ -85,6 +85,10 @@ import BHeader from "../common/BHeader"
              showRuleMask(){
                 this.ruleMask = true
             },
+            inviteMaskToShow(){
+                this.errMaskShow = false
+                this.inviteMaskShow = true
+            },
             countDown(){
                     var timeout = setInterval(() => {
                         if(this.count > 1){
@@ -106,12 +110,29 @@ import BHeader from "../common/BHeader"
             showErrMask(){
                 this.errMaskShow = true
             },
+            maskSpaceClick(){
+                var mask = document.querySelector(".rule-mask")
+                var cont = document.querySelector(".cont")
+                mask.addEventListener("click",(e) =>{
+                    if(!cont.contains(e.target)){
+                        this.errMaskShow = false
+                        this.inviteMaskShow = false
+                    }
+                })
+                document.getElementsByClassName("rule-mask")[1].addEventListener("click",(e) =>{
+                    if(!cont.contains(e.target)){
+                        this.errMaskShow = false
+                        this.inviteMaskShow = false
+                    }
+                })
+            },
         },
         mounted(){
             this.countDown();
             setTimeout(() => {
             this.proccessActive()
             },3200)
+            this.maskSpaceClick()
         }
     }
 </script>
