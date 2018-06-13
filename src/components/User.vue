@@ -115,7 +115,7 @@
                       　<i class="nc-icon-prev cancel" @click = "cancelShow()"></i>
                         Hobby
                   </header>
-                  <ul class="hobby-ul">
+                  <ul class="hobby-ul"  ref="hobbyTag">
                     <li :class="{active: arr[index]}" v-for="(item,index) of hobbyArr" :key="index" @click="hobbyIsActive(index,item)">{{item}}</li>
                   </ul>
                   <div class="nc-btn hobby-ok" @click="hobbyOK()">Oke</div>
@@ -195,7 +195,7 @@ export default {
       if (this.seletedHobbyArr.length) {
           this.hobbyShow = false
       }else {
-        this.toastPop("请选择爱好")
+        this.toastPop("pilih hobby")
       }
 
     },
@@ -245,6 +245,21 @@ export default {
 
       }
 
+    },
+    hobbyTag(){
+     var iArr = []
+        this.seletedHobbyArr.map((v,i) => {
+          this.hobbyArr.map((item,index) => {
+            if(item == v) {
+              iArr.push(index)
+            }
+        })
+      
+      })
+        iArr.map((k,j) => {
+          let i = this.arr[k]
+          this.arr.splice(k,1,true)
+        })
     },
     initFun(){
       for (let i = 0; i < this.hobbyArr.length; i++) {
@@ -518,7 +533,7 @@ uploadImg (e, num) {
     let birthdate =  document.querySelector('#showDate').innerHTML.replace("Tahun","-").replace("bulan","-").replace("tanggal","").replace(/ /g,"");
     let education =  document.querySelector('#showEdu').innerHTML;
     let profession = document.querySelector('#showOccupation').innerHTML;
-    let gender = this.sexVal == "Laki-laki" ? "male" : "female";
+    let gender = this.sexVal;
 
     if (this.name && birthdate && education && profession && gender && this.seletedHobbyArr.length) {
       //防止重复发送请求
@@ -571,7 +586,8 @@ uploadImg (e, num) {
       this.formatEdu();
       this.formatOccupation();
       this.formatDate();
-      console.log(this.getparam("id"))
+      
+     
   },
   created(){
     this.$http({
@@ -588,10 +604,12 @@ uploadImg (e, num) {
           document.getElementById("avatar").src = res.data.data.avatar
           document.getElementById("showDate").innerHTML = this.parseDate(res.data.data.birthdate)
           document.getElementById("showDate").classList = "item-right"
-           document.getElementById("showEdu").innerHTML = res.data.data.education
-           document.getElementById("showEdu").classList = "item-right"
-           document.getElementById("showOccupation").innerHTML = res.data.data.education
-           document.getElementById("showOccupation").classList = "item-right"
+          document.getElementById("showEdu").innerHTML = res.data.data.education
+          document.getElementById("showEdu").classList = "item-right"
+          document.getElementById("showOccupation").innerHTML = res.data.data.profession
+          document.getElementById("showOccupation").classList = "item-right"
+          //已选兴趣标签
+          this.hobbyTag();
         }
 
       }else if (res.status.code == 401) {

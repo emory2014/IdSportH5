@@ -9,7 +9,7 @@ export default new Router({
   mode: 'history',
   routes: [
     {
-      path: '/web',
+      path: '/',
       name: 'User',
       component: User
     },
