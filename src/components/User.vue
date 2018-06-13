@@ -3,7 +3,7 @@
   <div class="user">
 
 
-    <header class="header" v-if="param == 12">
+    <header class="header" v-if="param == 'h5'">
             　<i class="nc-icon-prev" @click="goBack()"></i>
               Selesaikan data Pribadi
         </header>
@@ -13,7 +13,7 @@
                     <div class="nc-item" id="profil">
 
                           <label for="uploads">Profil</label>
-                          <input type="file" id="uploads" style="position:absolute; clip:rect(0 0 0 0);" accept="image/png, image/jpeg, image/jpg" @change="uploadImg($event, 1)">
+                          <input type="file" id="uploads" capture="camera" style="position:absolute; clip:rect(0 0 0 0);" accept="image/png, image/jpeg, image/jpg" @change="uploadImg($event, 1)">
                           <span class="pic-box"><img id="avatar" class="header-pic" src = "../assets/images/header.png" ></span>
                           <i class="icon-next"></i>
                     </div>
@@ -137,7 +137,7 @@ export default {
   data () {
     return {
       load: true,
-      param: this.getparam("id"),
+      param: this.getparam("from"),
       src: '',
       // data: {
       //   src: '',

@@ -33,26 +33,28 @@ body{
 .header {
     position: relative;
     height: 50px;
+    padding-top:20px;
     text-align: center;
     line-height: 50px;
     font-size: 16px;
     color: #333333;
     background: #fff;
-    margin-bottom: 8px;
     font-family: SourceHanSansCN-Medium;
 }
 
 .nc-icon-prev{
     position: absolute;
     left: 15px;
-    top: 13px;
+    top: 33px;
     display: block;
     background: url(../assets/images/prev.png);
     height: 25px;
     width: 20px;
     background-size: 20px 25px;
 }
-
+.nc-body {
+    border-top: 8px solid #f5f5f5;
+}
 .nc-ul {
     list-style: none;
     padding: 0;
@@ -304,6 +306,7 @@ body{
   right: 0;
   top: 0;
   bottom: 0;
+  z-index: 1
 }
 
 .picBox{
