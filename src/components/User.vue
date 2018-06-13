@@ -587,10 +587,7 @@ uploadImg (e, num) {
       this.formatOccupation();
       this.formatDate();
       
-     
-  },
-  created(){
-    this.$http({
+      this.$http({
         url: '/api/personal/info',
         method: 'get',
     }).then((res) => {
@@ -620,6 +617,9 @@ uploadImg (e, num) {
     }).catch((res) => {
         console.log('error: ', res);
     });
+  },
+  created(){
+   
 
   }
 
