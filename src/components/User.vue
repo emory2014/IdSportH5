@@ -96,9 +96,9 @@
             <div class="pop-hobby-cont">
               <p class="btn-box"><span class="btn-cancel cancel" @click = "cancelShow()">Bata</span>
                   <span class="btn-ok name-ok" @click="nameComplete()">Oke</span></p>
-              <input minlength="2" maxlength="30" placeholder="Masukan Pilihan"
+              <input minlength="8" maxlength="50" placeholder="Masukan Pilihan"
               v-on:input="nameInput()" v-model="name" class="nic-name-input" type="text" />
-              <p class="tips"><i class="icon-tip"></i>2-30Huruf,Perpaduan Arigka sama Huruf,Sebulan hanya boleh ganti sekali</p>
+              <p class="tips"><i class="icon-tip"></i>8-50 kata,harus ada huruf dan angka</p>
             </div>
         </div>
 
@@ -113,7 +113,7 @@
         <div class="mask mask-hobby" v-bind:class="[hobbyShow? 'show':'hide']">
               <header class="header">
                       　<i class="nc-icon-prev cancel" @click = "cancelShow()"></i>
-                        Hobby
+                        
                   </header>
                   <ul class="hobby-ul"  ref="hobbyTag">
                     <li :class="{active: arr[index]}" v-for="(item,index) of hobbyArr" :key="index" @click="hobbyIsActive(index,item)">{{item}}</li>
@@ -556,13 +556,15 @@ uploadImg (e, num) {
           }
       }).then((res) => {
         if (res.data.status.code == 200) {
-         this.toastPop("berhasil")
+         this.toastPop("berhasil");
+         document.querySelector('.nc-btn').style.opacity='0.5';
       }else if (res.data.status.code == 401) {
           //this.$router.push({path: '/login'});
           window.AndroidWebView.loginApp();
         }
 
       }).catch((res) => {
+          this.ajaxFlag = true;
           console.log('error: ', res);
       });
     }else {
