@@ -9,7 +9,7 @@
         </header>
         <div class="nc-body" :class="[!load ? 'show':'hide']">
             <ul class="nc-ul">
-                <li @click="selectProfle()">
+                <!-- <li @click="selectProfle()">
                     <div class="nc-item" id="profil">
 
                           <label for="uploads">Profil</label>
@@ -17,7 +17,7 @@
                           <span class="pic-box"><img id="avatar" class="header-pic" src = "../assets/images/header.png" ></span>
                           <i class="icon-next"></i>
                     </div>
-                </li>
+                </li> -->
                 <li @click="selectName()">
                       <div class="nc-item modal" id="nicName">
                             Nama
@@ -91,7 +91,7 @@
                       　<i class="nc-icon-prev cancel" @click = "cancelUserShow()"></i>
                         
                   </header> -->
-              <img src="../assets/images/new-user-bg.png">
+              <img src="../assets/images/new-user-gold-bg.png">
           </div>
 
           <div class="mask " id="canvasBox" >
@@ -193,6 +193,12 @@ export default {
     },
     selectHobby(){
       this.hobbyShow = true
+    },
+    cancelShow(){
+      this.profleShow = false
+      this.nameShow = false
+      this.sexShow = false
+      this.hobbyShow = false
     },
     cancelUserShow(){
       this.newUser = false
@@ -555,7 +561,7 @@ uploadImg (e, num) {
           method: 'post',
           data: {
             nickname: this.name,
-            avatar: this.src,
+            // avatar: this.src,
             gender: gender,
             birthdate: birthdate,
             education: education,
@@ -604,7 +610,7 @@ uploadImg (e, num) {
       this.formatDate();
       
       this.$http({
-        url: '/api/personal/info',
+        url: '/api/personal/info?'+new Date().getTime(),
         method: 'get',
     }).then((res) => {
       this.load = false;
@@ -614,7 +620,7 @@ uploadImg (e, num) {
           this.name = res.data.data.nickname
           this.sexVal = res.data.data.gender
           this.seletedHobbyArr = res.data.data.interest
-          document.getElementById("avatar").src = res.data.data.avatar
+          //document.getElementById("avatar").src = res.data.data.avatar
           document.getElementById("showDate").innerHTML = res.data.data.birthdate
           document.getElementById("showDate").classList = "item-right"
           document.getElementById("showEdu").innerHTML = res.data.data.education
@@ -625,8 +631,10 @@ uploadImg (e, num) {
           this.hobbyTag();
         }
 
-      }else if (res.status.code == 401) {
+      }else if (res.data.status.code == 401) {
         //this.$router.push({path: '/login'});
+        alert('s');
+        console.log('dddd');
         window.AndroidWebView.loginApp();
       }
 
@@ -658,7 +666,7 @@ uploadImg (e, num) {
  //          this.hobbyTag();
  //        }
 
- //      }else if (res.status.code == 401) {
+ //      }else if (res.data.status.code == 401) {
  //        //this.$router.push({path: '/login'});
  //        window.AndroidWebView.loginApp();
  //      }
