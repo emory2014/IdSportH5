@@ -12,22 +12,15 @@
  <div class="rank-panel detail">
         
         <p class="rank-data-title">
-        <span class="left">peringkat</span>
-        <span class="center">Nomor Ponsel</span>
-        <span class="right">jumlah saldo</span></p>
+        <span class="left">Periode</span>
+        <span class="center">Waktu</span>
+        <span class="right">Limit</span></p>
         <ul class="rank-ul">
-            <li>
-            <span class="left">1</span>
-            <span class="center">62121***1566</span>
-            <span class="right">Rp.50000</span></li>
-             <li>
-            <span class="left">2</span>
-            <span class="center">62121***1566</span>
-            <span class="right">Rp.50000</span></li>
-             <li>
-            <span class="left">3</span>
-            <span class="center">62121***1566</span>
-            <span class="right">Rp.50000</span></li>
+            <li v-for="(item,index) of data" :key="index">
+                <span class="left">{{item.period}}</span>
+                <span class="center">{{item.create_time}}</span>
+                <span class="right">Rp.{{item.win_money}}</span></li>
+            
         </ul>
     </div>
 </div>
@@ -46,22 +39,32 @@ import BHeader from "../common/BHeader"
         },
         data(){
             return {
-                ruleMask: false
+                ruleMask: false,
+                data: null,
+                totalPage: 1,
+                currentPage: 1
             }
         },
         methods: {
-            scroll(){
-            
+            getData(){
+               this.$http({
+                    url: 'http://test.jiajiahebao.com/game/success/record?token=e798b8a866554cca05c23eb93b5b9261&gameId=1',
+                    method: 'get',
+                }).then((res) => {
+                    if (res.data.status.code == 200) {
+                       this.data = res.data.data.result
+                }else  {
+                   
+                    }
+
+                }).catch((res) => {
+                    console.log('error: ', res);
+                });
             },
-            closeRuleMask(){
-                this.ruleMask = false
-            },
-             showRuleMask(){
-                this.ruleMask = true
-            }
+          
         },
         mounted(){
-            this.scroll()
+            this.getData()
         }
     }
 </script>

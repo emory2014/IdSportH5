@@ -7,18 +7,18 @@
     <div class="award-avator-box">
         <img class="award-record-avator" src="../../assets/images/header.png"  />
     </div>
-    <p class="name">6208213319443</p>
+    <p class="name">{{data.mobile}}</p>
     <div class="my-data-items">
         <div class="item">
             <i class="icon-rp"></i>
             <p class="text">Limit periode ini</p>
-            <p class="num">Rp.1000000.00</p>
+            <p class="num">Rp.{{data.leastPrize}}</p>
         </div>
         <router-link to="/rank">
         <div class="item">
             <i class="icon-chapion"></i>
             <p class="text">Peringkat</p>
-            <p class="num">100+</p>
+            <p class="num">{{data.rank}}</p>
         </div>
         </router-link>
     </div>
@@ -26,7 +26,7 @@
 <div class="user-panel">
 <router-link to="/detail">
     <p class="text">jumlah saldo</p>
-    <p class="num">Rp.16000</p>  
+    <p class="num">Rp.{{data.totalWin}}</p>  
     <p class="text-go">lihat lebih banyak<i class="icon-go"></i></p>  
     </router-link>
 </div>
@@ -45,35 +45,30 @@ import BHeader from "../common/BHeader"
         },
         data(){
             return {
-                ruleMask: false
+                ruleMask: false,
+                data: null
             }
         },
         methods: {
-            scroll(){
-                var scroll = document.getElementById("scroll");
-                var step =1,scrollWidth=scroll.scrollWidth-scroll.offsetWidth;
-                var timer = setInterval(function () 
-                {
-                scroll.scrollLeft += step;
-                if (step > 0 && scroll.scrollLeft >= scrollWidth) 
-                {
-                    scroll.scrollLeft = 0
+             getData(){
+               this.$http({
+                    url: 'http://test.jiajiahebao.com/game/user/center?token=25b6a241da6a189c1a93b01bf5d4cdd5&gameId=1',
+                    method: 'get',
+                }).then((res) => {
+                    if (res.data.status.code == 200) {
+                       this.data = res.data.data
+                }else  {
+                   
                     }
-                else if (step <0 && scroll.scrollLeft <=0) 
-                {
-                    scroll.scrollLeft = 0
-                }
-        }, 50)
+
+                }).catch((res) => {
+                    console.log('error: ', res);
+                });
             },
-            closeRuleMask(){
-                this.ruleMask = false
-            },
-             showRuleMask(){
-                this.ruleMask = true
-            }
         },
         mounted(){
-           
+           this.getData()
+
         }
     }
 </script>

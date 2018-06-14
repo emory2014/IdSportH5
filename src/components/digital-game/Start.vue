@@ -3,20 +3,20 @@
 <BHeader title="开斋节答题" />
 <div class="start-container">
     <div class="start-sec">
-        <span class="num" :class="[ !start ? 'show':'hide']">{{count}}</span>
+        <span class="num" ref="num" :class="[ !start ? 'show':'hide']">{{count}}</span>
         <div class="question-sec" :class="[ start ? 'show':'hide']">
-            <p class="title">Periode 1</p>
+            <p class="title">Periode {{period}}</p>
             <div class="proccess-bar-box">
                 <div ref="bar" class="proccess-ing"></div>
             </div>
-            <p class="text">Pertanyaan 1</p>
+            <p class="text">Pertanyaan {{questionNum}}</p>
             <div class="qustion-cont">
-                <span>4</span>
-                <span class="plus">+</span>
-                <span>2</span>
+                <span>{{a}}</span>
+                <span class="plus">{{operator}}</span>
+                <span>{{b}}</span>
                 <br/>
                 <span>=</span>
-                <span>6</span>
+                <span>{{result}}</span>
             </div>
             
         </div>
@@ -24,16 +24,25 @@
     </div>
 
    <div class="answer" :class="[ start ? 'show':'hide']">
-                <i class="icon-plus" @click="nextQustion()"></i>
-                <i class="icon-subtraction" @click="showErrMask()"></i>
+                <i class="icon-plus" @click="nextQustion(1)"></i>
+                <i class="icon-subtraction" @click="nextQustion(0)"></i>
                 <div class="rule-mask " :class="[errMaskShow? 'show':'hide']">
                     <div class="err-mask-cont cont">
-                        <p class="title">Anda Punya 2 kali ksempatan</p>
-                        <div class="mask-btn">Coba Lagi</div>
-                        <div class="mask-btn" @click="inviteMaskToShow()">Undang Teman Ikut Bermain</div>
-                        <i @click="closeErrMask()" class="icon-close">×</i>        
+                        <p class="title">Anda Punya {{gameCount}} kali ksempatan</p>
+                        <div class="mask-btn" @click="restart()">Coba Lagi</div>
+                        <div class="mask-btn" @click="inviteMaskToShow()">Undang Teman Ikut Bermain</div>       
                     </div>
                 </div>
+
+                <div class="rule-mask " :class="[noChangeMaskShow? 'show':'hide']">
+                    <div class="err-mask-cont cont">
+                        <p class="title">Anda Punya 0 kali ksempatan</p>
+                        
+                        <div class="mask-btn" @click="inviteMaskToShow()">Undang Teman Ikut Bermain</div>       
+                        <div class="mask-btn" @click="rechargeCoin()">Tukarkan 100 koin emasmu untuk jawab pertanyaan</div>
+                    </div>
+                </div>
+
                 <div class="rule-mask " :class="[inviteMaskShow ? 'show':'hide']">
                     <div class="invite-mask-cont cont">
                         <p class="text">Setiap mengundang 1 teman, Anda memiliki 
@@ -54,7 +63,7 @@
         mendapatkan total uang cash sebesar<br/> 1.000.000</div>
     </div>
 
-    <div class="rule-mask ">
+    <div class="rule-mask ":class="[ successShow ? 'show':'hide']">
         <div class="success-mask-cont">
         <img class="icon-award" src="../../assets/images/icon-award.png" />
             <p class="title">Kamu jenius</p>
@@ -62,13 +71,14 @@
         pertanyaan, Anda akan mendapatkan bonus 
         sebesar Rp. 5000 Jam pengambilan bonus 
         paling terakhir jam 5 sore</p>
+        <router-link to="/"><div class="mask-btn">saya tahu</div></router-link>
         </div>
     </div>
 
    
 
 </div>
-
+<p class="toast-text" v-bind:class="[toastShow? 'show':'hide']">{{msg}}</p>
 </div>
 </template>
 <script>
@@ -85,7 +95,22 @@ import BHeader from "../common/BHeader"
                 count: 3,
                 start: false,
                 errMaskShow: false,
-                inviteMaskShow: false
+                inviteMaskShow: false,
+                noChangeMaskShow: false,
+                successShow: false,
+                a: '',
+                b: '',
+                operator: '',
+                result: '',
+                is_right: false,
+                questionNum: 1,
+                period: 1,
+                questions: null,
+                gameId: '',
+                gameCount: 3,
+                time: 0,
+                toastShow: false,
+                msg: '',
             }
         },
         methods: {
@@ -98,21 +123,36 @@ import BHeader from "../common/BHeader"
             },
             inviteMaskToShow(){
                 this.errMaskShow = false
+                this.noChangeMaskShow = false
                 this.inviteMaskShow = true
             },
             countDown(){
                     var timeout = setInterval(() => {
-                        if(this.count > 1){
+                        if(this.count >= 1){
                     this.count = this.count - 1
+                    if(this.count == 0){
+                        this.$refs.num.innerHTML = "<span class='start-text'>开 始</span>"
+                    }
                         }else{
-                        this.start = true
-                        clearInterval(timeout)
+                            this.start = true
+                            clearInterval(timeout)
                 }
                 },1000)
             },
             proccessActive(time){
-                console.log(this.$refs.bar.style.width)
-                //this.$refs.bar.style.width = 10+"px"
+                
+                document.querySelector(".proccess-ing").style.transition = 'none'                
+                    document.querySelector(".proccess-ing").style.width = '100%'
+                setTimeout(() => {
+                    document.querySelector(".proccess-ing").style.transition = 'width '+time+'s'
+                    document.querySelector(".proccess-ing").style.width = '0'   
+                },500);
+                let t = (time+1)*1000;
+                setTimeout(() => {
+                    if(this.$refs.bar.style.width == "0px"){
+                        this.answerErr()
+                    }
+                },t)
                
             },
             closeErrMask(){
@@ -120,6 +160,15 @@ import BHeader from "../common/BHeader"
             },
             showErrMask(){
                 this.errMaskShow = true
+            },
+            setData(){
+                this.a = this.questions[this.questionNum - 1].arithmetic_number_first
+                this.b = this.questions[this.questionNum - 1].arithmetic_number_second
+                this.operator = this.questions[this.questionNum - 1].operator
+                this.result = this.questions[this.questionNum - 1].result
+                this.questionNum = this.questions[this.questionNum - 1].number
+                this.is_right = this.questions[this.questionNum - 1].if_right
+                this.time = this.questions[this.questionNum - 1].answer_time
             },
             maskSpaceClick(){
                 var mask = document.querySelector(".rule-mask")
@@ -137,28 +186,94 @@ import BHeader from "../common/BHeader"
                     }
                 })
             },
-            nextQustion(){
-                document.querySelector(".proccess-ing").style.transition = 'none'                
-                 document.querySelector(".proccess-ing").style.width = '100%'
-                setTimeout(() => {
-                document.querySelector(".proccess-ing").style.transition = 'width 5s'
-                 document.querySelector(".proccess-ing").style.width = '0'
-                    
-                },500)
-               
-            },
-            getDate(){
-                this.$http({
-                url: '/game/get/question?token=e798b8a866554cca05c23eb93b5b9261&gameId=1',
+             toastPop(text){
+                this.toastShow = true
+                this.msg = text
+                setTimeout(() => this.toastShow = false, 2000)
+                },
+            successAjax(){
+                 this.$http({
+                url: 'http://test.jiajiahebao.com/game/record/result?token=e798b8a866554cca05c23eb93b5b9261&gameId=1&period=1&ifWin=1',
                 method: 'get',
-                data: {
-                
-                }
                 }).then((res) => {
                     if (res.data.status.code == 200) {
+                       this.successShow = true
+                }else  {
+                   this.toastPop(res.data.status.message)
+                    }
+
+                }).catch((res) => {
+                    console.log('error: ', res);
+                });
+            },
+            nextQustion(item){
+                if(parseInt(this.is_right) == item){
+                    if(this.questionNum < this.questions.length - 1){
+                        this.questionNum++
+                        this.setData()
+                        this.proccessActive(this.time)
+                    }else{
+                        this.successAjax()
+                    }
                     
+                }else{
+                    this.answerErr()
+                }
+                
+               
+            },
+            restart(){
+                this.$router.go(0)
+            },
+            answerErr(){
+                this.$http({
+                url: 'http://test.jiajiahebao.com/game/record/result?token=e798b8a866554cca05c23eb93b5b9261&gameId=1&period=1&ifWin=0',
+                method: 'get',
+                }).then((res) => {
+                    if (res.data.status.code == 200) {
+                        this.gameCount = res.data.data.chance 
+                        if(res.data.data.chance){
+                            this.errMaskShow = true
+                        }else{
+                            this.noChangeMaskShow = true
+                        }
                 }else if (res.data.status.code == 401) {
                    
+                    }
+
+                }).catch((res) => {
+                    console.log('error: ', res);
+                });
+            },
+            rechargeCoin(){
+                    this.$http({
+                    url: 'http://test.jiajiahebao.com/game/buy/chance?token=25b6a241da6a189c1a93b01bf5d4cdd5&gameId=1',
+                    method: 'get',
+                }).then((res) => {
+                    if (res.data.status.code == 200) {
+                        this.gameCount = res.data.data.chance 
+                       
+                }else if (res.data.status.code == 401) {
+                   
+                    }
+
+                }).catch((res) => {
+                    console.log('error: ', res);
+                });
+            },
+            getData(){
+                this.$http({
+                url: 'http://test.jiajiahebao.com/game/get/question?token=e798b8a866554cca05c23eb93b5b9261&gameId=1',
+                method: 'get',
+                }).then((res) => {
+                    let data = res.data.data;
+                    if (res.data.status.code == 200) {
+                        this.gameId = data.gameId
+                        this.period = data.period
+                        this.questions = data.list
+                        this.setData()
+                }else if (res.data.status.code == 2105) {
+                        this.noChangeMaskShow = true
                     }
 
                 }).catch((res) => {
@@ -168,8 +283,9 @@ import BHeader from "../common/BHeader"
         },
         mounted(){
             this.countDown();
-            this.maskSpaceClick()
-            this.getDate()
+            this.getData()
+
+            
         }
     }
 </script>

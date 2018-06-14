@@ -10,18 +10,12 @@
         <span class="center">Nomor Ponsel</span>
         <span class="right">jumlah saldo</span></p>
         <ul class="rank-ul">
-            <li>
-            <span class="left">1</span>
-            <span class="center">62121***1566</span>
-            <span class="right">Rp.50000</span></li>
-             <li>
-            <span class="left">2</span>
-            <span class="center">62121***1566</span>
-            <span class="right">Rp.50000</span></li>
-             <li>
-            <span class="left">3</span>
-            <span class="center">62121***1566</span>
-            <span class="right">Rp.50000</span></li>
+            <li v-for="(item,index) of data" :key="index">
+            <span class="left">{{item.rank}}</span>
+            <span class="center">{{item.mobile}}</span>
+            <span class="right">Rp.{{item.total_win_money}}</span></li>
+            
+          
         </ul>
     </div>
 </div>
@@ -47,12 +41,26 @@ import BHeader from "../common/BHeader"
         },
         data(){
             return {
-                ruleMask: false
+                ruleMask: false,
+                data: null
             }
         },
         methods: {
-            scroll(){
-              
+            getData(){
+               this.$http({
+                    url: 'http://test.jiajiahebao.com/game/get/rank?token=e798b8a866554cca05c23eb93b5b9261&gameId=1',
+                    method: 'get',
+                }).then((res) => {
+                    if (res.data.status.code == 200) {
+                       this.data = res.data.data
+                }else  {
+                   
+                    }
+
+                }).catch((res) => {
+                    console.log('error: ', res);
+                });
+            
             },
             closeRuleMask(){
                 this.ruleMask = false
@@ -62,7 +70,7 @@ import BHeader from "../common/BHeader"
             }
         },
         mounted(){
-            this.scroll()
+            this.getData()
         }
     }
 </script>

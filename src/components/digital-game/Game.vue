@@ -33,8 +33,8 @@ jawab pertanyaan menangkan Bonus" />
         <li>
             <i class="order-box">2</i>
             <p class="text">
-                Jika kesempatan bermain sudah habis, Anda bisa mendapatkan kesempatan bermain lagi dengan cara: Undang teman untuk bergabung di Newscat (mengundang 1 teman, mendapat 1x kesempatan bermain) ;
-                 atau menukarkan 100 koin emas Anda untuk 1x kesempatan bermain.
+                Jika slot permainan habis,Anda bisa mengundang teman,jika teman yang Anda undang download aplikasi NewsCat dan daftar maka 
+                Anda punya kesempatan untuk sekali untuk menjawab pertanyaan dan bonus Rp.1000.atau bisa menggunakan 100 koin emas untuk menukarkan sekali pertanyaan.
             </p>
         </li>
          <li>
@@ -76,6 +76,7 @@ jawab pertanyaan menangkan Bonus" />
     <i @click="closeRuleMask()" class="icon-close">×</i>
     </div>
 </div>
+<p class="toast-text" v-bind:class="[toastShow? 'show':'hide']">{{msg}}</p>
 
 </div>
 </template>
@@ -91,10 +92,17 @@ import BHeader from "../common/BHeader"
             return {
                 ruleMask: false,
                 timer: null,
+                toastShow: false,
+                msg: '',
 
             }
         },
         methods: {
+             toastPop(text){
+                this.toastShow = true
+                this.msg = text
+                setTimeout(() => this.toastShow = false, 2000)
+                },
             scroll(){
                 var scroll = document.getElementById("scroll");
                 var step =1,scrollWidth=scroll.scrollWidth-scroll.offsetWidth;
@@ -105,11 +113,8 @@ import BHeader from "../common/BHeader"
                 {
                     scroll.scrollLeft = 0
                     }
-                else if (step <0 && scroll.scrollLeft <=0) 
-                {
-                    scroll.scrollLeft = 0
-                }
-                console.log()
+                
+                // console.log(scroll.scrollLeft)
                 }, 50)
             },
             closeRuleMask(){
