@@ -16,7 +16,7 @@ jawab pertanyaan menangkan Bonus" />
 <div class="btn-group">
 <div class="rule-box" @click="showRuleMask()"></div>
     <router-link to="/start"><div class="game-btn">Mulai Kuis</div></router-link>
-    <div class="game-btn">Riwayat Pemenang</div>
+    <router-link to="/award-record"><div class="game-btn">Riwayat Pemenang</div></router-link>
 </div>
 </div>
 
@@ -48,7 +48,7 @@ jawab pertanyaan menangkan Bonus" />
         <li>
             <i class="order-box">4</i>
             <p class="text">
-                  Cash yang Anda dapatkan, dapat dilihat di “Penghasilan Saya” .
+                  Kalian dapat melihat hadiah uang tunai kalian di daftar pemenang hadiah
             </p>
         </li>
         <li>
@@ -89,14 +89,16 @@ import BHeader from "../common/BHeader"
         },
         data(){
             return {
-                ruleMask: false
+                ruleMask: false,
+                timer: null,
+
             }
         },
         methods: {
             scroll(){
                 var scroll = document.getElementById("scroll");
                 var step =1,scrollWidth=scroll.scrollWidth-scroll.offsetWidth;
-                var timer = setInterval(function () 
+                this.timer = setInterval(function () 
                 {
                 scroll.scrollLeft += step;
                 if (step > 0 && scroll.scrollLeft >= scrollWidth) 
@@ -107,7 +109,8 @@ import BHeader from "../common/BHeader"
                 {
                     scroll.scrollLeft = 0
                 }
-        }, 50)
+                console.log()
+                }, 50)
             },
             closeRuleMask(){
                 this.ruleMask = false
@@ -118,6 +121,9 @@ import BHeader from "../common/BHeader"
         },
         mounted(){
             this.scroll()
+        },
+        beforeDestroy(){
+            clearInterval(this.timer)
         }
     }
 </script>

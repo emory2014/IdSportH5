@@ -24,7 +24,7 @@
     </div>
 
    <div class="answer" :class="[ start ? 'show':'hide']">
-                <i class="icon-plus"></i>
+                <i class="icon-plus" @click="nextQustion()"></i>
                 <i class="icon-subtraction" @click="showErrMask()"></i>
                 <div class="rule-mask " :class="[errMaskShow? 'show':'hide']">
                     <div class="err-mask-cont cont">
@@ -52,6 +52,17 @@
         <p>Peraturan main</p>
         <div>Menjawab 50 pertanyaan dengan benar akan <br/>
         mendapatkan total uang cash sebesar<br/> 1.000.000</div>
+    </div>
+
+    <div class="rule-mask ">
+        <div class="success-mask-cont">
+        <img class="icon-award" src="../../assets/images/icon-award.png" />
+            <p class="title">Kamu jenius</p>
+            <p class="text">Selamat Anda telah menjawab benar semua 
+        pertanyaan, Anda akan mendapatkan bonus 
+        sebesar Rp. 5000 Jam pengambilan bonus 
+        paling terakhir jam 5 sore</p>
+        </div>
     </div>
 
    
@@ -101,7 +112,7 @@ import BHeader from "../common/BHeader"
             },
             proccessActive(time){
                 console.log(this.$refs.bar.style.width)
-                this.$refs.bar.style.width = 10+"px"
+                //this.$refs.bar.style.width = 10+"px"
                
             },
             closeErrMask(){
@@ -126,13 +137,39 @@ import BHeader from "../common/BHeader"
                     }
                 })
             },
+            nextQustion(){
+                document.querySelector(".proccess-ing").style.transition = 'none'                
+                 document.querySelector(".proccess-ing").style.width = '100%'
+                setTimeout(() => {
+                document.querySelector(".proccess-ing").style.transition = 'width 5s'
+                 document.querySelector(".proccess-ing").style.width = '0'
+                    
+                },500)
+               
+            },
+            getDate(){
+                this.$http({
+                url: '/game/get/question?token=e798b8a866554cca05c23eb93b5b9261&gameId=1',
+                method: 'get',
+                data: {
+                
+                }
+                }).then((res) => {
+                    if (res.data.status.code == 200) {
+                    
+                }else if (res.data.status.code == 401) {
+                   
+                    }
+
+                }).catch((res) => {
+                    console.log('error: ', res);
+                });
+            },
         },
         mounted(){
             this.countDown();
-            setTimeout(() => {
-            this.proccessActive()
-            },3200)
             this.maskSpaceClick()
+            this.getDate()
         }
     }
 </script>

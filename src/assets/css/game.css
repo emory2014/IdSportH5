@@ -201,7 +201,7 @@ body{
 
 .start-sec {
     width: 100%;
-    background: url(../../assets//images/start-bg.png) top center no-repeat,linear-gradient(to top right, #05983a 0%, #39b622 25%, #7dd40b 100%);
+    background: url(../../assets/images/start-bg.png) top center no-repeat,linear-gradient(to top right, #05983a 0%, #39b622 25%, #7dd40b 100%);
     background-size: 100%;
     height: 450px;
     border-bottom-left-radius: 10px;
@@ -276,8 +276,9 @@ body{
     width: 100%;
     border-radius: 10px;
     background: -webkit-linear-gradient(right,#bbff54,#46f205);
+    
     /* box-shadow: 1px 1px 15px 3px rgba(255, 255, 255, 0.5); */
-    transition: width 10s;
+    
 }
 
 .question-sec .text {
@@ -393,4 +394,276 @@ body{
     background: url(../../assets/images/icon-whatsapp.png) center no-repeat;
     background-size: 45px 45px;
     margin: 10px 50px 0 50px;
+}
+
+.record-container {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: url(../../assets/images/start-bg.png) top center no-repeat,linear-gradient(to top right, #05983a 0%, #39b622 25%, #7dd40b 100%);
+    background-size: 100%;
+}
+
+.data-panel {
+    width: 90%;
+    margin: 38% auto 0 auto;
+    background: #fff;
+    border-radius: 10px;
+    text-align: center;
+    color: #00680c;
+    height: 265px;
+}
+
+.award-avator-box{
+    width: 60px;
+    height: 60px;
+    border-radius: 60px;
+    overflow: hidden;
+    margin: 0 auto;
+    position: relative;
+    top: -25px;
+}
+
+.award-record-avator {
+  width: 100%;
+}
+
+.data-panel .name {
+    color: #00680c;
+    font-size: 16px;
+    text-align: center;
+    margin: -15px 0;
+}
+
+.my-data-items {
+    margin: 50px 0 30px 0; 
+}
+
+.my-data-items .item {
+    width: 50%;
+    box-sizing: border-box;
+    text-align: center;
+    float: left;
+}
+
+.my-data-items .item .text,.user-panel .text{
+    font-size: 14px;
+    color: #00680c;
+}
+
+.my-data-items .item .num,.user-panel .num {
+    font-size: 18px;
+    color: #00680c;
+    font-family: SourceHanSansCN-Medium;
+}
+
+.my-data-items .item:first-child{
+    border-right: 1px solid #dddddd;
+}
+
+.icon-rp {
+    display: block;
+    width: 28px;
+    height: 28px;
+    background: url(../../assets/images/icon-rp.png) center no-repeat;
+    background-size: 28px 28px;
+    margin: auto;
+}
+
+.icon-chapion {
+    display: block;
+    width: 28px;
+    height: 28px;
+    background: url(../../assets/images/icon-chapion.png) center no-repeat;
+    background-size: 28px 28px;
+    margin: auto;
+}
+
+.user-panel {
+    position: relative;
+    width: 90%;
+    margin: 20px auto 0 auto;
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.user-panel .text,.user-panel .num {
+    margin: 0;
+}
+.text-go {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    color: #999999;
+    font-size: 12px;
+}
+
+.icon-go {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background: url(../../assets/images/icon-go.png) center no-repeat;
+    background-size: 25px 25px;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+
+.rank-container {
+    min-height: 620px;
+    background: url(../../assets/images/rank-bg.png) bottom no-repeat,linear-gradient(to top right, #05983a 0%, #39b622 25%, #7dd40b 100%);
+    background-size: 100%;
+}
+
+.rank-panel {
+    width: 90%;
+    margin:  15% auto;
+    background: #fff;
+    border-radius: 10px;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 0 15px;
+    color: #00680c;
+}
+
+.rank-title {
+    width: 78%;
+    margin-top: -40px;
+}
+
+.rank-data-title {
+    color: #00680c;
+    font-size: 12px;
+}
+
+.rank-panel .left{
+    display: inline-block;
+    width: 28%;
+    text-align: center;
+}
+
+.rank-panel .center{
+    display: inline-block;    
+    width: 40%;
+    text-align: center;
+}
+
+.rank-panel .right{
+    display: inline-block;    
+    width: 28%;
+    text-align: center;
+    
+}
+
+.rank-ul {
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+    list-style: none;
+}
+
+.rank-ul li {
+    border-top: 1px solid #ddd;
+    padding: 5px 0;
+}
+
+.footer-data {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 55px;
+    line-height: 55px;
+    color: #fff;
+    font-size: 14px;
+    background: #007d10;
+}
+
+.footer-data .left {
+    display: inline-block;
+    width: 28%;
+    text-align: center;
+    
+}
+
+.footer-data .center {
+    display: inline-block;    
+    width: 40%;
+    text-align: center;
+    
+}
+
+.footer-data .right {
+    display: inline-block;
+    text-align: center;
+    width: 28%;
+}
+
+.default-sec {
+    text-align: center;
+    padding-top: 30%;
+    color: #fff;
+    font-size: 16px;
+}
+
+.default-sec img {
+    width: 40%;
+}
+
+.rank-panel.detail {
+    box-sizing: border-box;
+    margin-top: 0;
+    overflow: hidden;
+}
+
+.rank-box {
+    padding-top: 15px;
+}
+
+.rank-panel.detail .rank-data-title{
+    font-size: 14px;
+    margin: 10px 0;
+}
+
+.rank-panel.detail .rank-ul{
+    font-size: 14px;
+    margin: 10px 0;
+    padding-bottom: 10px;
+}
+
+.rank-panel.detail .rank-ul li{
+    padding: 8px 0;
+}
+
+.rank-panel.detail .rank-ul li:last-child{
+    border-bottom: 1px solid #ddd;
+}
+
+.success-mask-cont {
+    width: 90%;
+    margin: 45% auto;
+    color: #007332;
+    font-size: 16px;
+    background: #fff;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 10px;
+    text-align: center;
+}
+
+.success-mask-cont .title {
+    margin: 0;
+}
+
+.success-mask-cont .text {
+    margin: 5px;
+    text-align: left;
+}
+
+.icon-award {
+    width: 35%;
+    margin-top: -75px;
 }
