@@ -633,8 +633,6 @@ uploadImg (e, num) {
 
       }else if (res.data.status.code == 401) {
         //this.$router.push({path: '/login'});
-        alert('s');
-        console.log('dddd');
         window.AndroidWebView.loginApp();
       }
 
