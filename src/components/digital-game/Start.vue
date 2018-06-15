@@ -128,7 +128,9 @@ import md5 from 'js-md5'
                 msg: '',
                 token: '',
                 errMsgShow: false,
-                errMsg: ''
+                errMsg: '',
+                answer: false,
+                timestamp: 0,
             }
         },
         methods: {
@@ -151,11 +153,11 @@ import md5 from 'js-md5'
             },
             countDown(){
                     var timeout = setInterval(() => {
-                        if(this.count >= 1){
+                        if(this.count > 1){
                     this.count = this.count - 1
-                    if(this.count == 0){
-                        this.$refs.num.innerHTML = "<span class='start-text'>开 始</span>"
-                    }
+                    // if(this.count == 0){
+                    //     this.$refs.num.innerHTML = "<span class='start-text'>开 始</span>"
+                    // }
                         }else{
                             this.start = true
                             clearInterval(timeout)
@@ -172,8 +174,10 @@ import md5 from 'js-md5'
                 },500);
                 let t = (time+1)*1000;
                 setTimeout(() => {
-                    if(this.$refs.bar.style.width == "0px"){
+                    let t_str = (new Date).getTime() - this.timestamp
+                    if(this.$refs.bar.style.width == "0px" && t_str > time*1000){
                         this.answerErr()
+                        console.log(t)
                     }
                 },t)
                
@@ -234,11 +238,13 @@ import md5 from 'js-md5'
                 });
             },
             nextQustion(item){
+                    this.timestamp = (new Date()).getTime()
                 if(parseInt(this.is_right) == item){
-                    if(this.questionNum < this.questions.length - 1){
+                    if(this.questionNum <= this.questions.length - 1){
                         this.questionNum++
                         this.setData()
                         this.proccessActive(this.time)
+                        this.answerFlag = true
                     }else{
                         
                         this.successAjax()
@@ -306,7 +312,7 @@ import md5 from 'js-md5'
             },
             getData(){
                 this.$http({
-                url: 'http://test.jiajiahebao.com/game/get/question?token='+this.token+'&gameId=1',
+                url: 'http://test.jiajiahebao.com/game/get/question?token='+this.token+'&gameId=1&t='+(new Date()).getTime(),
                 method: 'get',
                 }).then((res) => {
                     let data = res.data.data;

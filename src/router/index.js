@@ -11,7 +11,7 @@ import AwardDetail from '@/components/digital-game/AwardDetail'
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',
+   mode: 'history',
   base: '/web/',
   routes: [
     // {
