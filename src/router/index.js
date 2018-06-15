@@ -11,7 +11,7 @@ import AwardDetail from '@/components/digital-game/AwardDetail'
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',
+  mode: 'hash',
   routes: [
     // {
     //   path: '/',
@@ -19,7 +19,7 @@ export default new Router({
     //   component: User
     // },
     {
-      path: '/',
+      path: '/game',
       name: 'Game',
       component: Game
     },

@@ -6,21 +6,18 @@ jawab pertanyaan menangkan Bonus" />
 <div class="scroll-box">
 <i class="icon-tip"></i>
 <ul class="scroll-ul" id="scroll">
-    <li>62813****1886获得现金奖励</li>
-    <li>62813****1886获得现金奖励</li>
-    <li>62813****1886获得现金奖励</li>
-    <li>62813****1886获得现金奖励</li>
+    <li v-for = "(item,index) of data" :key="index">{{item}}</li>
 </ul>
 </div>
 
 <div class="btn-group">
 <div class="rule-box" @click="showRuleMask()"></div>
-    <router-link to="/start"><div class="game-btn">Mulai Kuis</div></router-link>
+    <div @click="startGame()" class="game-btn">Mulai Kuis</div>
     <router-link to="/award-record"><div class="game-btn">Riwayat Pemenang</div></router-link>
 </div>
 </div>
 
-<div class="rule-mask" :class="{show: ruleMask}">
+<div class="rule-mask pb-45" :class="{show: ruleMask}">
     <div class="rule-cont">
     <p class="title">Aturan Main</p>
     <ul class="rule-ul">
@@ -59,15 +56,23 @@ jawab pertanyaan menangkan Bonus" />
 
             </p>
         </li>
-         <li>
+   
+          <li>
             <i class="order-box">6</i>
+            <p class="text">
+                Undang teman anda untuk mendapatkan kesempatan menjawab pertanyaan atau tukar koin emas untuk mendapatkan kesempatan menjadi pertanyaan, 
+                wajib digunakan dihari yang sama, tidak dapat gabungkan pada hari berikutnya.
+            </p>
+        </li>
+         <li>
+            <i class="order-box">7</i>
             <p class="text">
                   Menjawab pertanyaan tidak ada batas waktu, setiap pemain bisa menguji 
                   kemampuan kecepatan Anda sendiri dalam menjawab pertanyaan.
             </p>
         </li>
          <li>
-            <i class="order-box">7</i>
+            <i class="order-box">8</i>
             <p class="text">
                   Peraturan yang dibuat adalah bagian dari hak penyelenggara permainan.
             </p>
@@ -94,10 +99,30 @@ import BHeader from "../common/BHeader"
                 timer: null,
                 toastShow: false,
                 msg: '',
+                data: null
 
             }
         },
         methods: {
+            startGame(){
+                  this.$http({
+                        url: 'http://test.jiajiahebao.com/game/check',
+                        method: 'post',
+                        data:{
+                            token: e798b8a866554cca05c23eb93b5b9261,
+                            gameId: 1
+                        }
+                }).then((res) => {
+                    if (res.data.status.code == 200) {
+                       this.$router.push("/start")
+                }else {
+                   this.toastPop(res.data.status.message)
+                    }
+
+                }).catch((res) => {
+                    console.log('error: ', res);
+                });
+            },
              toastPop(text){
                 this.toastShow = true
                 this.msg = text
@@ -105,27 +130,48 @@ import BHeader from "../common/BHeader"
                 },
             scroll(){
                 var scroll = document.getElementById("scroll");
-                var step =1,scrollWidth=scroll.scrollWidth-scroll.offsetWidth;
+                var step =1;
+                var w = scroll.scrollWidth - scroll.offsetWidth;
                 this.timer = setInterval(function () 
                 {
-                scroll.scrollLeft += step;
-                if (step > 0 && scroll.scrollLeft >= scrollWidth) 
+                    scroll.scrollLeft += step;
+                if (scroll.scrollLeft != 0 && scroll.scrollLeft == scroll.scrollWidth - scroll.offsetWidth) 
                 {
                     scroll.scrollLeft = 0
                     }
                 
-                // console.log(scroll.scrollLeft)
+                //  console.log(scroll.scrollLeft)
                 }, 50)
+            },
+            showRuleMask(){
+                this.ruleMask = true
             },
             closeRuleMask(){
                 this.ruleMask = false
             },
-             showRuleMask(){
-                this.ruleMask = true
-            }
+          getData(){
+                     this.$http({
+                        url: 'http://test.jiajiahebao.com/game/home',
+                        method: 'post',
+                        data:{
+                            gameId: 1
+                        }
+                }).then((res) => {
+                    if (res.data.status.code == 200) {
+                       this.data = res.data.data
+                       this.scroll()
+                }else  {
+                   this.toastPop(res.data.status.message)
+                    }
+
+                }).catch((res) => {
+                    console.log('error: ', res);
+                });
+                },
         },
         mounted(){
-            this.scroll()
+            this.getData()
+           
         },
         beforeDestroy(){
             clearInterval(this.timer)

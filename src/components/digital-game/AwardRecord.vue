@@ -3,7 +3,7 @@
 <BHeader title="Riwayat Menang" />
 <div class="record-container">
 
-<div class="data-panel">
+<div class="data-panel" v-if="data">
     <div class="award-avator-box">
         <img class="award-record-avator" src="../../assets/images/header.png"  />
     </div>
@@ -26,7 +26,7 @@
 <div class="user-panel">
 <router-link to="/detail">
     <p class="text">jumlah saldo</p>
-    <p class="num">Rp.{{data.totalWin}}</p>  
+    <p class="num" v-if="data">Rp.{{data.totalWin}}</p>  
     <p class="text-go">lihat lebih banyak<i class="icon-go"></i></p>  
     </router-link>
 </div>

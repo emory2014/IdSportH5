@@ -24,8 +24,8 @@
     </div>
 
    <div class="answer" :class="[ start ? 'show':'hide']">
-                <i class="icon-plus" @click="nextQustion(1)"></i>
-                <i class="icon-subtraction" @click="nextQustion(0)"></i>
+                <i id="plus" class="icon-plus" @click="nextQustion(1)"></i>
+                <i id="subtraction" class="icon-subtraction" @click="nextQustion(0)"></i>
                 <div class="rule-mask " :class="[errMaskShow? 'show':'hide']">
                     <div class="err-mask-cont cont">
                         <p class="title">Anda Punya {{gameCount}} kali ksempatan</p>
@@ -40,6 +40,15 @@
                         
                         <div class="mask-btn" @click="inviteMaskToShow()">Undang Teman Ikut Bermain</div>       
                         <div class="mask-btn" @click="rechargeCoin()">Tukarkan 100 koin emasmu untuk jawab pertanyaan</div>
+                    </div>
+                </div>
+
+                 <div class="rule-mask " :class="[noChangeMaskShow? 'show':'hide']">
+                    <div class="err-mask-cont cont">
+                        <p class="title">Anda Pyakin mau tukarkan 100 koin Emas untuk menjawab peranyaan? </p>
+                        <div class="mask-btn" @click="confirmRechargeCoin()">Oke</div>
+                        <div class="mask-btn" @click="cancelRechargeCoin()">Tidak</div>       
+                        
                     </div>
                 </div>
 
@@ -71,7 +80,7 @@
         pertanyaan, Anda akan mendapatkan bonus 
         sebesar Rp. 5000 Jam pengambilan bonus 
         paling terakhir jam 5 sore</p>
-        <router-link to="/"><div class="mask-btn">saya tahu</div></router-link>
+        <router-link to="/game"><div class="mask-btn">saya tahu</div></router-link>
         </div>
     </div>
 
@@ -98,6 +107,7 @@ import BHeader from "../common/BHeader"
                 inviteMaskShow: false,
                 noChangeMaskShow: false,
                 successShow: false,
+                confirmMaskShow: false,
                 a: '',
                 b: '',
                 operator: '',
@@ -213,10 +223,17 @@ import BHeader from "../common/BHeader"
                         this.setData()
                         this.proccessActive(this.time)
                     }else{
+                        
                         this.successAjax()
                     }
                     
                 }else{
+                    document.getElementById("plus").addEventListener("click",function(e){
+                        e.preventDefault()
+                    },false)
+                    document.getElementById("subtraction").addEventListener("click",function(e){
+                        e.preventDefault()
+                    },false)
                     this.answerErr()
                 }
                 
@@ -231,6 +248,8 @@ import BHeader from "../common/BHeader"
                 method: 'get',
                 }).then((res) => {
                     if (res.data.status.code == 200) {
+                        // document.getElementById("plus").addEventListener("click",this.nextQustion(),false)
+                        // document.getElementById("subtraction").addEventListener("click",this.nextQustion(),false)
                         this.gameCount = res.data.data.chance 
                         if(res.data.data.chance){
                             this.errMaskShow = true
@@ -246,20 +265,26 @@ import BHeader from "../common/BHeader"
                 });
             },
             rechargeCoin(){
+                   this.noChangeMaskShow = false
+                   this.confirmMaskShow = true 
+            },
+            confirmRechargeCoin(){
                     this.$http({
                     url: 'http://test.jiajiahebao.com/game/buy/chance?token=25b6a241da6a189c1a93b01bf5d4cdd5&gameId=1',
                     method: 'get',
                 }).then((res) => {
                     if (res.data.status.code == 200) {
-                        this.gameCount = res.data.data.chance 
-                       
+                        this.$router.go(0)
                 }else if (res.data.status.code == 401) {
-                   
+                   this.toastPop(res.data.status.message)
                     }
 
                 }).catch((res) => {
                     console.log('error: ', res);
                 });
+            },
+            cancelRechargeCoin(){
+                this.$router.push("/game")
             },
             getData(){
                 this.$http({

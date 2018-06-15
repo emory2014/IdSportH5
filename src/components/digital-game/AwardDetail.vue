@@ -40,19 +40,26 @@ import BHeader from "../common/BHeader"
         data(){
             return {
                 ruleMask: false,
-                data: null,
+                data: [],
                 totalPage: 1,
-                currentPage: 1
+                currentPage: 1,
+                flag: true,
+                page: 1
             }
         },
         methods: {
-            getData(){
+            getData(page){
                this.$http({
-                    url: 'http://test.jiajiahebao.com/game/success/record?token=e798b8a866554cca05c23eb93b5b9261&gameId=1',
+                    url: 'http://test.jiajiahebao.com/game/success/record?token=e798b8a866554cca05c23eb93b5b9261&gameId=1&page='+page,
                     method: 'get',
                 }).then((res) => {
+                    this.flag = true;  
                     if (res.data.status.code == 200) {
-                       this.data = res.data.data.result
+                        res.data.data.result.map((item) => {
+                                this.data.push(item)
+                        })
+                       this.currentPage = res.data.data.currentPage
+                       this.totalPage = res.data.data.totalPage
                 }else  {
                    
                     }
@@ -61,10 +68,49 @@ import BHeader from "../common/BHeader"
                     console.log('error: ', res);
                 });
             },
-          
+          scrollGetData(){
+              let _this = this;
+               window.addEventListener('scroll',function(){  
+                // console.log(document.documentElement.clientHeight+'-----------'+window.innerHeight); // 可视区域高度  
+                // console.log(document.body.scrollTop); // 滚动高度  
+                // console.log(document.body.offsetHeight); // 文档高度  
+                // 判断是否滚动到底部  
+                
+                console.log(document.body.scrollTop + window.innerHeight)
+                console.log(document.body.offsetHeight)
+                if(document.body.scrollTop + window.innerHeight <= document.body.offsetHeight) {  
+                    // console.log(sw);  
+                    // 如果开关打开则加载数据  
+                    if(_this.flag == true){  
+                        // 将开关关闭  
+                        _this.flag = false;  
+                        _this.page = _this.page + 1
+                        if(_this.currentPage < _this.totalPage){
+                             _this.getData(_this.page)
+                        }
+                       
+                        // axios.get('http://localhost:3000/proxy?url=http://news.at.zhihu.com/api/4/news/before/20170608')  
+                        //     .then(function(response){  
+                        //         console.log(JSON.parse(response.data));  
+                        //         // 将新获取的数据push到vue中的data，就会反应到视图中了  
+                        //         JSON.parse(response.data).stories.forEach(function(val,index){  
+                        //             _this.articles.push(val);  
+                        //             // console.log(val);  
+                        //         });  
+                        //         // 数据更新完毕，将开关打开  
+                        //         sw = true;  
+                        //     })  
+                        //     .catch(function(error){  
+                        //         console.log(error);  
+                        //     });     
+                    }  
+                }  
+            });  
+          }
         },
         mounted(){
-            this.getData()
+            this.getData(1)
+            this.scrollGetData()
         }
     }
 </script>

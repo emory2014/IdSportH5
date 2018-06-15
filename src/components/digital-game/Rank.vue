@@ -9,21 +9,19 @@
         <span class="left">peringkat</span>
         <span class="center">Nomor Ponsel</span>
         <span class="right">jumlah saldo</span></p>
-        <ul class="rank-ul">
+        <ul class="rank-ul" v-if="data">
             <li v-for="(item,index) of data" :key="index">
             <span class="left">{{item.rank}}</span>
             <span class="center">{{item.mobile}}</span>
             <span class="right">Rp.{{item.total_win_money}}</span></li>
-            
-          
         </ul>
     </div>
 </div>
 
-<div class="footer-data">
-            <span class="left">3</span>
-            <span class="center">62121***1566</span>
-            <span class="right">Rp.50000</span>
+<div class="footer-data" v-if="myData">
+            <span class="left">{{myData.rank}}</span>
+            <span class="center">{{myData.mobile}}</span>
+            <span class="right">Rp.{{myData.total_win_money}}</span>
 </div>
 
 
@@ -42,7 +40,8 @@ import BHeader from "../common/BHeader"
         data(){
             return {
                 ruleMask: false,
-                data: null
+                data: null,
+                myData: null
             }
         },
         methods: {
@@ -52,7 +51,8 @@ import BHeader from "../common/BHeader"
                     method: 'get',
                 }).then((res) => {
                     if (res.data.status.code == 200) {
-                       this.data = res.data.data
+                       this.data = res.data.data.list
+                       this.myData = res.data.data.self
                 }else  {
                    
                     }
