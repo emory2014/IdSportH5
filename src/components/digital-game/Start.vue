@@ -325,7 +325,7 @@ import md5 from 'js-md5'
             },
         },
         mounted(){
-            this.token = getQueryString("token").substring(7);
+            this.token = this.getQueryString("token").substring(7);
             this.countDown();
             this.getData()
         }

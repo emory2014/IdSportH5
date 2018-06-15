@@ -167,7 +167,7 @@ import BHeader from "../common/BHeader"
                 },
         },
         mounted(){
-            this.token = getQueryString("token").substring(7);
+            this.token = this.getQueryString("token").substring(7);
             // alert(123)
             // this.token = window.AndroidWebview.getAppToken()
             //  alert('aa:'+this.token)
