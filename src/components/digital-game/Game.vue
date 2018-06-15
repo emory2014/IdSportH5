@@ -98,7 +98,7 @@ import BHeader from "../common/BHeader"
                 toastShow: false,
                 msg: '',
                 data: null,
-                token: 'e798b8a866554cca05c23eb93b5b9261'
+                token: ''
             }
         },
         methods: {
@@ -161,11 +161,14 @@ import BHeader from "../common/BHeader"
                 },
         },
         mounted(){
+            this.token = 'e798b8a866554cca05c23eb93b5b9261';
             // alert(123)
             // this.token = window.AndroidWebview.getAppToken()
             //  alert('aa:'+this.token)
             // alert('bb'+window.AndroidWebview.getAppToken())
             this.getData()
+            window.AndroidWebview.showContent(window.AndroidWebview.getAppToken());
+
         },
         beforeDestroy(){
             clearInterval(this.timer)
