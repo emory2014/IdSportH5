@@ -104,7 +104,7 @@ import BHeader from "../common/BHeader"
         methods: {
             startGame(){
                   this.$http({
-                        url: 'http://test.jiajiahebao.com/game/check?token='+this.token+'&gameId=1',
+                        url: 'http://test.jiajiahebao.com/game/check?token='+this.token+'&gameId=1&t=(new Date()).getTime()',
                         method: 'get',
                 }).then((res) => {
                     if (res.data.status.code == 200) {
@@ -145,7 +145,7 @@ import BHeader from "../common/BHeader"
             },
           getData(){
                      this.$http({
-                        url: 'http://test.jiajiahebao.com/game/home?gameId=1',
+                        url: 'http://test.jiajiahebao.com/game/home?gameId=1&t=(new Date()).getTime()',
                         method: 'get',
                 }).then((res) => {
                     if (res.data.status.code == 200) {
