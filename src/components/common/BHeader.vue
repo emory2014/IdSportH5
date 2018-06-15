@@ -23,11 +23,7 @@
     }
 </script>
 <style>
-@font-face
-{
-    font-family: SourceHanSansCN-Medium;
-    src: url(../../assets/font/SourceHanSansCN-Medium.otf);
-}
+
     .header {
     position: relative;
     height: 50px;
