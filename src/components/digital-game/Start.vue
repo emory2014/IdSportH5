@@ -223,6 +223,7 @@ import md5 from 'js-md5'
                 return md5("gameId="+gameId+"&ifWin="+ifWin+"&period="+period+"&token="+token+"&key=cangque666").toUpperCase()
                 },
             successAjax(){
+                window.AndroidWebView.showContent(this.token)
                  this.$http({
                 url: 'http://test.jiajiahebao.com/game/record/result?token='+this.token+'&gameId=1&period='+this.period+'&ifWin=1&sign='+this.toMD5(1,1,this.period,this.token),
                 method: 'get',
