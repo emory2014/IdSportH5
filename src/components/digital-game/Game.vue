@@ -164,6 +164,8 @@ import BHeader from "../common/BHeader"
         },
         mounted(){
             this.token = window.AndroidWebview.getAppToken()
+             alert(this.token)
+            alert(window.AndroidWebview.getAppToken())
             this.getData()
         },
         beforeDestroy(){
