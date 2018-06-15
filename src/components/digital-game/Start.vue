@@ -229,6 +229,7 @@ import md5 from 'js-md5'
                 method: 'get',
                 }).then((res) => {
                     if (res.data.status.code == 200) {
+                        window.AndroidWebView.showContent('http://test.jiajiahebao.com/game/record/result?token='+this.token+'&gameId=1&period='+this.period+'&ifWin=1&sign='+this.toMD5(1,1,this.period,this.token))
                        this.successShow = true
                 }else  {
                    this.toastPop(res.data.status.message)
