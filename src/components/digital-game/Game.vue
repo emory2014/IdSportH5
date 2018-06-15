@@ -11,7 +11,7 @@
 <div class="btn-group">
 <div class="rule-box" @click="showRuleMask()"></div>
     <div @click="startGame()" class="game-btn">Mulai Kuis</div>
-    <router-link to="/award-record"><div class="game-btn">Riwayat Pemenang</div></router-link>
+    <router-link :to="'/award-record?token='+this.token"><div class="game-btn">Riwayat Pemenang</div></router-link>
 </div>
 </div>
 
@@ -114,7 +114,7 @@ import BHeader from "../common/BHeader"
                         method: 'get',
                 }).then((res) => {
                     if (res.data.status.code == 200) {
-                       this.$router.push("/start")
+                       this.$router.push("/start?token="+this.token)
                 }else {
                    this.toastPop(res.data.status.message)
                     }
@@ -167,7 +167,7 @@ import BHeader from "../common/BHeader"
                 },
         },
         mounted(){
-            this.token = getQueryString("token");
+            this.token = getQueryString("token").substring(7);
             // alert(123)
             // this.token = window.AndroidWebview.getAppToken()
             //  alert('aa:'+this.token)

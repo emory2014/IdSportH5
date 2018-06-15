@@ -115,7 +115,7 @@ import BHeader from "../common/BHeader"
           }
         },
         mounted(){
-            this.token = getQueryString("token")
+            this.token = getQueryString("token").substring(7)
             this.getData(1)
             this.scrollGetData()
         }

@@ -13,7 +13,7 @@
             <p class="text">Limit periode ini</p>
             <p class="num">Rp.{{data.leastPrize}}</p>
         </div>
-        <router-link to="/rank">
+        <router-link :to="'/rank?token='+this.token">
         <div class="item">
             <i class="icon-chapion"></i>
             <p class="text">Peringkat</p>
@@ -23,7 +23,7 @@
     </div>
 </div>
 <div class="user-panel">
-<router-link to="/detail">
+<router-link :to="'/detail?token='+this.token">
     <p class="text">jumlah saldo</p>
     <p class="num" v-if="data">Rp.{{data.totalWin}}</p>  
     <p class="text-go">lihat lebih banyak<i class="icon-go"></i></p>  
@@ -73,7 +73,7 @@ import BHeader from "../common/BHeader"
             },
         },
         mounted(){
-           this.token = getQueryString("token")
+           this.token = getQueryString("token").substring(7)
            this.getData()
 
         }

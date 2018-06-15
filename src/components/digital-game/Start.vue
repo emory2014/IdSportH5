@@ -79,7 +79,7 @@
         pertanyaan, Anda akan mendapatkan bonus 
         sebesar Rp. 5000 Jam pengambilan bonus 
         paling terakhir jam 5 sore</p>
-        <router-link to="/game"><div class="mask-btn">saya tahu</div></router-link>
+        <router-link :to="'/game?token='+this.token"><div class="mask-btn">saya tahu</div></router-link>
         </div>
     </div>
 
@@ -126,7 +126,7 @@ import md5 from 'js-md5'
                 time: 0,
                 toastShow: false,
                 msg: '',
-                token: 'e798b8a866554cca05c23eb93b5b9261',
+                token: '',
                 errMsgShow: false,
                 errMsg: ''
             }
@@ -302,7 +302,7 @@ import md5 from 'js-md5'
                 });
             },
             cancelRechargeCoin(){
-                this.$router.push("/game")
+                this.$router.push("/game?token="+this.token)
             },
             getData(){
                 this.$http({
@@ -325,7 +325,7 @@ import md5 from 'js-md5'
             },
         },
         mounted(){
-            this.token = getQueryString("token");
+            this.token = getQueryString("token").substring(7);
             this.countDown();
             this.getData()
         }
