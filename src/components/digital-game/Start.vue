@@ -58,8 +58,7 @@
                         <p class="text">Mengundang semakin banyak teman, kese-
                             mpatan berikut kuis Semakin besar.</p> 
                             <div class="invite-icon-group">
-                                <i class="icon-facebook"></i>
-                                <i class="icon-whatsapp"></i>
+                              
                             </div>
                     </div>
                 </div>
@@ -223,13 +222,11 @@ import md5 from 'js-md5'
                 return md5("gameId="+gameId+"&ifWin="+ifWin+"&period="+period+"&token="+token+"&key=cangque666").toUpperCase()
                 },
             successAjax(){
-                window.AndroidWebView.showContent(this.token)
                  this.$http({
-                url: 'http://test.jiajiahebao.com/game/record/result?token='+this.token+'&gameId=1&period='+this.period+'&ifWin=1&sign='+this.toMD5(1,1,this.period,this.token),
+                url: 'http://test.jiajiahebao.com/game/record/result?token='+this.token+'&gameId=1&period='+this.period+'&ifWin=1&sign='+this.toMD5(1,1,this.period,this.token)+'&t='+(new Date()).getTime(),
                 method: 'get',
                 }).then((res) => {
                     if (res.data.status.code == 200) {
-                        window.AndroidWebView.showContent('http://test.jiajiahebao.com/game/record/result?token='+this.token+'&gameId=1&period='+this.period+'&ifWin=1&sign='+this.toMD5(1,1,this.period,this.token))
                        this.successShow = true
                 }else  {
                    this.toastPop(res.data.status.message)
@@ -270,7 +267,7 @@ import md5 from 'js-md5'
             },
             answerErr(){
                 this.$http({
-                url: 'http://test.jiajiahebao.com/game/record/result?token='+this.token+'&gameId=1&period='+this.period+'&ifWin=0&sign='+this.toMD5(1,0,this.period,this.token),
+                url: 'http://test.jiajiahebao.com/game/record/result?token='+this.token+'&gameId=1&period='+this.period+'&ifWin=0&sign='+this.toMD5(1,0,this.period,this.token)+'&t='+(new Date()).getTime(),
                 method: 'get',
                 }).then((res) => {
                     if (res.data.status.code == 200) {
@@ -297,7 +294,7 @@ import md5 from 'js-md5'
             },
             confirmRechargeCoin(){
                     this.$http({
-                    url: 'http://test.jiajiahebao.com/game/buy/chance?token='+this.token+'&gameId=1',
+                    url: 'http://test.jiajiahebao.com/game/buy/chance?token='+this.token+'&gameId=1&t='+(new Date()).getTime(),
                     method: 'get',
                 }).then((res) => {
                     if (res.data.status.code == 200) {

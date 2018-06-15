@@ -58,7 +58,7 @@ import BHeader from "../common/BHeader"
                 } ,
              getData(){
                this.$http({
-                    url: 'http://test.jiajiahebao.com/game/user/center?token='+this.token+'&gameId=1',
+                    url: 'http://test.jiajiahebao.com/game/user/center?token='+this.token+'&gameId=1&t='+(new Date()).getTime(),
                     method: 'get',
                 }).then((res) => {
                     if (res.data.status.code == 200) {

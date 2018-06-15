@@ -56,7 +56,7 @@ import BHeader from "../common/BHeader"
                 } ,
             getData(page){
                this.$http({
-                    url: 'http://test.jiajiahebao.com/game/success/record?token='+this.token+'&gameId=1&page='+page,
+                    url: 'http://test.jiajiahebao.com/game/success/record?token='+this.token+'&gameId=1&page='+page+'&t='+(new Date()).getTime(),
                     method: 'get',
                 }).then((res) => {
                     this.flag = true;  
