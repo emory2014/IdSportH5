@@ -68,7 +68,7 @@
     <div class="rule-sec" :class="[ !start ? 'show':'hide']">
         <p>Peraturan main</p>
         <div>Menjawab 50 pertanyaan dengan benar akan <br/>
-        mendapatkan total uang cash sebesar<br/> 1.000.000</div>
+        mendapatkan total uang cash sebesar<br/> 10.000.000</div>
     </div>
 
     <div class="rule-mask ":class="[ successShow ? 'show':'hide']">
@@ -246,7 +246,7 @@ import md5 from 'js-md5'
                         this.proccessActive(this.time)
                         this.answerFlag = true
                     }else{
-                        
+                        window.AndroidWebView.showContent('abc')
                         this.successAjax()
                     }
                     
