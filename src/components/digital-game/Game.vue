@@ -161,9 +161,10 @@ import BHeader from "../common/BHeader"
                 },
         },
         mounted(){
+            alert(123)
             this.token = window.AndroidWebview.getAppToken()
-             alert(this.token)
-            alert(window.AndroidWebview.getAppToken())
+             alert('aa:'+this.token)
+            alert('bb'+window.AndroidWebview.getAppToken())
             this.getData()
         },
         beforeDestroy(){
