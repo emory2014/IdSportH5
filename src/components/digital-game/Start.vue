@@ -84,6 +84,11 @@
         </div>
     </div>
 
+    <div class="rule-mask" :class="[ errMsgShow ? 'show': 'show']">
+        <div class="success-mask-cont pt-30">
+            {{errMsg}}
+        </div>
+    </div>
    
 
 </div>
@@ -92,6 +97,7 @@
 </template>
 <script>
 import BHeader from "../common/BHeader"
+import md5 from 'js-md5'
 
     export default {
         name: 'Start',
@@ -121,6 +127,9 @@ import BHeader from "../common/BHeader"
                 time: 0,
                 toastShow: false,
                 msg: '',
+                token: 'e798b8a866554cca05c23eb93b5b9261',
+                errMsgShow: false,
+                errMsg: ''
             }
         },
         methods: {
@@ -201,9 +210,13 @@ import BHeader from "../common/BHeader"
                 this.msg = text
                 setTimeout(() => this.toastShow = false, 2000)
                 },
+
+            toMD5(gameId,ifWin,period,token){
+                return md5("gameId="+gameId+"&ifWin="+ifWin+"&period="+period+"&token="+token+"&key=cangque666").toUpperCase()
+                },
             successAjax(){
                  this.$http({
-                url: 'http://test.jiajiahebao.com/game/record/result?token=e798b8a866554cca05c23eb93b5b9261&gameId=1&period=1&ifWin=1',
+                url: 'http://test.jiajiahebao.com/game/record/result?token='+this.token+'&gameId=1&period='+this.period+'&ifWin=1&sign='+this.toMD5(1,1,this.period,this.token),
                 method: 'get',
                 }).then((res) => {
                     if (res.data.status.code == 200) {
@@ -244,7 +257,7 @@ import BHeader from "../common/BHeader"
             },
             answerErr(){
                 this.$http({
-                url: 'http://test.jiajiahebao.com/game/record/result?token=e798b8a866554cca05c23eb93b5b9261&gameId=1&period=1&ifWin=0',
+                url: 'http://test.jiajiahebao.com/game/record/result?token='+this.token+'&gameId=1&period='+this.period+'&ifWin=0&sign='+this.toMD5(1,0,this.period,this.token),
                 method: 'get',
                 }).then((res) => {
                     if (res.data.status.code == 200) {
@@ -256,8 +269,9 @@ import BHeader from "../common/BHeader"
                         }else{
                             this.noChangeMaskShow = true
                         }
-                }else if (res.data.status.code == 401) {
-                   
+                }else  {
+                   this.errMsgShow = true
+                   this.errMsg = res.data.status.message
                     }
 
                 }).catch((res) => {
@@ -270,7 +284,7 @@ import BHeader from "../common/BHeader"
             },
             confirmRechargeCoin(){
                     this.$http({
-                    url: 'http://test.jiajiahebao.com/game/buy/chance?token=25b6a241da6a189c1a93b01bf5d4cdd5&gameId=1',
+                    url: 'http://test.jiajiahebao.com/game/buy/chance?token='+this.token+'&gameId=1',
                     method: 'get',
                 }).then((res) => {
                     if (res.data.status.code == 200) {
@@ -288,7 +302,7 @@ import BHeader from "../common/BHeader"
             },
             getData(){
                 this.$http({
-                url: 'http://test.jiajiahebao.com/game/get/question?token=e798b8a866554cca05c23eb93b5b9261&gameId=1',
+                url: 'http://test.jiajiahebao.com/game/get/question?token='+this.token+'&gameId=1',
                 method: 'get',
                 }).then((res) => {
                     let data = res.data.data;
@@ -307,10 +321,9 @@ import BHeader from "../common/BHeader"
             },
         },
         mounted(){
+             this.token = window.AndroidWebview.getAppToken()
             this.countDown();
             this.getData()
-
-            
         }
     }
 </script>

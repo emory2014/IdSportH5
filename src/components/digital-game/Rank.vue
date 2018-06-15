@@ -41,13 +41,14 @@ import BHeader from "../common/BHeader"
             return {
                 ruleMask: false,
                 data: null,
-                myData: null
+                myData: null,
+                token: 'e798b8a866554cca05c23eb93b5b9261'
             }
         },
         methods: {
             getData(){
                this.$http({
-                    url: 'http://test.jiajiahebao.com/game/get/rank?token=e798b8a866554cca05c23eb93b5b9261&gameId=1',
+                    url: 'http://test.jiajiahebao.com/game/get/rank?token='+this.token+'&gameId=1',
                     method: 'get',
                 }).then((res) => {
                     if (res.data.status.code == 200) {
@@ -70,6 +71,7 @@ import BHeader from "../common/BHeader"
             }
         },
         mounted(){
+             this.token = window.AndroidWebview.getAppToken()
             this.getData()
         }
     }

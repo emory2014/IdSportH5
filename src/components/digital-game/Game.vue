@@ -99,19 +99,15 @@ import BHeader from "../common/BHeader"
                 timer: null,
                 toastShow: false,
                 msg: '',
-                data: null
-
+                data: null,
+                token: 'e798b8a866554cca05c23eb93b5b9261'
             }
         },
         methods: {
             startGame(){
                   this.$http({
-                        url: 'http://test.jiajiahebao.com/game/check',
-                        method: 'post',
-                        data:{
-                            token: e798b8a866554cca05c23eb93b5b9261,
-                            gameId: 1
-                        }
+                        url: 'http://test.jiajiahebao.com/game/check?token='+this.token+'&gameId=1',
+                        method: 'get',
                 }).then((res) => {
                     if (res.data.status.code == 200) {
                        this.$router.push("/start")
@@ -151,11 +147,8 @@ import BHeader from "../common/BHeader"
             },
           getData(){
                      this.$http({
-                        url: 'http://test.jiajiahebao.com/game/home',
-                        method: 'post',
-                        data:{
-                            gameId: 1
-                        }
+                        url: 'http://test.jiajiahebao.com/game/home?gameId=1',
+                        method: 'get',
                 }).then((res) => {
                     if (res.data.status.code == 200) {
                        this.data = res.data.data
@@ -170,8 +163,8 @@ import BHeader from "../common/BHeader"
                 },
         },
         mounted(){
+            this.token = window.AndroidWebview.getAppToken()
             this.getData()
-           
         },
         beforeDestroy(){
             clearInterval(this.timer)

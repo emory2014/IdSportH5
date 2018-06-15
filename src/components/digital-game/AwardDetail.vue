@@ -44,13 +44,14 @@ import BHeader from "../common/BHeader"
                 totalPage: 1,
                 currentPage: 1,
                 flag: true,
-                page: 1
+                page: 1,
+                token: 'e798b8a866554cca05c23eb93b5b9261'
             }
         },
         methods: {
             getData(page){
                this.$http({
-                    url: 'http://test.jiajiahebao.com/game/success/record?token=e798b8a866554cca05c23eb93b5b9261&gameId=1&page='+page,
+                    url: 'http://test.jiajiahebao.com/game/success/record?token='+this.token+'&gameId=1&page='+page,
                     method: 'get',
                 }).then((res) => {
                     this.flag = true;  
@@ -109,6 +110,7 @@ import BHeader from "../common/BHeader"
           }
         },
         mounted(){
+             this.token = window.AndroidWebview.getAppToken()
             this.getData(1)
             this.scrollGetData()
         }
