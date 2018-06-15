@@ -102,6 +102,12 @@ import BHeader from "../common/BHeader"
             }
         },
         methods: {
+             getQueryString(name) { 
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
+                var r = window.location.search.substr(1).match(reg); 
+                if (r != null) return unescape(r[2]); 
+                    return null; 
+                } ,
             startGame(){
                   this.$http({
                         url: 'http://test.jiajiahebao.com/game/check?token='+this.token+'&gameId=1&t=(new Date()).getTime()',
@@ -161,13 +167,13 @@ import BHeader from "../common/BHeader"
                 },
         },
         mounted(){
-            this.token = 'e798b8a866554cca05c23eb93b5b9261';
+            this.token = getQueryString("token");
             // alert(123)
             // this.token = window.AndroidWebview.getAppToken()
             //  alert('aa:'+this.token)
             // alert('bb'+window.AndroidWebview.getAppToken())
             this.getData()
-            window.AndroidWebview.showContent(window.AndroidWebview.getAppToken());
+         
 
         },
         beforeDestroy(){

@@ -46,10 +46,16 @@ import BHeader from "../common/BHeader"
             return {
                 ruleMask: false,
                 data: null,
-                token: 'e798b8a866554cca05c23eb93b5b9261'
+                token: ''
             }
         },
         methods: {
+             getQueryString(name) { 
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
+                var r = window.location.search.substr(1).match(reg); 
+                if (r != null) return unescape(r[2]); 
+                    return null; 
+                } ,
              getData(){
                this.$http({
                     url: 'http://test.jiajiahebao.com/game/user/center?token='+this.token+'&gameId=1',
@@ -67,7 +73,7 @@ import BHeader from "../common/BHeader"
             },
         },
         mounted(){
-           this.token = window.AndroidWebview.getAppToken()
+           this.token = getQueryString("token")
            this.getData()
 
         }

@@ -132,7 +132,12 @@ import md5 from 'js-md5'
             }
         },
         methods: {
-           
+           getQueryString(name) { 
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
+                var r = window.location.search.substr(1).match(reg); 
+                if (r != null) return unescape(r[2]); 
+                    return null; 
+                } ,
             closeRuleMask(){
                 this.ruleMask = false
             },
@@ -320,7 +325,7 @@ import md5 from 'js-md5'
             },
         },
         mounted(){
-             this.token = window.AndroidWebview.getAppToken()
+            this.token = getQueryString("token");
             this.countDown();
             this.getData()
         }
