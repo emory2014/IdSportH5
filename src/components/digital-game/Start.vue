@@ -245,7 +245,7 @@ import md5 from 'js-md5'
                         this.questionNum++
                         this.setData()
                         this.proccessActive(this.time)
-                        this.answerFlag = true
+                        // this.answerFlag = true
                     }else{
                         window.AndroidWebView.showContent('abc')
                         this.successAjax()
