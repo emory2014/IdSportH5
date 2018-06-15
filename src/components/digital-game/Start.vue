@@ -1,6 +1,5 @@
 <template> 
 <div>
-<BHeader title="开斋节答题" />
 <div class="start-container">
     <div class="start-sec">
         <span class="num" ref="num" :class="[ !start ? 'show':'hide']">{{count}}</span>

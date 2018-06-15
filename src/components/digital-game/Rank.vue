@@ -1,7 +1,6 @@
 <template> 
 <div>
 <div class="rank-container">
-    <BHeader title="Riwayat Menang" />
 
     <div class="rank-panel">
         <img class="rank-title" src="../../assets/images/rank-title.png">

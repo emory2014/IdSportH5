@@ -1,7 +1,5 @@
 <template> 
 <div>
-<BHeader title="Mari kita sambut Ramadhan yang mendekat,
-jawab pertanyaan menangkan Bonus" />
 <div class="game-container">
 <div class="scroll-box">
 <i class="icon-tip"></i>

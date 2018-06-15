@@ -1,6 +1,5 @@
 <template> 
 <div>
-<BHeader title="Riwayat Menang" />
 <div class="rank-container">
 
 <div class="default-sec hide">

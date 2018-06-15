@@ -1,6 +1,5 @@
 <template> 
 <div>
-<BHeader title="Riwayat Menang" />
 <div class="record-container">
 
 <div class="data-panel" v-if="data">
