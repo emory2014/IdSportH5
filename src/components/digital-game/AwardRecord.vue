@@ -13,7 +13,7 @@
             <p class="text">Limit periode ini</p>
             <p class="num">Rp.{{data.leastPrize}}</p>
         </div>
-        <router-link :to="'/rank?token='+this.token">
+        <router-link :to="'/rank?token='+this.token+'&t='+(new Date()).getTime()">
         <div class="item">
             <i class="icon-chapion"></i>
             <p class="text">Peringkat</p>
@@ -23,7 +23,7 @@
     </div>
 </div>
 <div class="user-panel">
-<router-link :to="'/detail?token='+this.token">
+<router-link :to="'/detail?token='+this.token+'&t='+(new Date()).getTime()">
     <p class="text">jumlah saldo</p>
     <p class="num" v-if="data">Rp.{{data.totalWin}}</p>  
     <p class="text-go">lihat lebih banyak<i class="icon-go"></i></p>  
