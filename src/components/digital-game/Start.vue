@@ -83,7 +83,7 @@
         </div>
     </div>
 
-    <div class="rule-mask" :class="[ errMsgShow ? 'show': 'show']">
+    <div class="rule-mask" :class="[ errMsgShow ? 'show': 'hide']">
         <div class="success-mask-cont pt-30">
             {{errMsg}}
         </div>
@@ -293,7 +293,7 @@ import md5 from 'js-md5'
                 }).then((res) => {
                     if (res.data.status.code == 200) {
                         this.$router.go(0)
-                }else if (res.data.status.code == 401) {
+                }else {
                    this.toastPop(res.data.status.message)
                     }
 
@@ -317,6 +317,8 @@ import md5 from 'js-md5'
                         this.setData()
                 }else if (res.data.status.code == 2105) {
                         this.noChangeMaskShow = true
+                    }else{
+                        this.toastPop(res.data.status.message)
                     }
 
                 }).catch((res) => {
@@ -325,7 +327,7 @@ import md5 from 'js-md5'
             },
         },
         mounted(){
-            this.token = this.getQueryString("token").substring(7);
+            this.token = this.getQueryString("token");
             this.countDown();
             this.getData()
         }
