@@ -74,10 +74,7 @@
         <div class="success-mask-cont">
         <img class="icon-award" src="../../assets/images/icon-award.png" />
             <p class="title">Kamu jenius</p>
-            <p class="text">Selamat Anda telah menjawab benar semua 
-        pertanyaan, Anda akan mendapatkan bonus 
-        sebesar Rp. 5000 Jam pengambilan bonus 
-        paling terakhir jam 5 sore</p>
+            <p class="text">{{successMsg}}</p>
         <router-link :to="'/game?token=qwaseqa'+this.token+'&t='+(new Date()).getTime()"><div class="mask-btn">saya tahu</div></router-link>
         </div>
     </div>
@@ -130,6 +127,7 @@ import md5 from 'js-md5'
                 errMsg: '',
                 answer: false,
                 timestamp: 0,
+                successMsg: '',
             }
         },
         methods: {
@@ -227,6 +225,7 @@ import md5 from 'js-md5'
                 }).then((res) => {
                     if (res.data.status.code == 200) {
                        this.successShow = true
+                       this.successMsg = res.data.data.popInfo
                 }else  {
                    this.toastPop(res.data.status.message)
                     }

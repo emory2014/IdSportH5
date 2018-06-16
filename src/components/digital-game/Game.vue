@@ -79,6 +79,14 @@
     <i @click="closeRuleMask()" class="icon-close">×</i>
     </div>
 </div>
+ <div class="rule-mask " :class="[noChangeMaskShow? 'show':'hide']">
+                    <div class="err-mask-cont cont">
+                        <p class="title">Anda Pyakin mau tukarkan 100 koin Emas untuk menjawab peranyaan? </p>
+                        <div class="mask-btn" @click="confirmRechargeCoin()">Oke</div>
+                        <div class="mask-btn" @click="cancelRechargeCoin()">Tidak</div>       
+                        
+                    </div>
+                </div>
 <p class="toast-text" v-bind:class="[toastShow? 'show':'hide']">{{msg}}</p>
 
 </div>
@@ -98,7 +106,8 @@ import BHeader from "../common/BHeader"
                 toastShow: false,
                 msg: '',
                 data: null,
-                token: ''
+                token: '',
+                noChangeMaskShow: false
             }
         },
         methods: {
@@ -122,6 +131,25 @@ import BHeader from "../common/BHeader"
                 }).catch((res) => {
                     console.log('error: ', res);
                 });
+            },
+            confirmRechargeCoin(){
+                    this.$http({
+                    url: 'http://test.jiajiahebao.com/game/buy/chance?token='+this.token+'&gameId=1&t='+(new Date()).getTime(),
+                    method: 'get',
+                }).then((res) => {
+                    if (res.data.status.code == 200) {
+                        this.$router.push("/start?token="+this.token+"&t="+(new Date()).getTime())
+                }else {
+                   this.toastPop(res.data.status.message)
+                    }
+
+                }).catch((res) => {
+                    console.log('error: ', res);
+                });
+            },
+            cancelRechargeCoin(){
+                //this.$router.push("/game?token=ewaeaeu"+this.token+"&t="+(new Date()).getTime())
+                this.noChangeMaskShow = false
             },
              toastPop(text){
                 this.toastShow = true
@@ -157,7 +185,10 @@ import BHeader from "../common/BHeader"
                     if (res.data.status.code == 200) {
                        this.data = res.data.data
                        this.scroll()
-                }else  {
+                }else if(res.data.status.code == 2105){
+                    this.noChangeMaskShow = true
+                }
+                else {
                    this.toastPop(res.data.status.message)
                     }
 
