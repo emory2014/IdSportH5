@@ -122,9 +122,12 @@ import BHeader from "../common/BHeader"
                         url: 'http://test.jiajiahebao.com/game/check?token='+this.token+'&gameId=1&t='+(new Date()).getTime(),
                         method: 'get',
                 }).then((res) => {
-                    if (res.data.status.code == 200) {
+                if (res.data.status.code == 200) {
                        this.$router.push("/start?token="+this.token+"&t="+(new Date()).getTime())
-                }else {
+                }else if(res.data.status.code == 2105){
+                        this.noChangeMaskShow = true
+                }
+                else{
                    this.toastPop(res.data.status.message)
                     }
 
@@ -185,8 +188,6 @@ import BHeader from "../common/BHeader"
                     if (res.data.status.code == 200) {
                        this.data = res.data.data
                        this.scroll()
-                }else if(res.data.status.code == 2105){
-                    this.noChangeMaskShow = true
                 }
                 else {
                    this.toastPop(res.data.status.message)
@@ -200,7 +201,7 @@ import BHeader from "../common/BHeader"
         mounted(){
             let token = this.getQueryString("token")
             this.token = token ? token.substring(7) : "";
-            console.log(token)
+            window.AndroidWebView.showContent(123)
             // alert(123)
             // this.token = window.AndroidWebview.getAppToken()
             //  alert('aa:'+this.token)
