@@ -242,7 +242,6 @@ import md5 from 'js-md5'
                     this.timestamp = (new Date()).getTime()
                 if(parseInt(this.is_right) == item){
                     if(this.questionNum <= this.questions.length - 1){
-                        console.log(546)
                         this.questionNum++
                         this.setData()
                         this.proccessActive(this.time)
