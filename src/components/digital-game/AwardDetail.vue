@@ -1,13 +1,13 @@
 <template> 
 <div>
 <div class="rank-container">
-
+<BHeader title="Riwayat Menang" v-if="isTitle > -1" />
 <div class="default-sec hide">
     <img src="../../assets/images/award-detail-bg.png">
     <p>Sementara limit kosong</p>
 </div>
 
-<div class="rank-box">
+<div class="rank-box" :class="[!defaultShow? 'show':'hide']">
  <div class="rank-panel detail">
         
         <p class="rank-data-title">
@@ -24,6 +24,10 @@
     </div>
 </div>
 
+
+<div class="award-detail-box" :class="[defaultShow? 'show':'hide']">
+    <img src="../../assets/images/award-detail-bg.png" />
+</div>
 
 </div>
 </div>
@@ -44,7 +48,9 @@ import BHeader from "../common/BHeader"
                 currentPage: 1,
                 flag: true,
                 page: 1,
-                token: ''
+                token: '',
+                isTitle: window.location.search.indexOf("title"),
+                defaultShow: true
             }
         },
         methods: {
@@ -61,6 +67,11 @@ import BHeader from "../common/BHeader"
                 }).then((res) => {
                     this.flag = true;  
                     if (res.data.status.code == 200) {
+                        if(res.data.data.result.length){
+                            this.defaultShow = false
+                        }else{
+                            this.defaultShow = true
+                        }
                         res.data.data.result.map((item) => {
                                 this.data.push(item)
                         })

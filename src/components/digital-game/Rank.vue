@@ -1,7 +1,7 @@
 <template> 
 <div>
 <div class="rank-container">
-
+<BHeader title="peringkat" v-if="isTitle > -1" />
     <div class="rank-panel">
         <img class="rank-title" src="../../assets/images/rank-title.png">
         <p class="rank-data-title">
@@ -41,7 +41,8 @@ import BHeader from "../common/BHeader"
                 ruleMask: false,
                 data: null,
                 myData: null,
-                token: ''
+                token: '',
+                isTitle: window.location.search.indexOf("title")
             }
         },
         methods: {

@@ -1,6 +1,7 @@
 <template> 
 <div>
-<div class="record-container">
+<BHeader title="Riwayat Menang" v-if="isTitle > -1" />
+<div class="record-container" :class="[ isTitle > -1 ?'top-50':'']">
 
 <div class="data-panel" v-if="data">
     <div class="award-avator-box">
@@ -13,7 +14,7 @@
             <p class="text">Limit periode ini</p>
             <p class="num">Rp.{{data.leastPrize}}</p>
         </div>
-        <router-link :to="'/rank?token='+this.token+'&t='+(new Date()).getTime()">
+        <router-link :to="'/rank?token='+this.token+'&t='+(new Date()).getTime()+''+(isTitle > -1 ? '&title=1':'')">
         <div class="item">
             <i class="icon-chapion"></i>
             <p class="text">Peringkat</p>
@@ -23,7 +24,7 @@
     </div>
 </div>
 <div class="user-panel">
-<router-link :to="'/detail?token='+this.token+'&t='+(new Date()).getTime()">
+<router-link :to="'/detail?token='+this.token+'&t='+(new Date()).getTime()+''+(isTitle > -1 ? '&title=1':'')">
     <p class="text">jumlah saldo</p>
     <p class="num" v-if="data">Rp.{{data.totalWin}}</p>  
     <p class="text-go">lihat lebih banyak<i class="icon-go"></i></p>  
@@ -46,7 +47,8 @@ import BHeader from "../common/BHeader"
             return {
                 ruleMask: false,
                 data: null,
-                token: ''
+                token: '',
+                isTitle: window.location.search.indexOf("title")
             }
         },
         methods: {

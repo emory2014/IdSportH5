@@ -1,6 +1,8 @@
 <template> 
 <div>
-<div class="game-container">
+<BHeader v-if=" isTitle > -1" title="Mari kita sambut Ramadhan yang mendekat,
+jawab pertanyaan menangkan Bonus" />
+<div class="game-container" :class="[isTitle > -1?'top-50':'']">
 <div class="scroll-box">
 <i class="icon-tip"></i>
 <ul class="scroll-ul" id="scroll">
@@ -11,7 +13,8 @@
 <div class="btn-group">
 <div class="rule-box" @click="showRuleMask()"></div>
     <div @click="startGame()" class="game-btn">Mulai Kuis</div>
-    <router-link :to="'/award-record?token='+this.token+'&t='+(new Date()).getTime()"><div class="game-btn">Riwayat Pemenang</div></router-link>
+    <router-link :to="'/award-record?token='+token+'&t='+(new Date()).getTime()+''+(isTitle > -1 ? '&title=1':'')">
+    <div class="game-btn">Riwayat Pemenang</div></router-link>
 </div>
 </div>
 
@@ -107,7 +110,8 @@ import BHeader from "../common/BHeader"
                 msg: '',
                 data: null,
                 token: '',
-                noChangeMaskShow: false
+                noChangeMaskShow: false,
+                isTitle: window.location.search.indexOf("title")
             }
         },
         methods: {
@@ -123,7 +127,7 @@ import BHeader from "../common/BHeader"
                         method: 'get',
                 }).then((res) => {
                 if (res.data.status.code == 200) {
-                       this.$router.push("/start?token="+this.token+"&t="+(new Date()).getTime())
+                       this.$router.push("/start?token="+this.token+"&t="+(new Date()).getTime()+""+((this.isTitle > -1) ? "&title=1":""))
                 }else if(res.data.status.code == 2105){
                         this.noChangeMaskShow = true
                 }
@@ -141,7 +145,7 @@ import BHeader from "../common/BHeader"
                     method: 'get',
                 }).then((res) => {
                     if (res.data.status.code == 200) {
-                        this.$router.push("/start?token="+this.token+"&t="+(new Date()).getTime())
+                        this.$router.push("/start?token="+this.token+"&t="+(new Date()).getTime()+""+this.isTitle > -1 ? "&title=1":"")
                 }else {
                    this.toastPop(res.data.status.message)
                     }
@@ -201,11 +205,8 @@ import BHeader from "../common/BHeader"
         mounted(){
             let token = this.getQueryString("token")
             this.token = token ? token.substring(7) : "";
-            window.AndroidWebView.showContent(123)
-            // alert(123)
+            // window.AndroidWebView.showContent(123)
             // this.token = window.AndroidWebview.getAppToken()
-            //  alert('aa:'+this.token)
-            // alert('bb'+window.AndroidWebview.getAppToken())
             this.getData()
          
 

@@ -1,6 +1,8 @@
 <template> 
 <div>
+
 <div class="start-container">
+<BHeader title="Jawab pertanyaan" v-if="isTitle > -1" />
     <div class="start-sec">
         <span class="num" ref="num" :class="[ !start ? 'show':'hide']">{{count}}</span>
         <div class="question-sec" :class="[ start ? 'show':'hide']">
@@ -17,7 +19,6 @@
                 <span>=</span>
                 <span>{{result}}</span>
             </div>
-            
         </div>
             
     </div>
@@ -75,7 +76,7 @@
         <img class="icon-award" src="../../assets/images/icon-award.png" />
             <p class="title">Kamu jenius</p>
             <p class="text">{{successMsg}}</p>
-        <router-link :to="'/game?token=qwaseqa'+this.token+'&t='+(new Date()).getTime()"><div class="mask-btn">saya tahu</div></router-link>
+        <router-link :to="'/game?token=qwaseqa'+token+'&t='+(new Date()).getTime()+''+(isTitle > -1 ?'&title=1':'')"><div class="mask-btn">saya tahu</div></router-link>
         </div>
     </div>
 
@@ -128,6 +129,7 @@ import md5 from 'js-md5'
                 answer: false,
                 timestamp: 0,
                 successMsg: '',
+                isTitle: window.location.search.indexOf("title")
             }
         },
         methods: {
@@ -305,7 +307,7 @@ import md5 from 'js-md5'
                 });
             },
             cancelRechargeCoin(){
-                this.$router.push("/game?token=ewaeaeu"+this.token+"&t="+(new Date()).getTime())
+                this.$router.push("/game?token=ewaeaeu"+this.token+"&t="+(new Date()).getTime()+""+(this.isTitle > -1 ? "&title=1":""))
             },
             getData(){
                 this.$http({

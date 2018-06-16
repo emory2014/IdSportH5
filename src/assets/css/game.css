@@ -29,6 +29,14 @@ body{
     background-size: cover;
 }
 
+.header {
+    margin-bottom: 0;
+}
+
+.top-50{
+    top: 50px;
+}
+
 .btn-group {
     position: absolute;
     bottom: 0;
@@ -350,7 +358,7 @@ body{
 
 .err-mask-cont {
     width: 93%;
-    margin: 35% auto;
+    margin: 45% auto;
     background: #fff;
     border-radius: 5px;
     padding-top: 30px;
@@ -533,7 +541,7 @@ body{
 }
 
 .rank-container {
-    min-height: 620px;
+    min-height: 670px;
     background: url(../../assets/images/rank-bg.png) bottom no-repeat,linear-gradient(to top right, #05983a 0%, #39b622 25%, #7dd40b 100%);
     background-size: 100%;
     overflow: hidden;
@@ -549,6 +557,15 @@ body{
     padding: 0 15px;
     color: #00680c;
     /* font-family: SourceHanSansCN-Medium; */
+}
+
+.award-detail-box {
+    text-align: center
+}
+
+.award-detail-box img{
+    margin-top: 23%;
+    width: 50%;
 }
 
 .rank-title {
