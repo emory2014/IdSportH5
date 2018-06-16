@@ -1,7 +1,7 @@
 <template>
 <header class="header">
             　<i class="nc-icon-prev" @click="goBack()"></i>
-              {{title}}
+              <div>{{title}}</div>
         </header>
 </template>
 <script>
@@ -35,8 +35,12 @@
     margin-bottom: 8px;
     font-family: SourceHanSansCN-Medium;
     width: 100%;
-    padding: 0 15%;
-    box-sizing: border-box;
+
+}
+
+.header div{
+    width: 80%;
+    margin: auto;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
