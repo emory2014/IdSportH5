@@ -145,7 +145,7 @@ import BHeader from "../common/BHeader"
                     method: 'get',
                 }).then((res) => {
                     if (res.data.status.code == 200) {
-                        this.$router.push("/start?token="+this.token+"&t="+(new Date()).getTime()+""+this.isTitle > -1 ? "&title=1":"")
+                        this.$router.push("/start?token="+this.token+"&t="+(new Date()).getTime()+""+(this.isTitle > -1 ? "&title=1":""))
                 }else {
                    this.toastPop(res.data.status.message)
                     }
