@@ -83,6 +83,7 @@
     <div class="rule-mask" :class="[ errMsgShow ? 'show': 'hide']">
         <div class="success-mask-cont pt-30">
             {{errMsg}}
+            <router-link  :to="'/game?token=qwaseqa'+token+'&t='+(new Date()).getTime()+''+(isTitle > -1 ?'&title=1':'')"><div class="mask-btn">Oke</div></router-link>
         </div>
     </div>
    
@@ -176,7 +177,6 @@ import md5 from 'js-md5'
                 var timeout2 = setTimeout(() => {
                     let t_str = (new Date).getTime() - this.timestamp
                     if(this.$refs.bar.style.width == "0px" && t_str > time*1000){
-                        console.log(t)
                         this.answerErr()
                     }
                 },t)
