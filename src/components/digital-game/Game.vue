@@ -123,7 +123,7 @@ import BHeader from "../common/BHeader"
                 } ,
             startGame(){
                   this.$http({
-                        url: 'http://test.jiajiahebao.com/game/check?token='+this.token+'&gameId=1&t='+(new Date()).getTime(),
+                        url: 'http://www.kilatfintech.com/game/check?token='+this.token+'&gameId=1&t='+(new Date()).getTime(),
                         method: 'get',
                 }).then((res) => {
                 if (res.data.status.code == 200) {
@@ -141,7 +141,7 @@ import BHeader from "../common/BHeader"
             },
             confirmRechargeCoin(){
                     this.$http({
-                    url: 'http://test.jiajiahebao.com/game/buy/chance?token='+this.token+'&gameId=1&t='+(new Date()).getTime(),
+                    url: 'http://www.kilatfintech.com/game/buy/chance?token='+this.token+'&gameId=1&t='+(new Date()).getTime(),
                     method: 'get',
                 }).then((res) => {
                     if (res.data.status.code == 200) {
@@ -186,7 +186,7 @@ import BHeader from "../common/BHeader"
             },
           getData(){
                      this.$http({
-                        url: 'http://test.jiajiahebao.com/game/home?gameId=1&t='+(new Date()).getTime(),
+                        url: 'http://www.kilatfintech.com/game/home?gameId=1&t='+(new Date()).getTime(),
                         method: 'get',
                 }).then((res) => {
                     if (res.data.status.code == 200) {

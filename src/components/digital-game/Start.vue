@@ -224,7 +224,7 @@ import md5 from 'js-md5'
                 },
             successAjax(){
                  this.$http({
-                url: 'http://test.jiajiahebao.com/game/record/result?token='+this.token+'&gameId=1&period='+this.period+'&ifWin=1&sign='+this.toMD5(1,1,this.period,this.token)+'&t='+(new Date()).getTime(),
+                url: 'http://www.kilatfintech.com/game/record/result?token='+this.token+'&gameId=1&period='+this.period+'&ifWin=1&sign='+this.toMD5(1,1,this.period,this.token)+'&t='+(new Date()).getTime(),
                 method: 'get',
                 }).then((res) => {
                     if (res.data.status.code == 200) {
@@ -268,7 +268,7 @@ import md5 from 'js-md5'
             },
             answerErr(){
                 this.$http({
-                url: 'http://test.jiajiahebao.com/game/record/result?token='+this.token+'&gameId=1&period='+this.period+'&ifWin=0&sign='+this.toMD5(1,0,this.period,this.token)+'&t='+(new Date()).getTime(),
+                url: 'http://www.kilatfintech.com/game/record/result?token='+this.token+'&gameId=1&period='+this.period+'&ifWin=0&sign='+this.toMD5(1,0,this.period,this.token)+'&t='+(new Date()).getTime(),
                 method: 'get',
                 }).then((res) => {
                     if (res.data.status.code == 200) {
@@ -295,7 +295,7 @@ import md5 from 'js-md5'
             },
             confirmRechargeCoin(){
                     this.$http({
-                    url: 'http://test.jiajiahebao.com/game/buy/chance?token='+this.token+'&gameId=1&t='+(new Date()).getTime(),
+                    url: 'http://www.kilatfintech.com/game/buy/chance?token='+this.token+'&gameId=1&t='+(new Date()).getTime(),
                     method: 'get',
                 }).then((res) => {
                     if (res.data.status.code == 200) {
@@ -313,7 +313,7 @@ import md5 from 'js-md5'
             },
             getData(){
                 this.$http({
-                url: 'http://test.jiajiahebao.com/game/get/question?token='+this.token+'&gameId=1&t='+(new Date()).getTime(),
+                url: 'http://www.kilatfintech.com/game/get/question?token='+this.token+'&gameId=1&t='+(new Date()).getTime(),
                 method: 'get',
                 }).then((res) => {
                     let data = res.data.data;
