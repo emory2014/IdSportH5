@@ -34,7 +34,7 @@ body{
 }
 
 .top-50{
-    top: 50px;
+    top: 50px!important;
 }
 
 .btn-group {

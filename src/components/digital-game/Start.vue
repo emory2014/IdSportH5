@@ -172,12 +172,12 @@ import md5 from 'js-md5'
                     document.querySelector(".proccess-ing").style.width = '0'   
                 },500);
                 let t = (time+1)*1000;
-                setTimeout(() => {
-                    let t_str = (new Date).getTime() - this.timestamp
-                    if(this.$refs.bar.style.width == "0px" && t_str > time*1000){
-                        this.answerErr()
-                    }
-                },t)
+                // setTimeout(() => {
+                //     let t_str = (new Date).getTime() - this.timestamp
+                //     if(this.$refs.bar.style.width == "0px" && t_str > time*1000){
+                //         this.answerErr()
+                //     }
+                // },t)
                
             },
             closeErrMask(){
