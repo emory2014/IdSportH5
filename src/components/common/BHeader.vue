@@ -33,7 +33,6 @@
     color: #333333;
     background: #fff;
     margin-bottom: 8px;
-    font-family: SourceHanSansCN-Medium;
     width: 100%;
 
 }
