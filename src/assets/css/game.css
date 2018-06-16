@@ -31,6 +31,7 @@ body{
 
 .header {
     margin-bottom: 0;
+    border-top: 25px solid #fff;
 }
 
 .top-50{
