@@ -2,7 +2,7 @@
 <div>
 
 <div class="start-container">
-<BHeader title="Jawab pertanyaan" v-if="isTitle > -1" />
+
     <div class="start-sec">
         <span class="num" ref="num" :class="[ !start ? 'show':'hide']">{{count}}</span>
         <div class="question-sec" :class="[ start ? 'show':'hide']">
