@@ -164,20 +164,22 @@ import md5 from 'js-md5'
                 },1000)
             },
             proccessActive(time){
-                
+                clearTimeout(timeout1)
+                clearTimeout(timeout2)
                 document.querySelector(".proccess-ing").style.transition = 'none'                
                     document.querySelector(".proccess-ing").style.width = '100%'
-                setTimeout(() => {
+                var timeout1= setTimeout(() => {
                     document.querySelector(".proccess-ing").style.transition = 'width '+time+'s'
                     document.querySelector(".proccess-ing").style.width = '0'   
                 },500);
-                let t = (time+1)*1000;
-                // setTimeout(() => {
-                //     let t_str = (new Date).getTime() - this.timestamp
-                //     if(this.$refs.bar.style.width == "0px" && t_str > time*1000){
-                //         this.answerErr()
-                //     }
-                // },t)
+                let t = (time)*1000;
+                var timeout2 = setTimeout(() => {
+                    let t_str = (new Date).getTime() - this.timestamp
+                    if(this.$refs.bar.style.width == "0px" && t_str > time*1000){
+                        console.log(t)
+                        this.answerErr()
+                    }
+                },t)
                
             },
             closeErrMask(){
@@ -240,6 +242,7 @@ import md5 from 'js-md5'
                     this.timestamp = (new Date()).getTime()
                 if(parseInt(this.is_right) == item){
                     if(this.questionNum <= this.questions.length - 1){
+                        console.log(546)
                         this.questionNum++
                         this.setData()
                         this.proccessActive(this.time)
