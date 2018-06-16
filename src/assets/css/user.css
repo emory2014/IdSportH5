@@ -1,4 +1,4 @@
-@font-face
+/* @font-face
 {
     font-family: SourceHanSansCN-Regular;
     src: url(../assets/font/SourceHanSansCN-Regular.otf);
@@ -8,13 +8,13 @@
 {
     font-family: SourceHanSansCN-Medium;
     src: url(../assets/font/SourceHanSansCN-Medium.otf);
-}
+} */
 
 body{
     padding: 0;
     margin: 0;
     background: #f5f5f5;
-    font-family: SourceHanSansCN-Regular;
+    /* font-family: SourceHanSansCN-Regular; */
 }
 
 .vcontainer {
@@ -39,7 +39,9 @@ body{
     font-size: 16px;
     color: #333333;
     background: #fff;
-    font-family: SourceHanSansCN-Medium;
+    margin-bottom: 8px;
+    /* font-family: SourceHanSansCN-Medium; */
+
 }
 
 .nc-icon-prev{
@@ -79,7 +81,7 @@ body{
     border-bottom: 1px solid #ddd;
     color: #666;
     font-size: 16px;
-    font-family: SourceHanSansCN-Regular;
+    /* font-family: SourceHanSansCN-Regular; */
 }
 .icon-next{
     position: absolute;
@@ -132,7 +134,7 @@ body{
     font-size: 18px;
     box-shadow: 0 5px 6px #f9e3a8;
     margin: 50px auto;
-    font-family: SourceHanSansCN-Regular;
+    /* font-family: SourceHanSansCN-Regular; */
 }
 
 .item-right.default {
@@ -162,7 +164,7 @@ body{
 
 .btn-box {
     font-size: 15px;
-    font-family: SourceHanSansCN-Medium;
+    /* font-family: SourceHanSansCN-Medium; */
     color: #999;
     width: 100%;
     margin: 0;
@@ -220,7 +222,7 @@ body{
     line-height: 50px;
     text-align: center;
     color: #ffc000;
-    font-family: SourceHanSansCN-Regular;
+    /* font-family: SourceHanSansCN-Regular; */
 }
 
 .sex-item:first-child{
@@ -236,7 +238,7 @@ body{
 }
 
 .sex-item:nth-child(3){
-    font-family: SourceHanSansCN-Medium;
+    /* font-family: SourceHanSansCN-Medium; */
 }
 
 .mask-hobby {
