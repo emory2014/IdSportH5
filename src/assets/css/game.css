@@ -567,7 +567,10 @@ body{
     margin-top: 23%;
     width: 50%;
 }
-
+.award-detail-box p {
+    color: #fff;
+    font-size: 16px;
+}
 .rank-title {
     width: 78%;
     margin-top: -40px;

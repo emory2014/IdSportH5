@@ -27,6 +27,7 @@
 
 <div class="award-detail-box" :class="[defaultShow? 'show':'hide']">
     <img src="../../assets/images/award-detail-bg.png" />
+    <p>Sementara limit kosong</p>
 </div>
 
 </div>
