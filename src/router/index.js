@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import User from '@/components/User'
+import Invite from '@/components/Invite'
 import Game from '@/components/digital-game/Game'
 import Start from '@/components/digital-game/Start'
 import AwardRecord from '@/components/digital-game/AwardRecord'
@@ -18,6 +19,11 @@ export default new Router({
       path: '/',
       name: 'User',
       component: User
+    },
+    {
+      path: '/invite',
+      name: 'Invite',
+      component: Invite
     },
     {
       path: '/game',
