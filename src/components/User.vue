@@ -233,6 +233,10 @@ export default {
     takePicture(){
       window.AndroidWebView.doPickPhotoFromGallery();
     },
+    setPhotoData(msg){
+        window.AndroidWebView.showContent("头像Base64数据:"+msg)
+        this.cancelShow()
+    },
     toastPop(text){
       this.toastShow = true
       this.msg = text
