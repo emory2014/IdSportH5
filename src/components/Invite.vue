@@ -84,7 +84,7 @@
     color: #1755b1;
     font-size: 12px;
     padding: 0;
-    margin: 75px auto 0 auto;
+    margin: 72px auto 0 auto;
     width: 85%;
     overflow: auto;
     height: 302px;
@@ -95,8 +95,8 @@
     font-size: 12px;
     display: inline-block;
     text-align: center;
-    height: 25px;
-    line-height:25px;
+    height: 24px;
+    line-height:24px;
 }
 .invite-sec li.title span{
     width: 24%;
