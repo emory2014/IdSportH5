@@ -139,6 +139,10 @@ import IosSelect from 'iosselect'
 import vueCropper from 'vue-cropper'
 import Loading from './Loading'
 
+var curComponent;
+
+
+
 export default {
   name: 'User',
   components: {
@@ -650,7 +654,7 @@ uploadImg (e, num) {
     }).catch((res) => {
         console.log('error: ', res);
     });
-     window['setPhotoData'] = this.setPhotoData(msg)
+     
   },
   created(){
    
@@ -689,7 +693,7 @@ uploadImg (e, num) {
 
 
 }
-
+window['setPhotoData'] = User.setPhotoData(msg)
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
