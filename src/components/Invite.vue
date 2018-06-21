@@ -65,7 +65,7 @@
         position: relative;
         background: url(../assets/images/invite-bg.png) top center no-repeat,#3ea2e5;
         background-size: 100%;
-        min-height: 1880px;
+        min-height: 1800px;
 }
 
 .invite-sec {
@@ -76,7 +76,7 @@
         background: url(../assets/images/invite-sec-bg.png) center no-repeat,#3ea2e5;
         background-size: 100%;
         width: 100%;
-        height: 420px;
+        height: 400px;
 }
 
 .invite-sec ul{
@@ -85,7 +85,7 @@
     font-size: 12px;
     padding: 0;
     margin: 80px auto 0 auto;
-    width: 80%;
+    width: 85%;
     overflow: auto;
     height: 302px;
 }
