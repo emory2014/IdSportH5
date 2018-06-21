@@ -65,7 +65,7 @@
         position: relative;
         background: url(../assets/images/invite-bg.png) top center no-repeat,#3ea2e5;
         background-size: 100%;
-        min-height: 2000px;
+        min-height: 2034px;
 }
 
 .invite-sec {
