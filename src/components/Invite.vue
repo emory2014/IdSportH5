@@ -103,8 +103,8 @@
     color: #1755b1;
     font-size: 12px;
     display: inline-block;
-    height: 50px;
-    line-height: 50px;
+    height: 40px;
+    line-height: 40px;
 }
 
 .invite-sec li:first-child{
