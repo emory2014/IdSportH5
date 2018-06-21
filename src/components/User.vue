@@ -227,6 +227,7 @@ export default {
         this.toastPop("pilih nama")
       }
     },
+   
     takePhoto(){
       window.AndroidWebView.doTakePhoto();
     },
@@ -648,6 +649,7 @@ uploadImg (e, num) {
     }).catch((res) => {
         console.log('error: ', res);
     });
+     window['setPhotoData'] = this.setPhotoData(msg)
   },
   created(){
    
