@@ -24,7 +24,7 @@
         methods: {
          getData(){
                this.$http({
-                    url: 'http://yinni.loanjudul.com/api/inviter/rank',
+                    url: 'http://www.kilatfintech.com/api/inviter/rank',
                     method: 'get',
                 }).then((res) => {
                     if (res.data.status.code == 200) {
