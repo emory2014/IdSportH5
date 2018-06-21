@@ -24,7 +24,7 @@
         methods: {
          getData(){
                this.$http({
-                    url: 'http://www.kilatfintech.com/api/inviter/rank',
+                    url: 'http://yinni.loanjudul.com/api/inviter/rank',
                     method: 'get',
                 }).then((res) => {
                     if (res.data.status.code == 200) {
@@ -65,7 +65,7 @@
         position: relative;
         background: url(../assets/images/invite-bg.png) top center no-repeat,#3ea2e5;
         background-size: 100%;
-        min-height: 1830px;
+        min-height: 2000px;
 }
 
 .invite-sec {
@@ -76,7 +76,7 @@
         background: url(../assets/images/invite-sec-bg.png) center no-repeat,#3ea2e5;
         background-size: 100%;
         width: 100%;
-        height: 400px;
+        height: 420px;
 }
 
 .invite-sec ul{
@@ -86,6 +86,8 @@
     padding: 0;
     margin: 75px auto 0 auto;
     width: 80%;
+    overflow: auto;
+    height: 302px;
 }
 .invite-sec li span{
     width: 24%;
