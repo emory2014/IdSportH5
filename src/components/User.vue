@@ -604,6 +604,7 @@ uploadImg (e, num) {
     }
   },
   mounted(){
+    this.$router.push("/invite")
       this.initFun();
       this.formatEdu();
       this.formatOccupation();

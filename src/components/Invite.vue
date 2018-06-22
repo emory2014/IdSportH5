@@ -1,6 +1,52 @@
 <template>
 <div class="invite-container">
+    <img class="ques1" src="../assets/images/ques1.png">
+
     <div class="invite-sec">
+        <div class="invite-header"> 
+            <i class="icon-que"></i>  
+            Contoh 2
+            <i class="icon-que"></i> 
+            </div>
+        <ul>
+                <li class="rule title">
+                <span >Junlah<br>Undang</span>
+                <span >Bonus <br>Undang</span>
+                <span >Bonus <br>Pencairan Pokok</span></li>
+                <li class="rule"><span>1</span><span>6000</span><span>2000</span></li>
+                <li class="rule"><span>2</span><span>12000</span><span>4000</span></li>
+                <li class="rule"><span>3</span><span>18000</span><span>6000</span></li>
+                <li class="rule"><span>4</span><span>24000</span><span>8000</span></li>
+                <li class="rule"><span>5</span><span>30000</span><span>10000</span></li>
+                <li class="rule"><span>.</span><span>.</span><span>.</span></li>
+                <li class="rule"><span>.</span><span>.</span><span>.</span></li>
+                <li class="rule"><span>.</span><span>.</span><span>.</span></li>
+                <li class="rule"><span>N</span><span>N × 6000</span><span>N × 2000</span></li>
+            </ul>
+    </div>
+
+    <div class="invite-sec">
+        <div class="invite-header"> 
+            <i class="icon-que"></i>  
+            Peraturan Undang Teman
+            <i class="icon-que"></i> 
+            </div>
+        <p class="invite-text">
+1.Setiap Anda Undang Teman dan melakukan Pendaftaran,maka teman anda akan mendapatkan Bonus 
+Sebesar Rp.10.000 dan Anda juga akan dapat Bonus Undang teman sebesar Rp.6000.
+        </p>
+        <p class="invite-text">
+            2.Setiap Anda undang teman saldo pencairan anda otomatis akan dapatkan Rp.2000 (Rp.1000 dari undang teman dan Rp.1000 dari Bonus Koin) Pencairan Dana Anda paling rendah harus mencapai Rp20.000 (untuk mendapatkan pencairan sebesar Rp.20.000 berarti anda harus mengundang 10 teman,
+            dan Anda ingin mencairkan berapa limitnya harus ikutin peraturan yang ada).
+        </p>
+    </div>
+
+    <div class="invite-sec">
+        <div class="invite-header"> 
+            <i class="icon-que"></i>  
+            Peringkat undang teman
+            <i class="icon-que"></i> 
+            </div>
             <ul>
                 <li class="title"><span class="rank">Peringkat</span>
                 <span class="name">Nama</span>
@@ -24,7 +70,7 @@
         methods: {
          getData(){
                this.$http({
-                    url: 'http://www.kilatfintech.com/api/inviter/rank',
+                    url: '/api/inviter/rank',
                     method: 'get',
                 }).then((res) => {
                     if (res.data.status.code == 200) {
@@ -63,20 +109,38 @@
     }
     .invite-container {
         position: relative;
-        background: url(../assets/images/invite-bg.png) top center no-repeat,#3ea2e5;
-        background-size: 100%;
-        min-height: 1788px;
+        background:#3ea2e5;
+        padding: 10px 0;
+        text-align: center;
 }
 
+.ques1 {
+    width: 100%;
+}
+.icon-que {
+    display: inline-block;
+    width: 10px;
+    height: 45px;
+    background: url(../assets/images/sec-bg.png) no-repeat center;
+    background-size: 65%;
+}
+.invite-header {
+    font-size: 16px;
+    color: #4461ff;
+    font-weight: 500;
+    text-align: center;
+    margin-top: -18px;
+}
+
+
 .invite-sec {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: url(../assets/images/invite-sec-bg.png) center no-repeat,#3ea2e5;
-        background-size: 100%;
-        width: 100%;
-        height: 390px;
+        width: 91%;
+        border-radius: 5px;
+        border: 2px solid #ffe157;
+        margin: 10px auto;
+        background: #fff;
+        box-sizing: border-box;
+        margin-bottom: 25px;
 }
 
 .invite-sec ul{
@@ -84,10 +148,10 @@
     color: #1755b1;
     font-size: 12px;
     padding: 0;
-    margin: 72px auto 0 auto;
-    width: 85%;
+    margin: 12px auto 0 auto;
+    width: 90%;
     overflow: auto;
-    height: 302px;
+    padding-bottom: 10px;
 }
 .invite-sec li span{
     width: 24%;
@@ -107,6 +171,14 @@
     line-height: 40px;
 }
 
+.invite-sec li.rule span{
+    width: 32%;
+    text-align: center;
+    line-height: 1.2;
+    position: relative;
+    top: 7px;
+}
+
 .invite-sec li:first-child{
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
@@ -122,5 +194,11 @@
 }
 .invite-sec li:nth-child(2n){
     background: #fff7d5
+}
+
+.invite-text {
+    color: #1755b1;
+    font-size: 14px;
+    margin: 6px 15px;
 }
 </style>
