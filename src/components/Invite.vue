@@ -201,5 +201,6 @@ Sebesar Rp.10.000 dan Anda juga akan dapat Bonus Undang teman sebesar Rp.6000.
     font-size: 14px;
     margin: 6px 15px;
     line-height: 1.5;
+    text-align: left;
 }
 </style>
