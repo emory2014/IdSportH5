@@ -7,6 +7,7 @@ import Start from '@/components/digital-game/Start'
 import AwardRecord from '@/components/digital-game/AwardRecord'
 import Rank from '@/components/digital-game/Rank'
 import AwardDetail from '@/components/digital-game/AwardDetail'
+import NewsDetail from '@/components/news/NewsDetail'
 
 
 Vue.use(Router)
@@ -15,10 +16,15 @@ export default new Router({
   mode: 'history',
   base: '/web/',
   routes: [
+    // {
+    //   path: '/',
+    //   name: 'User',
+    //   component: User
+    // },
     {
       path: '/',
-      name: 'User',
-      component: User
+      name: 'NewsDetail',
+      component: NewsDetail
     },
     {
       path: '/invite',
