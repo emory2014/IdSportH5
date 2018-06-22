@@ -181,6 +181,9 @@ export default {
     }
   },
   methods: {
+    setComponent(component){
+      curComponent = component
+    },
     goBack(){
       window.history.go(-1)
     },
@@ -654,10 +657,11 @@ uploadImg (e, num) {
     }).catch((res) => {
         console.log('error: ', res);
     });
-     window.setPhotoData = this.setPhotoData(msg)
+     //window.setPhotoData = this.setPhotoData(msg)
+     
   },
   created(){
-   
+   curComponent = this.setComponent(this)
  // this.$http({
  //        url: '/api/personal/info',
  //        method: 'get',
@@ -693,7 +697,9 @@ uploadImg (e, num) {
 
 
 }
-
+ window["setPhotoData"] = function (msg) {
+    curComponent.setPhotoData(msg);
+  }  
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
