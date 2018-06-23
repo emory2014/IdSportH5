@@ -1,15 +1,38 @@
 <template>
   <div id="app">
     <!-- <img src="./assets/logo.png"> -->
-    <router-view/>
+    <!-- <router-view/> -->
+    <div @click="doTakePhotoW()">相机测试</div>
+    <div @click="doPickPhotoFromGalleryW()">相册测试</div>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'app'
-}
-</script>
+ <script>
+import Vue from 'vue'
+// export default {
+//   name: 'app'
+// }
+
+
+  var borrowRecord = new Vue({
+     created: function() {
+      window.setPhotoData =this.setPhotoData;
+     },
+     methods:{
+        doTakePhotoW: function() {
+                window.AndroidWebView.doTakePhoto();
+            },
+			 doPickPhotoFromGalleryW: function() {
+                window.AndroidWebView.doPickPhotoFromGallery();
+            },
+      setPhotoData:function(dataStr){
+     window.AndroidWebView.showContent("头像Base64数据:");
+      }
+     }
+   });
+
+
+ </script>
 
 <style>
 /*#app {
