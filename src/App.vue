@@ -16,18 +16,18 @@ import Vue from 'vue'
 
  export default{
    name: 'test',
-     created: function() {
+     created() {
       window.setPhotoData =this.setPhotoData;
      },
      methods:{
-        doTakePhotoW: function() {
+        doTakePhotoW() {
           console.log(1243)
                 window.AndroidWebView.doTakePhoto();
             },
-			 doPickPhotoFromGalleryW: function() {
+			 doPickPhotoFromGalleryW() {
                 window.AndroidWebView.doPickPhotoFromGallery();
             },
-      setPhotoData:function(dataStr){
+      setPhotoData(dataStr){
      window.AndroidWebView.showContent("头像Base64数据:");
       }
      }
