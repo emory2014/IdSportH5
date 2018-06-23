@@ -14,12 +14,14 @@ import Vue from 'vue'
 // }
 
 
-  var borrowRecord = new Vue({
+ export default{
+   name: 'test',
      created: function() {
       window.setPhotoData =this.setPhotoData;
      },
      methods:{
         doTakePhotoW: function() {
+          console.log(1243)
                 window.AndroidWebView.doTakePhoto();
             },
 			 doPickPhotoFromGalleryW: function() {
@@ -29,7 +31,7 @@ import Vue from 'vue'
      window.AndroidWebView.showContent("头像Base64数据:");
       }
      }
-   });
+   };
 
 
  </script>
