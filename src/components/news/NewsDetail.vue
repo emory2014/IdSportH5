@@ -62,6 +62,13 @@ import Loading from '../Loading'
             title: String
         },
         methods: {
+          getparam(name){
+            let reg = new RegExp("(^|\\?|&)" + name + "=([^&]*)(\\s|&|$)","i");
+            if(reg.test(window.location.href)){
+                return unescape(RegExp.$2.replace(/\+/g," "))
+            }
+            return undefined
+            },
           dealWithImg(e){
             let img = e.currentTarget
             let my_retio = 125/95
@@ -77,23 +84,18 @@ import Loading from '../Loading'
                 
         },
         },
-        watch: {
-              
-        },
+      
         mounted(){
             this.$http({
-                url: '/article/detail?aid=6658',
+                url: '/article/detail?aid='+this.getparam("aid"),
                 method: 'get',
             }).then((res) => {
-         
             if (res.data.status.code == 200) {
             this.data = res.data.data
             
-        
-
-            }else if (res.data.status.code == 401) {
+            }else{
                 //this.$router.push({path: '/login'});
-                window.AndroidWebView.loginApp();
+                window.AndroidWebView.showContent(res.data.status.message);
             }
 
             }).catch((res) => {
