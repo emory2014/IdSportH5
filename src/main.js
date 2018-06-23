@@ -10,9 +10,22 @@ Vue.prototype.$http = axios;
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  router,
-  template: '<App />',
-  components: { App }
-})
+// new Vue({
+//   el: '#app',
+//   router,
+//   template: '<App />',
+//   components: { App }
+// })
+
+
+    new Vue({
+     created: function() {
+      window.setPhotoData =this.setPhotoData;
+     },
+     methods:{
+      setPhotoData:function(dataStr){
+     window.AndroidWebView.showContent("头像Base64数据:");
+      }
+     }
+   });
+  
