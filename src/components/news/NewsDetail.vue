@@ -27,7 +27,7 @@
         <ul class="news-items">
             <li class="news-item" v-for="(item,index) of data.recommends" :key="index">
                 <div class="media-left">
-                    <p>
+                    <p @load="dealWithTitle($event)">
                         {{item.title}}
                     </p>
                     <p class="news-item-date"> {{item.author}}</p>
@@ -77,12 +77,12 @@ import Loading from '../Loading'
                 img.style.height = '100%'
             }else{
                 img.style.width = '100%'
-            }
-    
-               
-             
-                
-        },
+            }   
+           },
+          dealWithTitle(e){
+            let text = e.currentTarget.innerHTML
+            console.log(125)
+         }
         },
       
         mounted(){
