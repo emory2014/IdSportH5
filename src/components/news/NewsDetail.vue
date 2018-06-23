@@ -1,61 +1,104 @@
 <template>
 <div class="news-detail-container">
-    <div class="news-cont">
+    <Loading v-if="!data" />
+    <div class="news-cont" v-if="data">
         <p class="news-title">
-            Ekonom Sesalkan Pandangan JK Soal  Rupiah Loyo Dorong Ekspor
+            {{data.article.title}}
         </p>
         <p class="date-sec">
-            <span >2018-05-09 19:08</span>
-            <span class="text-right">Sumber: Viva</span>
+            <span >{{data.article.create_time}}</span>
+            <span class="text-right">Sumber: {{data.article.source}}</span>
         </p>
-        <div class="text-sec">
-            <img src="../../assets/images/news.jpg" />
-            <p>
-                VIVA – Kepala Pusat Studi Ekonomi dan Kebijakan Publik Universitas Gajah Mada, 
-                Tony Prastiantono, menepis pandangan Wakil Presiden Jusuf Kalla yang mengatakan pelemahan 
-                nilai tukar rupiah terhadap dolar AS bisa menggenjot ekspor maupun meningkatkan keuntungan 
-                para eksportir.
-            </p>
-            <p>
-                Dia mengutarakan, jika dirujuk pada tren pelemahan rupiah yang terjadi pada masa kini, 
-                di mana hanya melemah dari kisaran Rp13 ribu menuju Rp14 ribu tidaklah bisa dikatakan 
-                mampu mendorong ekspor secara signifikan, sebab rentang pelemahan tersebut menurutnya 
-                tidak elastisitas sebagaimana yang terjadi ketika tahun 1998, yang melemah dari Rp2.300
-                 ke Rp17 ribu.
-            </p>
-            <p>
-                "Waktu itu memang dengan lemahnya rupiah sooner or later Indonesia mendapatkan manfaat, 
-                yaitu ekspor kita naik. Bahkan mabel di Jogja waktu itu orang bongkar rumah dijual ke luar negeri saking murahnya. 
-                Jadi memang waktu itu harus diakui pelemahan rupiah jadi faktor pelan pelan Indonesia recover. 
-                Tapi sekarang situasinya beda," ujarnya di Jakarta, Rabu 9 Mei 2018.
-            </p>
+        <div class="text-sec" v-html="data.article.body">
         </div>
-        <div class="like-sec">
+        <!-- <div class="like-sec">
             <i class="icon-zan"></i>
             <i class="icon-cai"></i>
             <p class="like-num-sec">
                 <span>8</span>
                 <span>0</span>
             </p>
-        </div>
+        </div> -->
+    </div>
+
+
+    <div class="news-cont no-border" v-if="data">
+        <p class="recommend-tilte">Terkait Rekomendasi</p>
+        <ul class="news-items">
+            <li class="news-item" v-for="(item,index) of data.recommends" :key="index">
+                <div class="media-left">
+                    <p>
+                        {{item.title}}
+                    </p>
+                    <p class="news-item-date"> {{item.author}}</p>
+                </div>
+                <div class="media-right">
+                    <img class="img" @load="dealWithImg($event)"  :src="item.images[0]" />
+                </div>
+            </li>
+           
+        </ul>
+    </div>
+
+    <div>
+
     </div>
 </div>
 </template>
 <script>
+import Loading from '../Loading'
+
     export default {
         name: 'NewsDetail',
         data(){
             return {
-
+                data: null
             }
+        },
+        components: {
+           Loading
         },
         props: {
             title: String
         },
         methods: {
-            goBack(){
-                window.history.go(-1)
+          dealWithImg(e){
+            let img = e.currentTarget
+            let my_retio = 125/95
+            let retio = img.width/img.height
+            if(retio > my_retio) {
+                img.style.height = '100%'
+            }else{
+                img.style.width = '100%'
+            }
+    
+               
+             
+                
         },
+        },
+        watch: {
+              
+        },
+        mounted(){
+            this.$http({
+                url: '/article/detail?aid=6658',
+                method: 'get',
+            }).then((res) => {
+         
+            if (res.data.status.code == 200) {
+            this.data = res.data.data
+            
+        
+
+            }else if (res.data.status.code == 401) {
+                //this.$router.push({path: '/login'});
+                window.AndroidWebView.loginApp();
+            }
+
+            }).catch((res) => {
+                console.log('error: ', res);
+            });
         }
     }
 </script>
@@ -88,12 +131,16 @@ body{
     border-bottom: 10px solid #f5f5f5;
 }
 
+.no-border {
+    border-bottom: none;
+}
+
 .text-sec {
     text-align: center
 }
 
 .text-sec img {
-    width: 92%;
+    width: 100%;
 }
 
 .text-sec p {
@@ -139,5 +186,56 @@ body{
     display: inline-block;
     margin: 0 35px;
     width: 50px;
+}
+.recommend-tilte {
+    font-size: 17px;
+    color: #333333;
+    font-family: bold;
+    width: 92%;
+    margin: 12px auto 0 auto;
+    font-weight: bold;
+}
+
+.news-items {
+    list-style: none;
+    padding: 0;
+    width: 92%;
+    margin: 0 auto 12px auto;
+}
+
+.news-items li {
+    overflow: hidden;
+    border-bottom: 1px solid #dddddd;
+    padding: 10px 0;
+}
+
+.media-left {
+    width: 60%;
+    float: left;
+    color: #333333;
+    font-size: 16px;
+}
+
+.media-left p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+.media-right {
+    width: 125px;
+    height: 95px;
+    float: right;
+    overflow: hidden;
+    margin-top: 5px;
+}
+
+.media-right img {
+    /* width: 100%; */
+}
+
+.news-item-date {
+    color: #999999;
+    font-size: 14px;
+    margin: 8px 0!important;
 }
 </style>
