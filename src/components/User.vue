@@ -241,7 +241,7 @@ export default {
     takePicture(){
       window.AndroidWebView.doPickPhotoFromGallery();
     },
-    setPhotoData(msg){
+    setPhotoData:function(msg){
      // this.cancelShow()
         window.AndroidWebView.showContent("头像Base64数据:")
         
@@ -660,8 +660,8 @@ uploadImg (e, num) {
      //window.setPhotoData = this.setPhotoData(msg)
      
   },
-  created(){
-   curComponent = this.setComponent(this)
+  created:function(){
+   window.setPhotoData  = this.setPhotoData()
  // this.$http({
  //        url: '/api/personal/info',
  //        method: 'get',
@@ -697,9 +697,7 @@ uploadImg (e, num) {
 
 
 }
- window["setPhotoData"] = function (msg) {
-    curComponent.setPhotoData(msg);
-  }  
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
