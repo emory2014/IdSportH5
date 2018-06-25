@@ -243,8 +243,8 @@ export default {
       window.AndroidWebView.doPickPhotoFromGallery();
     },
     setPhotoData(msg){
-      this.cancelShow()
-        window.AndroidWebView.showContent("头像Base64数据:"+msg)
+        this.cancelShow()
+        //window.AndroidWebView.showContent("头像Base64数据:"+msg)
         document.getElementById("avatar").setAttribute("src",'data:image/png;base64,'+msg)
         
     },
@@ -663,7 +663,7 @@ uploadImg (e, num) {
      
   },
   created(){
-   window.setPhotoData  = this.setPhotoData
+   window.setPhotoData  = this.setPhotoData()
  // this.$http({
  //        url: '/api/personal/info',
  //        method: 'get',
