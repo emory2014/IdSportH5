@@ -194,13 +194,13 @@ body{
     line-height: 1;
 }
 
-.icon-tips {
+.icon-tip {
     display: inline-block;
     width: 15px;
     height: 15px;
     background: url(../assets/images/tip.png) center;
     background-size: 15px 15px;
-    vertical-align: middle;
+    /* vertical-align: middle; */
     margin-right: 10px;
 }
 
