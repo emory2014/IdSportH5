@@ -243,7 +243,8 @@ export default {
     },
     setPhotoData(msg){
       this.cancelShow()
-        window.AndroidWebView.showContent("头像Base64数据:"+msg)
+        //window.AndroidWebView.showContent("头像Base64数据:"+msg)
+        document.getElementById("avatar").setAttribute("src",img)
         
     },
     toastPop(text){
