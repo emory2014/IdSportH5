@@ -237,13 +237,14 @@ export default {
    
     takePhoto(){
       window.AndroidWebView.doTakePhoto();
+  //document.getElementById("avatar").setAttribute("src",'data:image/png;base64,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')
     },
     takePicture(){
       window.AndroidWebView.doPickPhotoFromGallery();
     },
     setPhotoData(msg){
       this.cancelShow()
-        //window.AndroidWebView.showContent("头像Base64数据:"+msg)
+        window.AndroidWebView.showContent("头像Base64数据:"+msg)
         document.getElementById("avatar").setAttribute("src",msg)
         
     },
