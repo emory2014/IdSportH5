@@ -312,6 +312,10 @@ formatEdu(){
   var showDom = document.querySelector('#showEdu');// 绑定一个触发元素
   var valDom = document.querySelector('#EduId');  // 绑定一个存储结果的元素
    showDom.addEventListener('click', function () {  // 添加监听事件
+    setTimeout(() => {
+            document.querySelector('.iosselect-header .close').innerHTML = 'Bata'
+            document.querySelector('.iosselect-header .sure').innerHTML = 'Oke'
+      })
       var val = showDom.dataset['id'];             // 获取元素的data-id属性值
       var title = showDom.dataset['value'];        // 获取元素的data-value属性值
   	// 实例化组件
@@ -381,6 +385,10 @@ formatOccupation(){
   showDom.addEventListener('click', function () {  // 添加监听事件
       var val = showDom.dataset['id'];             // 获取元素的data-id属性值
       var title = showDom.dataset['value'];        // 获取元素的data-value属性值
+       setTimeout(() => {
+            document.querySelector('.iosselect-header .close').innerHTML = 'Bata'
+            document.querySelector('.iosselect-header .sure').innerHTML = 'Oke'
+      })
   	// 实例化组件
       var example = new IosSelect(1,               // 第一个参数为级联层级，演示为1
           [data],                             // 演示数据
@@ -403,6 +411,7 @@ formatOccupation(){
 formatDate(){
   var selectDateDom = document.querySelector('#selectDate');
    var showDateDom = document.querySelector('#showDate');
+ 
    // 初始化时间
    var now = new Date();
    var nowYear = now.getFullYear();
@@ -487,6 +496,11 @@ formatDate(){
        */
    };
    selectDateDom.addEventListener('click', function () {
+     
+      setTimeout(() => {
+            document.querySelector('.iosselect-header .close').innerHTML = 'Bata'
+            document.querySelector('.iosselect-header .sure').innerHTML = 'Oke'
+      })
        var oneLevelId = showDateDom.getAttribute('data-year');
        var twoLevelId = showDateDom.getAttribute('data-month');
        var threeLevelId = showDateDom.getAttribute('data-date');
@@ -663,7 +677,7 @@ uploadImg (e, num) {
      
   },
   created(){
-   window.setPhotoData  = this.setPhotoData()
+   window.setPhotoData  = this.setPhotoData
  // this.$http({
  //        url: '/api/personal/info',
  //        method: 'get',
