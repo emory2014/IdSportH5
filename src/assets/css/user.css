@@ -191,6 +191,7 @@ body{
     font-size: 14px;
     color: #ddd;
     margin: 0;
+    line-height: 1;
 }
 
 .icon-tip {
