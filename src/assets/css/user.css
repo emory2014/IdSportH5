@@ -199,7 +199,7 @@ body{
     height: 15px;
     background: url(../assets/images/tip.png) center;
     background-size: 15px 15px;
-    vertical-align: baseline;
+    vertical-align: middle;
     margin-right: 10px;
 }
 

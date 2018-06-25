@@ -678,37 +678,6 @@ uploadImg (e, num) {
   },
   created(){
    window.setPhotoData  = this.setPhotoData
- // this.$http({
- //        url: '/api/personal/info',
- //        method: 'get',
- //    }).then((res) => {
- //      this.load = false;
-
- //      if (res.data.status.code == 200) {
- //        if(res.data.data.nickname) {
- //          this.name = res.data.data.nickname
- //          this.sexVal = res.data.data.gender
- //          this.seletedHobbyArr = res.data.data.interest
- //          document.getElementById("avatar").src = res.data.data.avatar
- //          document.getElementById("showDate").innerHTML = this.parseDate(res.data.data.birthdate)
- //          document.getElementById("showDate").classList = "item-right"
- //          document.getElementById("showEdu").innerHTML = res.data.data.education
- //          document.getElementById("showEdu").classList = "item-right"
- //          document.getElementById("showOccupation").innerHTML = res.data.data.profession
- //          document.getElementById("showOccupation").classList = "item-right"
- //          //已选兴趣标签
- //          this.hobbyTag();
- //        }
-
- //      }else if (res.data.status.code == 401) {
- //        //this.$router.push({path: '/login'});
- //        window.AndroidWebView.loginApp();
- //      }
-
- //    }).catch((res) => {
- //        console.log('error: ', res);
- //    });
- //    
   }
 
 
