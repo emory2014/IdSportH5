@@ -108,7 +108,7 @@
                   <span class="btn-ok name-ok" @click="nameComplete()">Oke</span></p>
               <input minlength="8" maxlength="50" placeholder="Masukan Pilihan"
               v-on:input="nameInput()" v-model="name" class="nic-name-input" type="text" />
-              <p class="tips"><i class="icon-tips"></i>8-50 kata,harus ada huruf dan angka</p>
+              <p class="tips"><i class="icon-tipss"></i>8-50 kata,harus ada huruf dan angka</p>
             </div>
         </div>
 
