@@ -608,7 +608,7 @@ uploadImg (e, num) {
       this.formatEdu();
       this.formatOccupation();
       this.formatDate();
-      
+     
       this.$http({
         url: '/api/personal/info?'+new Date().getTime(),
         method: 'get',
