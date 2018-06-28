@@ -2,7 +2,7 @@
 <div class="news-detail-container">
     <Loading v-if="!data" />
     <div class="news-cont" v-if="data">
-        <p class="news-title">
+        <p id="title" class="news-title">
             {{data.article.title}}
         </p>
         <p class="date-sec">
@@ -11,24 +11,24 @@
         </p>
         <div class="text-sec" v-html="data.article.body">
         </div>
-        <!-- <div class="like-sec">
+        <div class="like-sec">
             <i class="icon-zan"></i>
             <i class="icon-cai"></i>
             <p class="like-num-sec">
                 <span>8</span>
                 <span>0</span>
             </p>
-        </div> -->
+        </div>
     </div>
 
 
-    <div class="news-cont no-border" v-if="data">
+    <div class="news-cont " v-if="data">
         <p class="recommend-tilte">Terkait Rekomendasi</p>
         <ul class="news-items">
             <li class="news-item" v-for="(item,index) of data.recommends" :key="index">
                 <div class="media-left">
-                    <p @load="dealWithTitle($event)">
-                        {{item.title}}
+                    <p class="title">
+                        {{dealWithTitle(item.title)}}
                     </p>
                     <p class="news-item-date"> {{item.author}}</p>
                 </div>
@@ -40,6 +40,41 @@
         </ul>
     </div>
 
+    <div class="news-cont last-child" v-if="data">
+        <p class="recommend-tilte">Latest Comments</p>
+        <div class="comment-user-sec">
+            <div class="comment-pic-box">
+                <img class="" src="../../assets/images/header.png" />
+            </div>
+            <div class="comment-user-name">
+                <p class="name">Wintersweet</p>
+                <p class="date">05-30 16:00</p>
+            </div>
+            <div class="zan-right" :class="[isLike?'active':'']" @click="toLike()">
+                <i class="icon-comment-zan"></i>
+                <span>8</span>
+            </div>
+        </div>
+        <div class="comment-text">
+            Yang mengalami depresiasi itu tidak hanya rupiah, jadi semua negara berpikir yang sama saat ini. Jadi kalau kita berfikir wah rupiah murah, 
+            itu ya orang Thailand juga berpikir bath juga murah," jelasnya.
+        </div>
+        <div class="comment-sec">
+            <p><span>sss&ee</span>: wwewe wewe wewe we we we wewewewewewewewe</p>
+             <p><span>sss&ee</span><span class="reply">Balas</span><span>Rika</span>: wwewe wewe wewe we wewewewewewewewe</p>
+             <p class="comment-more">Lihat semua 10 ulasan <i class="icon-comment-more"></i></p>
+        </div>
+    </div>
+
+    <div class="fixed-comment" v-if="data">
+        <input class="comment-input" placeholder="Komentar…" /> 
+        <a href="#title"><span class="comment-msg">
+            <i class="icon-msg"></i>
+            <span class="num">68</span>
+        </span>
+        </a>
+        <i class="icon-export"></i>
+    </div>
     <div>
 
     </div>
@@ -52,7 +87,8 @@ import Loading from '../Loading'
         name: 'NewsDetail',
         data(){
             return {
-                data: null
+                data: null,
+                isLike: false
             }
         },
         components: {
@@ -62,6 +98,9 @@ import Loading from '../Loading'
             title: String
         },
         methods: {
+            toLike(){
+                this.isLike = true
+            },
           getparam(name){
             let reg = new RegExp("(^|\\?|&)" + name + "=([^&]*)(\\s|&|$)","i");
             if(reg.test(window.location.href)){
@@ -79,9 +118,14 @@ import Loading from '../Loading'
                 img.style.width = '100%'
             }   
            },
-          dealWithTitle(e){
-            let text = e.currentTarget.innerHTML
-            console.log(125)
+          dealWithTitle(text){
+              let str = ''
+              if(text.length > 80) {
+                 str = text.substring(0,80)+"..."
+              }else {
+                  str = text
+              }
+            return str
          }
         },
       
@@ -105,6 +149,9 @@ import Loading from '../Loading'
     }
 </script>
 <style>
+a {
+    text-decoration: none;
+}
 body{
     margin: 0;
 }
@@ -132,6 +179,12 @@ body{
 .news-cont {
     border-bottom: 10px solid #f5f5f5;
 }
+
+.news-cont.last-child {
+    border-bottom: none;
+    margin-bottom: 70px!important;
+}
+
 
 .no-border {
     border-bottom: none;
@@ -211,6 +264,11 @@ body{
     padding: 10px 0;
 }
 
+.news-items li:last-child{
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
 .media-left {
     width: 60%;
     float: left;
@@ -218,9 +276,18 @@ body{
     font-size: 16px;
 }
 
+.media-left.full {
+    width: 100%;
+}
+
 .media-left p {
     margin: 0;
     line-height: 1.5;
+}
+
+.media-left .title {
+    height: 70px;
+    overflow: hidden;
 }
 
 .media-right {
@@ -239,5 +306,183 @@ body{
     color: #999999;
     font-size: 14px;
     margin: 8px 0!important;
+}
+
+.comment-pic-box {
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    border-radius: 100%;
+    float: left;
+}
+
+.comment-pic-box img {
+    width: 100%;
+}
+
+.comment-user-sec {
+    width: 92%;
+    margin: 10px auto;
+    overflow: hidden;
+}
+
+.comment-user-name {
+    width: 50%;
+    float: left;
+}
+
+.comment-user-name .name {
+    margin: 0 10px 0 10px;
+    color: #333333;
+    font-size: 16px;
+}
+
+.comment-user-name .date {
+    margin: 5px 10px 0 10px;
+    color: #999;
+    font-size: 14px;
+}
+
+.zan-right {
+    float: right;
+    margin-top: 15px;
+}
+
+.zan-right.active .icon-comment-zan{
+    display: inline-block;
+    width: 17px;
+    height: 16px;
+    background: url(../../assets/images/icon-comment-active-zan.png) no-repeat center;
+    background-size: 17px 16px;
+    animation: move 0.2s ease-in-out;
+}
+
+@keyframes move {
+    from {
+            transform: scale(1);
+            transform: rotate(-30deg)
+        }
+    to {
+            transform: scale(1.1);
+            transform: rotate(0)
+        }
+}
+
+.zan-right.active span {
+    color: #ffc000;
+}
+
+.icon-comment-zan {
+    display: inline-block;
+    width: 17px;
+    height: 16px;
+    background: url(../../assets/images/icon-comment-zan.png) no-repeat center;
+    background-size: 17px 16px;
+}
+
+.comment-text {
+    font-size: 16px;
+    color: #333333;
+    margin-left: 60px;
+    margin-right: 20px;
+    line-height: 1.5;
+}
+
+.comment-sec {
+    background: #f5f5f5;
+    border-radius: 5px;
+    margin-left: 60px;
+    margin-right: 20px;
+    padding: 10px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.comment-sec p {
+    margin: 0 5px;
+    line-height: 1.5;
+    color: #666;
+    font-size: 14px;
+}
+
+.comment-sec span {
+    color: #619cff;
+}
+
+.comment-sec .reply {
+    color: #333333;
+    margin: 0 5px;
+}
+.comment-more {
+    color: #999999!important;
+    border-top: 1px solid #dddddd;
+    margin: 10px 0 5px 0!important;
+    padding-top: 8px;
+    font-size: 14px;
+}
+
+.icon-comment-more {
+    display: inline-block;
+    height: 12px;
+    width: 8px;
+    background: url(../../assets/images/icon-comment-more.png) no-repeat center;
+    background-size: 8px 12px;
+    vertical-align: middle;
+}
+
+.fixed-comment {
+    position: fixed;
+    left: 0;
+    right: 0;
+    height: 50px;
+    bottom: 0;
+    background: #fff;
+    border-top: 1px solid #eeeeee;
+}
+
+.icon-msg {
+    display: inline-block;
+    height: 20px;
+    width: 22px;
+    background: url(../../assets/images/icon-msg.png) no-repeat center;
+    background-size: 20px 20px;
+    vertical-align: middle;
+    
+}
+
+.icon-export {
+    display: inline-block;
+    height: 20px;
+    width: 22px;
+    background: url(../../assets/images/icon-export.png) no-repeat center;
+    background-size: 22px 18px;
+    vertical-align: middle;
+}
+.comment-input {
+    height: 30px;
+    background: #f5f5f5;
+    border-radius: 25px;
+    border: none;
+    margin: 10px 15px;
+    padding: 0 15px;
+    width: 50%;
+}
+
+::-webkit-input-placeholder {
+    color: #999;
+    font-size: 14px;
+}
+
+.comment-msg {
+    position: relative;
+    margin: 0 25px 0 20px
+}
+
+.comment-msg .num {
+    color: #619cff;
+    font-size: 14px;
+    position: absolute;
+    right: 0;
+    top: -5px;
 }
 </style>
