@@ -178,6 +178,7 @@ export default {
       arr:[],
       seletedHobbyArr:[],
       ajaxFlag: true,
+      src: ''
     }
   },
   methods: {
@@ -244,6 +245,7 @@ export default {
     },
     setPhotoData(msg){
         this.cancelShow()
+        this.src = msg
         //window.AndroidWebView.showContent("头像Base64数据:"+msg)
         document.getElementById("avatar").setAttribute("src",'data:image/png;base64,'+msg)
         
@@ -582,7 +584,7 @@ uploadImg (e, num) {
     let profession = document.querySelector('#showOccupation').innerHTML;
     let gender = this.sexVal;
 
-    if (this.name && birthdate && education && profession && gender && this.seletedHobbyArr.length) {
+    if (this.src && this.name && birthdate && education && profession && gender && this.seletedHobbyArr.length) {
       //防止重复发送请求
         if (!this.ajaxFlag) {
           return false;
@@ -595,7 +597,7 @@ uploadImg (e, num) {
           method: 'post',
           data: {
             nickname: this.name,
-            // avatar: this.src,
+            avatar: this.src,
             gender: gender,
             birthdate: birthdate,
             education: education,
