@@ -8,6 +8,7 @@ import AwardRecord from '@/components/digital-game/AwardRecord'
 import Rank from '@/components/digital-game/Rank'
 import AwardDetail from '@/components/digital-game/AwardDetail'
 import NewsDetail from '@/components/news/NewsDetail'
+import News from '@/components/news/News'
 
 
 Vue.use(Router)
@@ -23,6 +24,11 @@ export default new Router({
     // },
     {
       path: '/',
+      name: 'News',
+      component: News
+    },
+    {
+      path: '/news-detail',
       name: 'NewsDetail',
       component: NewsDetail
     },

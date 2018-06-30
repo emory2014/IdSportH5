@@ -1,47 +1,9 @@
 <template>
 <div class="news-detail-container">
+    <BHeader title="" />
     <Loading v-if="!data" />
-    <div class="news-cont" v-if="data">
-        <p id="title" class="news-title">
-            {{data.article.title}}
-        </p>
-        <p class="date-sec">
-            <span >{{data.article.create_time}}</span>
-            <span class="text-right">Sumber: {{data.article.source}}</span>
-        </p>
-        <div class="text-sec" v-html="data.article.body">
-        </div>
-        <div class="like-sec">
-            <i class="icon-zan"></i>
-            <i class="icon-cai"></i>
-            <p class="like-num-sec">
-                <span>8</span>
-                <span>0</span>
-            </p>
-        </div>
-    </div>
-
-
-    <div class="news-cont " v-if="data">
-        <p class="recommend-tilte">Terkait Rekomendasi</p>
-        <ul class="news-items">
-            <li class="news-item" v-for="(item,index) of data.recommends" :key="index">
-                <div class="media-left">
-                    <p class="title">
-                        {{dealWithTitle(item.title)}}
-                    </p>
-                    <p class="news-item-date"> {{item.author}}</p>
-                </div>
-                <div class="media-right">
-                    <img class="img" @load="dealWithImg($event)"  :src="item.images[0]" />
-                </div>
-            </li>
-           
-        </ul>
-    </div>
-
     <div class="news-cont last-child" v-if="data">
-        <p class="recommend-tilte">Latest Comments</p>
+       
         <div class="comment-user-sec">
             <div class="comment-pic-box">
                 <img class="" src="../../assets/images/header.png" />
@@ -62,18 +24,12 @@
         <div class="comment-sec">
             <p><span>sss&ee</span>: wwewe wewe wewe we we we wewewewewewewewe</p>
              <p><span>sss&ee</span><span class="reply">Balas</span><span>Rika</span>: wwewe wewe wewe we wewewewewewewewe</p>
-             <p class="comment-more">Lihat semua 10 ulasan <i class="icon-comment-more"></i></p>
+            <p class="comment-more">Lihat semua 10 ulasan <i class="icon-comment-more"></i></p>
         </div>
     </div>
 
     <div class="fixed-comment" v-if="data">
         <input class="comment-input" placeholder="Komentar…" /> 
-        <a href="#title"><span class="comment-msg">
-            <i class="icon-msg"></i>
-            <span class="num">68</span>
-        </span>
-        </a>
-        <i class="icon-export"></i>
     </div>
     <div>
 
@@ -82,24 +38,31 @@
 </template>
 <script>
 import Loading from '../Loading'
+import BHeader from '../common/BHeader'
 
     export default {
         name: 'NewsDetail',
         data(){
             return {
                 data: null,
-                isLike: false
+                isLike: false,
+       
             }
         },
         components: {
-           Loading
+           Loading,
+           BHeader
         },
         props: {
             title: String
         },
         methods: {
             toLike(){
-                this.isLike = true
+                if(this.isLike) {
+                    this.isLike = false
+                }else {
+                    this.isLike = true
+                }
             },
           getparam(name){
             let reg = new RegExp("(^|\\?|&)" + name + "=([^&]*)(\\s|&|$)","i");
@@ -152,30 +115,13 @@ import Loading from '../Loading'
 a {
     text-decoration: none;
 }
+.header {
+    box-shadow: 0 0 1px 1px rgba(255, 192, 0, 0.1)
+}
 body{
     margin: 0;
 }
-.news-detail-container {
 
-}
-.news-title {
-    font-size: 18px;
-    color: #333333;
-    font-weight: bold;
-    text-align: left;
-    width: 92%;
-    margin: 15px auto;
-}
-.date-sec {
-    font-size: 14px;
-    color: #999999;
-    width: 92%;
-    margin: 15px auto;
-}
-
-.text-right {
-    float: right;
-}
 .news-cont {
     border-bottom: 10px solid #f5f5f5;
 }
@@ -183,11 +129,6 @@ body{
 .news-cont.last-child {
     border-bottom: none;
     margin-bottom: 70px!important;
-}
-
-
-.no-border {
-    border-bottom: none;
 }
 
 .text-sec {
@@ -210,24 +151,6 @@ body{
 
 .like-sec {
     text-align: center;
-}
-.icon-zan, .icon-cai {
-    display: inline-block;
-    width: 50px;
-    height: 50px;
-    
-}
-
-.icon-zan {
-    background: url(../../assets/images/icon-zan.png) no-repeat center;
-    background-size: 50px 50px;
-    margin: 15px 35px 0 35px;
-}
-
-.icon-cai {
-    background: url(../../assets/images/icon-cai.png) no-repeat center;
-    background-size: 50px 50px;
-    margin: 15px 35px 0 35px;
 }
 
 .like-num-sec {
@@ -364,7 +287,7 @@ body{
         }
     to {
             transform: scale(1.1);
-            transform: rotate(0)
+            transform: rotate(10deg)
         }
 }
 
@@ -378,6 +301,7 @@ body{
     height: 16px;
     background: url(../../assets/images/icon-comment-zan.png) no-repeat center;
     background-size: 17px 16px;
+    /* animation: move 0.2s ease-in-out; */
 }
 
 .comment-text {
@@ -438,6 +362,7 @@ body{
     bottom: 0;
     background: #fff;
     border-top: 1px solid #eeeeee;
+    text-align: center;
 }
 
 .icon-msg {
@@ -463,9 +388,10 @@ body{
     background: #f5f5f5;
     border-radius: 25px;
     border: none;
-    margin: 10px 15px;
+    margin: 10px auto!important;
     padding: 0 15px;
-    width: 50%;
+    width: 90%;
+    box-sizing: border-box;
 }
 
 ::-webkit-input-placeholder {
