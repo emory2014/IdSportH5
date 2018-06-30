@@ -491,7 +491,6 @@ formatDate(){
 },
 uploadImg (e, num) {
     //上传图片
-    // this.option.img
     var file = e.target.files[0];
 
     if (!/\.(gif|jpg|jpeg|png|bmp|GIF|JPG|PNG)$/.test(e.target.value)) {
