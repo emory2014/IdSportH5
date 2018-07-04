@@ -1,7 +1,7 @@
 <template>
 <div class="news-detail-container">
     <Loading v-if="!data" />
-    <div class="news-cont" v-if="data">
+    <div class="news-cont " ref="article" v-if="data">
         <p id="title" class="news-title">
             {{data.article.title}}
         </p>
@@ -39,39 +39,42 @@
            
         </ul>
     </div>
-
-    <div class="news-cont last-child" v-if="data">
-        <p class="recommend-tilte">Latest Comments</p>
+    <div class="last-child" v-if="data && comments.length">
+    <p id="comment" class="recommend-tilte">Komentar terbaru</p>
+    <div class="news-cont " v-for="(item,index) of comments" :key='index'>
+        
         <div class="comment-user-sec">
             <div class="comment-pic-box">
-                <img class="" src="../../assets/images/header.png" />
+                <img class="" :src="item.avatar" />
             </div>
             <div class="comment-user-name">
-                <p class="name">Wintersweet</p>
-                <p class="date">05-30 16:00</p>
+                <p class="name">{{item.username}}</p>
+                <p class="date">{{item.create_time}}</p>
             </div>
-            <div class="zan-right" :class="[isLike?'active':'']" @click="toLike()">
+            <div class="zan-right" :data-index="index" :class="[item.like_active?'active':'']"  @click="toLike(item.cid,$event)">
                 <i class="icon-comment-zan"></i>
-                <span>{{commentLike}}</span>
+                <span>{{item.like_count}}</span>
             </div>
         </div>
-        <div class="comment-text">
-            Yang mengalami depresiasi itu tidak hanya rupiah, jadi semua negara berpikir yang sama saat ini. Jadi kalau kita berfikir wah rupiah murah, 
-            itu ya orang Thailand juga berpikir bath juga murah," jelasnya.
+        <div class="comment-text" @click="toReplyShow(item.cid)">
+            {{item.content}}
         </div>
-        <div class="comment-sec">
-            <p><span>sss&ee</span>: wwewe wewe wewe we we we wewewewewewewewe</p>
-             <p><span>sss&ee</span><span class="reply">Balas</span><span>Rika</span>: wwewe wewe wewe we wewewewewewewewe</p>
-             <router-link :to="'/news-detail?aid='+ data.article.id "> <p class="comment-more">Lihat semua 10 ulasan <i class="icon-comment-more"></i></p></router-link>
+        <div class="comment-sec" v-if="item.reply.length">
+            <p  v-for="(v,i) of item.reply" :key="i"><span @click="toReplyShow(item.cid,v.from_user_id)">{{v.from_username}}</span><span  v-if="v.to_username" class="reply">Balas</span><span @click="toReplyShow(item.cid,v.from_user_id)">{{v.to_username}}</span>: {{v.content}}</p>
+             <!-- <p><span>sss&ee</span><span class="reply">Balas</span><span>Rika</span>: wwewe wewe wewe we wewewewewewewewe</p> -->
+             <router-link v-if="item.reply.length > 4" :to="'/news-detail?cid='+ item.cid "> <p class="comment-more">Lihat semua {{item.reply_count}} ulasan <i class="icon-comment-more"></i></p></router-link>
         </div>
-    </div>
-
+     </div>
+  </div>
     <div class="fixed-comment" v-if="data">
         <input class="comment-input" v-model="commentText" @keyup.enter="submitComment()" placeholder="Komentar…" /> 
-        <a href="#title"><span class="comment-msg">
-            <i class="icon-msg"></i>
-            <span class="num">68</span>
-        </span>
+        <input autofocus class="comment-input reply" :class="[replyShow? 'show':'hide']" v-model="replyText"  @keyup.enter="replyComment($event)"  placeholder="Balas…"  />
+        <a ref="navigation" href="#title">
+            <span  class="comment-msg" :class="[!commentLink ? 'show':'hide']">
+              <i class="icon-msg"></i>
+              <span class="num">{{data.article.comment_count}}</span>
+           </span>
+           <span class="comment-footer-text" :class="[commentLink? 'show':'hide']">原文</span>
         </a>
         <i @click="sharePop()" class="icon-export"></i>
     </div>
@@ -104,7 +107,20 @@ import Toast from '../common/Toast'
                 dissShow: false,
                 commentLike: 0,
                 commentText:'',
-                maskShow: false
+                replyText:'',
+                replyShow: false,
+                replyId: '',
+                replyArr:[],
+                maskShow: false,
+                comments: [],
+                cid:'',
+                from_id: '',
+                like_active: null,
+                currentPage: 1,
+                totalPage: 1,
+                page: 1,
+                flag: true,
+                commentLink: false
             }
         },
         components: {
@@ -115,6 +131,14 @@ import Toast from '../common/Toast'
             title: String
         },
         methods: {
+            toReplyShow(cid,from_id){
+                this.replyShow = true
+                this.cid = cid
+                if(from_id){
+                this.from_id = from_id
+                }
+                console.log(123)
+            },
             popShow(e){
                 if(e.target.className.indexOf("share-pop") > -1 ){
                     this.maskShow = false
@@ -125,23 +149,25 @@ import Toast from '../common/Toast'
             sharePop(){
                 this.maskShow = true
             },
-            toLike(){
+            toLike(cid,e){
+               var target = e.currentTarget
+                //e.currentTarget.className = "zan-right active"
                 this.$http({
                 url: '/api/comment//like',
                 method: 'post',
                 data:{
                     // token: window.AndroidWebView.getAppToken(),
                     token: '',
-                    comment_id: 1,
+                    comment_id: cid,
                 }
             }).then((res) => {
             if (res.data.status.code == 200) {
-                 if(this.isLike) {
-                    this.isLike = false
-                    this.commentLike --
+                 if(target.className.indexOf("active") > -1) {
+                    target.className = "zan-right"
+                    target.children[1].innerHTML = parseInt(target.children[1].innerHTML) - 1
                 }else {
-                    this.isLike = true
-                    this.commentLike ++
+                    target.className = "zan-right active"
+                    target.children[1].innerHTML = parseInt(target.children[1].innerHTML) + 1
                 }
               
             }
@@ -159,7 +185,7 @@ import Toast from '../common/Toast'
                     this.ajaxNewsLike(1,1)
                     if(this.dissShow) {
                         this.dissShow = false
-                        this.ajaxNewsLike(2,1)
+                        this.ajaxNewsLike(2,2)
                     }
                 }
             },
@@ -243,7 +269,6 @@ import Toast from '../common/Toast'
                 data:{
                     // token: window.AndroidWebView.getAppToken, 
                     token:'',
-                    comment_id: 1,
                     aid: this.getparam("aid"),
                     content: this.commentText
                 }
@@ -263,16 +288,98 @@ import Toast from '../common/Toast'
                 window.AndroidWebView.showContent("请填写内容")
              }
               
-         }
+         },
+         replyComment(e){
+             this.$http({
+                url: '/api/comment/submit',
+                method: 'post',
+                data:{
+                    // token: window.AndroidWebView.getAppToken, 
+                    token:'',
+                    comment_id: this.cid,
+                    to_user_id: this.from_id,
+                    content: e.target.value
+                }
+            }).then((res) => {
+            if (res.data.status.code == 200) {
+                this.replyShow = false
+            
+            }else{
+                //this.$router.push({path: '/login'});
+                window.AndroidWebView.showContent(res.data.status.message);
+            }
+
+            }).catch((res) => {
+                console.log('error: ', res);
+            });
+         },
+          getData(page){
+               this.$http({
+                    url: '/api/comments?aid='+this.getparam("aid")+'&page='+page,
+                    method: 'post',
+                    data:{
+                        token:''
+                    }
+                }).then((res) => {
+                    this.flag = true;  
+                    if (res.data.status.code == 200) {
+                        
+                        res.data.data.comments.map((item) => {
+                                this.comments.push(item)
+                        })
+                       this.currentPage = res.data.data.page_info.current_page
+                       this.totalPage = res.data.data.page_info.total_page
+                }else  {
+                   window.AndroidWebView.showContent(res.data.status.message);
+                    }
+
+                }).catch((res) => {
+                    console.log('error: ', res);
+                });
+            },
+          scrollGetData(){
+              let _this = this;
+               window.addEventListener('scroll',function(){  
+                if(document.body.scrollTop + window.innerHeight <= document.body.offsetHeight) {  
+                    // console.log(sw);  
+                    // 如果开关打开则加载数据  
+                    if(_this.flag == true){  
+                        // 将开关关闭  
+                        _this.flag = false;  
+                        _this.page = _this.page + 1
+                        if(_this.currentPage < _this.totalPage){
+                             _this.getData(_this.page)
+                        }
+                        
+                    }  
+                }  
+                if(_this.data){
+                    if(document.documentElement.scrollTop >= document.querySelector(".news-cont").clientHeight){
+                        _this.commentLink = true
+                        _this.$refs.navigation.setAttribute("href","#title")
+                    }else{
+                        _this.commentLink = false
+                        _this.$refs.navigation.setAttribute("href","#comment")
+                    }
+                    // console.log(document.querySelector(".news-cont").clientHeight)
+                    // console.log(document.documentElement.scrollTop)
+                }
+            });  
+          }
         },
       
         mounted(){
             this.$http({
                 url: '/article/detail?aid='+this.getparam("aid"),
-                method: 'get',
+                method: 'post',
+                data: {
+                    token: ''
+                }
             }).then((res) => {
             if (res.data.status.code == 200) {
             this.data = res.data.data
+            this.pickShow = res.data.data.article.like_active 
+            this.dissShow = res.data.data.article.dislike_active 
             this.pick = res.data.data.article.like 
             this.diss = res.data.data.article.dislike
             }else{
@@ -283,7 +390,34 @@ import Toast from '../common/Toast'
             }).catch((res) => {
                 console.log('error: ', res);
             });
-          
+        //    this.$http({
+        //         url: '/api/comments?aid='+this.getparam("aid")+'&page=1',
+        //         method: 'post',
+        //         data: {
+        //             token:''
+        //         }
+        //     }).then((res) => {
+        //     if (res.data.status.code == 200) {
+        //         this.comments = res.data.data.comments
+                
+        //     }else{
+        //         //this.$router.push({path: '/login'});
+        //         window.AndroidWebView.showContent(res.data.status.message);
+        //     }
+
+        //     }).catch((res) => {
+        //         console.log('error: ', res);
+        //     });
+        this.getData(1);
+        this.scrollGetData();
+        // if(this.data){
+        //     if(this.commentLink) {
+        //         this.$refs.navigation.setAttribute("href","#title")
+        //     }else{
+        //         this.$refs.navigation.setAttribute("href","#comment")
+        // }
+        // }
+       
         }
     }
 </script>
@@ -293,6 +427,10 @@ a {
 }
 body{
     margin: 0;
+}
+
+.news-detail-container{
+    padding-bottom: 40px;
 }
 
 .hide{
@@ -325,12 +463,18 @@ body{
     border-bottom: 10px solid #f5f5f5;
 }
 
-.news-cont.last-child {
-    border-bottom: none;
-    margin-bottom: 70px!important;
+.news-cont:last-child{
+    border-bottom: none;    
 }
 
+.last-child  .news-cont{
+    border-bottom: none;
+    /* margin-bottom: 70px!important; */
+}
 
+.last-child {
+    margin-bottom: 70px!important;
+}
 .no-border {
     border-bottom: none;
 }
@@ -499,7 +643,7 @@ body{
 
 .comment-user-sec {
     width: 92%;
-    margin: 10px auto;
+    margin: 20px auto 10px auto;
     overflow: hidden;
 }
 
@@ -561,9 +705,14 @@ body{
 .comment-text {
     font-size: 16px;
     color: #333333;
-    margin-left: 60px;
+    margin-left: 63px;
     margin-right: 20px;
     line-height: 1.5;
+}
+
+.comment-text input {
+    font-size: 16px;
+    color: #333333;
 }
 
 .comment-sec {
@@ -646,6 +795,17 @@ body{
     width: 50%;
 }
 
+.comment-input.reply {
+    position: fixed;
+    width: 90%;
+    left: 5%;
+    right: 5%;
+    bottom: 0;
+    z-index: 1;
+    box-sizing: border-box;
+    margin: 10px 0;
+}
+
 ::-webkit-input-placeholder {
     color: #999;
     font-size: 14px;
@@ -660,8 +820,22 @@ body{
     color: #619cff;
     font-size: 14px;
     position: absolute;
-    right: 0;
+    left: 15px;
     top: -5px;
+}
+
+.comment-msg.show{
+    display: inline-block!important;
+}
+
+.comment-footer-text {
+    font-size: 14px;
+    color: #619cff;
+    margin: 0 25px 0 20px
+}
+
+.comment-footer-text.show{
+    display: inline-block!important;
 }
 
 .share-pop {
@@ -688,7 +862,7 @@ body{
     height: 45px;
     background: url(../../assets/images/icon-facebook.png) center no-repeat;
     background-size: 45px 45px;
-    margin:  10px 50px 0 50px;
+    margin:  30px 50px 0 50px;
 }
 
 .icon-whatsapp {
@@ -697,7 +871,7 @@ body{
     height: 45px;
     background: url(../../assets/images/icon-whatsapp.png) center no-repeat;
     background-size: 45px 45px;
-    margin: 10px 50px 0 50px;
+    margin: 30px 50px 0 50px;
 }
 
 .share-title {

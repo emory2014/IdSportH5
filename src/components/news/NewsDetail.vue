@@ -6,30 +6,30 @@
        
         <div class="comment-user-sec">
             <div class="comment-pic-box">
-                <img class="" src="../../assets/images/header.png" />
+                <img class="" :src="data.comment.avatar" />
             </div>
             <div class="comment-user-name">
-                <p class="name">Wintersweet</p>
-                <p class="date">05-30 16:00</p>
+                <p class="name">{{data.comment.username}}</p>
+                <p class="date">{{data.comment.create_time}}</p>
             </div>
             <div class="zan-right" :class="[isLike?'active':'']" @click="toLike()">
                 <i class="icon-comment-zan"></i>
-                <span>8</span>
+                <span>{{likeCount}}</span>
             </div>
         </div>
-        <div class="comment-text">
-            Yang mengalami depresiasi itu tidak hanya rupiah, jadi semua negara berpikir yang sama saat ini. Jadi kalau kita berfikir wah rupiah murah, 
-            itu ya orang Thailand juga berpikir bath juga murah," jelasnya.
+        <div class="comment-text" @click="replyComment()">
+            {{data.comment.content}}
         </div>
         <div class="comment-sec">
-            <p><span>sss&ee</span>: wwewe wewe wewe we we we wewewewewewewewe</p>
-             <p><span>sss&ee</span><span class="reply">Balas</span><span>Rika</span>: wwewe wewe wewe we wewewewewewewewe</p>
-            <p class="comment-more">Lihat semua 10 ulasan <i class="icon-comment-more"></i></p>
+            <p v-for="(item,index) of data.comment_reply" :key="index">
+                <span @click="replyComment(item.from_user_id)">{{item.from_username}}</span><span v-if="item.to_username"  class="reply">Balas</span><span @click="replyComment(item.from_user_id)">{{item.to_username}}</span>: {{item.content}}</p>
+             <!-- <p><span>sss&ee</span><span class="reply">Balas</span><span>Rika</span>: wwewe wewe wewe we wewewewewewewewe</p> -->
+             <p class="comment-more">Lihat semua </p>
         </div>
     </div>
 
     <div class="fixed-comment" v-if="data">
-        <input class="comment-input" placeholder="Komentar…" /> 
+        <input ref="replyInput" class="comment-input"  @keyup.enter="submitComment($event)" placeholder="Balas..." /> 
     </div>
     <div>
 
@@ -46,7 +46,8 @@ import BHeader from '../common/BHeader'
             return {
                 data: null,
                 isLike: false,
-       
+                likeCount: 0,
+                from_id: ''
             }
         },
         components: {
@@ -58,11 +59,28 @@ import BHeader from '../common/BHeader'
         },
         methods: {
             toLike(){
-                if(this.isLike) {
+               this.$http({
+                url: '/api/comment/like',
+                method: 'post',
+                data:{
+                    // token: window.AndroidWebView.getAppToken(),
+                    token: '',
+                    comment_id: this.getparam("cid"),
+                }
+            }).then((res) => {
+            if (res.data.status.code == 200) {
+                 if(this.isLike) {
                     this.isLike = false
+                    this.likeCount --
                 }else {
                     this.isLike = true
+                    this.likeCount ++
                 }
+              
+            }
+            }).catch((res) => {
+                console.log('error: ', res);
+            });
             },
           getparam(name){
             let reg = new RegExp("(^|\\?|&)" + name + "=([^&]*)(\\s|&|$)","i");
@@ -71,16 +89,35 @@ import BHeader from '../common/BHeader'
             }
             return undefined
             },
-          dealWithImg(e){
-            let img = e.currentTarget
-            let my_retio = 125/95
-            let retio = img.width/img.height
-            if(retio > my_retio) {
-                img.style.height = '100%'
+          replyComment(id){
+                this.$refs.replyInput.focus()
+                if(id){
+                    this.from_id = id
+                }
+          },
+          submitComment(e){
+               this.$http({
+                url: '/api/comment/submit',
+                method: 'post',
+                data:{
+                    // token: window.AndroidWebView.getAppToken, 
+                    token:'',
+                    comment_id: this.getparam("cid"),
+                    to_user_id: this.from_id,
+                    content: e.target.value
+                }
+            }).then((res) => {
+            if (res.data.status.code == 200) {
+                
             }else{
-                img.style.width = '100%'
-            }   
-           },
+                //this.$router.push({path: '/login'});
+                window.AndroidWebView.showContent(res.data.status.message);
+            }
+
+            }).catch((res) => {
+                console.log('error: ', res);
+            });
+          },
           dealWithTitle(text){
               let str = ''
               if(text.length > 80) {
@@ -94,12 +131,13 @@ import BHeader from '../common/BHeader'
       
         mounted(){
             this.$http({
-                url: '/article/detail?aid='+this.getparam("aid"),
+                url: '/api/comment/replyList?cid='+this.getparam("cid"),
                 method: 'get',
             }).then((res) => {
             if (res.data.status.code == 200) {
             this.data = res.data.data
-            
+            this.likeCount = res.data.data.comment.like_count
+            this.isLike = res.data.data.comment.like_active
             }else{
                 //this.$router.push({path: '/login'});
                 window.AndroidWebView.showContent(res.data.status.message);
@@ -120,6 +158,10 @@ a {
 }
 body{
     margin: 0;
+}
+
+.news-detail-container{
+    padding-bottom: 40px;
 }
 
 .news-cont {
@@ -307,7 +349,7 @@ body{
 .comment-text {
     font-size: 16px;
     color: #333333;
-    margin-left: 60px;
+    margin-left: 63px;
     margin-right: 20px;
     line-height: 1.5;
 }
@@ -365,24 +407,6 @@ body{
     text-align: center;
 }
 
-.icon-msg {
-    display: inline-block;
-    height: 20px;
-    width: 22px;
-    background: url(../../assets/images/icon-msg.png) no-repeat center;
-    background-size: 20px 20px;
-    vertical-align: middle;
-    
-}
-
-.icon-export {
-    display: inline-block;
-    height: 20px;
-    width: 22px;
-    background: url(../../assets/images/icon-export.png) no-repeat center;
-    background-size: 22px 18px;
-    vertical-align: middle;
-}
 .comment-input {
     height: 30px;
     background: #f5f5f5;
