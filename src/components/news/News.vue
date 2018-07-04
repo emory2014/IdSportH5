@@ -285,7 +285,7 @@ import Toast from '../common/Toast'
                 console.log('error: ', res);
             });
              }else{
-                window.AndroidWebView.showContent("请填写内容")
+                window.AndroidWebView.showContent("Komentar Tidak boleh Kosong")
              }
               
          },
