@@ -1,0 +1,274 @@
+body {
+    margin: 0
+}
+
+.header {
+    box-shadow: 0 0 0 1px rgba(255,192,0,0.1);
+    margin-bottom: 0!important;
+}
+
+.show{
+    display: block;
+}
+
+.hide{
+    display: none;
+}
+
+.recharge-container {
+    padding: 15px;
+}
+
+.recharge-balance {
+    width: 100%;
+    background: url(../../assets/images/recharge/recharge-bg.png) no-repeat center;
+    background-size: 100%;
+    color: #fff;
+    text-align: center;
+    padding: 25px 0;
+    box-sizing: border-box;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+.recharge-balance p {
+    margin-top: 0;
+}
+
+.recharge-balance .balance {
+    font-size: 32px;
+    margin: 0;
+    line-height: 1.2;
+    margin-top: 12px;
+}
+
+.recharge-title {
+    font-size: 16px;
+    color: #333333;
+}
+
+.recharge-panel {
+    overflow: hidden;
+}
+
+.recharge-item {
+    width: 30%;
+    border: 1px solid #ffc000;
+    border-radius: 5px;
+    color: #ffc000;
+    font-size: 16px;
+    text-align: center;
+    padding: 5px 0;
+    margin-right: 4%;
+    margin-bottom: 20px;
+    float: left;
+}
+
+.recharge-item.active{
+    background: #ffc000;
+    color: #fff;
+}
+
+.recharge-item:nth-child(3n){
+    margin-right: 0;
+}
+
+.recharge-item span:last-child{
+    font-size: 14px;
+    display: inline-block;
+    border-top: 1px solid #ffc000;
+    width: 90%;
+    margin: 5px auto 0 auto;
+    padding-top: 5px;
+}
+
+.recharge-item.active span:last-child{
+    border-top: 1px solid #fff;
+}
+
+.recharge-btn {
+    background: #ffc000;
+    text-align: center;
+    font-size: 18px;
+    color: #fff;
+    border-radius: 25px;
+    padding: 10px 0;
+    margin: 30px 0;
+}
+
+.mask {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.mask-cont {
+    width: 90%;
+    margin: 25% auto;
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.mask-cont-title {
+    font-size: 16px;
+    color: #333333;
+    margin-top: 0;
+}
+
+.mask-cont ul{
+    list-style: none;
+    padding: 0;
+    height: 320px;
+    overflow: auto;
+}
+
+.mask-cont ul li {
+    color: #ffc000;
+    border: 1px solid #ffc000;
+    border-radius: 25px;
+    text-align: center;
+    margin-bottom: 15px;
+    padding: 8px;
+}
+
+.cont-panel {
+    margin: 20px auto;
+    width: 92%;
+    background: #fff;
+    border-radius: 8px;
+    text-align: center;
+    color: #333333;
+    font-size: 14px;
+    overflow: hidden;
+    box-shadow: 0 0 11px 4px rgba(255,192,0,0.1);
+}
+
+.cont-panel .title {
+    font-size: 23px;
+    margin-bottom: 0;
+}
+
+.subtitle {
+    color: #666;
+    margin-top: 5px;
+    margin-bottom: 35px;
+}
+
+.code {
+    font-size: 23px;
+    margin-bottom: 0;
+    color: #333333;
+}
+
+.text-cont {
+    border-top: 1px solid #ddd;
+}
+
+.text-cont ol {
+    /* list-style: none; */
+    text-align: left;
+    color: #333333;
+    font-size: 14px;
+    padding: 0;
+    margin: 20px 30px;
+}
+
+.text-cont ol li {
+    line-height: 1.5;
+}
+
+.yellow {
+    color: #ffc000
+}
+
+.tab-cont {
+    height: 45px;
+    line-height: 45px;
+    background: #fff;
+    box-shadow: 0px 0 0 2px rgba(255,192,0,0.1);
+}
+
+.tab-cont .item{
+    color: #333333;
+    font-size: 16px;
+    display: inline-block;
+    text-align: center;
+    width: 33%;
+    position: relative;
+}
+
+.mandiri .item{
+    width: 50%;
+}
+
+.tab-cont .item.active{
+    font-weight: bold;
+}
+
+.tab-cont .item.active::before{
+    position: absolute;
+    bottom: 0;
+    content: '';
+    width: 12%;
+    height: 4px;
+    left: 44%;
+    display: inline-block;
+    background:  #ffc000;
+    border-radius: 2px;
+}
+
+.record-left {
+    float: left;
+    padding: 0 10px;
+}
+
+.record-left span {
+    display: block;
+    color: #666666;
+    font-size: 12px;
+}
+
+.record-left.text span{
+    text-align: left;
+    line-height: 1.5;
+}
+
+.record-left.text{
+    border-left: 1px solid #ddd;
+    padding-left: 12px;
+}
+
+.record-left .num{
+    color: #ffc000;
+    font-size: 18px;
+}
+
+.cont-panel.record {
+    padding: 15px 10px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+.tab-cont.record .item:first-child {
+    width: 38%;
+}
+
+.tab-cont.record .item:nth-child(2) {
+    width: 36%;
+}
+
+.tab-cont.record .item:nth-child(3) {
+    width: 22%;
+}
+
+.record-no-data {
+    text-align: center;
+    color: #333333;
+    margin-top: 20%;
+}

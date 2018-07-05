@@ -7,6 +7,9 @@ import Start from '@/components/digital-game/Start'
 import AwardRecord from '@/components/digital-game/AwardRecord'
 import Rank from '@/components/digital-game/Rank'
 import AwardDetail from '@/components/digital-game/AwardDetail'
+import Recharge from '@/components/recharge/Recharge'
+import Process from '@/components/recharge/Process'
+import Record from '@/components/recharge/Record'
 
 
 Vue.use(Router)
@@ -17,6 +20,21 @@ export default new Router({
   routes: [
     {
       path: '/',
+      name: 'Recharge',
+      component: Recharge
+    },
+    {
+      path: '/record',
+      name: 'Record',
+      component: Record
+    },
+    {
+      path: '/process',
+      name: 'Process',
+      component: Process
+    },
+    {
+      path: '/user',
       name: 'User',
       component: User
     },

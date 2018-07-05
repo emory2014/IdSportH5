@@ -2,6 +2,7 @@
 <header class="header">
             　<i class="nc-icon-prev" @click="goBack()"></i>
               <div>{{title}}</div>
+              <router-link to="/record" v-if="recharge"><span  class="recharge-record">Riwayat Transaksi</span></router-link>
         </header>
 </template>
 <script>
@@ -13,7 +14,8 @@
             }
         },
         props: {
-            title: String
+            title: String,
+            recharge: false
         },
         methods: {
             goBack(){
@@ -43,6 +45,7 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    font-weight: bold;
 }
 
 .nc-icon-prev{
@@ -54,5 +57,13 @@
     height: 25px;
     width: 20px;
     background-size: 20px 25px;
+}
+
+.recharge-record {
+    position: absolute;
+    color: #333;
+    font-size: 14px;
+    right: 10px;
+    top: 1px;
 }
 </style>
