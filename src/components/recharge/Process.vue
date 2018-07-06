@@ -248,7 +248,7 @@ import BHeader from "../common/BHeader"
         
             getData(){
                this.$http({
-                    url: '/api/recharge/code/generate?token=898b2d20073e3412cdf336d0daa03920&amount='+this.getQueryString("m")+'&method='+this.getQueryString("method"),
+                    url: '/api/recharge/code/generate?token='+window.AndroidWebView.getAppToken()+'&amount='+this.getQueryString("m")+'&method='+this.getQueryString("method"),
                     method: 'get',
                 }).then((res) => {
                     if (res.data.status.code == 200) {
