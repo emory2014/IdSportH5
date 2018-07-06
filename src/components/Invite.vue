@@ -10,7 +10,7 @@
             </div>
         <ul>
                 <li class="rule title">
-                <span >Junlah<br>Undang</span>
+                <span >Jumlah<br>Undang</span>
                 <span >Bonus <br>Undang</span>
                 <span >Bonus <br>Pencairan Pokok</span></li>
                 <li class="rule"><span>1</span><span>6000</span><span>2000</span></li>
@@ -36,8 +36,8 @@
 Sebesar Rp.10.000 dan Anda juga akan dapat Bonus Undang teman sebesar Rp.6000.
         </p>
         <p class="invite-text">
-            2.Setiap Anda undang teman saldo pencairan anda otomatis akan dapatkan Rp.2000 (Rp.1000 dari undang teman dan Rp.1000 dari Bonus Koin) Pencairan Dana Anda paling rendah harus mencapai Rp20.000 (untuk mendapatkan pencairan sebesar Rp.20.000 berarti anda harus mengundang 10 teman,
-            dan Anda ingin mencairkan berapa limitnya harus ikutin peraturan yang ada).
+            2.Setiap Anda mengundang teman, saldo pencairan Anda otomatis akan bertambah Rp. 2000 
+            ( Rp. 1000 dari undang teman dan Rp. 1000 dari Bonus koin). Pencairan dana  dapat dilakukan dengan minimum limit Rp. 20.000 (berarti Anda harus mengundang 10 teman). Pencairan dengan limit lainnya mengikuti peraturan yang ada. 
         </p>
     </div>
 
