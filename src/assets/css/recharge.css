@@ -5,6 +5,7 @@ body {
 .header {
     box-shadow: 0 0 0 1px rgba(255,192,0,0.1);
     margin-bottom: 0!important;
+    border-top: none!important;
 }
 
 .show{
