@@ -649,7 +649,7 @@ uploadImg (e, num) {
     }).catch((res) => {
         console.log('error: ', res);
     });
-     window['setPhotoData'] = this.setPhotoData(msg)
+     window['setPhotoData'] = this.setPhotoData
   },
   created(){
    

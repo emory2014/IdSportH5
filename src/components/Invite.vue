@@ -1,5 +1,20 @@
 <template>
 <div class="invite-container">
+    
+    <div class="invite-share-sec">
+        <p class="my-invite-text">Undangan saya</p>
+        <p class="my-invite-title">Setiap mengundang 1teman akan  mendapatkan bonus sebesar</p>
+        <a class="my-coin">Rp.6000</a>
+        <p class="my-tips">mengundang makin banyak teman  penghasilan makin banyak.</p>
+        <div class="invite-item">
+            <img src="../assets/images/icon-invite-facebook.png" />
+            <p>Undang lewat facebook</p>
+        </div>
+        <div class="invite-item">
+            <img src="../assets/images/icon-invite-whatsapp.png" />
+            <p>Undang lewat facebook</p>
+        </div>
+    </div>
     <img class="ques1" src="../assets/images/ques1.png">
 
     <div class="invite-sec">
@@ -202,5 +217,57 @@ Sebesar Rp.10.000 dan Anda juga akan dapat Bonus Undang teman sebesar Rp.6000.
     margin: 6px 15px;
     line-height: 1.5;
     text-align: left;
+}
+.invite-share-sec {
+    background: url(../assets/images/invite-share-bg.png)  no-repeat;
+    background-size: 100%;
+    background-position-y: 135px;
+    background-position-x: center;
+    color: #fff;
+}
+.my-invite-text {
+    color: #ffd900;
+    font-size: 14px;
+    float: right;
+    margin: 10px 15px;
+}
+.my-invite-title {
+    font-size: 18px;
+    clear: both;
+    line-height: 1.2;
+    margin-bottom: 10px;
+}
+.my-coin {
+    font-size: 25px;
+    text-decoration: underline;
+}
+
+.my-tips{
+    font-size: 14px;
+    width: 80%;
+    margin: 220px auto 20px auto;
+}
+
+.icon-facebook {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background: url(../assets/images/icon-facebook.png) no-repeat center;
+    background-size: 30px 30px;
+}
+
+.invite-item{
+    width: 50%;
+    font-size: 12px;
+    text-align: center;
+    float: left;
+}
+
+.invite-item img {
+    width: 32px;
+}
+
+.invite-item p {
+    margin: 2px 0 15px 0;
 }
 </style>
