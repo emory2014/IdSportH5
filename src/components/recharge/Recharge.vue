@@ -2,7 +2,7 @@
 <div>
 <BHeader title="Top Up Koin" recharge= {true}  />
 <div class="recharge-container">
-    <div class="recharge-balance" @click="test()">
+    <div class="recharge-balance">
         <p class="balance">{{balance}}</p>
          <p>Poin sekarang(Rpc)</p>
     </div>
@@ -65,28 +65,24 @@ import BHeader from "../common/BHeader"
                     this.maskShow = false
                 }
             },
-            test(){
-                 window.AndroidWebView.showContent("gagsga")
-                alert(12)
-            },
+          
             getData(){
-                window.AndroidWebView.showContent("hahah")
-            //     var content=window.AndroidWebView.getAppToken();
-			// 	window.AndroidWebView.showContent(content);
-            //    this.$http({
-            //         url: 'http://test.jiajiahebao.com/api/recharge/bank/list?token='+window.AndroidWebView.getAppToken()+'&t='+(new Date()).getTime(),
-            //         method: 'get',
-            //     }).then((res) => {
-            //         if (res.data.status.code == 200) {
-            //            this.data = res.data.data
-            //            this.balance = res.data.data.gold
-            //     }else  {
+                var content=window.AndroidWebView.getAppToken();
+				window.AndroidWebView.showContent(content);
+               this.$http({
+                    url: 'http://test.jiajiahebao.com/api/recharge/bank/list?token='+window.AndroidWebView.getAppToken()+'&t='+(new Date()).getTime(),
+                    method: 'get',
+                }).then((res) => {
+                    if (res.data.status.code == 200) {
+                       this.data = res.data.data
+                       this.balance = res.data.data.gold
+                }else  {
                    
-            //         }
+                    }
 
-            //     }).catch((res) => {
-            //         console.log('error: ', res);
-            //     });
+                }).catch((res) => {
+                    console.log('error: ', res);
+                });
             
             },
            recharge(){
