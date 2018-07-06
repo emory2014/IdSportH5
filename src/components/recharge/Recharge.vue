@@ -66,7 +66,7 @@ import BHeader from "../common/BHeader"
                 }
             },
             getData(){
-                alert(124)
+                window.AndroidWebView.showContent("hahah")
             //     var content=window.AndroidWebView.getAppToken();
 			// 	window.AndroidWebView.showContent(content);
             //    this.$http({
