@@ -70,7 +70,7 @@ import Loading from "../Loading"
             },
             getData(page){
                this.$http({
-                     url: '/api/recharge/history?token='+window.AndroidWebView.getAppToken()+'&type='+this.type+'&page='+page,
+                     url: '/api/recharge/history?token='+window.AndroidWebView.getAppToken()+'&type='+this.type+'&page='+page+'&t='(new Date()).getTime(),
                     method: 'get',
                 }).then((res) => {
                     this.flag = true;  

@@ -67,7 +67,7 @@ import BHeader from "../common/BHeader"
             },
             getData(){
                this.$http({
-                    url: '/api/recharge/bank/list?token='+window.AndroidWebView.getAppToken(),
+                    url: '/api/recharge/bank/list?token='+window.AndroidWebView.getAppToken()+'&t='+(new Date()).getTime(),
                     method: 'get',
                 }).then((res) => {
                     if (res.data.status.code == 200) {
