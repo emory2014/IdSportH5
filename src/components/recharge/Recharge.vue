@@ -2,7 +2,7 @@
 <div>
 <BHeader title="Top Up Koin" recharge= {true}  />
 <div class="recharge-container">
-    <div class="recharge-balance">
+    <div class="recharge-balance" @click="test()">
         <p class="balance">{{balance}}</p>
          <p>Poin sekarang(Rpc)</p>
     </div>
@@ -64,6 +64,9 @@ import BHeader from "../common/BHeader"
                 if(e.target.className.indexOf("mask") > -1){
                     this.maskShow = false
                 }
+            },
+            test(){
+                window.AndroidWebView.showContent("gagsga")
             },
             getData(){
                 window.AndroidWebView.showContent("hahah")
