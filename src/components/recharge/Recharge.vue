@@ -66,8 +66,10 @@ import BHeader from "../common/BHeader"
                 }
             },
             getData(){
+                var content=window.AndroidWebView.getAppToken();
+				window.AndroidWebView.showContent(content);
                this.$http({
-                    url: '/api/recharge/bank/list?token='+window.AndroidWebView.getAppToken()+'&t='+(new Date()).getTime(),
+                    url: 'http://test.jiajiahebao.com/api/recharge/bank/list?token='+window.AndroidWebView.getAppToken()+'&t='+(new Date()).getTime(),
                     method: 'get',
                 }).then((res) => {
                     if (res.data.status.code == 200) {
