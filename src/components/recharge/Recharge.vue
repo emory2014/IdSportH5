@@ -66,7 +66,7 @@ import BHeader from "../common/BHeader"
                 }
             },
             test(){
-                // window.AndroidWebView.showContent("gagsga")
+                 window.AndroidWebView.showContent("gagsga")
                 alert(12)
             },
             getData(){
