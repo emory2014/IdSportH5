@@ -73,10 +73,8 @@ let Base64 = require('js-base64').Base64;
             getData(page){
                 var content=window.AndroidWebView.getAppToken();
                 let token = Base64.decode(content)
-                window.AndroidWebView.showContent(token);
-                window.AndroidWebView.showContent('/api/recharge/history?token='+token+'&type='+this.type+'&page='+page+'&t='(new Date()).getTime())
                this.$http({
-                     url: '/api/recharge/history?token='+token+'&type='+this.type+'&page='+page+'&t='(new Date()).getTime(),
+                     url: '/api/recharge/history?token='+token+'&type='+this.type+'&page='+page+'&t='+(new Date()).getTime(),
                     method: 'get',
                 }).then((res) => {
                     this.flag = true;  
