@@ -70,7 +70,6 @@ let Base64 = require('js-base64').Base64;
             getData(){
                 var content=window.AndroidWebView.getAppToken();
                 let token = Base64.decode(content)
-                window.AndroidWebView.showContent(token);
                this.$http({
                     url: 'http://test.jiajiahebao.com/api/recharge/bank/list?token='+token+'&t='+(new Date()).getTime(),
                     method: 'get',
