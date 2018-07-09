@@ -2,27 +2,27 @@
 <div class="invite-container">
     
     <div class="invite-share-sec">
-        <p class="my-invite-text">Undangan saya</p>
+       <router-link to="invite-record"> <p class="my-invite-text">Undangan saya</p></router-link>
         <p class="my-invite-title">Setiap mengundang 1teman akan  mendapatkan bonus sebesar</p>
         <a class="my-coin">Rp.6000</a>
         <p class="my-tips">mengundang makin banyak teman  penghasilan makin banyak.</p>
         <div class="invite-item" @click="facebookShare()">
-            <img src="../assets/images/icon-invite-facebook.png" />
+            <img src="../../assets/images/icon-invite-facebook.png" />
             <p>Undang lewat facebook</p>
         </div>
         <div class="invite-item" @click="whatsappShare()">
-            <img src="../assets/images/icon-invite-whatsapp.png" />
+            <img src="../../assets/images/icon-invite-whatsapp.png" />
             <p>Undang lewat Whatsapp</p>
         </div>
     </div>
-    <img class="ques1" src="../assets/images/invite-title.png">
+    <img class="ques1" src="../../assets/images/invite-title.png">
     <div class="invite-sec">
         <div class="invite-header"> 
             <i class="icon-que"></i>  
             Contoh 1
             <i class="icon-que"></i> 
             </div>
-        <img class="ques1" src="../assets/images/invite-ques1.png">
+        <img class="ques1" src="../../assets/images/invite-ques1.png">
         <div class="contoh-1-text">
             Bonus undang teman yang Anda dapatkan adalah sebesar Rp. 6000, tetapi bonus yang masuk ke Pencairan Pokok adalah Rp. 2000. 
             Undang teman lebih banyak dan kumpulkan bonus, minimal Rp. 20.000 sudah bisa dicairkan loh~
@@ -106,15 +106,43 @@ Sebesar Rp.10.000 dan Anda juga akan dapat Bonus Undang teman sebesar Rp.6000.
         },
        
         methods: {
-         facebookShare(){
-                var title = '我是JS 分享 Facebook';
-				var link = 'http://www.kilatfintech.com/api/article/detail?aid=2000&u-agent=newscat';
-                window.AndroidWebView.shareFacebook(title,link);
+         facebookShare(){ 
+                this.$http({
+                    url: '/api/generate/invitation_code',
+                    method: 'post',
+                    data: {
+                        token: '8dwre821f9bacbde1d96ec5b3cfch58u',
+                        channel: 'facebook'
+                    }
+                }).then((res) => {
+                    if (res.data.status.code == 200) {
+                        window.AndroidWebView.shareFacebook(res.data.data.title,res.data.data.link);
+                }else  {
+                   window.AndroidWebView.showContent(res.data.status.message);
+                    }
+
+                }).catch((res) => {
+                    console.log('error: ', res);
+                });
          },
          whatsappShare(){
-                var title = '我是JS 分享 WhatApp';
-				var link = 'https://fir.im/';
-                window.AndroidWebView.shareWhatsApp(title,link);
+                   this.$http({
+                    url: '/api/generate/invitation_code',
+                    method: 'post',
+                    data: {
+                        token: '8dwre821f9bacbde1d96ec5b3cfch58u',
+                        channel: 'whatsapp'
+                    }
+                }).then((res) => {
+                    if (res.data.status.code == 200) {
+                        window.AndroidWebView.shareWhatsApp(res.data.data.title,res.data.data.link);
+                }else  {
+                   window.AndroidWebView.showContent(res.data.status.message);
+                    }
+
+                }).catch((res) => {
+                    console.log('error: ', res);
+                });
          },
          getData(){
                this.$http({
@@ -124,7 +152,7 @@ Sebesar Rp.10.000 dan Anda juga akan dapat Bonus Undang teman sebesar Rp.6000.
                     if (res.data.status.code == 200) {
                         this.data = res.data.data.rank
                 }else  {
-                   
+                   window.AndroidWebView.showContent(res.data.status.message);
                     }
 
                 }).catch((res) => {
@@ -169,7 +197,7 @@ Sebesar Rp.10.000 dan Anda juga akan dapat Bonus Undang teman sebesar Rp.6000.
     display: inline-block;
     width: 10px;
     height: 45px;
-    background: url(../assets/images/sec-bg.png) no-repeat center;
+    background: url(../../assets/images/sec-bg.png) no-repeat center;
     background-size: 65%;
 }
 .invite-header {
@@ -252,7 +280,7 @@ Sebesar Rp.10.000 dan Anda juga akan dapat Bonus Undang teman sebesar Rp.6000.
     text-align: left;
 }
 .invite-share-sec {
-    background: url(../assets/images/invite-share-bg.png)  no-repeat;
+    background: url(../../assets/images/invite-share-bg.png)  no-repeat;
     background-size: 100%;
     background-position-y: 135px;
     background-position-x: center;
@@ -285,7 +313,7 @@ Sebesar Rp.10.000 dan Anda juga akan dapat Bonus Undang teman sebesar Rp.6000.
     display: inline-block;
     width: 30px;
     height: 30px;
-    background: url(../assets/images/icon-facebook.png) no-repeat center;
+    background: url(../../assets/images/icon-facebook.png) no-repeat center;
     background-size: 30px 30px;
 }
 

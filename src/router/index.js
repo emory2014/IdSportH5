@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import User from '@/components/User'
-import Invite from '@/components/Invite'
+import Invite from '@/components/invite/Invite'
+import InviteRecord from '@/components/invite/InviteRecord'
 import Game from '@/components/digital-game/Game'
 import Start from '@/components/digital-game/Start'
 import AwardRecord from '@/components/digital-game/AwardRecord'
@@ -24,6 +25,11 @@ export default new Router({
       path: '/',
       name: 'Invite',
       component: Invite
+    },
+    {
+      path: '/invite-record',
+      name: 'InviteRecord',
+      component: InviteRecord
     },
     {
       path: '/game',
