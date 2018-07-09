@@ -7,8 +7,8 @@
        <div class="item" :class="[type == 'success'?'active':'']" @click="addClass('success')">Dalam Proses</div>
        <div class="item" :class="[type == 'failed'?'active':'']" @click="addClass('failed')"> Gagal</div>
    </div>
-  <Loading v-if="!data.length" />
-  <p class="record-no-data" v-if="!data.length">暂无数据</p>
+  <Loading v-if="loading" />
+  <p class="record-no-data" v-if="!loading && !data.length">暂无数据</p>
   <div v-if="data.length">
     <div class="cont-panel record" v-for="(item,index) of data" :key="index">
         <div class="record-left">
@@ -78,6 +78,7 @@ let Base64 = require('js-base64').Base64;
                     method: 'get',
                 }).then((res) => {
                     this.flag = true;  
+                    this.loading = false
                     if (res.data.status.code == 200) {
                         if(res.data.data.data.length){
                             this.defaultShow = false
