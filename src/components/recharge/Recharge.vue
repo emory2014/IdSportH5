@@ -68,16 +68,17 @@ import BHeader from "../common/BHeader"
           
             getData(){
                 var content=window.AndroidWebView.getAppToken();
-				window.AndroidWebView.showContent(content);
+                let token = Base64.decode(content)
+                window.AndroidWebView.showContent(token);
                this.$http({
-                    url: 'http://test.jiajiahebao.com/api/recharge/bank/list?token='+window.AndroidWebView.getAppToken()+'&t='+(new Date()).getTime(),
+                    url: 'http://test.jiajiahebao.com/api/recharge/bank/list?token='+token+'&t='+(new Date()).getTime(),
                     method: 'get',
                 }).then((res) => {
                     if (res.data.status.code == 200) {
                        this.data = res.data.data
                        this.balance = res.data.data.gold
                 }else  {
-                   
+                   window.AndroidWebView.showContent(res.data.status.message);
                     }
 
                 }).catch((res) => {

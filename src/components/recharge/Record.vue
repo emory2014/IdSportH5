@@ -69,8 +69,10 @@ import Loading from "../Loading"
                 this.getData(this.page)
             },
             getData(page){
+                var content=window.AndroidWebView.getAppToken();
+                let token = Base64.decode(content)
                this.$http({
-                     url: '/api/recharge/history?token='+window.AndroidWebView.getAppToken()+'&type='+this.type+'&page='+page+'&t='(new Date()).getTime(),
+                     url: '/api/recharge/history?token='+token+'&type='+this.type+'&page='+page+'&t='(new Date()).getTime(),
                     method: 'get',
                 }).then((res) => {
                     this.flag = true;  

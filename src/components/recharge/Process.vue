@@ -247,8 +247,10 @@ import BHeader from "../common/BHeader"
                 } ,
         
             getData(){
+                   var content=window.AndroidWebView.getAppToken();
+                let token = Base64.decode(content)
                this.$http({
-                    url: '/api/recharge/code/generate?token='+window.AndroidWebView.getAppToken()+'&amount='+this.getQueryString("m")+'&method='+this.getQueryString("method")+'&t='+(new Date()).getTime(),
+                    url: '/api/recharge/code/generate?token='+token+'&amount='+this.getQueryString("m")+'&method='+this.getQueryString("method")+'&t='+(new Date()).getTime(),
                     method: 'get',
                 }).then((res) => {
                     if (res.data.status.code == 200) {
