@@ -37,6 +37,8 @@
 <script>
 import BHeader from "../common/BHeader"
 import Loading from "../Loading"
+let Base64 = require('js-base64').Base64;
+
 
     export default {
         name: 'Record',

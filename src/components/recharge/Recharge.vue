@@ -36,6 +36,7 @@
 </template>
 <script>
 import BHeader from "../common/BHeader"
+let Base64 = require('js-base64').Base64;
 
     export default {
         name: 'Recharge',
