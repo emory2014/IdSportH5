@@ -183,6 +183,7 @@ body {
 
 .text-cont ol li {
     line-height: 1.5;
+    list-style: decimal;
 }
 
 .yellow {
