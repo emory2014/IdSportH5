@@ -220,15 +220,51 @@ let Base64 = require('js-base64').Base64;
         methods: {
             setTitle(){
                 let method = this.getQueryString("method");
-                if(method == 1){
-                    return "Bayar di Alfamart"
-                }else if(method == 2){
-                    return "BCA"
-                }else if(method == 3){
-                    return "Mandiri"
-                }else{
-                    return "Bank Lain"
-                }
+                // if(method == 1){
+                //     return "Bayar di Alfamart"
+                // }else if(method == 2){
+                //     return "BCA"
+                // }else if(method == 3){
+                //     return "Mandiri"
+                // }else{
+                //     return "Bank Lain"
+                // }
+                switch(method)
+                    {
+                    case 1:
+                    return "Bayar di Alfamart";
+                    break;
+                    case 2:
+                    return "BCA";
+                    break;
+                    case 3:
+                    return "Mandiri";
+                    break;
+                    case 4:
+                    return "BRI";
+                    break;
+                    case 5:
+                    return "BNI";
+                    break;
+                    case 6:
+                    return "CIMB";
+                    break;
+                    case 7:
+                    return "MEGA";
+                    break;
+                    case 8:
+                    return "PANIN";
+                    break;
+                    case 9:
+                    return "DANAMON";
+                    break;
+                    case 10:
+                    return "PERMATA";
+                    break;
+                    case 11:
+                    return "BII"
+                    break;
+                    }
             },
             setTab(){
                 let method = this.getQueryString("method");

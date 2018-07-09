@@ -19,7 +19,13 @@
         },
         methods: {
             goBack(){
+                if(this.recharge){
+                    window.AndroidWebView.closeActivities();
+                }
+                else{
                 window.history.go(-1)
+                }
+                
         },
         }
     }
