@@ -17,12 +17,17 @@ export default new Router({
   base: '/web/',
   routes: [
     {
+      path: '/',
+      name: 'User',
+      component: User
+    },
+    {
       path: '/user',
       name: 'User',
       component: User
     },
     {
-      path: '/',
+      path: '/invite',
       name: 'Invite',
       component: Invite
     },
