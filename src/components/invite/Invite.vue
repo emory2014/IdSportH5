@@ -107,11 +107,13 @@ Sebesar Rp.10.000 dan Anda juga akan dapat Bonus Undang teman sebesar Rp.6000.
        
         methods: {
          facebookShare(){ 
+               var content=window.AndroidWebView.getAppToken();
+                let token = Base64.decode(content)
                 this.$http({
                     url: '/api/generate/invitation_code',
                     method: 'post',
                     data: {
-                        token: '8dwre821f9bacbde1d96ec5b3cfch58u',
+                        token: token,
                         channel: 'facebook'
                     }
                 }).then((res) => {
@@ -126,11 +128,13 @@ Sebesar Rp.10.000 dan Anda juga akan dapat Bonus Undang teman sebesar Rp.6000.
                 });
          },
          whatsappShare(){
+               var content=window.AndroidWebView.getAppToken();
+                let token = Base64.decode(content)
                    this.$http({
                     url: '/api/generate/invitation_code',
                     method: 'post',
                     data: {
-                        token: '8dwre821f9bacbde1d96ec5b3cfch58u',
+                        token: token,
                         channel: 'whatsapp'
                     }
                 }).then((res) => {

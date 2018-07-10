@@ -78,11 +78,13 @@ export default {
             });  
           },
           getData(page){
+              var content=window.AndroidWebView.getAppToken();
+              let token = Base64.decode(content)
                   this.$http({
                     url: '/api/inviter/list?page='+page,
                     method: 'post',
                     data: {
-                      token: '8dwre821f9bacbde1d96ec5b3cfch58u'
+                      token: token
                     }
                 }).then((res) => {
                   this.flag = true;  
