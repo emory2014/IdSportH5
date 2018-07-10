@@ -163,12 +163,13 @@
         <p class="subtitle">Kode Transaksi</p>
         <div class="text-cont">
             <ol>
-                <li>Pilih “Transfer” pada menu</li>
-                <li>Pilih “Ke Bank Lain” pada menu</li>
-                <li>Masukan kode bank “Bank Permata(<span class="yellow">013</span>)”</li>
-                <li>Masukan “Kode Pembayan” (<span class="yellow">5602020202020202</span>) pada tujuan transfer</li>
-                <li>Masukan jumlah transfer Anda Rp(<span class="yellow">50000</span>) dan pilih “OK”</li>
-                <li>Ikuti langkah selanjutnya sampai transaksi berhasil</li>
+                <li>gin ke webiste Online Banking anda di komputer atau ponsel. </li>
+                <li>Pilih transfer -> transfer online ke bank lain. </li>
+                <li>Isi Jumlah transfer (<span class="yellow">50000</span>) anda boleh mengabaikan “nomor referensi” 
+                    pilih “Bank Permata” dalam akun penerima , masukan kode transaksi 
+                    (<span class="yellow">5602020202020202</span>) di nomor akun ( anda dapat mengabaikan berita dan email penerima) ,
+                     Klik Next. </li>
+                <li>Ikuti langkah selanjutnya sampai transaksi di nyatakan berhasil</li>
                
             </ol>
         </div>
@@ -182,12 +183,12 @@
         <p class="subtitle">Kode Transaksi</p>
         <div class="text-cont">
             <ol>
-                <li>Pilih “Transfer” pada menu</li>
-                <li>Pilih “Ke Bank Lain” pada menu</li>
-                <li>Masukan kode bank “Bank Permata(<span class="yellow">013</span>)”</li>
-                <li>Masukan “Kode Pembayan” (<span class="yellow">5602020202020202</span>) pada tujuan transfer</li>
+                <li>Login ke Aplikasi Mobile banking Anda. </li>
+                <li>Masuk ke menu “ Transfer”-> “Online”.</li>
+                <li>Klik “ Destinasi Akun” , Masukan kode transaksi (<span class="yellow">56020202020202</span>). </li>
+                <li>Klik “Pilih Bank”, kemudian pilih “Permata Bank”. </li>
                 <li>Masukan jumlah transfer Anda Rp(<span class="yellow">50000</span>) dan pilih “OK”</li>
-                <li>Ikuti langkah selanjutnya sampai transaksi berhasil</li>
+                <li>Masukan jumlah transfer Anda Rp(<span class="yellow">50000</span>) , Anda boleh mengabaikan nomor referensi lalu tekan Next.</li>
                
             </ol>
         </div>
