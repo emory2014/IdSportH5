@@ -97,6 +97,8 @@ Sebesar Rp.10.000 dan Anda juga akan dapat Bonus Undang teman sebesar Rp.6000.
 </div>
 </template>
 <script>
+let Base64 = require('js-base64').Base64;
+
     export default {
         name: 'Invite',
         data(){
