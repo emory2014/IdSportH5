@@ -118,6 +118,9 @@ let Base64 = require('js-base64').Base64;
           }
         },
         mounted(){
+            if(this.getQueryString("type")){
+                this.type = this.getQueryString("type")
+            }
             this.getData(1)
             this.scrollGetData()
         }
