@@ -8,13 +8,14 @@
     </div>
     <p class="recharge-title">Silakan pilih Nominalnya</p>
     <div class="recharge-panel" v-if="data">
-        <div v-for="(item,index) of data.amountInfo" :key="index" class="recharge-item" :class="[active == index ? 'active':'']" @click="addClass(index,item.money)">
-            <span>Rp.{{item.money}}</span>
-            <span>Rpc.{{item.gold}}</span>
+        <div v-for="(item,index) of data.amountInfo" :key="index" class="recharge-item" :class="[active == index ? 'active':'']" @click="addClass(index,item.money,item.buy,item.gift)">
+            <span>Rp.{{$utils.parseMoney(item.money)}}</span>
+            
         </div>
       
     </div>
-
+    <p class="recharge-text" v-if="buy">Koin yang didapat：<span class="recharge-val">Rpc.{{buy}}.00</span></p>
+    <p class="recharge-text" v-if="gift">Bonus pembelian Koin：<span class="recharge-val">Rpc.{{gift}}.00</span></p>
     <div class="recharge-btn" @click="recharge()">BELI</div>
 
 </div>
@@ -51,7 +52,9 @@ let Base64 = require('js-base64').Base64;
                 maskShow: false,
                 active: 0,
                 amount: 0,
-                method: 1
+                method: 1,
+                buy:40000,
+                gift:0
             }
         },
         methods: {
@@ -68,8 +71,9 @@ let Base64 = require('js-base64').Base64;
             },
           
             getData(){
-                var content=window.AndroidWebView.getAppToken();
-                let token = Base64.decode(content)
+                // var content=window.AndroidWebView.getAppToken();
+                // let token = Base64.decode(content)
+                let token = '421c8548fa4afcbf6e1635efdac47e82'
                this.$http({
                     url: 'http://test.jiajiahebao.com/api/recharge/bank/list?token='+token+'&t='+(new Date()).getTime(),
                     method: 'get',
@@ -77,6 +81,8 @@ let Base64 = require('js-base64').Base64;
                     if (res.data.status.code == 200) {
                        this.data = res.data.data
                        this.balance = res.data.data.gold
+                       this.buy = this.data.amountInfo[0].buy
+                       this.gift = this.data.amountInfo[0].gift
                 }else  {
                    window.AndroidWebView.showContent(res.data.status.message);
                     }
@@ -89,9 +95,11 @@ let Base64 = require('js-base64').Base64;
            recharge(){
                this.maskShow = true
            },
-           addClass(index,money){
+           addClass(index,money,buy,gift){
                this.active = index
                this.amount = money
+               this.buy = buy
+               this.gift = gift
            },
            selectBank(key){
                this.method = key

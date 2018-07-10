@@ -68,7 +68,7 @@
 .recharge-record {
     position: absolute;
     color: #333;
-    font-size: 14px;
+    font-size: 12px;
     right: 10px;
     top: 1px;
 }

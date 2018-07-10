@@ -4,6 +4,9 @@ import Vue from 'vue'
 import axios from 'axios';
 import App from './App'
 import router from './router'
+import utils from './lib/utils.js'
+
+Vue.prototype.$utils = utils
 
 Vue.prototype.$http = axios;
 

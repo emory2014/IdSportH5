@@ -19,7 +19,7 @@ export default new Router({
   base: '/web/',
   routes: [
     {
-      path: '/recharge',
+      path: '/',
       name: 'Recharge',
       component: Recharge
     },
@@ -34,7 +34,7 @@ export default new Router({
       component: Process
     },
     {
-      path: '/',
+      path: '/user',
       name: 'User',
       component: User
     },

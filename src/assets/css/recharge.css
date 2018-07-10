@@ -54,14 +54,13 @@ body {
 }
 
 .recharge-item {
-    width: 30%;
+    width: 47%;
     border: 1px solid #ffc000;
     border-radius: 5px;
     color: #ffc000;
     font-size: 16px;
     text-align: center;
     padding: 5px 0;
-    margin-right: 4%;
     margin-bottom: 20px;
     float: left;
 }
@@ -71,22 +70,17 @@ body {
     color: #fff;
 }
 
-.recharge-item:nth-child(3n){
-    margin-right: 0;
+.recharge-item:nth-child(2n){
+    float: right;
 }
 
-.recharge-item span:last-child{
+.recharge-item span{
     font-size: 14px;
     display: inline-block;
-    border-top: 1px solid #ffc000;
     width: 90%;
-    margin: 5px auto 0 auto;
-    padding-top: 5px;
+    margin: 12px auto 12px auto;
 }
 
-.recharge-item.active span:last-child{
-    border-top: 1px solid #fff;
-}
 
 .recharge-btn {
     background: #ffc000;
@@ -274,4 +268,16 @@ body {
     text-align: center;
     color: #333333;
     margin-top: 20%;
+}
+
+.recharge-text {
+    color: #666;
+    font-size: 14px;
+    margin: 0;
+    line-height: 2;
+}
+
+.recharge-val {
+    color: #ffc000;
+    margin-left: 6px;
 }
