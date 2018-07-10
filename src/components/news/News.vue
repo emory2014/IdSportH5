@@ -137,7 +137,6 @@ import Toast from '../common/Toast'
                 if(from_id){
                 this.from_id = from_id
                 }
-                console.log(123)
             },
             popShow(e){
                 if(e.target.className.indexOf("share-pop") > -1 ){
@@ -268,6 +267,19 @@ import Toast from '../common/Toast'
             return str
          },
          submitComment(){
+             var arr = 
+                 {
+                     avatar:"http://test.jiajiahebao.com/images/avatar.png",
+                     cid:"5",
+                     content:"test test test",
+                     create_time:"2018-06-29 17:42:28",
+                     like_active:false,
+                     like_count:"0",
+                     reply:[],
+                     reply_count:"0",
+                     username:"87****464"
+                 }
+             
              if(this.commentText){
                  this.$http({
                 url: '/api/comment/submit',
@@ -280,7 +292,7 @@ import Toast from '../common/Toast'
                 }
             }).then((res) => {
             if (res.data.status.code == 200) {
-           
+                this.comments.push(arr)
             
             }else{
                 //this.$router.push({path: '/login'});
