@@ -72,7 +72,7 @@
         <a ref="navigation" href="#title">
             <span  class="comment-msg" :class="[!commentLink ? 'show':'hide']">
               <i class="icon-msg"></i>
-              <span class="num">{{data.article.comment_count}}</span>
+              <span class="num">{{commentCount}}</span>
            </span>
            <span class="comment-footer-text" :class="[commentLink? 'show':'hide']">原文</span>
         </a>
@@ -81,8 +81,8 @@
     <div class="share-pop" :class="[maskShow ? 'show':'hide']" @click="popShow($event)">
         <div class="share-cont" >
             <p class="share-title">分享</p>
-            <i class="icon-facebook"></i>
-            <i class="icon-whatsapp"></i>
+            <i class="icon-facebook" @click="facebookShare()"></i>
+            <i class="icon-whatsapp" @click="whatsappShare()"></i>
             <p class="share-text"><span>Facebook邀请</span><span>WhatsApp邀请</span></p>
         </div>
     </div>
@@ -94,6 +94,7 @@
 <script>
 import Loading from '../Loading'
 import Toast from '../common/Toast'
+let Base64 = require('js-base64').Base64;
 
     export default {
         name: 'News',
@@ -120,7 +121,9 @@ import Toast from '../common/Toast'
                 totalPage: 1,
                 page: 1,
                 flag: true,
-                commentLink: false
+                commentLink: false,
+                commentCount: 0
+                
             }
         },
         components: {
@@ -131,6 +134,73 @@ import Toast from '../common/Toast'
             title: String
         },
         methods: {
+            facebookShare(){
+            this.$http({
+                    url: '/api/article/share',
+                    method: 'post',
+                    data: {
+                        aid: parseInt(this.getparam("aid")),
+                        token:'',
+                    }
+                }).then((res) => {
+                if (res.data.status.code == 200) {
+                     window.AndroidWebView.shareFacebook(this.data.article.title,res.data.data);
+                    
+                }else{
+                    //this.$router.push({path: '/login'});
+                    window.AndroidWebView.showContent(res.data.status.message);
+                }
+
+                }).catch((res) => {
+                    console.log('error: ', res);
+                });
+            },
+            whatsappShare(){
+                var img = document.querySelector("img")
+             
+                 this.$http({
+                    url: '/api/article/share',
+                    method: 'post',
+                    data: {
+                        aid: parseInt(this.getparam("aid")),
+                        token:'',
+                    }
+                }).then((res) => {
+                if (res.data.status.code == 200) {
+                    if(img){
+                    var imageUri="http://www.test.com/test.jpg";//确保图片地址唯一，可以是假数据但不能重复
+                    window.AndroidWebView.shareWhatsAppWithPic(img.src,imageUri,this.data.article.title,res.data.data);
+                    }else{
+                    window.AndroidWebView.shareWhatsApp(this.data.article.title,res.data.data);
+                    }
+                    
+                    
+                }else{
+                    //this.$router.push({path: '/login'});
+                    window.AndroidWebView.showContent(res.data.status.message);
+                }
+
+                }).catch((res) => {
+                    console.log('error: ', res);
+                });
+            },
+              getBase64Image(img) {
+                  document.querySelector("img").setAttribute("crossOrigin",'anonymous');
+                 
+                    var canvas = document.createElement("canvas");
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    var ctx = canvas.getContext("2d"); 
+                    var ext = img.src.substring(img.src.lastIndexOf(".")+1).toLowerCase();//图片格式
+                    
+                    img.onload = function () {
+                        //画图
+                      ctx.drawImage(img, 0, 0, img.width, img.height);
+                    var dataURL = canvas.toDataURL("image/"+ext);
+                    }
+                    // return dataURL
+                     return dataURL.replace("data:image/"+ext+";base64,", "");
+                    },
             toReplyShow(cid,from_id){
                 this.replyShow = true
                 this.cid = cid
@@ -292,8 +362,8 @@ import Toast from '../common/Toast'
                 }
             }).then((res) => {
             if (res.data.status.code == 200) {
-                this.comments.push(arr)
-            
+                this.comments.push(res.data.data.current.data)
+                this.commentCount = res.data.data.comment_count
             }else{
                 //this.$router.push({path: '/login'});
                 window.AndroidWebView.showContent(res.data.status.message);
@@ -308,6 +378,13 @@ import Toast from '../common/Toast'
               
          },
          replyComment(e){
+             var _this = this;
+             var arr = {
+                content:"wo shi test test",
+                from_user_id:"9",
+                from_username:"82****443",
+                to_username:null
+             }
              this.$http({
                 url: '/api/comment/submit',
                 method: 'post',
@@ -321,6 +398,11 @@ import Toast from '../common/Toast'
             }).then((res) => {
             if (res.data.status.code == 200) {
                 this.replyShow = false
+                this.comments.map((item,index) => {
+                    if(item.cid == _this.cid){
+                        item.reply.splice(-1,1,res.data.data.current.data)
+                    }
+                })
             
             }else{
                 //this.$router.push({path: '/login'});
@@ -400,6 +482,7 @@ import Toast from '../common/Toast'
             this.dissShow = res.data.data.article.dislike_active 
             this.pick = res.data.data.article.like 
             this.diss = res.data.data.article.dislike
+            this.commentCount = this.data.article.comment_count
             }else{
                 //this.$router.push({path: '/login'});
                 window.AndroidWebView.showContent(res.data.status.message);
