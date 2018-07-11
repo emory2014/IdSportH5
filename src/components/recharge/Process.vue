@@ -37,15 +37,12 @@
         <p class="subtitle">Kode Transaksi</p>
         <div class="text-cont">
             <ol>
-                <li> Masukkan Kartu ATM BCA Anda.  </li>
-                <li>Masukkan PIN.</li>
-                <li>Pilih “Transaksi Lainnya”.  </li>
-                <li>Pilih “Transfer”.</li>
-                <li>Pilih “Ke BCA Virtual Account”.</li>
-                <li>Masukkan nomor virtual account (<span class="yellow">2202020202020202</span>) yang Anda terima, kemudian pilih “BENAR”.</li>
-                <li>Pastikan data virtual account Anda benar, kemudian masukkan angka yang perlu Anda bayarkan, kemudian pilih “​BENAR​“.</li>
-                <li>Cek & Perhatikan Konfirmasi Pembayaran dari layar ATM, jika sudah benar pilih “​YA​“, atau pilih “​TIDAK​” jika data di layar masih salah.</li>
-                <li>Transaksi Anda sudah selesai. Pilih “​TIDAK​” untuk tidak melanjutkan transaksi lain.</li>
+                <li>Pergi ke ATM bank apa saja dan masukkan kartu ATM anda,pilih"Transaksi Lain"->"Transfer"->"Bank Lain". </li>
+                <li>Masukkan kode bank"<span class="yellow">013</span>"dan pilih "Benar".</li>
+                <li>Masukkan jumlah transfer(<span class="yellow">50000</span>)”. </li>
+                <li>Masukkan kode transaksi:(<span class="yellow">2202020202020202</span>) .</li>
+                <li>Pilih "benar" untuk konfirmasi transfer.</li>
+                <li>Bukti Pembayaran dalam bentuk struk agar disimpan sebagai bukti pembayaran yangsah dari Bank.</li>
             </ol>
         </div>
 </div>
@@ -57,14 +54,12 @@
         <p class="subtitle">Kode Transaksi</p>
         <div class="text-cont">
             <ol>
-                <li>Buka Aplikasi BCA Mobile. </li>
-                <li>Pilih “m-BCA”.</li>
-                <li>Pilih “m-Transfer”. </li>
-                <li>Pilih “BCA Virtual Account”.</li>
-                <li>Masukkan nomor virtual account (<span class="yellow">2202020202020202</span>) , lalu pilih “OK”.</li>
-                <li>Klik tombol “SEND” yang berada di sudut kanan atas aplikasi untuk melakukan transfer.</li>
-                <li>Klik “OK” untuk melanjutkan pembayaran.</li>
-                <li> Masukkan PIN Anda untuk meng-otorisasi transaksi.</li>
+                <li>Pilih “Transfer”pada menu. </li>
+                <li>Pilih “Ke Bank Lain”pada menu.</li>
+                <li>Masukkan kode bank "Bank Permata(<span class="yellow">013</span>)" </li>
+                <li>Masukkan"kode Pembayan"(<span class="yellow">2202020202020202</span>) pada tujuan transfer.</li>
+                <li>Masukkan jumlah transfer Anda Rp(<span class="yellow">5000</span>)dan pilih "OK".</li>
+                <li>Ikuti langkah selanjutnya sampai transaksi berhasil.</li>
             </ol>
         </div>
 </div>
@@ -76,12 +71,12 @@
         <p class="subtitle">Kode Transaksi</p>
         <div class="text-cont">
             <ol>
-                <li>Login ke KlikBCA Individual. </li>
-                <li>Pilih “Transfer”.</li>
-                <li>Pilih “Transfer ke BCA Virtual Account”. </li>
-                <li>Masukkan nomor virtual account (<span class="yellow">2202020202020202</span>) yang Anda terima.</li>
-                <li>Pilih “Lanjutkan” untuk melanjutkan pembayaran.</li>
-                <li>Masukkan “RESPON KEYBCA APPLI 1” yang muncul pada Token BCA Anda,lalu klik tombol “Kirim”.</li>
+                <li>Pilih “Transfer”pada menu. </li>
+                <li>Pilih “Ke Bank Lain”pada menu.</li>
+                <li>Masukkan kode bank "Bank Permata(<span class="yellow">013</span>)" </li>
+                <li>Masukkan"kode Pembayan"(<span class="yellow">2202020202020202</span>) pada tujuan transfer.</li>
+                <li>Masukkan jumlah transfer Anda Rp(<span class="yellow">5000</span>)dan pilih "OK".</li>
+                <li>Ikuti langkah selanjutnya sampai transaksi berhasil.</li>
             </ol>
         </div>
 </div>
@@ -163,14 +158,12 @@
         <p class="subtitle">Kode Transaksi</p>
         <div class="text-cont">
             <ol>
-                <li>gin ke webiste Online Banking anda di komputer atau ponsel. </li>
-                <li>Pilih transfer -> transfer online ke bank lain. </li>
-                <li>Isi Jumlah transfer (<span class="yellow">50000</span>) anda boleh mengabaikan “nomor referensi” 
-                    pilih “Bank Permata” dalam akun penerima , masukan kode transaksi 
-                    (<span class="yellow">5602020202020202</span>) di nomor akun ( anda dapat mengabaikan berita dan email penerima) ,
-                     Klik Next. </li>
-                <li>Ikuti langkah selanjutnya sampai transaksi di nyatakan berhasil</li>
-               
+                <li>Pilih “Transfer”pada menu. </li>
+                <li>Pilih “Ke Bank Lain”pada menu. </li>
+                <li>Masukkan kode bank "Bank Permata(<span class="yellow">013</span>)"</li>
+                <li>Masukkan"kode Pembayan"(<span class="yellow">2202020202020202</span>) pada tujuan transfer</li>
+                <li>Masukkan jumlah transfer Anda Rp(<span class="yellow">5000</span>)dan pilih "OK".</li>
+                <li>Ikuti langkah selanjutnya sampai transaksi berhasil.</li>
             </ol>
         </div>
 </div>
@@ -183,12 +176,12 @@
         <p class="subtitle">Kode Transaksi</p>
         <div class="text-cont">
             <ol>
-                <li>Login ke Aplikasi Mobile banking Anda. </li>
-                <li>Masuk ke menu “ Transfer”-> “Online”.</li>
-                <li>Klik “ Destinasi Akun” , Masukan kode transaksi (<span class="yellow">56020202020202</span>). </li>
-                <li>Klik “Pilih Bank”, kemudian pilih “Permata Bank”. </li>
+                <li>Pilih “Transfer”pada menu. </li>
+                <li>Pilih “Ke Bank Lain”pada menu.</li>
+                <li>Masukkan kode bank "Bank Permata(<span class="yellow">013</span>)"</li>
+                <li>Masukkan"kode Pembayan"(<span class="yellow">2202020202020202</span>) pada tujuan transfer</li>
                 <li>Masukan jumlah transfer Anda Rp(<span class="yellow">50000</span>) dan pilih “OK”</li>
-                <li>Masukan jumlah transfer Anda Rp(<span class="yellow">50000</span>) , Anda boleh mengabaikan nomor referensi lalu tekan Next.</li>
+                <li>Ikuti langkah selanjutnya sampai transaksi berhasil.</li>
                
             </ol>
         </div>
