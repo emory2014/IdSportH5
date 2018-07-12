@@ -62,7 +62,7 @@
         <div class="comment-sec" v-if="item.reply.length">
             <p  v-for="(v,i) of item.reply" :key="i"><span @click="toReplyShow(item.cid,v.from_user_id)">{{v.from_username}}</span><span  v-if="v.to_username" class="reply">Balas</span><span @click="toReplyShow(item.cid,v.from_user_id)">{{v.to_username}}</span>: {{v.content}}</p>
              <!-- <p><span>sss&ee</span><span class="reply">Balas</span><span>Rika</span>: wwewe wewe wewe we wewewewewewewewe</p> -->
-             <router-link v-if="item.reply.length > 4" :to="'/comment?cid='+ item.cid "> <p class="comment-more">Lihat semua {{item.reply_count}} ulasan <i class="icon-comment-more"></i></p></router-link>
+             <router-link v-if="item.reply_count > 4" :to="'/comment?cid='+ item.cid "> <p class="comment-more">Lihat semua {{item.reply_count}} ulasan <i class="icon-comment-more"></i></p></router-link>
         </div>
      </div>
   </div>
@@ -140,7 +140,7 @@ let Base64 = require('js-base64').Base64;
                     method: 'post',
                     data: {
                         aid: parseInt(this.getparam("aid")),
-                        token:'',
+                        token: window.AndroidWebView.getAppToken(),
                     }
                 }).then((res) => {
                 if (res.data.status.code == 200) {
@@ -163,7 +163,7 @@ let Base64 = require('js-base64').Base64;
                     method: 'post',
                     data: {
                         aid: parseInt(this.getparam("aid")),
-                        token:'',
+                        token:window.AndroidWebView.getAppToken(),
                     }
                 }).then((res) => {
                 if (res.data.status.code == 200) {
@@ -231,8 +231,8 @@ let Base64 = require('js-base64').Base64;
                 url: '/api/comment//like',
                 method: 'post',
                 data:{
-                    // token: window.AndroidWebView.getAppToken(),
-                    token: '',
+                     token: window.AndroidWebView.getAppToken(),
+                    // token: '',
                     comment_id: cid,
                 }
             }).then((res) => {
@@ -261,19 +261,7 @@ let Base64 = require('js-base64').Base64;
                 }
             },
             ajaxNewsLike(type,action){
-             this.$http({
-                url: '/api/article/like',
-                method: 'post',
-                data:{
-                    aid: parseInt(this.getparam("aid")),
-                    // token: window.AndroidWebView.getAppToken(),
-                    token:'',
-                    type: type,
-                    action: action
-                }
-            }).then((res) => {
-            if (res.data.status.code == 200) {
-                if(type == 1) {
+                 if(type == 1) {
                     if(action == 1) {
                         this.pick ++
                     }else{
@@ -288,6 +276,19 @@ let Base64 = require('js-base64').Base64;
                     }
                     
                 }
+             this.$http({
+                url: '/api/article/like',
+                method: 'post',
+                data:{
+                    aid: parseInt(this.getparam("aid")),
+                    token: window.AndroidWebView.getAppToken(),
+                    // token:'',
+                    type: type,
+                    action: action
+                }
+            }).then((res) => {
+            if (res.data.status.code == 200) {
+               
             }
             }).catch((res) => {
                 console.log('error: ', res);
@@ -357,8 +358,8 @@ let Base64 = require('js-base64').Base64;
                 url: '/api/comment/submit',
                 method: 'post',
                 data:{
-                    // token: window.AndroidWebView.getAppToken, 
-                    token:'',
+                    token: window.AndroidWebView.getAppToken, 
+                    // token:'',
                     aid: this.getparam("aid"),
                     content: this.commentText
                 }
@@ -391,8 +392,8 @@ let Base64 = require('js-base64').Base64;
                 url: '/api/comment/submit',
                 method: 'post',
                 data:{
-                    // token: window.AndroidWebView.getAppToken, 
-                    token:'',
+                     token: window.AndroidWebView.getAppToken, 
+                    // token:'',
                     comment_id: this.cid,
                     to_user_id: this.from_id,
                     content: e.target.value
@@ -420,7 +421,7 @@ let Base64 = require('js-base64').Base64;
                     url: '/api/comments?aid='+this.getparam("aid")+'&page='+page,
                     method: 'post',
                     data:{
-                        token:''
+                        token: window.AndroidWebView.getAppToken()
                     }
                 }).then((res) => {
                     this.flag = true;  
@@ -475,7 +476,7 @@ let Base64 = require('js-base64').Base64;
                 url: '/article/detail?aid='+this.getparam("aid"),
                 method: 'post',
                 data: {
-                    token: ''
+                    token: window.AndroidWebView.getAppToken()
                 }
             }).then((res) => {
             if (res.data.status.code == 200) {

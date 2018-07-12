@@ -47,7 +47,8 @@ import BHeader from '../common/BHeader'
                 data: null,
                 isLike: false,
                 likeCount: 0,
-                from_id: ''
+                from_id: '',
+                reply:[]
             }
         },
         components: {
@@ -59,23 +60,24 @@ import BHeader from '../common/BHeader'
         },
         methods: {
             toLike(){
-               this.$http({
-                url: '/api/comment/like',
-                method: 'post',
-                data:{
-                    // token: window.AndroidWebView.getAppToken(),
-                    token: '',
-                    comment_id: this.getparam("cid"),
-                }
-            }).then((res) => {
-            if (res.data.status.code == 200) {
-                 if(this.isLike) {
+                  if(this.isLike) {
                     this.isLike = false
                     this.likeCount --
                 }else {
                     this.isLike = true
                     this.likeCount ++
                 }
+               this.$http({
+                url: '/api/comment/like',
+                method: 'post',
+                data:{
+                    token: window.AndroidWebView.getAppToken(),
+                    // token: '',
+                    comment_id: this.getparam("cid"),
+                }
+            }).then((res) => {
+            if (res.data.status.code == 200) {
+               
               
             }
             }).catch((res) => {
@@ -100,15 +102,15 @@ import BHeader from '../common/BHeader'
                 url: '/api/comment/submit',
                 method: 'post',
                 data:{
-                    // token: window.AndroidWebView.getAppToken, 
-                    token:'',
+                    token: window.AndroidWebView.getAppToken, 
+                    // token:'',
                     comment_id: this.getparam("cid"),
                     to_user_id: this.from_id,
                     content: e.target.value
                 }
             }).then((res) => {
             if (res.data.status.code == 200) {
-                
+                this.data.comment_reply.push(res.data.data.current.data)
             }else{
                 //this.$router.push({path: '/login'});
                 window.AndroidWebView.showContent(res.data.status.message);
