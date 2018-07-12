@@ -1,6 +1,6 @@
 <template>
   <div >
-    <BHeader title="Undang Teman"  /> 
+    <BHeader title="Undangan saya"  /> 
     <Loading v-if="!data"/>
     <div v-if="data" >
     <div class="invite-bg">
