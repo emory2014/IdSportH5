@@ -450,6 +450,7 @@ let Base64 = require('js-base64').Base64;
             },
           scrollGetData(){
               let _this = this;
+              
                window.addEventListener('scroll',function(){  
                 if(document.body.scrollTop + window.innerHeight <= document.body.offsetHeight) {  
                     // console.log(sw);  
@@ -465,7 +466,6 @@ let Base64 = require('js-base64').Base64;
                     }  
                 }  
                 if(_this.data){
-                    
                     if(document.documentElement.scrollTop > document.querySelector(".news-cont").clientHeight){
                         _this.commentLink = true
                         _this.$refs.navigation.setAttribute("href","#title")
@@ -473,8 +473,7 @@ let Base64 = require('js-base64').Base64;
                         _this.commentLink = false
                         _this.$refs.navigation.setAttribute("href","#comment")
                     }
-                    // console.log(document.querySelector(".news-cont").clientHeight)
-                    // console.log(document.documentElement.scrollTop)
+                    
                 }
             });  
           }

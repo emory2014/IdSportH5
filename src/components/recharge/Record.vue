@@ -4,7 +4,7 @@
    <BHeader title="Bayar di Alfamart"  /> 
    <div class="tab-cont record">
        <div class="item" :class="[type == 'waiting'?'active':'']" @click="addClass('waiting')">Sedang proses</div>
-       <div class="item" :class="[type == 'success'?'active':'']" @click="addClass('success')">Dalam Proses</div>
+       <div class="item" :class="[type == 'success'?'active':'']" @click="addClass('success')">Berhasil</div>
        <div class="item" :class="[type == 'failed'?'active':'']" @click="addClass('failed')"> Gagal</div>
    </div>
   <Loading v-if="loading" />
