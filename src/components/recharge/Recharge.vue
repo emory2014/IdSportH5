@@ -113,7 +113,8 @@ let Base64 = require('js-base64').Base64;
            }
         },
         mounted(){
-            window.AndroidWebView.showContent(this.$http)
+            let _this = this;
+            window.AndroidWebView.showContent(_this.$http)
             this.getData()
         }
     }
