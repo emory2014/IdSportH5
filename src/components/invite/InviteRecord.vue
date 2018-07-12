@@ -141,7 +141,7 @@ body{
 .divider {
   position: absolute;
   right: 0;
-  top: 18px;
+  top: 10px;
   display: inline-block;
   background: #333333;
   width: 1px;

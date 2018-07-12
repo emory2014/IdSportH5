@@ -88,8 +88,9 @@
     </div>
 
     <div class="reply-mask">
-        <div>
-            
+        <div class="reply-cont">
+            <p class="reply-mask-title"><span class="left">Batal</span><span class="right">Kirim</span></p>
+            <input  placeholder="Komentar..." />
         </div>
     </div>
 
@@ -517,33 +518,10 @@ let Base64 = require('js-base64').Base64;
             }).catch((res) => {
                 console.log('error: ', res);
             });
-        //    this.$http({
-        //         url: '/api/comments?aid='+this.getparam("aid")+'&page=1',
-        //         method: 'post',
-        //         data: {
-        //             token:''
-        //         }
-        //     }).then((res) => {
-        //     if (res.data.status.code == 200) {
-        //         this.comments = res.data.data.comments
-                
-        //     }else{
-        //         //this.$router.push({path: '/login'});
-        //         window.AndroidWebView.showContent(res.data.status.message);
-        //     }
-
-        //     }).catch((res) => {
-        //         console.log('error: ', res);
-        //     });
+     
         this.getData(1);
         this.scrollGetData();
-        // if(this.data){
-        //     if(this.commentLink) {
-        //         this.$refs.navigation.setAttribute("href","#title")
-        //     }else{
-        //         this.$refs.navigation.setAttribute("href","#comment")
-        // }
-        // }
+    
        
         }
     }
@@ -1015,5 +993,56 @@ body{
     width: 50%;
     text-align: center;
     font-size: 16px;
+}
+
+.reply-mask {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.reply-cont {
+    position: absolute;
+    bottom: 0;
+    background: #fff;
+    width: 100%;
+    font-size: 16px;
+    color: #999999;
+    overflow: hidden;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.reply-mask-title {
+    margin:  0;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.reply-mask-title .right{
+    color: #ffc000;
+    float: right; 
+}
+
+.reply-cont input {
+    height: 120px;
+    font-size: 14px;
+    color: #333333;
+    padding: 0 10px;
+    line-height: 1.2;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.reply-cont input::placeholder{
+    position: relative;
+    top: -40px;
+    line-height: 20px;
+    color: #999;
+    font-size: 14px;
 }
 </style>
