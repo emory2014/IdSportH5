@@ -113,7 +113,7 @@ let Base64 = require('js-base64').Base64;
            }
         },
         mounted(){
-            window.AndroidWebView.showContent(navigator.userAgent)
+            window.AndroidWebView.showContent($http.defaults.headers.common['Authorization'])
             this.getData()
         }
     }
