@@ -39,6 +39,7 @@
 <script>
 import Loading from '../Loading'
 import BHeader from '../common/BHeader'
+let Base64 = require('js-base64').Base64;
 
     export default {
         name: 'NewsDetail',
@@ -48,7 +49,8 @@ import BHeader from '../common/BHeader'
                 isLike: false,
                 likeCount: 0,
                 from_id: '',
-                reply:[]
+                reply:[],
+                token: ''
             }
         },
         components: {
@@ -71,7 +73,7 @@ import BHeader from '../common/BHeader'
                 url: '/api/comment/like',
                 method: 'post',
                 data:{
-                    token: window.AndroidWebView.getAppToken(),
+                    token: this.token,
                     // token: '',
                     comment_id: this.getparam("cid"),
                 }
@@ -102,7 +104,7 @@ import BHeader from '../common/BHeader'
                 url: '/api/comment/submit',
                 method: 'post',
                 data:{
-                    token: window.AndroidWebView.getAppToken, 
+                    token: this.token, 
                     // token:'',
                     comment_id: this.getparam("cid"),
                     to_user_id: this.from_id,
@@ -132,6 +134,13 @@ import BHeader from '../common/BHeader'
         },
       
         mounted(){
+             if(this.getparam("uAgent")){
+                let content=window.AndroidWebView.getAppToken()
+                let token = Base64.decode(content)
+                this.token = token
+            }else{
+                this.token = ''
+            }
             this.$http({
                 url: '/api/comment/replyList?cid='+this.getparam("cid"),
                 method: 'get',

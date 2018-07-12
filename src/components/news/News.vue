@@ -62,7 +62,7 @@
         <div class="comment-sec" v-if="item.reply.length">
             <p  v-for="(v,i) of item.reply" :key="i"><span @click="toReplyShow(item.cid,v.from_user_id)">{{v.from_username}}</span><span  v-if="v.to_username" class="reply">Balas</span><span @click="toReplyShow(item.cid,v.from_user_id)">{{v.to_username}}</span>: {{v.content}}</p>
              <!-- <p><span>sss&ee</span><span class="reply">Balas</span><span>Rika</span>: wwewe wewe wewe we wewewewewewewewe</p> -->
-             <router-link v-if="item.reply_count > 4" :to="'/comment?cid='+ item.cid "> <p class="comment-more">Lihat semua {{item.reply_count}} ulasan <i class="icon-comment-more"></i></p></router-link>
+              <p v-if="item.reply_count > 4" class="comment-more" @click="goToDetail(item.cid)">Lihat semua {{item.reply_count}} ulasan <i class="icon-comment-more"></i></p>
         </div>
      </div>
   </div>
@@ -122,8 +122,8 @@ let Base64 = require('js-base64').Base64;
                 page: 1,
                 flag: true,
                 commentLink: false,
-                commentCount: 0
-                
+                commentCount: 0,
+                token: ''
             }
         },
         components: {
@@ -134,13 +134,21 @@ let Base64 = require('js-base64').Base64;
             title: String
         },
         methods: {
+            goToDetail(aid){
+                console.log(aid)
+                if(this.getparam("uAgent")){
+                    this.$router.push("/comment?aid="+aid+"&uAgent=newscat")
+                }else{
+                    this.$router.push("/comment?aid="+aid)
+                }
+            },
             facebookShare(){
             this.$http({
                     url: '/api/article/share',
                     method: 'post',
                     data: {
                         aid: parseInt(this.getparam("aid")),
-                        token: window.AndroidWebView.getAppToken(),
+                        token: this.token,
                     }
                 }).then((res) => {
                 if (res.data.status.code == 200) {
@@ -163,7 +171,7 @@ let Base64 = require('js-base64').Base64;
                     method: 'post',
                     data: {
                         aid: parseInt(this.getparam("aid")),
-                        token:window.AndroidWebView.getAppToken(),
+                        token: this.token,
                     }
                 }).then((res) => {
                 if (res.data.status.code == 200) {
@@ -231,7 +239,7 @@ let Base64 = require('js-base64').Base64;
                 url: '/api/comment//like',
                 method: 'post',
                 data:{
-                     token: window.AndroidWebView.getAppToken(),
+                     token: this.token,
                     // token: '',
                     comment_id: cid,
                 }
@@ -281,7 +289,7 @@ let Base64 = require('js-base64').Base64;
                 method: 'post',
                 data:{
                     aid: parseInt(this.getparam("aid")),
-                    token: window.AndroidWebView.getAppToken(),
+                    token: this.token,
                     // token:'',
                     type: type,
                     action: action
@@ -358,7 +366,7 @@ let Base64 = require('js-base64').Base64;
                 url: '/api/comment/submit',
                 method: 'post',
                 data:{
-                    token: window.AndroidWebView.getAppToken, 
+                    token: this.token, 
                     // token:'',
                     aid: this.getparam("aid"),
                     content: this.commentText
@@ -392,7 +400,7 @@ let Base64 = require('js-base64').Base64;
                 url: '/api/comment/submit',
                 method: 'post',
                 data:{
-                     token: window.AndroidWebView.getAppToken, 
+                     token: this.token, 
                     // token:'',
                     comment_id: this.cid,
                     to_user_id: this.from_id,
@@ -403,7 +411,7 @@ let Base64 = require('js-base64').Base64;
                 this.replyShow = false
                 this.comments.map((item,index) => {
                     if(item.cid == _this.cid){
-                        item.reply.splice(-1,1,res.data.data.current.data)
+                        item.reply.push(res.data.data.current.data)
                     }
                 })
             
@@ -421,7 +429,7 @@ let Base64 = require('js-base64').Base64;
                     url: '/api/comments?aid='+this.getparam("aid")+'&page='+page,
                     method: 'post',
                     data:{
-                        token: window.AndroidWebView.getAppToken()
+                        token: this.token
                     }
                 }).then((res) => {
                     this.flag = true;  
@@ -457,7 +465,8 @@ let Base64 = require('js-base64').Base64;
                     }  
                 }  
                 if(_this.data){
-                    if(document.documentElement.scrollTop >= document.querySelector(".news-cont").clientHeight){
+                    
+                    if(document.documentElement.scrollTop > document.querySelector(".news-cont").clientHeight){
                         _this.commentLink = true
                         _this.$refs.navigation.setAttribute("href","#title")
                     }else{
@@ -472,11 +481,19 @@ let Base64 = require('js-base64').Base64;
         },
       
         mounted(){
+            if(this.getparam("uAgent")){
+                let content=window.AndroidWebView.getAppToken()
+                let token = Base64.decode(content)
+                this.token = token
+            }else{
+                this.token = ''
+            }
+            
             this.$http({
                 url: '/article/detail?aid='+this.getparam("aid"),
                 method: 'post',
                 data: {
-                    token: window.AndroidWebView.getAppToken()
+                    token: this.token
                 }
             }).then((res) => {
             if (res.data.status.code == 200) {
@@ -565,6 +582,7 @@ body{
 }
 .news-cont {
     border-bottom: 10px solid #f5f5f5;
+    min-height: 10px;
 }
 
 .news-cont:last-child{
