@@ -114,8 +114,8 @@ let Base64 = require('js-base64').Base64;
         },
         mounted(){
             let _this = this;
-            window.AndroidWebView.showContent(_this.$http)
-            this.getData()
+            cwindow.AndroidWebView.showContent(_this.$http.defaults.headers.common)
+            // this.getData()
         }
     }
 </script>
