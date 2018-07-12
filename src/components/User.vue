@@ -9,15 +9,15 @@
         </header>
         <div class="nc-body" :class="[!load ? 'show':'hide']">
             <ul class="nc-ul">
-                <!-- <li @click="selectProfle()">
+                 <li @click="selectProfle()">
                     <div class="nc-item" id="profil">
 
                           <label for="uploads">Profil</label>
-                          <input type="file" id="uploads" capture="camera" style="position:absolute; clip:rect(0 0 0 0);" accept="image/png, image/jpeg, image/jpg" @change="uploadImg($event, 1)">
+                          <!-- <input type="file" id="uploads" capture="camera" style="position:absolute; clip:rect(0 0 0 0);" accept="image/png, image/jpeg, image/jpg" @change="uploadImg($event, 1)"> -->
                           <span class="pic-box"><img id="avatar" class="header-pic" src = "../assets/images/header.png" ></span>
                           <i class="icon-next"></i>
                     </div>
-                </li> -->
+                </li> 
                 <li @click="selectName()">
                       <div class="nc-item modal" id="nicName">
                             Nama
@@ -79,13 +79,15 @@
               <div class="nc-btn" @click="sendAjax()">Selesai</div>
         </div>
         <Loading :class = "[load ? 'show':'hide']" />
-        <!-- <div class="mask mask-profil" v-bind:class="[profleShow? 'show':'hide']">
+        <div class="mask mask-profil" v-bind:class="[profleShow? 'show':'hide']">
               <div class="pop-sex-cont">
-                    <div class="sex-item" @click="takePhoto()"><input type="file" id='image' accept="image/*" capture='camera'>Kamera</div>
-                    <div class="sex-item">Galery</div>
+                    <div class="sex-item" @click="takePhoto()">
+                      <!-- <input type="file" id='image' accept="image/*" capture='camera'> -->
+                      Kamera</div>
+                    <div class="sex-item" @click="takePicture()">Galery</div>
                     <div class="sex-item cancel" @click = "cancelShow()">Bata</div>
               </div>
-          </div> -->
+          </div>
           <div class="new-user-container" v-bind:class="[newUser? 'show':'hide']">
             <!-- <header class="header">
                       　<i class="nc-icon-prev cancel" @click = "cancelUserShow()"></i>
@@ -225,8 +227,17 @@ export default {
         this.toastPop("pilih nama")
       }
     },
-    nameInput(){
-
+   
+    takePhoto(){
+      window.AndroidWebView.doTakePhoto();
+    },
+    takePicture(){
+      window.AndroidWebView.doPickPhotoFromGallery();
+    },
+    setPhotoData(msg){
+     // this.cancelShow()
+        window.AndroidWebView.showContent("头像Base64数据:")
+        
     },
     toastPop(text){
       this.toastShow = true
@@ -638,6 +649,7 @@ uploadImg (e, num) {
     }).catch((res) => {
         console.log('error: ', res);
     });
+     window['setPhotoData'] = this.setPhotoData
   },
   created(){
    
