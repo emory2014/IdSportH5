@@ -1,7 +1,7 @@
 <template> 
 <div>
 <div class="process-container">
-   <BHeader title="Bayar di Alfamart"  /> 
+   <BHeader title="Riwayat Transaksi"  /> 
    <div class="tab-cont record">
        <div class="item" :class="[type == 'waiting'?'active':'']" @click="addClass('waiting')">Sedang proses</div>
        <div class="item" :class="[type == 'success'?'active':'']" @click="addClass('success')">Berhasil</div>

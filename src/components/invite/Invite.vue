@@ -1,6 +1,6 @@
 <template>
 <div class="invite-container">
-    
+    <BHeader title="Undang Teman"  /> 
     <div class="invite-share-sec">
        <router-link to="invite-record"> <p class="my-invite-text">Undangan saya</p></router-link>
         <p class="my-invite-title">Setiap mengundang 1teman akan  mendapatkan bonus sebesar</p>
@@ -97,10 +97,15 @@ Sebesar Rp.10.000 dan Anda juga akan dapat Bonus Undang teman sebesar Rp.6000.
 </div>
 </template>
 <script>
+import BHeader from "../common/BHeader"
 let Base64 = require('js-base64').Base64;
 
     export default {
         name: 'Invite',
+         components: {
+           BHeader,
+        
+        },
         data(){
             return {
                 data: null
@@ -192,7 +197,7 @@ let Base64 = require('js-base64').Base64;
     .invite-container {
         position: relative;
         background:#3ea2e5;
-        padding: 10px 0;
+        padding: 0 0 10px 0;
         text-align: center;
 }
 
@@ -360,6 +365,7 @@ let Base64 = require('js-base64').Base64;
     background: #fff!important;
     text-align: left;
     line-height: 1.5;
+    list-style: decimal;
 }
 
 .contoh-1-title {

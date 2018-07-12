@@ -466,7 +466,7 @@ let Base64 = require('js-base64').Base64;
                     }  
                 }  
                 if(_this.data){
-                    if(document.documentElement.scrollTop > document.querySelector(".news-cont").clientHeight){
+                    if(document.documentElement.scrollTop >= document.querySelector(".news-cont").clientHeight){
                         _this.commentLink = true
                         _this.$refs.navigation.setAttribute("href","#title")
                     }else{

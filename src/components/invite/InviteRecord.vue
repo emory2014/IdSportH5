@@ -1,5 +1,6 @@
 <template>
   <div >
+    <BHeader title="Undang Teman"  /> 
     <Loading v-if="!data"/>
     <div v-if="data" >
     <div class="invite-bg">
@@ -42,13 +43,15 @@
 
 <script>
 import Loading from '../Loading'
+import BHeader from "../common/BHeader"
 let Base64 = require('js-base64').Base64;
 
 
 export default {
   name: 'InviteRecord',
     components: {
-    Loading
+    Loading,
+    BHeader
   },
    data(){
             return {
