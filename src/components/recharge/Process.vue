@@ -261,8 +261,13 @@ let Base64 = require('js-base64').Base64;
                    var content=window.AndroidWebView.getAppToken();
                 let token = Base64.decode(content)
                this.$http({
-                    url: '/api/recharge/code/generate?token='+token+'&amount='+this.getQueryString("m")+'&method='+this.getQueryString("method")+'&t='+(new Date()).getTime(),
-                    method: 'get',
+                    url: '/api/recharge/code/generate?t='+(new Date()).getTime(),
+                    method: 'post',
+                    data: {
+                        token: token,
+                        amount: this.getQueryString("m"),
+                        method: this.getQueryString("method")
+                    }
                 }).then((res) => {
                     if (res.data.status.code == 200) {
                        this.data = res.data.data

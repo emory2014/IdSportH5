@@ -62,7 +62,7 @@
         <div class="comment-sec" v-if="item.reply.length">
             <p  v-for="(v,i) of item.reply" :key="i"><span @click="toReplyShow(item.cid,v.from_user_id)">{{v.from_username}}</span><span  v-if="v.to_username" class="reply">Balas</span><span @click="toReplyShow(item.cid,v.from_user_id)">{{v.to_username}}</span>: {{v.content}}</p>
              <!-- <p><span>sss&ee</span><span class="reply">Balas</span><span>Rika</span>: wwewe wewe wewe we wewewewewewewewe</p> -->
-             <router-link v-if="item.reply.length > 4" :to="'/news-detail?cid='+ item.cid "> <p class="comment-more">Lihat semua {{item.reply_count}} ulasan <i class="icon-comment-more"></i></p></router-link>
+             <router-link v-if="item.reply.length > 4" :to="'/comment?cid='+ item.cid "> <p class="comment-more">Lihat semua {{item.reply_count}} ulasan <i class="icon-comment-more"></i></p></router-link>
         </div>
      </div>
   </div>
@@ -168,8 +168,7 @@ let Base64 = require('js-base64').Base64;
                 }).then((res) => {
                 if (res.data.status.code == 200) {
                     if(img){
-                    var imageUri="http://www.test.com/test.jpg";//确保图片地址唯一，可以是假数据但不能重复
-                    window.AndroidWebView.shareWhatsAppWithPic(img.src,imageUri,this.data.article.title,res.data.data);
+                    window.AndroidWebView.shareWhatsAppWithPic('',img.src,this.data.article.title,res.data.data);
                     }else{
                     window.AndroidWebView.shareWhatsApp(this.data.article.title,res.data.data);
                     }
@@ -221,6 +220,13 @@ let Base64 = require('js-base64').Base64;
             toLike(cid,e){
                var target = e.currentTarget
                 //e.currentTarget.className = "zan-right active"
+                 if(target.className.indexOf("active") > -1) {
+                    target.className = "zan-right"
+                    target.children[1].innerHTML = parseInt(target.children[1].innerHTML) - 1
+                }else {
+                    target.className = "zan-right active"
+                    target.children[1].innerHTML = parseInt(target.children[1].innerHTML) + 1
+                }
                 this.$http({
                 url: '/api/comment//like',
                 method: 'post',
@@ -231,14 +237,10 @@ let Base64 = require('js-base64').Base64;
                 }
             }).then((res) => {
             if (res.data.status.code == 200) {
-                 if(target.className.indexOf("active") > -1) {
-                    target.className = "zan-right"
-                    target.children[1].innerHTML = parseInt(target.children[1].innerHTML) - 1
-                }else {
-                    target.className = "zan-right active"
-                    target.children[1].innerHTML = parseInt(target.children[1].innerHTML) + 1
-                }
+                
               
+            }else if(res.data.status.code == 401){
+                   // window.AndroidWebView.loginApp();
             }
             }).catch((res) => {
                 console.log('error: ', res);
@@ -551,7 +553,7 @@ body{
     margin: 15px auto;
 }
 .date-sec {
-    font-size: 14px;
+    font-size: 12px;
     color: #999999;
     width: 92%;
     margin: 15px auto;

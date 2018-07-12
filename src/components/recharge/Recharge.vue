@@ -75,8 +75,11 @@ let Base64 = require('js-base64').Base64;
                 let token = Base64.decode(content)
                 // let token = '421c8548fa4afcbf6e1635efdac47e82'
                this.$http({
-                    url: 'http://test.jiajiahebao.com/api/recharge/bank/list?token='+token+'&t='+(new Date()).getTime(),
-                    method: 'get',
+                    url: 'http://test.jiajiahebao.com/api/recharge/bank/list?t='+(new Date()).getTime(),
+                    method: 'post',
+                    data: {
+                        token: token,
+                    }
                 }).then((res) => {
                     if (res.data.status.code == 200) {
                        this.data = res.data.data
