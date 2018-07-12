@@ -11,6 +11,8 @@ import AwardDetail from '@/components/digital-game/AwardDetail'
 import Recharge from '@/components/recharge/Recharge'
 import Process from '@/components/recharge/Process'
 import Record from '@/components/recharge/Record'
+import NewsDetail from '@/components/news/NewsDetail'
+import News from '@/components/news/News'
 
 
 Vue.use(Router)
@@ -19,6 +21,11 @@ export default new Router({
   mode: 'history',
   base: '/web/',
   routes: [
+    // {
+    //   path: '/',
+    //   name: 'User',
+    //   component: User
+    // },
     {
       path: '/recharge',
       name: 'Recharge',
@@ -36,8 +43,13 @@ export default new Router({
     },
     {
       path: '/',
-      name: 'User',
-      component: User
+      name: 'News',
+      component: News
+    },
+    {
+      path: '/news-detail',
+      name: 'NewsDetail',
+      component: NewsDetail
     },
     {
       path: '/user',
