@@ -1,6 +1,6 @@
 <template>
 <div class="invite-container">
-    <BHeader title="Undang Teman"  /> 
+    <BHeader title="Undang Teman" backToApp={true} /> 
     <div class="invite-share-sec">
        <router-link to="invite-record"> <p class="my-invite-text">Undangan saya</p></router-link>
         <p class="my-invite-title">Setiap mengundang 1teman akan  mendapatkan bonus sebesar</p>

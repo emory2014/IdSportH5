@@ -15,11 +15,12 @@
         },
         props: {
             title: String,
-            recharge: false
+            recharge: false,
+            backToApp: false
         },
         methods: {
             goBack(){
-                if(this.recharge){
+                if(this.recharge || this.backToApp){
                     window.AndroidWebView.closeActivities();
                 }
                 else{
