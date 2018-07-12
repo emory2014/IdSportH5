@@ -138,6 +138,7 @@
 import IosSelect from 'iosselect'
 import vueCropper from 'vue-cropper'
 import Loading from './Loading'
+let Base64 = require('js-base64').Base64;
 
 var curComponent;
 
@@ -178,7 +179,8 @@ export default {
       arr:[],
       seletedHobbyArr:[],
       ajaxFlag: true,
-      src: ''
+      src: '',
+      token: ''
     }
   },
   methods: {
@@ -601,7 +603,8 @@ uploadImg (e, num) {
             birthdate: birthdate,
             education: education,
             profession: profession,
-            interest: this.seletedHobbyArr
+            interest: this.seletedHobbyArr,
+            token: this.token
           }
       }).then((res) => {
           this.ajaxFlag = true;
@@ -643,10 +646,17 @@ uploadImg (e, num) {
       this.formatEdu();
       this.formatOccupation();
       this.formatDate();
+
+       var content=window.AndroidWebView.getAppToken();
+       let token = Base64.decode(content)
+       this.token = token
      
       this.$http({
         url: '/api/personal/info?'+new Date().getTime(),
-        method: 'get',
+        method: 'post',
+        data: {
+          token: this.token
+        }
     }).then((res) => {
       this.load = false;
 

@@ -86,6 +86,13 @@
             <p class="share-text"><span>Facebook邀请</span><span>WhatsApp邀请</span></p>
         </div>
     </div>
+
+    <div class="reply-mask">
+        <div>
+            
+        </div>
+    </div>
+
     <div>
 
     </div>
@@ -96,7 +103,7 @@ import Loading from '../Loading'
 import Toast from '../common/Toast'
 let Base64 = require('js-base64').Base64;
 
-    export default {
+    export default { 
         name: 'News',
         data(){
             return {
