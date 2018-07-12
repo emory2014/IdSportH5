@@ -42,7 +42,7 @@ export default new Router({
       component: Process
     },
     {
-      path: '/',
+      path: '/news',
       name: 'News',
       component: News
     },
