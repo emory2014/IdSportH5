@@ -166,7 +166,7 @@ let Base64 = require('js-base64').Base64;
                 if(this.ctext) {
                     if(this.type=="comment"){
                         this.submitComment()
-                    }else if(type == "reply"){
+                    }else if(this.type == "reply"){
                         this.replyComment()
                     }
                    
