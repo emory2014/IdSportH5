@@ -56,11 +56,11 @@
                 <span>{{item.like_count}}</span>
             </div>
         </div>
-        <div class="comment-text" @click="toReplyShow(item.cid)">
+        <div class="comment-text" @click="toReplyShow(item.cid,null,item.username)">
             {{item.content}}
         </div>
         <div class="comment-sec" v-if="item.reply.length">
-            <p  v-for="(v,i) of item.reply" :key="i"><span @click="toReplyShow(item.cid,v.from_user_id)">{{v.from_username}}</span><span  v-if="v.to_username" class="reply">Balas</span><span @click="toReplyShow(item.cid,v.from_user_id)">{{v.to_username}}</span>: {{v.content}}</p>
+            <p  v-for="(v,i) of item.reply" :key="i"><span @click="toReplyShow(item.cid,v.from_user_id,v.from_username)">{{v.from_username}}</span><span  v-if="v.to_username" class="reply">Balas</span><span @click="toReplyShow(item.cid,v.from_user_id)">{{v.to_username}}</span>: {{v.content}}</p>
              <!-- <p><span>sss&ee</span><span class="reply">Balas</span><span>Rika</span>: wwewe wewe wewe we wewewewewewewewe</p> -->
               <p v-if="item.reply_count > 4" class="comment-more" @click="goToDetail(item.cid)">Lihat semua {{item.reply_count}} ulasan <i class="icon-comment-more"></i></p>
         </div>
@@ -68,7 +68,7 @@
   </div>
     <div class="fixed-comment" v-if="data">
         <input readonly class="comment-input" @click="toComment('comment')" v-model="commentText"  placeholder="Komentar…" /> 
-        <input readonly class="comment-input reply" @click="toComment('reply')" :class="[replyShow? 'show':'hide']" v-model="replyText"    placeholder="Balas…"  />
+        <input readonly class="comment-input reply" @click="toComment('reply')" :class="[replyShow? 'show':'hide']" v-model="replyText"    :placeholder="holder"  />
         <a ref="navigation" href="#title">
             <span  class="comment-msg" :class="[!commentLink ? 'show':'hide']">
               <i class="icon-msg"></i>
@@ -131,7 +131,7 @@ let Base64 = require('js-base64').Base64;
                 flag: true,
                 commentLink: false,
                 commentCount: 0,
-                token: '',
+                holder: 'Balas:',
                 ctext: '',
                 replyMask: false
             }
@@ -176,6 +176,7 @@ let Base64 = require('js-base64').Base64;
             },
             toComment(type){
                 this.replyMask = true
+                this.ctext = ''
                 this.type = type
             },
             goToDetail(aid){
@@ -251,9 +252,10 @@ let Base64 = require('js-base64').Base64;
                     // return dataURL
                      return dataURL.replace("data:image/"+ext+";base64,", "");
                     },
-            toReplyShow(cid,from_id){
+            toReplyShow(cid,from_id,name){
                 this.replyShow = true
                 this.cid = cid
+                this.holder = "Balas: "+name
                 if(from_id){
                 this.from_id = from_id
                 }
@@ -279,7 +281,7 @@ let Base64 = require('js-base64').Base64;
                     target.children[1].innerHTML = parseInt(target.children[1].innerHTML) + 1
                 }
                 this.$http({
-                url: '/api/comment//like',
+                url: '/api/comment/like',
                 method: 'post',
                 data:{
                      token: this.getToken(),
@@ -1008,7 +1010,7 @@ body{
     height: 45px;
     background: url(../../assets/images/icon-whatsapp.png) center no-repeat;
     background-size: 45px 45px;
-    margin: 30px 50px 0 50px;
+    margin: 30px 0 0 50px;
 }
 
 .share-title {
