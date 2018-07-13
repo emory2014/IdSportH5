@@ -420,6 +420,7 @@ let Base64 = require('js-base64').Base64;
             if (res.data.status.code == 200) {
                 this.comments.push(res.data.data.current.data)
                 this.commentCount = res.data.data.comment_count
+                window.AndroidWebView.showContent("Komenter berhasil dikirim");
             }else if(res.data.status.code == 401){
                 window.AndroidWebView.loginApp();
             }else{
@@ -461,7 +462,7 @@ let Base64 = require('js-base64').Base64;
                         item.reply.push(res.data.data.current.data)
                     }
                 })
-            
+            window.AndroidWebView.showContent("Komenter berhasil dikirim");
             }else if(res.data.status.code == 401){
                 window.AndroidWebView.loginApp();
             }else{
