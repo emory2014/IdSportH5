@@ -245,7 +245,7 @@ body{
 }
 
 .mask-hobby {
-    background: #fff;
+    background: #fff!important;
 }
 
 .mask-hobby .header {
