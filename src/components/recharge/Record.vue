@@ -8,7 +8,7 @@
        <div class="item" :class="[type == 'failed'?'active':'']" @click="addClass('failed')"> Gagal</div>
    </div>
   <Loading v-if="loading" />
-  <p class="record-no-data" v-if="!loading && !data.length">暂无数据</p>
+  <p class="record-no-data" v-if="!loading && !data.length">Sementara tidak ada konten</p>
   <div v-if="data.length">
     <div class="cont-panel record" v-for="(item,index) of data" :key="index">
         <div class="record-left">
