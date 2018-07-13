@@ -90,7 +90,7 @@
     <div class="reply-mask">
         <div class="reply-cont">
             <p class="reply-mask-title"><span class="left">Batal</span><span class="right">Kirim</span></p>
-            <input  placeholder="Komentar..." />
+            <input autofocus placeholder="Komentar..." />
         </div>
     </div>
 
