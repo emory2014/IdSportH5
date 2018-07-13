@@ -21,11 +21,11 @@ export default new Router({
   mode: 'history',
   base: '/web/',
   routes: [
-    // {
-    //   path: '/',
-    //   name: 'User',
-    //   component: User
-    // },
+    {
+      path: '/',
+      name: 'User',
+      component: User
+    },
     {
       path: '/recharge',
       name: 'Recharge',

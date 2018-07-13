@@ -67,8 +67,8 @@
      </div>
   </div>
     <div class="fixed-comment" v-if="data">
-        <input class="comment-input" v-model="commentText" @keyup.enter="submitComment()" placeholder="Komentar…" /> 
-        <input autofocus class="comment-input reply" :class="[replyShow? 'show':'hide']" v-model="replyText"  @keyup.enter="replyComment($event)"  placeholder="Balas…"  />
+        <input readonly class="comment-input" @click="toComment('comment')" v-model="commentText"  placeholder="Komentar…" /> 
+        <input readonly class="comment-input reply" @click="toComment('reply')" :class="[replyShow? 'show':'hide']" v-model="replyText"    placeholder="Balas…"  />
         <a ref="navigation" href="#title">
             <span  class="comment-msg" :class="[!commentLink ? 'show':'hide']">
               <i class="icon-msg"></i>
@@ -87,10 +87,10 @@
         </div>
     </div>
 
-    <div class="reply-mask">
+    <div class="reply-mask" :class="[ replyMask? 'show':'hide']">
         <div class="reply-cont">
-            <p class="reply-mask-title"><span class="left">Batal</span><span class="right">Kirim</span></p>
-            <input autofocus placeholder="Komentar..." />
+            <p class="reply-mask-title"><span class="left">Batal</span><span class="right" @click="submitInfo()">Kirim</span></p>
+            <textarea autofocus maxlength="1000" v-model="ctext" placeholder="Komentar..." />
         </div>
     </div>
 
@@ -131,7 +131,9 @@ let Base64 = require('js-base64').Base64;
                 flag: true,
                 commentLink: false,
                 commentCount: 0,
-                token: ''
+                token: '',
+                ctext: '',
+                replyMask: false
             }
         },
         components: {
@@ -142,6 +144,23 @@ let Base64 = require('js-base64').Base64;
             title: String
         },
         methods: {
+            submitInfo(){
+                this.replyMask = false
+                if(this.ctext) {
+                    if(this.type=="comment"){
+                        this.submitComment()
+                    }else if(type == "reply"){
+                        this.replyComment()
+                    }
+                   
+                }else{
+                    window.AndroidWebView.showContent('Komentar Tidak boleh Kosong');
+                }
+            },
+            toComment(type){
+                this.replyMask = true
+                this.type = type
+            },
             goToDetail(aid){
                 console.log(aid)
                 if(this.getparam("uAgent")){
@@ -369,7 +388,7 @@ let Base64 = require('js-base64').Base64;
                      username:"87****464"
                  }
              
-             if(this.commentText){
+             if(this.ctext){
                  this.$http({
                 url: '/api/comment/submit',
                 method: 'post',
@@ -377,12 +396,14 @@ let Base64 = require('js-base64').Base64;
                     token: this.token, 
                     // token:'',
                     aid: this.getparam("aid"),
-                    content: this.commentText
+                    content: this.ctext
                 }
             }).then((res) => {
             if (res.data.status.code == 200) {
                 this.comments.push(res.data.data.current.data)
                 this.commentCount = res.data.data.comment_count
+            }else if(res.data.status.code == 401){
+                window.AndroidWebView.loginApp();
             }else{
                 //this.$router.push({path: '/login'});
                 window.AndroidWebView.showContent(res.data.status.message);
@@ -412,7 +433,7 @@ let Base64 = require('js-base64').Base64;
                     // token:'',
                     comment_id: this.cid,
                     to_user_id: this.from_id,
-                    content: e.target.value
+                    content: this.ctext
                 }
             }).then((res) => {
             if (res.data.status.code == 200) {
@@ -423,6 +444,8 @@ let Base64 = require('js-base64').Base64;
                     }
                 })
             
+            }else if(res.data.status.code == 401){
+                window.AndroidWebView.loginApp();
             }else{
                 //this.$router.push({path: '/login'});
                 window.AndroidWebView.showContent(res.data.status.message);
@@ -1021,6 +1044,8 @@ body{
     margin:  0;
     padding: 10px;
     border-bottom: 1px solid #ddd;
+    color: #ddd;
+    font-size: 15px;
 }
 
 .reply-mask-title .right{
@@ -1028,21 +1053,23 @@ body{
     float: right; 
 }
 
-.reply-cont input {
+.reply-cont textarea {
     height: 120px;
     font-size: 14px;
     color: #333333;
-    padding: 0 10px;
-    line-height: 1.2;
+    padding: 10px;
+    line-height: 1.5;
     width: 100%;
     box-sizing: border-box;
+    resize: none;
+
 }
 
-.reply-cont input::placeholder{
+.reply-cont textarea::placeholder{
     position: relative;
     top: -40px;
     line-height: 20px;
-    color: #999;
-    font-size: 14px;
+    color: #ddd;
+    font-size: 15px;
 }
 </style>
