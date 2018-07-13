@@ -87,9 +87,9 @@
         </div>
     </div>
 
-    <div class="reply-mask" :class="[ replyMask? 'show':'hide']">
+    <div class="reply-mask" @click="replyMaskHide($event)" :class="[ replyMask? 'show':'hide']">
         <div class="reply-cont">
-            <p class="reply-mask-title"><span class="left">Batal</span><span class="right" @click="submitInfo()">Kirim</span></p>
+            <p class="reply-mask-title"><span class="left" @click="cancelMaskShow()">Batal</span><span class="right" @click="submitInfo()">Kirim</span></p>
             <textarea autofocus maxlength="1000" v-model="ctext" placeholder="Komentar..." />
         </div>
     </div>
@@ -144,6 +144,14 @@ let Base64 = require('js-base64').Base64;
             title: String
         },
         methods: {
+            replyMaskHide(e){
+                if(e.target.className.indexOf("reply-mask") > -1){
+                    this.replyMask = false
+                }
+            },
+            cancelMaskShow(){
+                this.replyMask = false
+            },
             submitInfo(){
                 this.replyMask = false
                 if(this.ctext) {
