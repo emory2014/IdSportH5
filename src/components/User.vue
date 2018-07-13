@@ -2,11 +2,11 @@
 
   <div class="user">
 
-
-    <header class="header" v-if="param == 'h5'">
+<BHeader title="Selesaikan data Pribadi" backToApp={true} /> 
+    <!-- <header class="header" v-if="param == 'h5'">
             　<i class="nc-icon-prev" @click="goBack()"></i>
               Selesaikan data Pribadi
-        </header>
+        </header> -->
         <div class="nc-body" :class="[!load ? 'show':'hide']">
             <ul class="nc-ul">
                  <li @click="selectProfle()">
@@ -138,6 +138,7 @@
 import IosSelect from 'iosselect'
 import vueCropper from 'vue-cropper'
 import Loading from './Loading'
+import BHeader from "./common/BHeader"
 let Base64 = require('js-base64').Base64;
 
 var curComponent;
@@ -147,7 +148,8 @@ var curComponent;
 export default {
   name: 'User',
   components: {
-    Loading
+    Loading,
+    BHeader
   },
   data () {
     return {
