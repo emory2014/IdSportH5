@@ -1,7 +1,9 @@
 <template>
 <div class="news-detail-container">
+    <BHeader title="" backToApp={true} /> 
     <Loading v-if="!data" />
     <div class="news-cont " ref="article" v-if="data">
+       
         <p id="title" class="news-title">
             {{data.article.title}}
         </p>
@@ -62,7 +64,7 @@
         <div class="comment-sec" v-if="item.reply.length">
             <p  v-for="(v,i) of item.reply" :key="i"><span @click="toReplyShow(item.cid,v.from_user_id,v.from_username)">{{v.from_username}}</span><span  v-if="v.to_username" class="reply">Balas</span><span @click="toReplyShow(item.cid,v.from_user_id)">{{v.to_username}}</span>: {{v.content}}</p>
              <!-- <p><span>sss&ee</span><span class="reply">Balas</span><span>Rika</span>: wwewe wewe wewe we wewewewewewewewe</p> -->
-              <p v-if="item.reply_count > 4" class="comment-more" @click="goToDetail(item.cid)">Lihat semua {{item.reply_count}} ulasan <i class="icon-comment-more"></i></p>
+              <p v-if="parseInt(item.reply_count) > 4" class="comment-more" @click="goToDetail(item.cid)">Lihat semua {{item.reply_count}} ulasan <i class="icon-comment-more"></i></p>
         </div>
      </div>
   </div>
@@ -100,8 +102,10 @@
 </div>
 </template>
 <script>
+import BHeader from "../common/BHeader"
 import Loading from '../Loading'
 import Toast from '../common/Toast'
+
 let Base64 = require('js-base64').Base64;
 
     export default { 
@@ -138,7 +142,7 @@ let Base64 = require('js-base64').Base64;
         },
         components: {
            Loading,
-           Toast
+           BHeader
         },
         props: {
             title: String
@@ -179,11 +183,11 @@ let Base64 = require('js-base64').Base64;
                 this.ctext = ''
                 this.type = type
             },
-            goToDetail(aid){
+            goToDetail(cid){
                 if(this.getparam("uAgent")){
-                    this.$router.push("/comment?aid="+aid+"&uAgent=newscat")
+                    this.$router.push("/comment?cid="+cid+"&uAgent=newscat")
                 }else{
-                    this.$router.push("/comment?aid="+aid)
+                    this.$router.push("/comment?cid="+cid)
                 }
             },
             facebookShare(){
@@ -192,7 +196,7 @@ let Base64 = require('js-base64').Base64;
                     method: 'post',
                     data: {
                         aid: parseInt(this.getparam("aid")),
-                        token: this.token,
+                        token: this.getToken(),
                     }
                 }).then((res) => {
                 if (res.data.status.code == 200) {
@@ -515,7 +519,8 @@ let Base64 = require('js-base64').Base64;
                         
                     }  
                 }  
-                if(_this.data){
+                if(document.querySelector(".news-cont")){
+                    console.log(document.querySelector(".news-cont"))
                     if(document.documentElement.scrollTop >= document.querySelector(".news-cont").clientHeight){
                         _this.commentLink = true
                         _this.$refs.navigation.setAttribute("href","#title")
@@ -555,9 +560,10 @@ let Base64 = require('js-base64').Base64;
      
         this.getData(1);
         this.scrollGetData();
-    
-       
-        }
+        },
+       beforeDestroy(){
+            console.log(document.querySelector(".news-cont"))
+       }
     }
 </script>
 <style>
@@ -567,7 +573,11 @@ a {
 body{
     margin: 0;
 }
-
+.header {
+    box-shadow: 0 0 0 1px rgba(255,192,0,0.1);
+    margin-bottom: 0!important;
+    border-top: none!important;
+}
 .news-detail-container{
     padding-bottom: 40px;
 }
@@ -627,14 +637,21 @@ body{
     width: 100%;
 }
 
-.text-sec p {
+.text-sec p{
     color: #333333;
     font-size: 16px;
     margin-bottom: 20px;
-    width: 92%;
+    width: 92%!important;
     margin: 15px auto;
     line-height: 1.5;
     text-align: left;
+    word-break: break-word;
+}
+
+.text-sec div{
+    color: #333333;
+    font-size: 16px;
+    word-break: break-word;
 }
 
 .like-sec {

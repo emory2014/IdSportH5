@@ -88,7 +88,7 @@
                     <div class="sex-item cancel" @click = "cancelShow()">Bata</div>
               </div>
           </div>
-          <div class="new-user-container" v-bind:class="[newUser? 'show':'hide']">
+          <div class="new-user-container" @click="goldMaskHide()" v-bind:class="[newUser? 'show':'hide']">
             <!-- <header class="header">
                       　<i class="nc-icon-prev cancel" @click = "cancelUserShow()"></i>
                         
@@ -184,6 +184,11 @@ export default {
     }
   },
   methods: {
+    goldMaskHide(e){
+      if(e.target.className.indexOf("new-user-container") > -1){
+                    this.newUser = false
+                }
+    },
     setComponent(component){
       curComponent = component
     },
@@ -584,6 +589,8 @@ uploadImg (e, num) {
     let education =  document.querySelector('#showEdu').innerHTML;
     let profession = document.querySelector('#showOccupation').innerHTML;
     let gender = this.sexVal;
+    let content=window.AndroidWebView.getAppToken();
+    let token = Base64.decode(content)
 
     if (this.src && this.name && birthdate && education && profession && gender && this.seletedHobbyArr.length) {
       //防止重复发送请求
@@ -604,7 +611,7 @@ uploadImg (e, num) {
             education: education,
             profession: profession,
             interest: this.seletedHobbyArr,
-            token: this.token
+            token: token
           }
       }).then((res) => {
           this.ajaxFlag = true;
@@ -701,6 +708,13 @@ uploadImg (e, num) {
 <style >
 @import "../assets/css/user.css";
 @import "../../node_modules/iosselect/src/iosSelect.css";
+
+body{
+    padding: 0;
+    margin: 0;
+    background: #f5f5f5!important;
+  
+}
 
 .ios-select-widget-box header.iosselect-header a {
   color: #ffc21e;
