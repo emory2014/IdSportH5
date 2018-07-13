@@ -654,6 +654,11 @@ body{
     word-break: break-word;
 }
 
+.text-sec iframe{
+    width: 100%;
+    overflow: auto;
+}
+
 .like-sec {
     text-align: center;
 }
