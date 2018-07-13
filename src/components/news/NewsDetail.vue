@@ -29,9 +29,17 @@
     </div>
 
     <div class="fixed-comment" v-if="data">
-        <input ref="replyInput" class="comment-input"  @keyup.enter="submitComment($event)" placeholder="Balas..." /> 
+        <input readonly ref="replyInput" class="comment-input"  @click="toComment()" placeholder="Balas..." /> 
     </div>
     <div>
+
+  <div class="reply-mask" @click="replyMaskHide($event)" :class="[ replyMask? 'show':'hide']">
+        <div class="reply-cont">
+            <p class="reply-mask-title"><span class="left" @click="cancelMaskShow()">Batal</span><span class="right" @click="submitComment()">Kirim</span></p>
+            <textarea autofocus maxlength="1000" v-model="ctext" placeholder="Komentar..." />
+        </div>
+    </div>
+
 
     </div>
 </div>
@@ -50,7 +58,9 @@ let Base64 = require('js-base64').Base64;
                 likeCount: 0,
                 from_id: '',
                 reply:[],
-                token: ''
+                token: '',
+                ctext:'',
+                replyMask: false
             }
         },
         components: {
@@ -61,6 +71,26 @@ let Base64 = require('js-base64').Base64;
             title: String
         },
         methods: {
+            toComment(){
+                this.replyMask = true
+            },
+            replyMaskHide(e){
+                if(e.target.className.indexOf("reply-mask") > -1){
+                    this.replyMask = false
+                }
+            },
+            cancelMaskShow(){
+                this.replyMask = false
+            },
+              getToken(){
+                if(this.getparam("uAgent")){
+                    let content=window.AndroidWebView.getAppToken()
+                    let token = Base64.decode(content)
+                    return token
+                }else{
+                    return  ''
+                }
+            },
             toLike(){
                   if(this.isLike) {
                     this.isLike = false
@@ -73,7 +103,7 @@ let Base64 = require('js-base64').Base64;
                 url: '/api/comment/like',
                 method: 'post',
                 data:{
-                    token: this.token,
+                    token: this.getToken(),
                     // token: '',
                     comment_id: this.getparam("cid"),
                 }
@@ -100,15 +130,16 @@ let Base64 = require('js-base64').Base64;
                 }
           },
           submitComment(e){
-               this.$http({
+              if(this.ctext){
+            this.$http({
                 url: '/api/comment/submit',
                 method: 'post',
                 data:{
-                    token: this.token, 
+                    token: this.getToken(), 
                     // token:'',
                     comment_id: this.getparam("cid"),
                     to_user_id: this.from_id,
-                    content: e.target.value
+                    content: this.ctext
                 }
             }).then((res) => {
             if (res.data.status.code == 200) {
@@ -121,6 +152,10 @@ let Base64 = require('js-base64').Base64;
             }).catch((res) => {
                 console.log('error: ', res);
             });
+              }else{
+                  window.AndroidWebView.showContent('Komentar Tidak boleh Kosong');
+              }
+              
           },
           dealWithTitle(text){
               let str = ''
@@ -134,13 +169,6 @@ let Base64 = require('js-base64').Base64;
         },
       
         mounted(){
-             if(this.getparam("uAgent")){
-                let content=window.AndroidWebView.getAppToken()
-                let token = Base64.decode(content)
-                this.token = token
-            }else{
-                this.token = ''
-            }
             this.$http({
                 url: '/api/comment/replyList?cid='+this.getparam("cid"),
                 method: 'get',

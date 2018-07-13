@@ -144,6 +144,15 @@ let Base64 = require('js-base64').Base64;
             title: String
         },
         methods: {
+            getToken(){
+                if(this.getparam("uAgent")){
+                    let content=window.AndroidWebView.getAppToken()
+                    let token = Base64.decode(content)
+                    return token
+                }else{
+                    return  ''
+                }
+            },
             replyMaskHide(e){
                 if(e.target.className.indexOf("reply-mask") > -1){
                     this.replyMask = false
@@ -170,7 +179,6 @@ let Base64 = require('js-base64').Base64;
                 this.type = type
             },
             goToDetail(aid){
-                console.log(aid)
                 if(this.getparam("uAgent")){
                     this.$router.push("/comment?aid="+aid+"&uAgent=newscat")
                 }else{
@@ -206,7 +214,7 @@ let Base64 = require('js-base64').Base64;
                     method: 'post',
                     data: {
                         aid: parseInt(this.getparam("aid")),
-                        token: this.token,
+                        token: this.getToken(),
                     }
                 }).then((res) => {
                 if (res.data.status.code == 200) {
@@ -274,7 +282,7 @@ let Base64 = require('js-base64').Base64;
                 url: '/api/comment//like',
                 method: 'post',
                 data:{
-                     token: this.token,
+                     token: this.getToken(),
                     // token: '',
                     comment_id: cid,
                 }
@@ -324,7 +332,7 @@ let Base64 = require('js-base64').Base64;
                 method: 'post',
                 data:{
                     aid: parseInt(this.getparam("aid")),
-                    token: this.token,
+                    token: this.getToken(),
                     // token:'',
                     type: type,
                     action: action
@@ -401,7 +409,7 @@ let Base64 = require('js-base64').Base64;
                 url: '/api/comment/submit',
                 method: 'post',
                 data:{
-                    token: this.token, 
+                    token: this.getToken(), 
                     // token:'',
                     aid: this.getparam("aid"),
                     content: this.ctext
@@ -437,7 +445,7 @@ let Base64 = require('js-base64').Base64;
                 url: '/api/comment/submit',
                 method: 'post',
                 data:{
-                     token: this.token, 
+                     token: this.getToken(), 
                     // token:'',
                     comment_id: this.cid,
                     to_user_id: this.from_id,
@@ -468,7 +476,7 @@ let Base64 = require('js-base64').Base64;
                     url: '/api/comments?aid='+this.getparam("aid")+'&page='+page,
                     method: 'post',
                     data:{
-                        token: this.token
+                        token: this.getToken()
                     }
                 }).then((res) => {
                     this.flag = true;  
@@ -519,19 +527,11 @@ let Base64 = require('js-base64').Base64;
         },
       
         mounted(){
-            if(this.getparam("uAgent")){
-                let content=window.AndroidWebView.getAppToken()
-                let token = Base64.decode(content)
-                this.token = token
-            }else{
-                this.token = ''
-            }
-            
             this.$http({
                 url: '/article/detail?aid='+this.getparam("aid"),
                 method: 'post',
                 data: {
-                    token: this.token
+                    token: this.getToken()
                 }
             }).then((res) => {
             if (res.data.status.code == 200) {
