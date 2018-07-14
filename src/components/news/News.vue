@@ -194,7 +194,27 @@ let Base64 = require('js-base64').Base64;
                     this.$router.push("/comment?cid="+cid)
                 }
             },
+            insertMeta(title,link,img){
+                         var oMeta = document.createElement('meta');
+                         oMeta.setAttribute('name',"description");
+                         oMeta.setAttribute('content',title);
+                         var tMeta = document.createElement('meta');
+                         tMeta.setAttribute('property',"og:title");
+                         tMeta.setAttribute('content',title);
+                         var sMeta = document.createElement('meta');
+                         sMeta.setAttribute('property',"og:description");
+                         sMeta.setAttribute('content',title);
+                         var fMeta = document.createElement('meta');
+                         fMeta.setAttribute('property',"og:image");
+                         fMeta.setAttribute('content',img);
+                         document.title = title
+                         document.getElementsByTagName('head')[0].appendChild(oMeta);
+                         document.getElementsByTagName('head')[0].appendChild(tMeta);
+                         document.getElementsByTagName('head')[0].appendChild(sMeta);
+                         document.getElementsByTagName('head')[0].appendChild(fMeta);
+            },
             facebookShare(){
+            var img = document.querySelector("img")
             this.$http({
                     url: '/api/article/share',
                     method: 'post',
@@ -204,6 +224,7 @@ let Base64 = require('js-base64').Base64;
                     }
                 }).then((res) => {
                 if (res.data.status.code == 200) {
+                     this.insertMeta(this.data.article.title,res.data.data,img)
                      window.AndroidWebView.shareFacebook(this.data.article.title,res.data.data);
                     
                 }else{
@@ -545,6 +566,7 @@ let Base64 = require('js-base64').Base64;
         },
       
         mounted(){
+            this.insertMeta()
             this.$http({
                 url: '/article/detail?aid='+this.getparam("aid"),
                 method: 'post',
