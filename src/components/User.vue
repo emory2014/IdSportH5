@@ -157,15 +157,6 @@ export default {
       param: this.getparam("from"),
       src: '',
       newUser: false,
-      // data: {
-      //   src: '',
-      //   name: '',
-      //   gender: '',
-      //   brith: '',
-      //   edu: '',
-      //   profession: '',
-      //   hobby: []
-      // },
       name: '',
       profleShow: false,
       nameShow: false,
@@ -281,8 +272,11 @@ export default {
               this.toastPop('hanya boleh pilih 3')
             }
           }else {
-            this.seletedHobbyArr.pop(item);
+          
+            let i = this.seletedHobbyArr.indexOf(item)
+            this.seletedHobbyArr.splice(i,1);
             this.arr.splice(index,1,false)
+    
           }
 
         }

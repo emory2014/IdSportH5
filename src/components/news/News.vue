@@ -62,7 +62,7 @@
             {{item.content}}
         </div>
         <div class="comment-sec" v-if="item.reply.length">
-            <p  v-for="(v,i) of item.reply" :key="i">{{item.reply_count}}<span @click="toReplyShow(item.cid,v.from_user_id,v.from_username)">{{v.from_username}}</span><span  v-if="v.to_username" class="reply">Balas</span><span @click="toReplyShow(item.cid,v.from_user_id,v.from_username)">{{v.to_username}}</span>: {{v.content}}</p>
+            <p  v-for="(v,i) of item.reply" :key="i"><span @click="toReplyShow(item.cid,v.from_user_id,v.from_username)">{{v.from_username}}</span><span  v-if="v.to_username" class="reply">Balas</span><span @click="toReplyShow(item.cid,v.from_user_id,v.from_username)">{{v.to_username}}</span>: {{v.content}}</p>
              <!-- <p><span>sss&ee</span><span class="reply">Balas</span><span>Rika</span>: wwewe wewe wewe we wewewewewewewewe</p> -->
               <p v-if="parseInt(item.reply_count) > 4" class="comment-more" @click="goToDetail(item.cid)">Lihat semua {{item.reply_count}} ulasan <i class="icon-comment-more"></i></p>
         </div>
@@ -545,8 +545,8 @@ let Base64 = require('js-base64').Base64;
             }).then((res) => {
             if (res.data.status.code == 200) {
             this.data = res.data.data
-            this.pickShow = res.data.data.article.like_active 
-            this.dissShow = res.data.data.article.dislike_active 
+            this.pickShow = res.data.data.like_active 
+            this.dissShow = res.data.data.dislike_active 
             this.pick = res.data.data.article.like 
             this.diss = res.data.data.article.dislike
             this.commentCount = this.data.article.comment_count
@@ -656,7 +656,7 @@ body{
     word-break: break-word;
 }
 
-.text-sec iframe{
+.text-sec iframe,.text-sec pre,.text-sec section{
     width: 100%;
     overflow: auto;
 }
