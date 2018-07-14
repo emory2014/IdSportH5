@@ -523,6 +523,7 @@ let Base64 = require('js-base64').Base64;
                 }  
                 if(document.querySelector(".news-cont") && _this.$refs.navigation){
                     if(document.documentElement.scrollTop >= document.querySelector(".news-cont").clientHeight){
+                        window.AndroidWebView.showContent(document.documentElement.scrollTop)
                         _this.commentLink = true
                         _this.$refs.navigation.setAttribute("href","#title")
                     }else{
