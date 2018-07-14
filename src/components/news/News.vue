@@ -162,10 +162,12 @@ let Base64 = require('js-base64').Base64;
             replyMaskHide(e){
                 if(e.target.className.indexOf("reply-mask") > -1){
                     this.replyMask = false
+                    this.replyShow = false
                 }
             },
             cancelMaskShow(){
                 this.replyMask = false
+                this.replyShow = false
             },
             submitInfo(){
                 this.replyMask = false
@@ -521,8 +523,8 @@ let Base64 = require('js-base64').Base64;
                         
                     }  
                 }  
-                 window.AndroidWebView.showContent('news-cont: '+document.querySelector(".news-cont"))
-                  window.AndroidWebView.showContent('a: '+_this.$refs.navigation)
+                  window.AndroidWebView.showContent('news-cont: '+document.querySelector(".news-cont"))
+                   window.AndroidWebView.showContent('a: '+_this.$refs.navigation)
                 // if(document.querySelector(".news-cont") && _this.$refs.navigation){
                 //     if(document.documentElement.scrollTop >= document.querySelector(".news-cont").clientHeight){
                 //         window.AndroidWebView.showContent(document.documentElement.scrollTop)
@@ -897,6 +899,8 @@ body{
     line-height: 1.5;
     color: #666;
     font-size: 14px;
+    width: 100%;
+    word-break: break-word;
 }
 
 .comment-sec span {
