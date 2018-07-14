@@ -62,7 +62,7 @@
             {{item.content}}
         </div>
         <div class="comment-sec" v-if="item.reply.length">
-            <p  v-for="(v,i) of item.reply" :key="i"><span @click="toReplyShow(item.cid,v.from_user_id,v.from_username)">{{v.from_username}}</span><span  v-if="v.to_username" class="reply">Balas</span><span @click="toReplyShow(item.cid,v.from_user_id)">{{v.to_username}}</span>: {{v.content}}</p>
+            <p  v-for="(v,i) of item.reply" :key="i"><span @click="toReplyShow(item.cid,v.from_user_id,v.from_username)">{{v.from_username}}</span><span  v-if="v.to_username" class="reply">Balas</span><span @click="toReplyShow(item.cid,v.from_user_id,v.from_username)">{{v.to_username}}</span>: {{v.content}}</p>
              <!-- <p><span>sss&ee</span><span class="reply">Balas</span><span>Rika</span>: wwewe wewe wewe we wewewewewewewewe</p> -->
               <p v-if="parseInt(item.reply_count) > 4" class="comment-more" @click="goToDetail(item.cid)">Lihat semua {{item.reply_count}} ulasan <i class="icon-comment-more"></i></p>
         </div>
@@ -95,6 +95,8 @@
             <textarea autofocus maxlength="1000" v-model="ctext" placeholder="Komentar..." />
         </div>
     </div>
+
+    <router-link to="/invite"><img class="qianbao" src="../../assets/images/qianbao.png" /></router-link>
 
     <div>
 
@@ -519,8 +521,7 @@ let Base64 = require('js-base64').Base64;
                         
                     }  
                 }  
-                if(document.querySelector(".news-cont")){
-                    console.log(document.querySelector(".news-cont"))
+                if(document.querySelector(".news-cont") && _this.$refs.navigation){
                     if(document.documentElement.scrollTop >= document.querySelector(".news-cont").clientHeight){
                         _this.commentLink = true
                         _this.$refs.navigation.setAttribute("href","#title")
@@ -562,7 +563,7 @@ let Base64 = require('js-base64').Base64;
         this.scrollGetData();
         },
        beforeDestroy(){
-            console.log(document.querySelector(".news-cont"))
+            
        }
     }
 </script>
@@ -572,6 +573,7 @@ a {
 }
 body{
     margin: 0;
+    background: #fff!important;
 }
 .header {
     box-shadow: 0 0 0 1px rgba(255,192,0,0.1);
@@ -1057,7 +1059,7 @@ body{
     right: 0;
     top: 0;
     bottom: 0;
-    z-index: 1;
+    z-index: 2;
     background: rgba(0, 0, 0, 0.6);
 }
 
@@ -1105,4 +1107,13 @@ body{
     color: #ddd;
     font-size: 15px;
 }
+
+.qianbao{
+    position: fixed;
+    right: 10px;
+    width: 80px;
+    bottom: 60px;
+    z-index: 1;
+}
+
 </style>

@@ -197,6 +197,7 @@ a {
 }
 body{
     margin: 0;
+    background: #fff!important;
 }
 
 .news-detail-container{
