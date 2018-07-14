@@ -569,7 +569,9 @@ let Base64 = require('js-base64').Base64;
         this.scrollGetData();
         },
        beforeDestroy(){
-            
+           if(document.querySelector("img")){
+               window.AndroidWebView.clearWhatAppCurrentPic();
+           }
        }
     }
 </script>
