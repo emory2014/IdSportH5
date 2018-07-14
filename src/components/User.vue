@@ -89,10 +89,10 @@
               </div>
           </div>
           <div class="new-user-container" @click="goldMaskHide($event)" v-bind:class="[newUser? 'show':'hide']">
-            <!-- <header class="header">
+            <header class="header">
                       　<i class="nc-icon-prev cancel" @click = "cancelUserShow()"></i>
                         
-                  </header> -->
+                  </header>
               <img src="../assets/images/new-user-gold-bg.png">
           </div>
 
@@ -220,8 +220,8 @@ export default {
       this.hobbyShow = false
     },
     cancelUserShow(){
-      this.newUser = false
-    
+       this.newUser = false
+        window.AndroidWebView.closeActivities();
     },
     hobbyOK(){
       if (this.seletedHobbyArr.length) {
