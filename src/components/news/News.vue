@@ -64,7 +64,7 @@
         <div class="comment-sec" v-if="item.reply.length">
             <p  v-for="(v,i) of item.reply" :key="i"><span @click="toReplyShow(item.cid,v.from_user_id,v.from_username)">{{v.from_username}}</span><span  v-if="v.to_username" class="reply">Balas</span><span @click="toReplyShow(item.cid,v.from_user_id,v.from_username)">{{v.to_username}}</span>: {{v.content}}</p>
              <!-- <p><span>sss&ee</span><span class="reply">Balas</span><span>Rika</span>: wwewe wewe wewe we wewewewewewewewe</p> -->
-              <p v-if="parseInt(item.reply_count) > 4" class="comment-more" @click="goToDetail(item.cid)">Lihat semua {{item.reply_count}} ulasan <i class="icon-comment-more"></i></p>
+              <p v-if="parseInt(item.reply_count) > 4" class="comment-more" @click="goToDetail(item.cid,c)">Lihat semua {{item.reply_count}} ulasan <i class="icon-comment-more"></i></p>
         </div>
      </div>
   </div>
@@ -191,6 +191,7 @@ let Base64 = require('js-base64').Base64;
                 }else{
                     this.$router.push("/comment?cid="+cid)
                 }
+                window.AndroidWebView.showContent(c);
             },
             facebookShare(){
             this.$http({

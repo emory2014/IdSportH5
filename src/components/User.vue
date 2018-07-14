@@ -656,15 +656,16 @@ uploadImg (e, num) {
       this.formatOccupation();
       this.formatDate();
 
-       var content=window.AndroidWebView.getAppToken();
-       let token = Base64.decode(content)
-       this.token = token
+      //  var content=window.AndroidWebView.getAppToken();
+      //  let token = Base64.decode(content)
+      //  this.token = token
      
       this.$http({
         url: '/api/personal/info?'+new Date().getTime(),
         method: 'post',
         data: {
-          token: this.token
+          // token: this.token
+          token: 'da580a2cf2a47d6f1caebf4b157e2cd2'
         }
     }).then((res) => {
       this.load = false;
