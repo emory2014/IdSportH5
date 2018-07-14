@@ -22,21 +22,21 @@
         </div>
         <div class="comment-sec">
             <p v-for="(item,index) of data.comment_reply" :key="index">
-                <span @click="replyComment(item.from_user_id)">{{item.from_username}}</span><span v-if="item.to_username"  class="reply">Balas</span><span @click="replyComment(item.from_user_id)">{{item.to_username}}</span>: {{item.content}}</p>
+                <span @click="replyComment(item.from_user_id,item.to_username)">{{item.from_username}}</span><span v-if="item.to_username"  class="reply">Balas</span><span @click="replyComment(item.from_user_id,item.to_username)">{{item.to_username}}</span>: {{item.content}}</p>
              <!-- <p><span>sss&ee</span><span class="reply">Balas</span><span>Rika</span>: wwewe wewe wewe we wewewewewewewewe</p> -->
              <p class="comment-more">Lihat semua </p>
         </div>
     </div>
 
     <div class="fixed-comment" v-if="data">
-        <input readonly ref="replyInput" class="comment-input"  @click="toComment()" placeholder="Balas..." /> 
+        <input readonly ref="replyInput" class="comment-input"  @click="toComment()" :placeholder="holder" /> 
     </div>
     <div>
 
   <div class="reply-mask" @click="replyMaskHide($event)" :class="[ replyMask? 'show':'hide']">
         <div class="reply-cont">
             <p class="reply-mask-title"><span class="left" @click="cancelMaskShow()">Batal</span><span class="right" @click="submitComment()">Kirim</span></p>
-            <textarea autofocus maxlength="1000" v-model="ctext" placeholder="Komentar..." />
+            <textarea ref='textarea' autofocus maxlength="1000" v-model="ctext" placeholder="Komentar..." />
         </div>
     </div>
 
@@ -60,7 +60,8 @@ let Base64 = require('js-base64').Base64;
                 reply:[],
                 token: '',
                 ctext:'',
-                replyMask: false
+                replyMask: false,
+                holder: 'Balas:'
             }
         },
         components: {
@@ -123,8 +124,10 @@ let Base64 = require('js-base64').Base64;
             }
             return undefined
             },
-          replyComment(id){
+          replyComment(id,name){
                 this.$refs.replyInput.focus()
+                this.$refs.textarea.focus()
+                this.holder = "Balas: "+name
                 if(id){
                     this.from_id = id
                 }
@@ -177,6 +180,7 @@ let Base64 = require('js-base64').Base64;
             this.data = res.data.data
             this.likeCount = res.data.data.comment.like_count
             this.isLike = res.data.data.comment.like_active
+            this.holder = 'Balas: '+ res.data.data.comment.username
             }else{
                 //this.$router.push({path: '/login'});
                 window.AndroidWebView.showContent(res.data.status.message);
@@ -459,7 +463,7 @@ body{
 }
 
 ::-webkit-input-placeholder {
-    color: #999;
+    color: #ddd;
     font-size: 14px;
 }
 
@@ -475,4 +479,5 @@ body{
     right: 0;
     top: -5px;
 }
+
 </style>

@@ -523,8 +523,9 @@ let Base64 = require('js-base64').Base64;
                         
                     }  
                 }  
-                  window.AndroidWebView.showContent('news-cont: '+document.querySelector(".news-cont"))
-                   window.AndroidWebView.showContent('a: '+document.querySelector('#navigation'))
+                //window.AndroidWebView.showContent('news-cont: '+document.querySelector(".news-cont"))
+                 //window.AndroidWebView.showContent('a: '+document.querySelector('#navigation'))
+
                 // if(document.querySelector(".news-cont") && document.querySelector('#navigation'){
                 //     if(document.documentElement.scrollTop >= document.querySelector(".news-cont").clientHeight){
                 //         window.AndroidWebView.showContent(document.documentElement.scrollTop)
