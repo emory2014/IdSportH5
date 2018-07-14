@@ -71,7 +71,7 @@
     <div class="fixed-comment" v-if="data">
         <input readonly class="comment-input" @click="toComment('comment')" v-model="commentText"  placeholder="Komentar…" /> 
         <input readonly class="comment-input reply" @click="toComment('reply')" :class="[replyShow? 'show':'hide']" v-model="replyText"    :placeholder="holder"  />
-        <a ref="navigation" href="#title">
+        <a id="navigation" href="#title">
             <span  class="comment-msg" :class="[!commentLink ? 'show':'hide']">
               <i class="icon-msg"></i>
               <span class="num">{{commentCount}}</span>
@@ -524,15 +524,15 @@ let Base64 = require('js-base64').Base64;
                     }  
                 }  
                   window.AndroidWebView.showContent('news-cont: '+document.querySelector(".news-cont"))
-                   window.AndroidWebView.showContent('a: '+_this.$refs.navigation)
-                // if(document.querySelector(".news-cont") && _this.$refs.navigation){
+                   window.AndroidWebView.showContent('a: '+document.querySelector('#navigation'))
+                // if(document.querySelector(".news-cont") && document.querySelector('#navigation'){
                 //     if(document.documentElement.scrollTop >= document.querySelector(".news-cont").clientHeight){
                 //         window.AndroidWebView.showContent(document.documentElement.scrollTop)
                 //         _this.commentLink = true
-                //         _this.$refs.navigation.setAttribute("href","#title")
+                //         document.querySelector('#navigation').setAttribute("href","#title")
                 //     }else{
                 //         _this.commentLink = false
-                //         _this.$refs.navigation.setAttribute("href","#comment")
+                //         document.querySelector('#navigation').setAttribute("href","#comment")
                 //     }
                     
                 // }
