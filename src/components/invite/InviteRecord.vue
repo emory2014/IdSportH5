@@ -93,12 +93,17 @@ export default {
                     }
                 }).then((res) => {
                   this.flag = true;  
-                  this.data = res.data.data
+                  if(res.data.status.code == 200){
+                    this.data = res.data.data
                     res.data.data.list.map((item) => {
                                 this.list.push(item)
                         })
                        this.currentPage = res.data.data.page_info.current_page
                        this.totalPage = res.data.data.page_info.total_page
+                  }else if(res.data.status.code == 401){
+                    window.AndroidWebView.loginApp();
+                  }
+                  
 
                 }).catch((res) => {
                     console.log('error: ', res);
