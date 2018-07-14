@@ -120,4 +120,8 @@ let Base64 = require('js-base64').Base64;
 </script>
 <style>
     @import  "../../assets/css/recharge.css";
+    body {
+    margin: 0;
+    background: #fff;
+}
 </style>

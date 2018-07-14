@@ -2,12 +2,13 @@
 
   <div class="user">
 
-<BHeader title="Selesaikan data Pribadi" backToApp={true} /> 
+
     <!-- <header class="header" v-if="param == 'h5'">
             　<i class="nc-icon-prev" @click="goBack()"></i>
               Selesaikan data Pribadi
         </header> -->
         <div class="nc-body" :class="[!load ? 'show':'hide']">
+          <BHeader title="Selesaikan data Pribadi" backToApp={true} /> 
             <ul class="nc-ul">
                  <li @click="selectProfle()">
                     <div class="nc-item" id="profil">
@@ -668,7 +669,7 @@ uploadImg (e, num) {
           this.name = res.data.data.nickname
           this.sexVal = res.data.data.gender
           this.seletedHobbyArr = res.data.data.interest
-          //document.getElementById("avatar").src = res.data.data.avatar
+          document.getElementById("avatar").src = res.data.data.avatar
           document.getElementById("showDate").innerHTML = res.data.data.birthdate
           document.getElementById("showDate").classList = "item-right"
           document.getElementById("showEdu").innerHTML = res.data.data.education
@@ -704,6 +705,16 @@ uploadImg (e, num) {
 <style >
 @import "../assets/css/user.css";
 @import "../../node_modules/iosselect/src/iosSelect.css";
+
+.nc-body{
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: #f5f5f5;
+  overflow: auto;
+}
 
 body{
     padding: 0;
