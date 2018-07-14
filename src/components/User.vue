@@ -650,16 +650,15 @@ uploadImg (e, num) {
       this.formatOccupation();
       this.formatDate();
 
-      //  var content=window.AndroidWebView.getAppToken();
-      //  let token = Base64.decode(content)
-      //  this.token = token
+       var content=window.AndroidWebView.getAppToken();
+       let token = Base64.decode(content)
+       this.token = token
      
       this.$http({
         url: '/api/personal/info?'+new Date().getTime(),
         method: 'post',
         data: {
-          // token: this.token
-          token: 'da580a2cf2a47d6f1caebf4b157e2cd2'
+           token: this.token
         }
     }).then((res) => {
       this.load = false;
@@ -709,8 +708,7 @@ uploadImg (e, num) {
 body{
     padding: 0;
     margin: 0;
-    background: #f5f5f5!important;
-  
+    background: #f5f5f5;
 }
 
 .ios-select-widget-box header.iosselect-header a {

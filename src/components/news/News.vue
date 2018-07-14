@@ -521,17 +521,19 @@ let Base64 = require('js-base64').Base64;
                         
                     }  
                 }  
-                if(document.querySelector(".news-cont") && _this.$refs.navigation){
-                    if(document.documentElement.scrollTop >= document.querySelector(".news-cont").clientHeight){
-                        window.AndroidWebView.showContent(document.documentElement.scrollTop)
-                        _this.commentLink = true
-                        _this.$refs.navigation.setAttribute("href","#title")
-                    }else{
-                        _this.commentLink = false
-                        _this.$refs.navigation.setAttribute("href","#comment")
-                    }
+                 window.AndroidWebView.showContent(document.querySelector(".news-cont"))
+                  window.AndroidWebView.showContent(_this.$refs.navigation)
+                // if(document.querySelector(".news-cont") && _this.$refs.navigation){
+                //     if(document.documentElement.scrollTop >= document.querySelector(".news-cont").clientHeight){
+                //         window.AndroidWebView.showContent(document.documentElement.scrollTop)
+                //         _this.commentLink = true
+                //         _this.$refs.navigation.setAttribute("href","#title")
+                //     }else{
+                //         _this.commentLink = false
+                //         _this.$refs.navigation.setAttribute("href","#comment")
+                //     }
                     
-                }
+                // }
             });  
           }
         },
@@ -574,7 +576,7 @@ a {
 }
 body{
     margin: 0;
-    background: #fff!important;
+    background: #fff;
 }
 .header {
     box-shadow: 0 0 0 1px rgba(255,192,0,0.1);
