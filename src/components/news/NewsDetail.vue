@@ -396,6 +396,8 @@ body{
     margin-left: 63px;
     margin-right: 20px;
     line-height: 1.5;
+    width: 80%;
+    word-break: break-word;
 }
 
 .comment-sec {
