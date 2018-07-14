@@ -669,6 +669,7 @@ uploadImg (e, num) {
           this.name = res.data.data.nickname
           this.sexVal = res.data.data.gender
           this.seletedHobbyArr = res.data.data.interest
+          this.src = res.data.data.avatar
           document.getElementById("avatar").src = res.data.data.avatar
           document.getElementById("showDate").innerHTML = res.data.data.birthdate
           document.getElementById("showDate").classList = "item-right"
