@@ -12,12 +12,12 @@
   <div v-if="data.length">
     <div class="cont-panel record" v-for="(item,index) of data" :key="index">
         <div class="record-left">
-            <span class="num">+{{item.amount}}</span>
+            <span class="num">+{{item.gold}}</span>
             <span>Koin Terbeli (Keping)</span>
         </div>
         <div class="record-left text">
             <span>Isi Ulang Via: {{item.method}}  </span>
-            <span>Isi Ulang (Rp): {{item.gold}}</span>
+            <span>Isi Ulang (Rp): {{item.amount}}</span>
             <span>Waktu: {{item.update_time}}</span>
         </div>
         
