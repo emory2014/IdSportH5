@@ -88,7 +88,7 @@
                     <div class="sex-item cancel" @click = "cancelShow()">Bata</div>
               </div>
           </div>
-          <div class="new-user-container" @click="goldMaskHide()" v-bind:class="[newUser? 'show':'hide']">
+          <div class="new-user-container" @click="goldMaskHide($event)" v-bind:class="[newUser? 'show':'hide']">
             <!-- <header class="header">
                       　<i class="nc-icon-prev cancel" @click = "cancelUserShow()"></i>
                         
