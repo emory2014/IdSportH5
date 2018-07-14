@@ -271,6 +271,9 @@ let Base64 = require('js-base64').Base64;
             popShow(e){
                 if(e.target.className.indexOf("share-pop") > -1 ){
                     this.maskShow = false
+                     if(document.querySelector("img")){
+                            window.AndroidWebView.clearWhatAppCurrentPic();
+                        }
                 }else{
                     this.maskShow = true
                 }
@@ -569,9 +572,7 @@ let Base64 = require('js-base64').Base64;
         this.scrollGetData();
         },
        beforeDestroy(){
-           if(document.querySelector("img")){
-               window.AndroidWebView.clearWhatAppCurrentPic();
-           }
+          
        }
     }
 </script>
