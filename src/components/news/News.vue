@@ -566,7 +566,6 @@ let Base64 = require('js-base64').Base64;
         },
       
         mounted(){
-            this.insertMeta()
             this.$http({
                 url: '/article/detail?aid='+this.getparam("aid"),
                 method: 'post',
