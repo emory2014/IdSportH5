@@ -9,7 +9,7 @@
           {{data.intiver.count}} Orang
         </p>
          <p>
-          Jumlah teman <br> yang sayaundang
+          Jumlah teman <br> yang saya undang
         </p>
       <i class="divider"></i>
       </div>
