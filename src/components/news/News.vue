@@ -563,7 +563,7 @@ let Base64 = require('js-base64').Base64;
                         
                     }  
                 }  
-console.log('height:'+document.querySelector(".news-cont").clientHeight)
+window.AndroidWebView.showContent('height:'+document.querySelector(".news-cont").clientHeight)
 
                 // if(document.querySelector(".news-cont")){
                     
@@ -1033,7 +1033,7 @@ body{
 
 .comment-msg {
     position: relative;
-    margin: 0 25px 0 20px
+    margin: 0 20px 0 20px
 }
 
 .comment-msg .num {
