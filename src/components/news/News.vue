@@ -1050,7 +1050,7 @@ body{
 .comment-footer-text {
     font-size: 14px;
     color: #619cff;
-    margin: 0 25px 0 20px
+    margin: 0 20px 0 20px
 }
 
 .comment-footer-text.show{
