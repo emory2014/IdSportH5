@@ -533,6 +533,9 @@ let Base64 = require('js-base64').Base64;
             },
             goAnchor(){
                 let scrollObj = document.querySelectorAll(".title")
+                window.AndroidWebView.showContent('news-cont: '+document.querySelector(".news-cont"))
+                window.AndroidWebView.showContent('title: '+document.querySelector(".title"))
+                
                 // if(index == 1){
                 //     document.documentElement.scrollTop = scrollObj[index].offsetTop
                 // }else{
@@ -542,8 +545,9 @@ let Base64 = require('js-base64').Base64;
                     document.documentElement.scrollTop = scrollObj[1].offsetTop
                     this.anchorFlag = 0
                 }else{
-                    this.anchorFlag = 1
+                    
                     document.documentElement.scrollTop = scrollObj[0].offsetTop
+                     this.anchorFlag = 1
                 }
                 
             },
