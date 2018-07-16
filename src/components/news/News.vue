@@ -140,7 +140,6 @@ let Base64 = require('js-base64').Base64;
                 holder: 'Balas:',
                 ctext: '',
                 replyMask: false,
-                anchorFlag: 1
             }
         },
         components: {
@@ -533,13 +532,11 @@ let Base64 = require('js-base64').Base64;
             },
             goAnchor(){
                 let scrollObj = document.querySelectorAll(".title")
-               
-                if(this.anchorFlag == 1) {
+                if(!this.commentLink) {
                     document.documentElement.scrollTop = scrollObj[1].offsetTop
                      document.body.scrollTop = scrollObj[1].offsetTop
                     this.anchorFlag = 0
                 }else{
-                    
                     document.documentElement.scrollTop = scrollObj[0].offsetTop
                     document.body.scrollTop = scrollObj[0].offsetTop
                      this.anchorFlag = 1
