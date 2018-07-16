@@ -563,7 +563,7 @@ let Base64 = require('js-base64').Base64;
                         
                     }  
                 }  
-window.AndroidWebView.showContent('height:'+document.querySelector(".news-cont").clientHeight)
+//window.AndroidWebView.showContent('height:'+document.querySelector(".news-cont").clientHeight)
 window.AndroidWebView.showContent('body:'+document.body.scrollTop)
 
 
