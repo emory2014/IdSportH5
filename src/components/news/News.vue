@@ -563,9 +563,10 @@ let Base64 = require('js-base64').Base64;
                         
                     }  
                 }  
+console.log('height'+document.querySelector(".news-cont").clientHeight)
 
                 if(document.querySelector(".news-cont")){
-                    console.log(document.querySelector(".news-cont").clientHeight)
+                    
                     if(document.body.scrollTop >= document.querySelector(".news-cont").clientHeight){
                        // window.AndroidWebView.showContent(document.documentElement.scrollTop)
                         _this.commentLink = true
