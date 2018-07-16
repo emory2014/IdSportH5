@@ -76,16 +76,16 @@
               <i class="icon-msg"></i>
               <span class="num">{{commentCount}}</span>
            </span>
-           <span class="comment-footer-text" :class="[commentLink? 'show':'hide']">原文</span>
+           <span class="comment-footer-text" :class="[commentLink? 'show':'hide']">Asli</span>
         </a>
         <i @click="sharePop()" class="icon-export"></i>
     </div>
     <div class="share-pop" :class="[maskShow ? 'show':'hide']" @click="popShow($event)">
         <div class="share-cont" >
-            <p class="share-title">分享</p>
+            <p class="share-title">Bagikan</p>
             <i class="icon-facebook" @click="facebookShare()"></i>
             <i class="icon-whatsapp" @click="whatsappShare()"></i>
-            <p class="share-text"><span>Facebook邀请</span><span>WhatsApp邀请</span></p>
+            <p class="share-text"><span>Via Facebook</span><span>Via WhatsApp</span></p>
         </div>
     </div>
 
