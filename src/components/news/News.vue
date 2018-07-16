@@ -21,6 +21,11 @@
                 <span @click="toDiss()" :class="[dissShow ? 'active':'']">{{diss}}</span>
             </p>
         </div>
+        <ins class="adsbygoogle"
+     style="display:inline-block;width:100%;height:90px"
+     data-ad-client="ca-pub-9104685589672232"
+     data-ad-slot="2799061532"></ins>
+
     </div>
 
 
@@ -615,6 +620,9 @@ let Base64 = require('js-base64').Base64;
          this.$nextTick(function () {
                 this.scrollGetData();
         })
+        //添加谷歌广告
+        (adsbygoogle = window.adsbygoogle || []).push({});
+
         },
        beforeDestroy(){
           document.title = "newsCat"

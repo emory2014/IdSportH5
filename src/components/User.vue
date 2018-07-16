@@ -86,7 +86,7 @@
                       <!-- <input type="file" id='image' accept="image/*" capture='camera'> -->
                       Kamera</div>
                     <div class="sex-item" @click="takePicture()">Galery</div>
-                    <div class="sex-item cancel" @click = "cancelShow()">Bata</div>
+                    <div class="sex-item cancel" @click = "cancelShow()">Batal</div>
               </div>
           </div>
           <div class="new-user-container" @click="goldMaskHide($event)" v-bind:class="[newUser? 'show':'hide']">
@@ -105,7 +105,7 @@
           </div>
         <div class="mask mask-nicName" v-bind:class="[nameShow? 'show':'hide']">
             <div class="pop-hobby-cont">
-              <p class="btn-box"><span class="btn-cancel cancel" @click = "cancelShow()">Bata</span>
+              <p class="btn-box"><span class="btn-cancel cancel" @click = "cancelShow()">Batal</span>
                   <span class="btn-ok name-ok" @click="nameComplete()">Oke</span></p>
               <input minlength="8" maxlength="50" placeholder="Masukan Pilihan"
               v-on:input="nameInput()" v-model="name" class="nic-name-input" type="text" />
@@ -117,7 +117,7 @@
             <div class="pop-sex-cont">
                   <div class="sex-item" @click="toSelectSex('Laki-laki')">Laki-laki</div>
                   <div class="sex-item" @click="toSelectSex('Perempuan')">Perempuan</div>
-                  <div class="sex-item cancel" @click = "cancelShow()">Bata</div>
+                  <div class="sex-item cancel" @click = "cancelShow()">Batal</div>
             </div>
         </div>
 
@@ -319,7 +319,7 @@ formatEdu(){
   var valDom = document.querySelector('#EduId');  // 绑定一个存储结果的元素
    showDom.addEventListener('click', function () {  // 添加监听事件
     setTimeout(() => {
-            document.querySelector('.iosselect-header .close').innerHTML = 'Bata'
+            document.querySelector('.iosselect-header .close').innerHTML = 'Batal'
             document.querySelector('.iosselect-header .sure').innerHTML = 'Oke'
       })
       var val = showDom.dataset['id'];             // 获取元素的data-id属性值
@@ -392,7 +392,7 @@ formatOccupation(){
       var val = showDom.dataset['id'];             // 获取元素的data-id属性值
       var title = showDom.dataset['value'];        // 获取元素的data-value属性值
        setTimeout(() => {
-            document.querySelector('.iosselect-header .close').innerHTML = 'Bata'
+            document.querySelector('.iosselect-header .close').innerHTML = 'Batal'
             document.querySelector('.iosselect-header .sure').innerHTML = 'Oke'
       })
   	// 实例化组件
@@ -504,7 +504,7 @@ formatDate(){
    selectDateDom.addEventListener('click', function () {
      
       setTimeout(() => {
-            document.querySelector('.iosselect-header .close').innerHTML = 'Bata'
+            document.querySelector('.iosselect-header .close').innerHTML = 'Batal'
             document.querySelector('.iosselect-header .sure').innerHTML = 'Oke'
       })
        var oneLevelId = showDateDom.getAttribute('data-year');
