@@ -28,7 +28,7 @@
         </div>
     </div>
 
-    <div class="fixed-comment" v-if="data">
+    <div class="fixed-comment" v-if="data && this.getparam('uAgent')">
         <input readonly ref="replyInput" class="comment-detail-input"  @click="toComment()" :placeholder="holder" /> 
     </div>
     <div>
@@ -42,6 +42,7 @@
 
 
     </div>
+    <p class="toast-text" v-bind:class="[toastShow? 'show':'hide']">{{msg}}</p>
 </div>
 </template>
 <script>
@@ -61,7 +62,9 @@ let Base64 = require('js-base64').Base64;
                 token: '',
                 ctext:'',
                 replyMask: false,
-                holder: 'Balas:'
+                holder: 'Balas:',
+                toastShow: false,
+                msg:''
             }
         },
         components: {
@@ -72,6 +75,11 @@ let Base64 = require('js-base64').Base64;
             title: String
         },
         methods: {
+             toastPop(text){
+                this.toastShow = true
+                this.msg = text
+                setTimeout(() => this.toastShow = false, 2000)
+            },
             toComment(){
                 this.replyMask = true
             },
@@ -149,14 +157,14 @@ let Base64 = require('js-base64').Base64;
                 this.data.comment_reply.push(res.data.data.current.data)
             }else{
                 //this.$router.push({path: '/login'});
-                window.AndroidWebView.showContent(res.data.status.message);
+                this.toastPop(res.data.status.message);
             }
 
             }).catch((res) => {
                 console.log('error: ', res);
             });
               }else{
-                  window.AndroidWebView.showContent('Komentar Tidak boleh Kosong');
+                  this.toastPop('Komentar Tidak boleh Kosong');
               }
               
           },
@@ -183,7 +191,7 @@ let Base64 = require('js-base64').Base64;
             this.holder = 'Balas: '+ res.data.data.comment.username
             }else{
                 //this.$router.push({path: '/login'});
-                window.AndroidWebView.showContent(res.data.status.message);
+                this.toastPop(res.data.status.message);
             }
 
             }).catch((res) => {

@@ -68,7 +68,7 @@
         </div>
      </div>
   </div>
-    <div class="fixed-comment" v-if="data">
+    <div class="fixed-comment" v-if="data && this.getparam('uAgent')">
         <input readonly class="comment-input" @click="toComment('comment')" v-model="commentText"  placeholder="Komentar…" /> 
         <input readonly class="comment-input reply" @click="toComment('reply')" :class="[replyShow? 'show':'hide']" v-model="replyText"    :placeholder="holder"  />
         <a id="navigation" href="javascript:void(0)" @click="goAnchor()">
@@ -101,6 +101,7 @@
     <div>
 
     </div>
+    <p class="toast-text" v-bind:class="[toastShow? 'show':'hide']">{{msg}}</p>
 </div>
 </template>
 <script>
@@ -140,6 +141,8 @@ let Base64 = require('js-base64').Base64;
                 holder: 'Balas:',
                 ctext: '',
                 replyMask: false,
+                toastShow: false,
+                msg:''
             }
         },
         components: {
@@ -150,6 +153,11 @@ let Base64 = require('js-base64').Base64;
             title: String
         },
         methods: {
+            toastPop(text){
+                this.toastShow = true
+                this.msg = text
+                setTimeout(() => this.toastShow = false, 2000)
+            },
             getToken(){
                 if(this.getparam("uAgent")){
                     let content=window.AndroidWebView.getAppToken()
@@ -494,12 +502,12 @@ let Base64 = require('js-base64').Base64;
                         item.reply.push(res.data.data.current.data)
                     }
                 })
-            window.AndroidWebView.showContent("Komenter berhasil dikirim");
+            this.toastPop("Komenter berhasil dikirim");
             }else if(res.data.status.code == 401){
                 window.AndroidWebView.loginApp();
             }else{
                 //this.$router.push({path: '/login'});
-                window.AndroidWebView.showContent(res.data.status.message);
+                this.toastPop(res.data.status.message);
             }
 
             }).catch((res) => {
@@ -523,7 +531,7 @@ let Base64 = require('js-base64').Base64;
                        this.currentPage = res.data.data.page_info.current_page
                        this.totalPage = res.data.data.page_info.total_page
                 }else  {
-                   window.AndroidWebView.showContent(res.data.status.message);
+                   this.toastPop(res.data.status.message);
                     }
 
                 }).catch((res) => {
@@ -595,7 +603,7 @@ let Base64 = require('js-base64').Base64;
             this.insertMeta(this.data.article.title)
             }else{
                 //this.$router.push({path: '/login'});
-                window.AndroidWebView.showContent(res.data.status.message);
+                this.toastPop(res.data.status.message);
             }
 
             }).catch((res) => {
@@ -1168,5 +1176,20 @@ body{
     bottom: 60px;
     z-index: 1;
 }
-
+.toast-text {
+    position: fixed;
+    width: 70%;
+    left: 15%;
+    right: 15%;
+    bottom: 30px;
+    background: rgba(0, 0, 0, 0.6);
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 25px;
+    color: #fff;
+    font-size: 15px;
+    z-index: 10;
+    display: none;
+}
 </style>
