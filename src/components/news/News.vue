@@ -543,10 +543,12 @@ let Base64 = require('js-base64').Base64;
                 // }
                 if(this.anchorFlag == 1) {
                     document.documentElement.scrollTop = scrollObj[1].offsetTop
+                     document.body.scrollTop = scrollObj[1].offsetTop
                     this.anchorFlag = 0
                 }else{
                     
                     document.documentElement.scrollTop = scrollObj[0].offsetTop
+                    document.body.scrollTop = scrollObj[0].offsetTop
                      this.anchorFlag = 1
                 }
                 
