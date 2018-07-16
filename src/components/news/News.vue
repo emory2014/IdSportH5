@@ -194,7 +194,7 @@ let Base64 = require('js-base64').Base64;
                     this.$router.push("/comment?cid="+cid)
                 }
             },
-            insertMeta(title,img){
+            insertMeta(title){
                 var oMeta = document.createElement('meta');
                 oMeta.setAttribute('name',"description");
                 oMeta.setAttribute('content',title);
@@ -204,14 +204,14 @@ let Base64 = require('js-base64').Base64;
                 var sMeta = document.createElement('meta');
                 sMeta.setAttribute('property',"og:description");
                 sMeta.setAttribute('content',title);
-                var fMeta = document.createElement('meta');
-                fMeta.setAttribute('property',"og:image");
-                fMeta.setAttribute('content',img);
+                // var fMeta = document.createElement('meta');
+                // fMeta.setAttribute('property',"og:image");
+                // fMeta.setAttribute('content',img);
                 document.title = title
                 document.getElementsByTagName('head')[0].appendChild(oMeta);
                 document.getElementsByTagName('head')[0].appendChild(tMeta);
                 document.getElementsByTagName('head')[0].appendChild(sMeta);
-                document.getElementsByTagName('head')[0].appendChild(fMeta);
+                // document.getElementsByTagName('head')[0].appendChild(fMeta);
             },
             facebookShare(){
             var img = document.querySelector("img").src
@@ -560,9 +560,6 @@ let Base64 = require('js-base64').Base64;
                         
                     }  
                 }  
-//window.AndroidWebView.showContent('height:'+document.querySelector(".news-cont").clientHeight)
-
-
 
                 if(document.querySelector(".news-cont")){
                     
@@ -595,6 +592,7 @@ let Base64 = require('js-base64').Base64;
             this.pick = res.data.data.article.like 
             this.diss = res.data.data.article.dislike
             this.commentCount = this.data.article.comment_count
+            this.insertMeta(this.data.this.data.article.title)
             }else{
                 //this.$router.push({path: '/login'});
                 window.AndroidWebView.showContent(res.data.status.message);
@@ -611,7 +609,7 @@ let Base64 = require('js-base64').Base64;
         })
         },
        beforeDestroy(){
-          
+          document.title = "newsCat"
        }
     }
 </script>
