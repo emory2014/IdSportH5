@@ -74,7 +74,7 @@
         </div>
      </div>
   </div>
-    <div class="fixed-comment" v-if="data && this.getparam('uAgent')">
+    <div class="fixed-comment" v-if="data ">
         <input readonly class="comment-input" @click="toComment('comment')" v-model="commentText"  placeholder="Komentar…" /> 
         <input readonly class="comment-input reply" @click="toComment('reply')" :class="[replyShow? 'show':'hide']" v-model="replyText"    :placeholder="holder"  />
         <a id="navigation" href="javascript:void(0)" @click="goAnchor()">
