@@ -592,7 +592,7 @@ let Base64 = require('js-base64').Base64;
             this.pick = res.data.data.article.like 
             this.diss = res.data.data.article.dislike
             this.commentCount = this.data.article.comment_count
-            this.insertMeta(this.data.this.data.article.title)
+            this.insertMeta(this.data.article.title)
             }else{
                 //this.$router.push({path: '/login'});
                 window.AndroidWebView.showContent(res.data.status.message);
