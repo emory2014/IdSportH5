@@ -211,7 +211,7 @@ let Base64 = require('js-base64').Base64;
             insertMeta(title,img,link){
                  var yMeta = document.createElement('meta');
                 yMeta.setAttribute('property',"og:url");
-                yMeta.setAttribute('content',url);
+                yMeta.setAttribute('content',link);
                 var eMeta = document.createElement('meta');
                 eMeta.setAttribute('property',"og:type");
                 eMeta.setAttribute('content','article');
@@ -243,7 +243,7 @@ let Base64 = require('js-base64').Base64;
                 }).then((res) => {
                 if (res.data.status.code == 200) {
                      this.insertMeta(this.data.article.title,img,res.data.data)
-                     window.AndroidWebView.shareFacebook(this.data.article.title,res.data.data);
+                    window.AndroidWebView.shareFacebook(this.data.article.title,res.data.data);
                     
                 }else{
                     //this.$router.push({path: '/login'});
