@@ -21,10 +21,11 @@
                 <span @click="toDiss()" :class="[dissShow ? 'active':'']">{{diss}}</span>
             </p>
         </div>
-        <ins class="adsbygoogle"
+        <!-- <ins class="adsbygoogle"
      style="display:inline-block;width:100%;height:90px"
      data-ad-client="ca-pub-9104685589672232"
-     data-ad-slot="2799061532"></ins>
+     data-ad-slot="2799061532"></ins> -->
+     
 
     </div>
 
@@ -73,7 +74,8 @@
         </div>
      </div>
   </div>
-    <div class="fixed-comment" v-if="data && this.getparam('uAgent')">
+  <!-- && this.getparam('uAgent') -->
+    <div class="fixed-comment" v-if="data ">
         <input readonly class="comment-input" @click="toComment('comment')" v-model="commentText"  placeholder="Komentar…" /> 
         <input readonly class="comment-input reply" @click="toComment('reply')" :class="[replyShow? 'show':'hide']" v-model="replyText"    :placeholder="holder"  />
         <a id="navigation" href="javascript:void(0)" @click="goAnchor()">
@@ -88,7 +90,9 @@
     <div class="share-pop" :class="[maskShow ? 'show':'hide']" @click="popShow($event)">
         <div class="share-cont" >
             <p class="share-title">Bagikan</p>
-            <i class="icon-facebook" @click="facebookShare()"></i>
+            <div class="" style="display:inline-block" data-href="http://www.baidu.com/" data-layout="button_count" data-size="small" data-mobile-iframe="true">
+            <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&src=sdkpreparse" class="fb-xfbml-parse-ignore"><i class="icon-facebook" ></i></a></div>
+            <!-- <i class="icon-facebook" @click="facebookShare()"></i> -->
             <i class="icon-whatsapp" @click="whatsappShare()"></i>
             <p class="share-text"><span>Via Facebook</span><span>Via WhatsApp</span></p>
         </div>
@@ -619,9 +623,9 @@ let Base64 = require('js-base64').Base64;
         
          this.$nextTick(function () {
                 this.scrollGetData();
-        })
+        });
         //添加谷歌广告
-        (adsbygoogle = window.adsbygoogle || []).push({});
+        // (adsbygoogle = window.adsbygoogle || []).push({});
 
         },
        beforeDestroy(){
