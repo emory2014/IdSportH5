@@ -74,8 +74,7 @@
         </div>
      </div>
   </div>
-  <!-- && this.getparam('uAgent') -->
-    <div class="fixed-comment" v-if="data ">
+    <div class="fixed-comment" v-if="data && this.getparam('uAgent')">
         <input readonly class="comment-input" @click="toComment('comment')" v-model="commentText"  placeholder="Komentar…" /> 
         <input readonly class="comment-input reply" @click="toComment('reply')" :class="[replyShow? 'show':'hide']" v-model="replyText"    :placeholder="holder"  />
         <a id="navigation" href="javascript:void(0)" @click="goAnchor()">
@@ -90,9 +89,7 @@
     <div class="share-pop" :class="[maskShow ? 'show':'hide']" @click="popShow($event)">
         <div class="share-cont" >
             <p class="share-title">Bagikan</p>
-            <div class="" style="display:inline-block" data-href="http://www.baidu.com/" data-layout="button_count" data-size="small" data-mobile-iframe="true">
-            <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&src=sdkpreparse" class="fb-xfbml-parse-ignore"><i class="icon-facebook" ></i></a></div>
-            <!-- <i class="icon-facebook" @click="facebookShare()"></i> -->
+            <i class="icon-facebook" @click="facebookShare()"></i>
             <i class="icon-whatsapp" @click="whatsappShare()"></i>
             <p class="share-text"><span>Via Facebook</span><span>Via WhatsApp</span></p>
         </div>
@@ -211,24 +208,28 @@ let Base64 = require('js-base64').Base64;
                     this.$router.push("/comment?cid="+cid)
                 }
             },
-            insertMeta(title){
-                var oMeta = document.createElement('meta');
-                oMeta.setAttribute('name',"description");
-                oMeta.setAttribute('content',title);
+            insertMeta(title,img,link){
+                 var yMeta = document.createElement('meta');
+                yMeta.setAttribute('property',"og:url");
+                yMeta.setAttribute('content',url);
+                var eMeta = document.createElement('meta');
+                eMeta.setAttribute('property',"og:type");
+                eMeta.setAttribute('content','article');
                 var tMeta = document.createElement('meta');
                 tMeta.setAttribute('property',"og:title");
                 tMeta.setAttribute('content',title);
                 var sMeta = document.createElement('meta');
                 sMeta.setAttribute('property',"og:description");
                 sMeta.setAttribute('content',title);
-                // var fMeta = document.createElement('meta');
-                // fMeta.setAttribute('property',"og:image");
-                // fMeta.setAttribute('content',img);
+                var fMeta = document.createElement('meta');
+                fMeta.setAttribute('property',"og:image");
+                fMeta.setAttribute('content',img);
                 document.title = title
-                document.getElementsByTagName('head')[0].appendChild(oMeta);
+                 document.getElementsByTagName('head')[0].appendChild(yMeta);
+                document.getElementsByTagName('head')[0].appendChild(eMeta);
                 document.getElementsByTagName('head')[0].appendChild(tMeta);
                 document.getElementsByTagName('head')[0].appendChild(sMeta);
-                // document.getElementsByTagName('head')[0].appendChild(fMeta);
+                 document.getElementsByTagName('head')[0].appendChild(fMeta);
             },
             facebookShare(){
             var img = document.querySelector("img").src
@@ -241,7 +242,7 @@ let Base64 = require('js-base64').Base64;
                     }
                 }).then((res) => {
                 if (res.data.status.code == 200) {
-                     this.insertMeta(this.data.article.title,img)
+                     this.insertMeta(this.data.article.title,img,res.data.data)
                      window.AndroidWebView.shareFacebook(this.data.article.title,res.data.data);
                     
                 }else{
@@ -609,7 +610,7 @@ let Base64 = require('js-base64').Base64;
             this.pick = res.data.data.article.like 
             this.diss = res.data.data.article.dislike
             this.commentCount = this.data.article.comment_count
-            this.insertMeta(this.data.article.title)
+            this.facebookShare()
             }else{
                 //this.$router.push({path: '/login'});
                 this.toastPop(res.data.status.message);
