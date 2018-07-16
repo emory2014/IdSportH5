@@ -4,7 +4,7 @@
     <Loading v-if="!data" />
     <div class="news-cont " ref="article" v-if="data">
        
-        <p id="title" class="news-title">
+        <p id="title" class="news-title title" index="01">
             {{data.article.title}}
         </p>
         <p class="date-sec">
@@ -42,7 +42,7 @@
         </ul>
     </div>
     <div class="last-child" v-if="data && comments.length">
-    <p id="comment" class="recommend-tilte">Komentar terbaru</p>
+    <p id="comment" class="recommend-tilte title" index="02">Komentar terbaru</p>
     <div class="news-cont " v-for="(item,index) of comments" :key='index'>
         
         <div class="comment-user-sec">
@@ -71,7 +71,7 @@
     <div class="fixed-comment" v-if="data">
         <input readonly class="comment-input" @click="toComment('comment')" v-model="commentText"  placeholder="Komentar…" /> 
         <input readonly class="comment-input reply" @click="toComment('reply')" :class="[replyShow? 'show':'hide']" v-model="replyText"    :placeholder="holder"  />
-        <a id="navigation" href="#title">
+        <a id="navigation" href="javascript:void(0)" @click="goAnchor()">
             <span  class="comment-msg" :class="[!commentLink ? 'show':'hide']">
               <i class="icon-msg"></i>
               <span class="num">{{commentCount}}</span>
@@ -139,7 +139,8 @@ let Base64 = require('js-base64').Base64;
                 commentCount: 0,
                 holder: 'Balas:',
                 ctext: '',
-                replyMask: false
+                replyMask: false,
+                anchorFlag: 1
             }
         },
         components: {
@@ -530,6 +531,22 @@ let Base64 = require('js-base64').Base64;
                     console.log('error: ', res);
                 });
             },
+            goAnchor(){
+                let scrollObj = document.querySelectorAll(".title")
+                // if(index == 1){
+                //     document.documentElement.scrollTop = scrollObj[index].offsetTop
+                // }else{
+                //     selector == "#title"
+                // }
+                if(this.anchorFlag == 1) {
+                    document.documentElement.scrollTop = scrollObj[1].offsetTop
+                    this.anchorFlag = 0
+                }else{
+                    this.anchorFlag = 1
+                    document.documentElement.scrollTop = scrollObj[0].offsetTop
+                }
+                
+            },
           scrollGetData(){
               let _this = this;
               
@@ -547,20 +564,20 @@ let Base64 = require('js-base64').Base64;
                         
                     }  
                 }  
-                //window.AndroidWebView.showContent('news-cont: '+document.querySelector(".news-cont"))
+               // window.AndroidWebView.showContent('news-cont: '+document.querySelector(".news-cont"))
                  //window.AndroidWebView.showContent('a: '+document.querySelector('#navigation'))
 
-                // if(document.querySelector(".news-cont") && document.querySelector('#navigation'){
-                //     if(document.documentElement.scrollTop >= document.querySelector(".news-cont").clientHeight){
-                //         window.AndroidWebView.showContent(document.documentElement.scrollTop)
-                //         _this.commentLink = true
-                //         document.querySelector('#navigation').setAttribute("href","#title")
-                //     }else{
-                //         _this.commentLink = false
-                //         document.querySelector('#navigation').setAttribute("href","#comment")
-                //     }
+                if(document.querySelector(".news-cont")){
+                    if(document.documentElement.scrollTop >= document.querySelector(".news-cont").clientHeight){
+                       // window.AndroidWebView.showContent(document.documentElement.scrollTop)
+                        _this.commentLink = true
+                        //document.querySelector('#navigation').setAttribute("href","#title")
+                    }else{
+                        _this.commentLink = false
+                       // document.querySelector('#navigation').setAttribute("href","#comment")
+                    }
                     
-                // }
+                }
             });  
           }
         },
@@ -590,7 +607,10 @@ let Base64 = require('js-base64').Base64;
             });
      
         this.getData(1);
-        this.scrollGetData();
+        
+         this.$nextTick(function () {
+                this.scrollGetData();
+        })
         },
        beforeDestroy(){
           
@@ -662,7 +682,9 @@ body{
 }
 
 .text-sec {
-    text-align: center
+    text-align: center;
+    width: 92%;
+    margin: 15px auto;
 }
 
 .text-sec img {
@@ -673,8 +695,8 @@ body{
     color: #333333;
     font-size: 16px;
     margin-bottom: 20px;
-    width: 92%!important;
-    margin: 15px auto;
+    /* width: 92%!important;
+    margin: 15px auto; */
     line-height: 1.5;
     text-align: left;
     word-break: break-word;
