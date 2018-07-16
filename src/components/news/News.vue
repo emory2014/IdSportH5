@@ -533,14 +533,7 @@ let Base64 = require('js-base64').Base64;
             },
             goAnchor(){
                 let scrollObj = document.querySelectorAll(".title")
-                window.AndroidWebView.showContent('news-cont: '+document.querySelector(".news-cont"))
-                window.AndroidWebView.showContent('title: '+document.querySelector(".title"))
-                
-                // if(index == 1){
-                //     document.documentElement.scrollTop = scrollObj[index].offsetTop
-                // }else{
-                //     selector == "#title"
-                // }
+               
                 if(this.anchorFlag == 1) {
                     document.documentElement.scrollTop = scrollObj[1].offsetTop
                      document.body.scrollTop = scrollObj[1].offsetTop
@@ -570,11 +563,9 @@ let Base64 = require('js-base64').Base64;
                         
                     }  
                 }  
-               // window.AndroidWebView.showContent('news-cont: '+document.querySelector(".news-cont"))
-                 //window.AndroidWebView.showContent('a: '+document.querySelector('#navigation'))
 
                 if(document.querySelector(".news-cont")){
-                    if(document.documentElement.scrollTop >= document.querySelector(".news-cont").clientHeight){
+                    if(document.body.scrollTop >= document.querySelector(".news-cont").clientHeight){
                        // window.AndroidWebView.showContent(document.documentElement.scrollTop)
                         _this.commentLink = true
                         //document.querySelector('#navigation').setAttribute("href","#title")
@@ -991,6 +982,7 @@ body{
     bottom: 0;
     background: #fff;
     border-top: 1px solid #eeeeee;
+    padding-left: 4%;
 }
 
 .icon-msg {
@@ -1006,9 +998,9 @@ body{
 .icon-export {
     display: inline-block;
     height: 20px;
-    width: 22px;
+    width: 20px;
     background: url(../../assets/images/icon-export.png) no-repeat center;
-    background-size: 22px 18px;
+    background-size: 20px 18px;
     vertical-align: middle;
 }
 .comment-input {
@@ -1016,9 +1008,9 @@ body{
     background: #f5f5f5;
     border-radius: 25px;
     border: none;
-    margin: 10px 15px;
+    margin: 10px 0;
     padding: 0 15px;
-    width: 50%;
+    width: 58%;
 }
 
 .comment-input.reply {

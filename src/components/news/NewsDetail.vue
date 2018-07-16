@@ -29,7 +29,7 @@
     </div>
 
     <div class="fixed-comment" v-if="data">
-        <input readonly ref="replyInput" class="comment-input"  @click="toComment()" :placeholder="holder" /> 
+        <input readonly ref="replyInput" class="comment-detail-input"  @click="toComment()" :placeholder="holder" /> 
     </div>
     <div>
 
@@ -451,9 +451,10 @@ body{
     background: #fff;
     border-top: 1px solid #eeeeee;
     text-align: center;
+    padding-left: 0;
 }
 
-.comment-input {
+.comment-detail-input {
     height: 30px;
     background: #f5f5f5;
     border-radius: 25px;
