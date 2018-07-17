@@ -14,7 +14,7 @@ export default {
   },
   methods: {
        facebookShare(){
-           window.AndroidWebView.shareFacebook('When Great Minds Don’t Think Alike','http://test.jiajiahebao.com/web/news?aid=2358');
+           window.AndroidWebView.shareFacebook('When Great Minds Don’t Think Alike','http://www.kilatfintech.com/web/invite');
             },
   }
 }
