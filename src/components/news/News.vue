@@ -3,7 +3,6 @@
     <BHeader title="" backToApp={true} /> 
     <Loading v-if="!data" />
     <div class="news-cont " ref="article" v-if="data">
-        <a href="fb-messenger://share/?link= https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fsharing%2Freference%2Fsend-dialog&app_id=766982883498982">fenxiang</a>
         <p id="title" class="news-title title" index="01">
             {{data.article.title}}
         </p>
@@ -74,7 +73,7 @@
         </div>
      </div>
   </div>
-    <div class="fixed-comment" v-if="data ">
+    <div class="fixed-comment" v-if="data && this.getparam('uAgent')">
         <input readonly class="comment-input" @click="toComment('comment')" v-model="commentText"  placeholder="Komentar…" /> 
         <input readonly class="comment-input reply" @click="toComment('reply')" :class="[replyShow? 'show':'hide']" v-model="replyText"    :placeholder="holder"  />
         <a id="navigation" href="javascript:void(0)" @click="goAnchor()">
@@ -232,7 +231,6 @@ let Base64 = require('js-base64').Base64;
                  document.getElementsByTagName('head')[0].appendChild(fMeta);
             },
             facebookShare(){
-                
             var img = document.querySelector("img").src
             this.$http({
                     url: '/api/article/share',
@@ -244,8 +242,8 @@ let Base64 = require('js-base64').Base64;
                 }).then((res) => {
                 if (res.data.status.code == 200) {
                      this.insertMeta(this.data.article.title,img,res.data.data)
-                   // window.AndroidWebView.shareFacebook(this.data.article.title,res.data.data);
-                window.location.href = 'fb-messenger://share?link=' + encodeURIComponent(res.data.data) + '&app_id=' + encodeURIComponent(766982883498982);    
+                    window.AndroidWebView.shareFacebook(this.data.article.title,res.data.data);
+                //window.location.href = 'fb-messenger://share?link=' + encodeURIComponent(res.data.data) + '&app_id=' + encodeURIComponent(766982883498982);    
                 }else{
                     //this.$router.push({path: '/login'});
                     window.AndroidWebView.showContent(res.data.status.message);
@@ -257,7 +255,6 @@ let Base64 = require('js-base64').Base64;
             },
             whatsappShare(){
                 var img = document.querySelector("img")
-             
                  this.$http({
                     url: '/api/article/share',
                     method: 'post',
@@ -617,7 +614,7 @@ let Base64 = require('js-base64').Base64;
 
         },
        beforeDestroy(){
-          //document.title = "newsCat"
+          document.title = "newsCat"
        }
     }
 </script>

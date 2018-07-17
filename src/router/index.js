@@ -15,7 +15,6 @@ import Record from '@/components/recharge/Record'
 import NewsDetail from '@/components/news/NewsDetail'
 import News from '@/components/news/News'
 
-import Test from '@/components/Test'
 
 
 Vue.use(Router)
@@ -58,11 +57,6 @@ export default new Router({
       path: '/user',
       name: 'User',
       component: User
-    },
-    {
-      path: '/test',
-      name: 'Test',
-      component: Test
     },
     {
       path: '/invite',
