@@ -8,11 +8,14 @@ import Start from '@/components/digital-game/Start'
 import AwardRecord from '@/components/digital-game/AwardRecord'
 import Rank from '@/components/digital-game/Rank'
 import AwardDetail from '@/components/digital-game/AwardDetail'
+
 import Recharge from '@/components/recharge/Recharge'
 import Process from '@/components/recharge/Process'
 import Record from '@/components/recharge/Record'
 import NewsDetail from '@/components/news/NewsDetail'
 import News from '@/components/news/News'
+
+import Test from '@/components/Test'
 
 
 Vue.use(Router)
@@ -55,6 +58,11 @@ export default new Router({
       path: '/user',
       name: 'User',
       component: User
+    },
+    {
+      path: '/test',
+      name: 'Test',
+      component: Test
     },
     {
       path: '/invite',
