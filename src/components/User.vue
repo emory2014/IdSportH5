@@ -108,7 +108,7 @@
             <div class="pop-hobby-cont">
               <p class="btn-box"><span class="btn-cancel cancel" @click = "cancelShow()">Batal</span>
                   <span class="btn-ok name-ok" @click="nameComplete()">Oke</span></p>
-              <input minlength="8" maxlength="50" placeholder="Masukan Pilihan"
+              <input minlength="8" maxlength="20" placeholder="Masukan Pilihan"
               v-on:input="nameInput()" v-model="name" class="nic-name-input" type="text" />
               <p class="tips"><i class="icon-ntips"></i>8-50 kata,harus ada huruf dan angka</p>
             </div>
@@ -226,7 +226,7 @@ export default {
 
     },
     nameComplete(){
-      let reg = /^[A-Za-z0-9]{8,50}$/;
+      let reg = /^[A-Za-z0-9]{8,20}$/;
       let sreg = /(^\s+)|(\s+$)|\s+/g;
       if (this.name) {
         if(!reg.test(this.name.trim()) && !sreg.test(this.name.trim())){
