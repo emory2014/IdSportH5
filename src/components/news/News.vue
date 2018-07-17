@@ -3,7 +3,6 @@
     <BHeader title="" backToApp={true} /> 
     <Loading v-if="!data" />
     <div class="news-cont " ref="article" v-if="data">
-        <a href="fb-messenger://share/?link= https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fsharing%2Freference%2Fsend-dialog&app_id=123456789" >Send In Messenger</a >
         <p id="title" class="news-title title" index="01">
             {{data.article.title}}
         </p>
@@ -232,6 +231,7 @@ let Base64 = require('js-base64').Base64;
                  document.getElementsByTagName('head')[0].appendChild(fMeta);
             },
             facebookShare(){
+                
             var img = document.querySelector("img").src
             this.$http({
                     url: '/api/article/share',
@@ -243,8 +243,8 @@ let Base64 = require('js-base64').Base64;
                 }).then((res) => {
                 if (res.data.status.code == 200) {
                      this.insertMeta(this.data.article.title,img,res.data.data)
-                    window.AndroidWebView.shareFacebook(this.data.article.title,res.data.data);
-                    
+                   // window.AndroidWebView.shareFacebook(this.data.article.title,res.data.data);
+                window.open('fb-messenger://share?link=' + encodeURIComponent(res.data.data) + '&app_id=' + encodeURIComponent(766982883498982));    
                 }else{
                     //this.$router.push({path: '/login'});
                     window.AndroidWebView.showContent(res.data.status.message);
@@ -443,19 +443,6 @@ let Base64 = require('js-base64').Base64;
             return str
          },
          submitComment(){
-             var arr = 
-                 {
-                     avatar:"http://test.jiajiahebao.com/images/avatar.png",
-                     cid:"5",
-                     content:"test test test",
-                     create_time:"2018-06-29 17:42:28",
-                     like_active:false,
-                     like_count:"0",
-                     reply:[],
-                     reply_count:"0",
-                     username:"87****464"
-                 }
-             
              if(this.ctext){
                  this.$http({
                 url: '/api/comment/submit',
@@ -610,7 +597,6 @@ let Base64 = require('js-base64').Base64;
             this.pick = res.data.data.article.like 
             this.diss = res.data.data.article.dislike
             this.commentCount = this.data.article.comment_count
-            this.facebookShare()
             }else{
                 //this.$router.push({path: '/login'});
                 this.toastPop(res.data.status.message);
@@ -630,7 +616,7 @@ let Base64 = require('js-base64').Base64;
 
         },
        beforeDestroy(){
-          document.title = "newsCat"
+          //document.title = "newsCat"
        }
     }
 </script>
