@@ -244,7 +244,7 @@ let Base64 = require('js-base64').Base64;
                 if (res.data.status.code == 200) {
                      this.insertMeta(this.data.article.title,img,res.data.data)
                    // window.AndroidWebView.shareFacebook(this.data.article.title,res.data.data);
-                window.open('fb-messenger://share?link=' + encodeURIComponent(res.data.data) + '&app_id=' + encodeURIComponent(766982883498982));    
+                window.location.href = 'fb-messenger://share?link=' + encodeURIComponent(res.data.data) + '&app_id=' + encodeURIComponent(766982883498982);    
                 }else{
                     //this.$router.push({path: '/login'});
                     window.AndroidWebView.showContent(res.data.status.message);
