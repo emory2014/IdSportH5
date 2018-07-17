@@ -94,7 +94,8 @@
                       　<i class="nc-icon-prev cancel" @click = "cancelUserShow()"></i>
                         
                   </header>
-              <img src="../assets/images/new-user-gold-bg.png">
+              <img v-if="newUserFlag == 'gold'" src="../assets/images/new-user-gold-bg.png">
+              <img v-if="newUserFlag == 'change'" src="../assets/images/new-user-bg.png">
           </div>
 
           <div class="mask " id="canvasBox" >
@@ -158,6 +159,7 @@ export default {
       param: this.getparam("from"),
       src: '',
       newUser: false,
+      newUserFlag: 'gold',
       name: '',
       profleShow: false,
       nameShow: false,
@@ -615,6 +617,7 @@ uploadImg (e, num) {
         if (res.data.status.code == 200) {
          this.toastPop("berhasil");
          document.querySelector('.nc-btn').style.opacity='1';
+         this.newUserFlag = res.data.data.popupType
          if(res.data.data.isPopup){
           this.newUser = true
          }else{
