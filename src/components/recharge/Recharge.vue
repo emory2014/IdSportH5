@@ -115,6 +115,7 @@ let Base64 = require('js-base64').Base64;
         mounted(){
             let _this = this;
              this.getData()
+            
         }
     }
 </script>

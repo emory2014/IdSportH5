@@ -20,14 +20,27 @@
         },
         methods: {
             goBack(){
-                if(this.recharge || this.backToApp){
+                if(this.recharge || this.backToApp || this.getparam('push')){
                     window.AndroidWebView.closeActivities();
                 }
                 else{
                 window.history.go(-1)
-                }
-                
+               
+                }    
         },
+          getparam(name){
+            let reg = new RegExp("(^|\\?|&)" + name + "=([^&]*)(\\s|&|$)","i");
+            if(reg.test(window.location.href)){
+                let str = unescape(RegExp.$2.replace(/\+/g," "))
+                if(str.indexOf("#") > -1) {
+                    let i = str.indexOf("#")
+                    return str.substring(0,i)
+                }else{
+                    return unescape(RegExp.$2.replace(/\+/g," "))
+                }
+            }
+            return undefined
+            },
         }
     }
 </script>
