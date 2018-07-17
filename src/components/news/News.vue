@@ -3,6 +3,7 @@
     <BHeader title="" backToApp={true} /> 
     <Loading v-if="!data" />
     <div class="news-cont " ref="article" v-if="data">
+        <a href="fb-messenger://share/?link= https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fsharing%2Freference%2Fsend-dialog&app_id=766982883498982"></a>
         <p id="title" class="news-title title" index="01">
             {{data.article.title}}
         </p>
