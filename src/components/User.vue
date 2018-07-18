@@ -64,7 +64,7 @@
                     </li>
                     <li @click = "selectHobby()">
                             <div class="nc-item" id="hobby">
-                                  Hobby
+                                  Hobby1
                                     <span v-if="!seletedHobbyArr.length" class="item-right default">
                                         Silakan Pilih
                                       </span>
@@ -301,7 +301,7 @@ export default {
           let i = this.arr[k]
           this.arr.splice(k,1,true)
         })
-        this.toastPop(this.arr)
+        window.AndroidWebView.showContent(this.arr)
     },
     initFun(){
       for (let i = 0; i < this.hobbyArr.length; i++) {
