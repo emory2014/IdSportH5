@@ -9,8 +9,8 @@
         </header> -->
         <div class="nc-body" :class="[!load ? 'show':'hide']">
           <BHeader v-if="!getparam('version')" title="Selesaikan data Pribadi" backToApp={true} /> 
-            <ul class="nc-ul">
-                 <li @click="selectProfle()">
+            <ul class="nc-ul" :style="{'border-top':getparam('version') ? '8px solid #f5f5f5':'none'}">
+                 <li v-if="!getparam('version')" @click="selectProfle()" >
                     <div class="nc-item" id="profil">
 
                           <label for="uploads">Profil</label>
