@@ -108,7 +108,7 @@
             <div class="pop-hobby-cont">
               <p class="btn-box"><span class="btn-cancel cancel" @click = "cancelShow()">Batal</span>
                   <span class="btn-ok name-ok" @click="nameComplete()">Oke</span></p>
-              <input minlength="8" maxlength="20" placeholder="Masukan Pilihan"
+              <input minlength="8" maxlength="50" placeholder="Masukan Pilihan"
               v-on:input="nameInput()" v-model="name" class="nic-name-input" type="text" />
               <p class="tips"><i class="icon-ntips"></i>8-50 kata,harus ada huruf dan angka</p>
             </div>
@@ -226,7 +226,7 @@ export default {
 
     },
     nameComplete(){
-      let reg = /^[A-Za-z0-9]{8,20}$/;
+      let reg = /^[A-Za-z0-9]{8,50}$/;
       let sreg = /(^\s+)|(\s+$)|\s+/g;
       if (this.name) {
         if(!reg.test(this.name.trim()) && !sreg.test(this.name.trim())){
@@ -250,8 +250,8 @@ export default {
         this.cancelShow()
         this.src = msg
         //window.AndroidWebView.showContent("头像Base64数据:"+msg)
-        document.getElementById("avatar").setAttribute("src",'data:image/png;base64,'+msg)
-        
+       // document.getElementById("avatar").setAttribute("src",'data:image/png;base64,'+msg)
+        document.getElementById("avatar").setAttribute("src",msg)
     },
     toastPop(text){
       this.toastShow = true
@@ -301,6 +301,7 @@ export default {
           let i = this.arr[k]
           this.arr.splice(k,1,true)
         })
+        this.toastPop(this.arr)
     },
     initFun(){
       for (let i = 0; i < this.hobbyArr.length; i++) {
@@ -675,6 +676,7 @@ uploadImg (e, num) {
         method: 'post',
         data: {
            token: this.token
+          //  token: '7a1097395e3f0039801c371a7fe28542'
         }
     }).then((res) => {
       this.load = false;
@@ -691,8 +693,7 @@ uploadImg (e, num) {
           document.getElementById("showEdu").innerHTML = res.data.data.education
           document.getElementById("showEdu").classList = "item-right"
           document.getElementById("showOccupation").innerHTML = res.data.data.profession
-          document.getElementById("showOccupation").classL
-          ist = "item-right"
+          document.getElementById("showOccupation").classList = "item-right"
           //已选兴趣标签
           this.hobbyTag();
         }
