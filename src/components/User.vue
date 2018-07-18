@@ -64,7 +64,7 @@
                     </li>
                     <li @click = "selectHobby()">
                             <div class="nc-item" id="hobby">
-                                  Hobby1
+                                  Hobby
                                     <span v-if="!seletedHobbyArr.length" class="item-right default">
                                         Silakan Pilih
                                       </span>
