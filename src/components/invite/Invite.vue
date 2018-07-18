@@ -1,5 +1,6 @@
 <template>
 <div class="invite-container">
+<div v-if="getparam('version')">
     <BHeader title="Undang Teman" backToApp={true} /> 
     <div class="invite-share-sec">
        <router-link to="invite-record"> <p class="my-invite-text">Undangan saya</p></router-link>
@@ -15,6 +16,7 @@
             <p>Undang lewat Whatsapp</p>
         </div>
     </div>
+</div>
     <img class="ques1" src="../../assets/images/invite-title.png">
     <div class="invite-sec">
         <div class="invite-header"> 
@@ -108,7 +110,8 @@ let Base64 = require('js-base64').Base64;
         },
         data(){
             return {
-                data: null
+                data: null,
+                version: ''
             }
         },
        
@@ -182,7 +185,14 @@ let Base64 = require('js-base64').Base64;
              }else{
                  return str
              }
-         }
+         },
+          getparam(name){
+            let reg = new RegExp("(^|\\?|&)" + name + "=([^&]*)(\\s|&|$)","i");
+            if(reg.test(window.location.href)){
+                return unescape(RegExp.$2.replace(/\+/g," "))
+            }
+            return undefined
+        }
         },
         mounted(){
              this.getData()

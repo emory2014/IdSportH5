@@ -8,7 +8,7 @@
               Selesaikan data Pribadi
         </header> -->
         <div class="nc-body" :class="[!load ? 'show':'hide']">
-          <BHeader title="Selesaikan data Pribadi" backToApp={true} /> 
+          <BHeader v-if="!getparam('version')" title="Selesaikan data Pribadi" backToApp={true} /> 
             <ul class="nc-ul">
                  <li @click="selectProfle()">
                     <div class="nc-item" id="profil">
