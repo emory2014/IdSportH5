@@ -588,11 +588,12 @@ uploadImg (e, num) {
     let education =  document.querySelector('#showEdu').innerHTML;
     let profession = document.querySelector('#showOccupation').innerHTML;
     let gender = this.sexVal;
+     this.toastPop('aaaaaabbbb')
     if(!this.getparam('version')){
-        let content=window.AndroidWebView.getAppToken();
-        let token = Base64.decode(content)
+        var content = window.AndroidWebView.getAppToken();
+        var token = Base64.decode(content)
     }else{
-        let token = ''
+        var token = ''
     }
    this.toastPop('aa'+ token)
 
