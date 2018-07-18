@@ -588,8 +588,13 @@ uploadImg (e, num) {
     let education =  document.querySelector('#showEdu').innerHTML;
     let profession = document.querySelector('#showOccupation').innerHTML;
     let gender = this.sexVal;
-    let content=window.AndroidWebView.getAppToken();
-    let token = Base64.decode(content)
+    if(!this.getparam('version')){
+        let content=window.AndroidWebView.getAppToken();
+        let token = Base64.decode(content)
+    }else{
+        let token = ''
+    }
+   
 
     if (this.src && this.name && birthdate && education && profession && gender && this.seletedHobbyArr.length) {
       //防止重复发送请求
@@ -653,10 +658,12 @@ uploadImg (e, num) {
       this.formatEdu();
       this.formatOccupation();
       this.formatDate();
-
+      if(!this.getparam('version')){
        var content=window.AndroidWebView.getAppToken();
        let token = Base64.decode(content)
        this.token = token
+      }
+       
      
       this.$http({
         url: '/api/personal/info?'+new Date().getTime(),
