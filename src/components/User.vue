@@ -603,7 +603,7 @@ uploadImg (e, num) {
         }
         this.ajaxFlag = false;
          document.querySelector('.nc-btn').style.opacity='0.5';
-
+        this.toastPop('aa'+ token)
       this.$http({
           url: '/api/personal/info/perfect',
           method: 'post',
@@ -619,6 +619,7 @@ uploadImg (e, num) {
           }
       }).then((res) => {
           this.ajaxFlag = true;
+          
         if (res.data.status.code == 200) {
          this.toastPop("berhasil");
          document.querySelector('.nc-btn').style.opacity='1';
@@ -631,7 +632,9 @@ uploadImg (e, num) {
       }else if (res.data.status.code == 401) {
           //this.$router.push({path: '/login'});
           window.AndroidWebView.loginApp();
-        }
+      }else{
+        this.toastPop(res.data.status.message)
+      }
 
       }).catch((res) => {
           this.ajaxFlag = true;
