@@ -594,7 +594,7 @@ uploadImg (e, num) {
     }else{
         let token = ''
     }
-   
+   this.toastPop('aa'+ token)
 
     if (this.src && this.name && birthdate && education && profession && gender && this.seletedHobbyArr.length) {
       //防止重复发送请求
@@ -603,9 +603,9 @@ uploadImg (e, num) {
         }
         this.ajaxFlag = false;
          document.querySelector('.nc-btn').style.opacity='0.5';
-        this.toastPop('aa'+ token)
+        this.toastPop('bb'+ token)
       this.$http({
-          url: '/api/personal/info/perfect',
+          url: '/api/personal/info/perfect?t='+(new Date()).getTime(),
           method: 'post',
           data: {
             nickname: this.name,
