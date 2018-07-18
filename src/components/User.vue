@@ -588,14 +588,12 @@ uploadImg (e, num) {
     let education =  document.querySelector('#showEdu').innerHTML;
     let profession = document.querySelector('#showOccupation').innerHTML;
     let gender = this.sexVal;
-     this.toastPop('aaaaaabbbb')
     if(!this.getparam('version')){
         var content = window.AndroidWebView.getAppToken();
         var token = Base64.decode(content)
     }else{
         var token = ''
     }
-   this.toastPop('aa'+ token)
 
     if (this.src && this.name && birthdate && education && profession && gender && this.seletedHobbyArr.length) {
       //防止重复发送请求
@@ -604,7 +602,6 @@ uploadImg (e, num) {
         }
         this.ajaxFlag = false;
          document.querySelector('.nc-btn').style.opacity='0.5';
-        this.toastPop('bb'+ token)
       this.$http({
           url: '/api/personal/info/perfect?t='+(new Date()).getTime(),
           method: 'post',
