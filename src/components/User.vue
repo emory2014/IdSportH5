@@ -595,7 +595,11 @@ uploadImg (e, num) {
         var token = ''
     }
 
-    if (this.src && this.name && birthdate && education && profession && gender && this.seletedHobbyArr.length) {
+  var condition = this.src && this.name && birthdate && education && profession && gender && this.seletedHobbyArr.length
+    if(this.getparam('version')) {
+      condition = this.name && birthdate && education && profession && gender && this.seletedHobbyArr.length
+    }
+    if (condition) {
       //防止重复发送请求
         if (!this.ajaxFlag) {
           return false;
@@ -687,7 +691,8 @@ uploadImg (e, num) {
           document.getElementById("showEdu").innerHTML = res.data.data.education
           document.getElementById("showEdu").classList = "item-right"
           document.getElementById("showOccupation").innerHTML = res.data.data.profession
-          document.getElementById("showOccupation").classList = "item-right"
+          document.getElementById("showOccupation").classL
+          ist = "item-right"
           //已选兴趣标签
           this.hobbyTag();
         }
