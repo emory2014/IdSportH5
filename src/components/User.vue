@@ -301,7 +301,7 @@ export default {
           let i = this.arr[k]
           this.arr.splice(k,1,true)
         })
-        window.AndroidWebView.showContent(this.arr)
+       
     },
     initFun(){
       for (let i = 0; i < this.hobbyArr.length; i++) {
