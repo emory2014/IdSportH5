@@ -90,7 +90,7 @@
               </div>
           </div>
           <div class="new-user-container" @click="goldMaskHide($event)" v-bind:class="[newUser? 'show':'hide']">
-            <header class="header">
+            <header class="header" v-if="!getparam('version')" >
                       　<i class="nc-icon-prev cancel" @click = "cancelUserShow()"></i>
                         
                   </header>
