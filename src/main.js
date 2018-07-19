@@ -12,6 +12,14 @@ Vue.prototype.$http = axios;
 
 Vue.config.productionTip = false
 
+Vue.Cancel = [];
+router.beforeEach((to, from, next) => {
+    while (Vue.Cancel.length > 0) {
+        Vue.Cancel.shift()('cancel');
+    }
+    next();
+})
+
  /* eslint-disable no-new */
 new Vue({
    el: '#app',

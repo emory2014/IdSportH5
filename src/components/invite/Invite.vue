@@ -196,7 +196,10 @@ let Base64 = require('js-base64').Base64;
         },
         mounted(){
              this.getData()
-        }
+        },
+        beforeDestroy() {
+            
+        },
     }
 </script>
 <style>
