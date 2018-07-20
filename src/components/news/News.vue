@@ -163,7 +163,7 @@ let Base64 = require('js-base64').Base64;
                     ins.className = "adsbygoogle"
                     ins.dataset.adClient = "ca-pub-9104685589672232"
                     ins.dataset.adSlot = "2799061532"
-                    ins.style.cssText = 'display:inline-block;width: 100%';
+                    ins.style.cssText = 'display:inline-block;width: 100%;height: 90px';
                     this.$refs.article.appendChild(ins);
                     (adsbygoogle = window.adsbygoogle || []).push({});
             },
