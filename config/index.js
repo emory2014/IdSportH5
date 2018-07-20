@@ -63,8 +63,8 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: 'https://front.newscat.com/',
-
+    // assetsPublicPath: 'https://front.newscat.com/',
+    assetsPublicPath: '/',
     /**
      * Source Maps
      */

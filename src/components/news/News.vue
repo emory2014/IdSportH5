@@ -1,5 +1,5 @@
 <template>
-<div class="news-detail-container">
+<div ref="body" class="news-detail-container">
     <BHeader title="" backToApp={true} /> 
     <Loading v-if="!data" />
     <div class="news-cont " ref="article" v-if="data">
@@ -24,7 +24,7 @@
      style="display:inline-block;width:100%;"
      data-ad-client="ca-pub-9104685589672232"
      data-ad-slot="2799061532"></ins> -->
-     
+     <section></section>
 
     </div>
 
@@ -158,6 +158,15 @@ let Base64 = require('js-base64').Base64;
             title: String
         },
         methods: {
+            insertAds(){
+                 var ins = document.createElement("ins");
+                    ins.className = "adsbygoogle"
+                    ins.dataset.adClient = "ca-pub-9104685589672232"
+                    ins.dataset.adSlot = "2799061532"
+                    ins.style.cssText = 'display:inline-block;width: 100%';
+                    this.$refs.article.appendChild(ins);
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+            },
             toastPop(text){
                 this.toastShow = true
                 this.msg = text
@@ -596,6 +605,8 @@ let Base64 = require('js-base64').Base64;
             this.pick = res.data.data.article.like 
             this.diss = res.data.data.article.dislike
             this.commentCount = this.data.article.comment_count
+            
+            
             }else{
                 //this.$router.push({path: '/login'});
                 this.toastPop(res.data.status.message);
@@ -610,9 +621,21 @@ let Base64 = require('js-base64').Base64;
          this.$nextTick(function () {
                 this.scrollGetData();
         });
-       
+    //     <ins class="adsbygoogle"
+    //  style="display:inline-block;width:100%;"
+    //  data-ad-client="ca-pub-9104685589672232"
+    //  data-ad-slot="2799061532"></ins>
+      
         //添加谷歌广告
-         // (adsbygoogle = window.adsbygoogle || []).push({});
+          
+        },
+        updated() {
+            if(!document.getElementsByTagName('ins')[0]){
+                this.insertAds()
+            }
+        },
+        created() {
+            
         },
        beforeDestroy(){
           document.title = "newsCat"
