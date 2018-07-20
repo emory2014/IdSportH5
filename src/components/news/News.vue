@@ -24,7 +24,6 @@
      style="display:inline-block;width:100%;"
      data-ad-client="ca-pub-9104685589672232"
      data-ad-slot="2799061532"></ins> -->
-     <section></section>
 
     </div>
 
