@@ -31,9 +31,8 @@
         </div>
         <p class="contoh-1-title">Peringatan:</p>
         <ol class="invite-order-list">
-            <li>Teman yang anda undang harus pengguna 
-                baru, maka bonus baru akan bisa masuk 
-                kedalam saldo akun anda.</li>
+            <li>Teman yang anda undang harus pengguna baru dan teman yang diundang setelah login WAJIB membaca berita/artikel baru akan menerima bonus.
+</li>
             <li>Jika dalam undangan teman diselidiki ada 
                 kecurangan, maka saldo anda akan 
                 dikosongkan.</li>
