@@ -8,7 +8,13 @@
        <div class="item" :class="[type == 'failed'?'active':'']" @click="addClass('failed')"> Gagal</div>
    </div>
   <Loading v-if="loading" />
-  <p class="record-no-data" v-if="!loading && !data.length">Sementara tidak ada konten</p>
+  <div v-if="!loading && !data.length" class="recharge-record-default">
+      <img class="record-default-pic" src="../../assets/images/recharge/recharge-default.png" />
+      <p class="record-no-data" >Sementara tidak ada konten</p>
+      <router-link to="/recharge"><div class="record-default-btn">Top up Koin</div></router-link>
+  </div>
+      
+      
   <div v-if="data.length">
     <div class="cont-panel record" v-for="(item,index) of data" :key="index">
         <div class="record-left">
@@ -71,13 +77,13 @@ let Base64 = require('js-base64').Base64;
                 this.getData(this.page)
             },
             getData(page){
-                var content=window.AndroidWebView.getAppToken();
-                let token = Base64.decode(content)
+                // var content=window.AndroidWebView.getAppToken();
+                // let token = Base64.decode(content)
                this.$http({
                      url: '/api/recharge/history?t='+(new Date()).getTime(),
                     method: 'post',
                     data: {
-                        token: token,
+                        token: 'b5f97fef4af1d512d14d754783429c78',
                         type: this.type,
                         page: page
                     }
