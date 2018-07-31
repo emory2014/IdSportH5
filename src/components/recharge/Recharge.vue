@@ -86,7 +86,10 @@ let Base64 = require('js-base64').Base64;
                        this.balance = res.data.data.gold
                        this.buy = this.data.amountInfo[0].buy
                        this.gift = this.data.amountInfo[0].gift
-                }else  {
+                } else if(res.data.status.code == 401){
+                    window.AndroidWebView.loginApp();
+                }
+                else {
                    window.AndroidWebView.showContent(res.data.status.message);
                     }
 
