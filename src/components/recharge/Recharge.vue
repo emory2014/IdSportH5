@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <template> 
+=======
+<template>
+>>>>>>> 0a4fae9782642c2dc4fbdb6b4397d37b88d83cde
 <div>
 <BHeader title="Top Up Koin" recharge= {true}  />
 <div class="recharge-container">
@@ -10,9 +14,15 @@
     <div class="recharge-panel" v-if="data">
         <div v-for="(item,index) of data.amountInfo" :key="index" class="recharge-item" :class="[active == index ? 'active':'']" @click="addClass(index,item.money,item.buy,item.gift)">
             <span>Rp.{{$utils.parseMoney(item.money)}}</span>
+<<<<<<< HEAD
             
         </div>
       
+=======
+
+        </div>
+
+>>>>>>> 0a4fae9782642c2dc4fbdb6b4397d37b88d83cde
     </div>
     <p class="recharge-text" v-if="buy">Koin yang didapat：<span class="recharge-val">Rpc.{{$utils.parseMoney(buy)}}</span></p>
     <p class="recharge-text" v-if="gift">Bonus pembelian Koin：<span class="recharge-val">Rpc.{{$utils.parseMoney(gift)}}</span></p>
@@ -58,18 +68,30 @@ let Base64 = require('js-base64').Base64;
             }
         },
         methods: {
+<<<<<<< HEAD
              getQueryString(name) { 
                 var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
                 var r = window.location.search.substr(1).match(reg); 
                 if (r != null) return unescape(r[2]); 
                     return null; 
+=======
+             getQueryString(name) {
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+                var r = window.location.search.substr(1).match(reg);
+                if (r != null) return unescape(r[2]);
+                    return null;
+>>>>>>> 0a4fae9782642c2dc4fbdb6b4397d37b88d83cde
                 } ,
             maskPop(e){
                 if(e.target.className.indexOf("mask") > -1){
                     this.maskShow = false
                 }
             },
+<<<<<<< HEAD
           
+=======
+
+>>>>>>> 0a4fae9782642c2dc4fbdb6b4397d37b88d83cde
             getData(){
                 var content=window.AndroidWebView.getAppToken();
                 let token = Base64.decode(content)
@@ -87,6 +109,10 @@ let Base64 = require('js-base64').Base64;
                        this.buy = this.data.amountInfo[0].buy
                        this.gift = this.data.amountInfo[0].gift
                 } else if(res.data.status.code == 401){
+<<<<<<< HEAD
+=======
+                  window.AndroidWebView.closeActivities();
+>>>>>>> 0a4fae9782642c2dc4fbdb6b4397d37b88d83cde
                     window.AndroidWebView.loginApp();
                 }
                 else {
@@ -96,7 +122,11 @@ let Base64 = require('js-base64').Base64;
                 }).catch((res) => {
                     console.log('error: ', res);
                 });
+<<<<<<< HEAD
             
+=======
+
+>>>>>>> 0a4fae9782642c2dc4fbdb6b4397d37b88d83cde
             },
            recharge(){
                this.maskShow = true
@@ -118,7 +148,11 @@ let Base64 = require('js-base64').Base64;
         mounted(){
             let _this = this;
              this.getData()
+<<<<<<< HEAD
             
+=======
+
+>>>>>>> 0a4fae9782642c2dc4fbdb6b4397d37b88d83cde
         }
     }
 </script>
@@ -128,4 +162,8 @@ let Base64 = require('js-base64').Base64;
     margin: 0;
     background: #fff;
 }
+<<<<<<< HEAD
 </style>
+=======
+</style>
+>>>>>>> 0a4fae9782642c2dc4fbdb6b4397d37b88d83cde
