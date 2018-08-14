@@ -120,7 +120,18 @@ jawab pertanyaan menangkan Bonus" /> -->
     <i @click="closeRuleMask()" class="icon-close">×</i>
     </div>
 </div>
- <div class="rule-mask " :class="[noChangeMaskShow? 'show':'hide']">
+<div class="rule-mask " :class="[noChangeMaskShow? 'show':'hide']">
+                    <div class="err-mask-cont cont">
+                        <span class="mask-game-header"><img src="../../assets/images/game-header.png"></span>
+                        <p class="title">Kesempatan sudah habis, tidak <br> mendapatkan bonus</p>
+                        <p class="tip">Kamu bisa pakai cara lain untuk dapat kesempatan jawab <br>
+                                Ayo semangat kamu pasti bisa</p>
+                        <div class="mask-btn" @click="inviteMaskToShow()">Undang Teman</div>       
+                        <div class="mask-btn" @click="rechargeCoin()">Tukar 100 Koin </div>
+                        <!-- <div class="mask-btn" @click="watchADS()">Nonton Iklan </div> -->
+                    </div>
+                </div>
+                <div class="rule-mask " :class="[confirmMaskShow? 'show':'hide']">
                     <div class="err-mask-cont cont">
                         <p class="title">Anda Pyakin mau tukarkan 100 koin Emas untuk menjawab peranyaan? </p>
                         <div class="mask-btn" @click="confirmRechargeCoin()">Oke</div>
@@ -128,6 +139,20 @@ jawab pertanyaan menangkan Bonus" /> -->
                         
                     </div>
                 </div>
+                <div class="rule-mask " :class="[inviteMaskShow ? 'show':'hide']">
+                    <div class="invite-mask-cont cont">
+                        <p class="text">Setiap mengundang 1 teman, Anda memiliki 
+                            1 kali acara untuk mengik-uti kuis.</p>
+                        <p class="text">Mengundang semakin banyak teman, kese-
+                            mpatan berikut kuis Semakin besar.</p> 
+                            <div class="invite-icon-group">
+                              <i @click="facebookShare()" class="icon-facebook"></i>
+                              <i @click="whatsappShare()" class="icon-whatsapp"></i>
+                            </div>
+                           <router-link :to="'/game?t='+(new Date()).getTime()+''+(isTitle > -1 ?'&title=1':'')"><p class="invite-cancel-btn">Tidak</p> </router-link>
+                    </div>
+                </div>
+                
 <p class="toast-text" v-bind:class="[toastShow? 'show':'hide']">{{msg}}</p>
 
 </div>
@@ -152,7 +177,10 @@ let Base64 = require('js-base64').Base64;
                 gameId: '2',
                 token: '',
                 noChangeMaskShow: false,
-                isTitle: window.location.search.indexOf("title")
+                isTitle: window.location.search.indexOf("title"),
+                errMaskShow: false,
+                confirmMaskShow: false,
+                inviteMaskShow:false
             }
         },
         methods: {
@@ -177,6 +205,51 @@ let Base64 = require('js-base64').Base64;
                     console.log(err)
                 }
             },
+              inviteMaskToShow(){
+                this.errMaskShow = false
+                this.noChangeMaskShow = false
+                this.inviteMaskShow = true
+            },
+             facebookShare(){ 
+               this.getAppToken()
+                this.$http({
+                    url: '/api/generate/invitation_code',
+                    method: 'post',
+                    data: {
+                        token: this.token,
+                        channel: 'facebook'
+                    }
+                }).then((res) => {
+                    if (res.data.status.code == 200) {
+                        window.AndroidWebView.shareFacebook(res.data.data.title,res.data.data.link);
+                }else  {
+                   window.AndroidWebView.showContent(res.data.status.message);
+                    }
+
+                }).catch((res) => {
+                    console.log('error: ', res);
+                });
+         },
+         whatsappShare(){
+               this.getAppToken()
+                   this.$http({
+                    url: '/api/generate/invitation_code',
+                    method: 'post',
+                    data: {
+                        token: this.token,
+                        channel: 'whatsapp'
+                    }
+                }).then((res) => {
+                    if (res.data.status.code == 200) {
+                        window.AndroidWebView.shareWhatsApp(res.data.data.title,res.data.data.link);
+                }else  {
+                   window.AndroidWebView.showContent(res.data.status.message);
+                    }
+
+                }).catch((res) => {
+                    console.log('error: ', res);
+                });
+         },
             startGame(){
                 this.getAppToken()
                   this.$http({
@@ -196,6 +269,10 @@ let Base64 = require('js-base64').Base64;
                     console.log('error: ', res);
                 });
             },
+             rechargeCoin(){
+                   this.noChangeMaskShow = false
+                   this.confirmMaskShow = true 
+            },
             confirmRechargeCoin(){
                    this.getAppToken();
                     this.$http({
@@ -214,7 +291,7 @@ let Base64 = require('js-base64').Base64;
             },
             cancelRechargeCoin(){
                 //this.$router.push("/game?token=ewaeaeu"+this.token+"&t="+(new Date()).getTime())
-                this.noChangeMaskShow = false
+                this.confirmMaskShow = false
             },
              toastPop(text){
                 this.toastShow = true
