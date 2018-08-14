@@ -51,7 +51,7 @@
                     </div>
                 </div>
 
-                 <div class="rule-mask " :class="[noChangeMaskShow? 'show':'hide']">
+                 <div class="rule-mask " :class="[confirmMaskShow? 'show':'hide']">
                     <div class="err-mask-cont cont">
                         <span class="mask-game-header"><img src="../../assets/images/game-header.png"></span>
                         <p class="title">Kamu yakin mau tukar 100 Koin untuk <br> menjawab pertanyaan? </p>
@@ -144,7 +144,8 @@ let Base64 = require('js-base64').Base64
                 answer: false,
                 timestamp: 0,
                 successMsg: '',
-                isTitle: window.location.search.indexOf("title")
+                isTitle: window.location.search.indexOf("title"),
+                bugChanceFlag: true
             }
         },
         methods: {
@@ -381,13 +382,18 @@ let Base64 = require('js-base64').Base64
             },
             confirmRechargeCoin(){
                     this.getAppToken();
+                    if(!this.bugChanceFlag) {
+                        return false;
+                    }
+                    this.bugChanceFlag = false
                     this.$http({
                     url: '/game/buy/chance?token='+this.token+'&gameId='+this.gameId+'&t='+(new Date()).getTime(),
                     method: 'get',
                 }).then((res) => {
+                    this.bugChanceFlag = true
                     if (res.data.status.code == 200) {
                         // this.$router.go(0)
-                        this.$router.push("/game")
+                        this.$router.push('/game?t='+(new Date()).getTime()+''+(isTitle > -1 ?'&title=1':''))
                 }else {
                    this.toastPop(res.data.status.message)
                     }
