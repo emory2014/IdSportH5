@@ -28,10 +28,7 @@ export default new Router({
     //   name: 'User',
     //   component: User
     // },
-<<<<<<< HEAD
-=======
     // 
->>>>>>> 0a4fae9782642c2dc4fbdb6b4397d37b88d83cde
     {
       path: '/recharge',
       name: 'Recharge',
