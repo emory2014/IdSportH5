@@ -7,14 +7,14 @@
     <div class="start-sec" :class="[ start ? 'show':'hide']">
         
         <div class="question-sec">
-            <p class="process-num">3</p>
+            <p class="process-num">{{questionNum}}</p>
            <div class="process-sec">
                <CircleProcess />
            </div>
             <!-- <div class="proccess-bar-box">
                 <div ref="bar" class="proccess-ing"></div>
             </div> -->
-            <p class="text"> {{questionNum}}/50</p>
+            <p class="text"> {{questionNum}}/{{questions.length}}</p>
             <div class="qustion-cont">
                 <span>{{a}}</span>
                 <span class="plus">{{operator}}</span>
