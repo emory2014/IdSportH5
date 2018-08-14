@@ -315,9 +315,9 @@ body{
     color: #fff;
     width: 80%;
     margin: auto;
-    animation: count 0.9s linear 3;
-    transform: scale(0.9);
-    transition: all 1s ease;
+    animation: count 1.2s linear 3;
+    /* transform: scale(0.9);
+    transition: all 1s ease; */
 }
 
 @keyframes count {
