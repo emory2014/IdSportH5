@@ -74,6 +74,7 @@ import Loading from "./Loading"
     list-style: none;
     margin: 50px 12px 0 12px;
     padding: 0;
+    overflow: hidden;
 }
 
 .active-ul li {
@@ -82,7 +83,7 @@ import Loading from "./Loading"
 
 .active-pic-box{
     border-radius: 5px;
-    
+    margin-top: 20px;
     overflow: hidden;
 }
 
@@ -90,7 +91,6 @@ import Loading from "./Loading"
     display: block;
     width: 100%;
     max-height: 200px;
-    margin-top: 20px;
 }
 
 .active-title{
