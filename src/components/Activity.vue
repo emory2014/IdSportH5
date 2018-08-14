@@ -85,7 +85,7 @@ import Loading from "./Loading"
 }
 .active-ul{
     list-style: none;
-    margin: 50px 12px 0 12px;
+    margin: 0 12px 0 12px;
     padding: 0;
     overflow: hidden;
 }
