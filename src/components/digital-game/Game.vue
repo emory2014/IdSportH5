@@ -149,7 +149,7 @@ jawab pertanyaan menangkan Bonus" /> -->
                               <i @click="facebookShare()" class="icon-facebook"></i>
                               <i @click="whatsappShare()" class="icon-whatsapp"></i>
                             </div>
-                           <router-link :to="'/game?t='+(new Date()).getTime()+''+(isTitle > -1 ?'&title=1':'')"><p class="invite-cancel-btn">Tidak</p> </router-link>
+                           <p @click="cancelInviterMask()" class="invite-cancel-btn">Tidak</p> 
                     </div>
                 </div>
                 
@@ -209,6 +209,9 @@ let Base64 = require('js-base64').Base64;
                 this.errMaskShow = false
                 this.noChangeMaskShow = false
                 this.inviteMaskShow = true
+            },
+            cancelInviterMask(){
+                this.inviteMaskShow = false
             },
              facebookShare(){ 
                this.getAppToken()
