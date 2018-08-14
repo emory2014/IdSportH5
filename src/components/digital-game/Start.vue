@@ -64,7 +64,7 @@
                             <img :src="avatar">
                             </span>
                         <p class="title">Kamu yakin mau tukar 100 Koin untuk <br> menjawab pertanyaan? </p>
-                        <div class="mask-btn" @click="confirmRechargeCoin()">Iya</div>
+                        <div class="mask-btn" @click="confirmRechargeCoin()">Oke</div>
                         <div class="mask-btn" @click="cancelRechargeCoin()">Tidak</div>       
                         
                     </div>
@@ -403,7 +403,7 @@ let Base64 = require('js-base64').Base64
                     this.bugChanceFlag = true
                     if (res.data.status.code == 200) {
                         // this.$router.go(0)
-                        this.$router.push('/game?t='+(new Date()).getTime()+''+(isTitle > -1 ?'&title=1':''))
+                        this.$router.push('/game?t='+(new Date()).getTime()+''+(this.isTitle > -1 ?'&title=1':''))
                 }else {
                    this.toastPop(res.data.status.message)
                     }
