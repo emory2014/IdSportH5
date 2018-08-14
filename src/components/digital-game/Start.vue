@@ -443,7 +443,7 @@ let Base64 = require('js-base64').Base64
             //  this.token = 'e8bc2672c51e0e94540a77ee2df1b9a6'
              this.getAppToken();
             this.countDown();
-            document.querySelector(".start-num").className = "animation start-num"
+           // document.querySelector(".start-num").className = "animation start-num"
             this.getData();
         }
     }
