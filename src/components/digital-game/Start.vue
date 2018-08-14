@@ -360,7 +360,7 @@ let Base64 = require('js-base64').Base64
             restart(){
                 // this.$router.go(0)
                 // window.location.reload()
-                this.$router.push("/game")
+                this.$router.push("/game?t="+(new Date()).getTime()+""+(this.isTitle > -1 ? "&title=1":""))
             },
             answerErr(){
                 this.getAppToken();
