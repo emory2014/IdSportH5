@@ -272,7 +272,7 @@ let Base64 = require('js-base64').Base64
                      if(document.querySelector("#circle").getAttribute("stroke-dasharray") == "200,10000" && t_str > time*1000){
                          this.answerErr()
                      }
-                },t-100)
+                },t)
                
             },
             closeErrMask(){
