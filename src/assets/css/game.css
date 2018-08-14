@@ -311,7 +311,7 @@ body{
     color: #fff;
     width: 80%;
     margin: auto;
-    -webkit-animation: count 1s infinite;
+    animation: count 1s infinite;
 }
 
 @keyframes count {

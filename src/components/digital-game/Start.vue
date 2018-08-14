@@ -71,7 +71,7 @@
                               <i @click="facebookShare()" class="icon-facebook"></i>
                               <i @click="whatsappShare()" class="icon-whatsapp"></i>
                             </div>
-                           <p class="invite-cancel-btn">Tidak</p> 
+                           <router-link :to="'/game?t='+(new Date()).getTime()+''+(isTitle > -1 ?'&title=1':'')"><p class="invite-cancel-btn">Tidak</p> </router-link>
                     </div>
                 </div>
     </div>
