@@ -132,6 +132,7 @@ let Base64 = require('js-base64').Base64
                 is_right: false,
                 questionNum: 1,
                 period: 1,
+                avatar: '',
                 questions: null,
                 gameId: '2',
                 gameCount: 3,
@@ -414,6 +415,7 @@ let Base64 = require('js-base64').Base64
                     if (res.data.status.code == 200) {
                         this.gameId = data.gameId
                         this.period = data.period
+                        this.avatar = data.avatar
                         this.questions = data.list
                         this.setData()
                 }else if (res.data.status.code == 2105) {
