@@ -30,7 +30,7 @@ export default new Router({
     //   component: User
     // },
     {
-      path: '/active',
+      path: '/activity',
       name: 'Activity',
       component: Activity
     },
