@@ -47,7 +47,8 @@
 <style>
 
     .header {
-    position: relative;
+    position: fixed;
+    top: 0;
     height: 50px;
     text-align: center;
     line-height: 50px;
@@ -56,7 +57,8 @@
     background: #fff;
     margin-bottom: 8px;
     width: 100%;
-
+    z-index: 1;
+    box-shadow: 1px 1px 1px 1px rgba(255, 194, 30, 0.1);
 }
 
 .header div{

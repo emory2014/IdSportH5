@@ -1,7 +1,8 @@
 <template> 
 <div>
-<BHeader v-if=" isTitle > -1" title="Mari kita sambut Ramadhan yang mendekat,
-jawab pertanyaan menangkan Bonus" />
+<!-- <BHeader v-if=" isTitle > -1" title="Mari kita sambut Ramadhan yang mendekat,
+jawab pertanyaan menangkan Bonus" /> -->
+<BHeader title="Tantangan Untuk Dapat Uang Tunai" />
 <div class="game-container" :class="[isTitle > -1?'top-50':'']">
 <div class="scroll-box">
 <i class="icon-tip"></i>
@@ -9,80 +10,128 @@ jawab pertanyaan menangkan Bonus" />
     <li v-for = "(item,index) of data" :key="index">{{item}}</li>
 </ul>
 </div>
+<div class="rule-box" @click="showRuleMask()">Aturan Main</div>
+<div class="game-text-sec">
+    <div class="game-text-title">
+        <span>Raih Total Rp.10.000.000 <br/>Bonus Uang Tunai Tanpa Henti</span>
+    </div>
+    <p v-if="userInfo" class="game-text-tip"> orang sedang main   sudah dibagikan <span class="color">Rp.{{userInfo.player_win_money}}</span></p>
+</div>
 
-<div class="btn-group">
-<div class="rule-box" @click="showRuleMask()"></div>
+<div class="game-start-btn" @click="startGame()" >
+    Mulai Jawab
+</div>
+<p class="game-change-tip">Dapatkan 3x kesempatan menjawab</p>
+
+<div class="game-award-sec" v-if="userInfo">
+    <div class="head-sec"> 
+        <span class="game-header">
+            <img v-if="userInfo.avatar" :src="userInfo.avatar">
+            <img v-else src="../../assets/images/game-header.png">
+        </span>
+        {{userInfo.mobile}}</div>
+        <div class="game-items">
+            <div class="game-item">
+                <p>Bonus Periode Terakhir  (Rp.)</p>
+                <span>{{userInfo.leastPrize}}</span>
+                <p class="text">Penarikan min.Rp. 20.000</p>
+            </div>
+            
+             <div class="game-item">
+                  <router-link :to="'/rank?t='+(new Date()).getTime()+''+(isTitle > -1 ? '&title=1':'')">
+                <p>Daftar Peringkat</p>
+                <span>{{userInfo.rank}}</span>
+                <p class="text">Menangkan hadiah besar</p>
+                </router-link>
+            </div>
+        </div>  
+        
+</div>
+<router-link :to="'/detail?t='+(new Date()).getTime()+''+(isTitle > -1 ? '&title=1':'')">
+<div class="game-fixed-info" v-if="userInfo">
+    Jumlah Saldo :  <span class="num">Rp.{{userInfo.totalWin}}</span>
+    <span class="fixed-next">Lihat detail <i class="icon-fixed-next"></i></span>
+</div>
+</router-link>
+
+<!-- <div class="btn-group">
+
     <div @click="startGame()" class="game-btn">Mulai Kuis</div>
     <router-link :to="'/award-record?token='+token+'&t='+(new Date()).getTime()+''+(isTitle > -1 ? '&title=1':'')">
     <div class="game-btn">Riwayat Pemenang</div></router-link>
-</div>
+</div> -->
 </div>
 
 <div class="rule-mask pb-45" :class="{show: ruleMask}">
     <div class="rule-cont">
-    <p class="title">Aturan Main</p>
+    <img class="title" src="../../assets/images/rule-title.png">
     <ul class="rule-ul">
         <li>
             <i class="order-box">1</i>
             <p class="text">
-                Setiap hari per orang hanya bisa mendapatkan 3x kesempatan menjawab kuis
+                Setiap hari 1 orang hanya bisa mendapatkan 3x kesempatan menjawab kuis;
             </p>
         </li>
         <li>
             <i class="order-box">2</i>
             <p class="text">
-                Jika slot permainan habis,Anda bisa mengundang teman,jika teman yang Anda undang download aplikasi NewsCat dan daftar maka 
-                Anda punya kesempatan untuk sekali untuk menjawab pertanyaan dan bonus Rp.1000.atau bisa menggunakan 100 koin emas untuk menukarkan sekali pertanyaan.
+                Jika kesempatan jawaban harian habis, Anda bisa mengundang teman. Setiap kali Anda mengundang teman dan mengunduh lalu login aplikasi Newscat, anda diberikan kesempatan 1x lagi untuk menjawab kuis, atau menggunakan Koin untuk mendapatkan kesempatan menjawab. Tukar 1x dapat 1x kesempatan, jumlah koin yang dibutuhkan 100 Koin;
             </p>
         </li>
          <li>
             <i class="order-box">3</i>
             <p class="text">
-                Setiap 1 jam sekali akan diumumkan pemenang, Pemain yang dapat menjawab 50 pertanyaan 
-                dengan benar maka akan mendapatkan hadiah Cash.
+                 Setiap 1 jam sekali akan diumumkan pemenang. Para pemain yang menjawab 50 pertanyaan dengan benar maka akan mendapatkan hadiah uang tunai;
 
             </p>
         </li>
         <li>
             <i class="order-box">4</i>
             <p class="text">
-                  Kalian dapat melihat hadiah uang tunai kalian di daftar pemenang hadiah
+                  Jika Saldo Anda mencapai Rp. 20.000 pada Saya-Pencairan Cepat, Anda tidak perlu mengundang teman dan bisa langsung menarik uang tunai;
+
             </p>
         </li>
         <li>
             <i class="order-box">5</i>
             <p class="text">
-                  Jika Saldo yang dihasilkan dari bermain mencapai Rp.20.000, 
-                  maka Anda dapat melakukan Pencairan Dana tanpa harus mengundang teman.
-
+                 Undang teman anda untuk mendapatkan kesempatan menjawab pertanyaan atau tukar koin emas untuk mendapatkan kesempatan menjadi pertanyaan. WAJIB digunakan dihari yang sama, tidak dapat digabungkan pada hari berikutnya;
             </p>
         </li>
-   
-          <li>
+        <li>
             <i class="order-box">6</i>
             <p class="text">
-                Undang teman anda untuk mendapatkan kesempatan menjawab pertanyaan atau tukar koin emas untuk mendapatkan kesempatan menjadi pertanyaan, 
-                wajib digunakan dihari yang sama, tidak dapat gabungkan pada hari berikutnya.
+                  Menjawab pertanyaan tidak ada batas waktu, setiap pemain bisa menguji kemampuan kecepatan Anda sendiri dalam menjawab pertanyaan;
             </p>
         </li>
          <li>
             <i class="order-box">7</i>
             <p class="text">
-                  Menjawab pertanyaan tidak ada batas waktu, setiap pemain bisa menguji 
-                  kemampuan kecepatan Anda sendiri dalam menjawab pertanyaan.
+                  Jika ada pelanggaran terhadap partisipasin dalam permainan, NewsCat berhak membatalkan partisipasin dari event, dan jika perlu berhak untuk mengambil langkah hukum;
             </p>
         </li>
          <li>
             <i class="order-box">8</i>
             <p class="text">
-                  Peraturan yang dibuat adalah bagian dari hak penyelenggara permainan.
+                  Peraturan yang dibuat adalah bagian dari hak penyelenggara permainan;
             </p>
         </li>
     </ul>
     <i @click="closeRuleMask()" class="icon-close">×</i>
     </div>
 </div>
- <div class="rule-mask " :class="[noChangeMaskShow? 'show':'hide']">
+<div class="rule-mask " :class="[noChangeMaskShow? 'show':'hide']">
+                    <div class="err-mask-cont cont">
+                        <span class="mask-game-header"><img :src="userInfo.avatar"></span>
+                        <p class="title">Kesempatan sudah habis, tidak <br> mendapatkan bonus</p>
+                        <p class="tip">Kamu bisa pakai cara lain untuk dapat kesempatan jawab <br>
+                                Ayo semangat kamu pasti bisa</p>
+                        <div class="mask-btn" @click="inviteMaskToShow()">Undang Teman</div>       
+                        <div class="mask-btn" @click="rechargeCoin()">Tukar 100 Koin </div>
+                        <!-- <div class="mask-btn" @click="watchADS()">Nonton Iklan </div> -->
+                    </div>
+                </div>
+                <div class="rule-mask " :class="[confirmMaskShow? 'show':'hide']">
                     <div class="err-mask-cont cont">
                         <p class="title">Anda Pyakin mau tukarkan 100 koin Emas untuk menjawab peranyaan? </p>
                         <div class="mask-btn" @click="confirmRechargeCoin()">Oke</div>
@@ -90,12 +139,27 @@ jawab pertanyaan menangkan Bonus" />
                         
                     </div>
                 </div>
+                <div class="rule-mask " :class="[inviteMaskShow ? 'show':'hide']">
+                    <div class="invite-mask-cont cont">
+                        <p class="text">Setiap mengundang 1 teman, Anda memiliki 
+                            1 kali acara untuk mengik-uti kuis.</p>
+                        <p class="text">Mengundang semakin banyak teman, kese-
+                            mpatan berikut kuis Semakin besar.</p> 
+                            <div class="invite-icon-group">
+                              <i @click="facebookShare()" class="icon-facebook"></i>
+                              <i @click="whatsappShare()" class="icon-whatsapp"></i>
+                            </div>
+                           <p @click="cancelInviterMask()" class="invite-cancel-btn">Tidak</p> 
+                    </div>
+                </div>
+                
 <p class="toast-text" v-bind:class="[toastShow? 'show':'hide']">{{msg}}</p>
 
 </div>
 </template>
 <script>
-import BHeader from "../common/BHeader"
+import BHeader from "../common/BHeader";
+let Base64 = require('js-base64').Base64;
 
     export default {
         name: 'Game',
@@ -109,9 +173,14 @@ import BHeader from "../common/BHeader"
                 toastShow: false,
                 msg: '',
                 data: null,
+                userInfo: null,
+                gameId: '2',
                 token: '',
                 noChangeMaskShow: false,
-                isTitle: window.location.search.indexOf("title")
+                isTitle: window.location.search.indexOf("title"),
+                errMaskShow: false,
+                confirmMaskShow: false,
+                inviteMaskShow:false
             }
         },
         methods: {
@@ -121,13 +190,77 @@ import BHeader from "../common/BHeader"
                 if (r != null) return unescape(r[2]); 
                     return null; 
                 } ,
+                 getAppToken(){
+                 try{
+                    if(this.getQueryString("token")){
+                        this.token = this.getQueryString("token")
+                    }else{
+                        var content=window.AndroidWebView.getAppToken();
+                        var token = Base64.decode(content)
+                        this.token = token
+                    }
+
+                }
+                catch(err){
+                    console.log(err)
+                }
+            },
+              inviteMaskToShow(){
+                this.errMaskShow = false
+                this.noChangeMaskShow = false
+                this.inviteMaskShow = true
+            },
+            cancelInviterMask(){
+                this.inviteMaskShow = false
+            },
+             facebookShare(){ 
+               this.getAppToken()
+                this.$http({
+                    url: '/api/generate/invitation_code',
+                    method: 'post',
+                    data: {
+                        token: this.token,
+                        channel: 'facebook'
+                    }
+                }).then((res) => {
+                    if (res.data.status.code == 200) {
+                        window.AndroidWebView.shareFacebook(res.data.data.title,res.data.data.link);
+                }else  {
+                   window.AndroidWebView.showContent(res.data.status.message);
+                    }
+
+                }).catch((res) => {
+                    console.log('error: ', res);
+                });
+         },
+         whatsappShare(){
+               this.getAppToken()
+                   this.$http({
+                    url: '/api/generate/invitation_code',
+                    method: 'post',
+                    data: {
+                        token: this.token,
+                        channel: 'whatsapp'
+                    }
+                }).then((res) => {
+                    if (res.data.status.code == 200) {
+                        window.AndroidWebView.shareWhatsApp(res.data.data.title,res.data.data.link);
+                }else  {
+                   window.AndroidWebView.showContent(res.data.status.message);
+                    }
+
+                }).catch((res) => {
+                    console.log('error: ', res);
+                });
+         },
             startGame(){
+                this.getAppToken()
                   this.$http({
-                        url: 'http://www.kilatfintech.com/game/check?token='+this.token+'&gameId=1&t='+(new Date()).getTime(),
+                        url: '/game/check?token='+this.token+'&gameId='+this.gameId+'&t='+(new Date()).getTime(),
                         method: 'get',
                 }).then((res) => {
                 if (res.data.status.code == 200) {
-                       this.$router.push("/start?token="+this.token+"&t="+(new Date()).getTime()+""+((this.isTitle > -1) ? "&title=1":""))
+                       this.$router.push("/start?t="+(new Date()).getTime()+""+((this.isTitle > -1) ? "&title=1":""))
                 }else if(res.data.status.code == 2105){
                         this.noChangeMaskShow = true
                 }
@@ -139,13 +272,18 @@ import BHeader from "../common/BHeader"
                     console.log('error: ', res);
                 });
             },
+             rechargeCoin(){
+                   this.noChangeMaskShow = false
+                   this.confirmMaskShow = true 
+            },
             confirmRechargeCoin(){
+                   this.getAppToken();
                     this.$http({
-                    url: 'http://www.kilatfintech.com/game/buy/chance?token='+this.token+'&gameId=1&t='+(new Date()).getTime(),
+                    url: '/game/buy/chance?token='+this.token+'&gameId='+this.gameId+'&t='+(new Date()).getTime(),
                     method: 'get',
                 }).then((res) => {
                     if (res.data.status.code == 200) {
-                        this.$router.push("/start?token="+this.token+"&t="+(new Date()).getTime()+""+(this.isTitle > -1 ? "&title=1":""))
+                        this.$router.push("/start?t="+(new Date()).getTime()+""+(this.isTitle > -1 ? "&title=1":""))
                 }else {
                    this.toastPop(res.data.status.message)
                     }
@@ -156,7 +294,7 @@ import BHeader from "../common/BHeader"
             },
             cancelRechargeCoin(){
                 //this.$router.push("/game?token=ewaeaeu"+this.token+"&t="+(new Date()).getTime())
-                this.noChangeMaskShow = false
+                this.confirmMaskShow = false
             },
              toastPop(text){
                 this.toastShow = true
@@ -186,7 +324,7 @@ import BHeader from "../common/BHeader"
             },
           getData(){
                      this.$http({
-                        url: 'http://www.kilatfintech.com/game/home?gameId=1&t='+(new Date()).getTime(),
+                        url: '/game/home?gameId='+this.gameId+'&t='+(new Date()).getTime(),
                         method: 'get',
                 }).then((res) => {
                     if (res.data.status.code == 200) {
@@ -203,13 +341,29 @@ import BHeader from "../common/BHeader"
                 },
         },
         mounted(){
-            let token = this.getQueryString("token")
-            this.token = token ? token.substring(7) : "";
-            // window.AndroidWebView.showContent(123)
+            // let token = this.getQueryString("token")
+            // this.token = token ? token.substring(7) : "";
+            
+             //window.AndroidWebView.showContent(123)
             // this.token = window.AndroidWebview.getAppToken()
-            this.getData()
+           
+                this.getAppToken();
+        
+                this.getData();
          
+                this.$http({
+                    url: '/game/user/center?token='+this.token+'&gameId='+this.gameId+'&t='+(new Date()).getTime(),
+                    method: 'get',
+                }).then((res) => {
+                if (res.data.status.code == 200) {
+                       this.userInfo = res.data.data
+                }else  {
+                   
+                    }
 
+                }).catch((res) => {
+                    console.log('error: ', res);
+                });
         },
         beforeDestroy(){
             clearInterval(this.timer)
