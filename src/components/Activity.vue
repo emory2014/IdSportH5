@@ -1,8 +1,9 @@
 <template>
-<div>
+<div class="active-container">
 <BHeader backToApp={true} title="Pusat Permainan"  />
 <Loading v-if="!data" />
 
+ <p :class="[defaultShow ? 'show':'hide']" class="default-text">Sementara kuis tidak ada</p>
  <ul v-if="data" class="active-ul" >
      
          <li v-for="(item,index) of data" :key="index">
@@ -27,7 +28,8 @@ import Loading from "./Loading"
         data(){
             return {
             data: null,
-            msg: ''
+            msg: '',
+            defaultShow: false
             }
         },
         props: {
@@ -45,7 +47,7 @@ import Loading from "./Loading"
         },
            mounted(){
             // this.token = this.getQueryString("token");
-            this.token = 'e8bc2672c51e0e94540a77ee2df1b9a6'
+            // this.token = 'e8bc2672c51e0e94540a77ee2df1b9a6'
               this.$http({
                 url: '/game/activity/entrance?t='+(new Date()).getTime(),
                 method: 'get',
@@ -53,6 +55,9 @@ import Loading from "./Loading"
                     let data = res.data.data;
                     if (res.data.status.code == 200) {
                         this.data = res.data.data
+                        if(!this.data.length){
+                            this.defaultShow = true
+                        }
                         
                 }else if (res.data.status.code == 401) {
                         
@@ -67,6 +72,14 @@ import Loading from "./Loading"
     }
 </script>
 <style>
+.active-container{
+    padding-top: 60px;
+}
+.default-text{
+    font-size: 16px;
+    color: #666;
+    text-align: center
+}
 .active-ul a {
     text-decoration: none;
 }
