@@ -266,8 +266,8 @@ let Base64 = require('js-base64').Base64;
             
              //window.AndroidWebView.showContent(123)
             // this.token = window.AndroidWebview.getAppToken()
-            let test = window.AndroidWebview.getAppToken()
-            window.AndroidWebView.showContent(test)
+            // var test = window.AndroidWebview.getAppToken()
+            // window.AndroidWebView.showContent(test)
                this.getAppToken()
             
                 this.getData();
