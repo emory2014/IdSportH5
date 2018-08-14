@@ -1,6 +1,6 @@
 <template>
 <div>
-<BHeader title="Pusat Permainan"  />
+<BHeader backToApp={true} title="Pusat Permainan"  />
 <Loading v-if="!data" />
 
  <ul v-if="data" class="active-ul" >
