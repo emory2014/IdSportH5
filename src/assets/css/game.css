@@ -24,6 +24,7 @@ body{
     padding-bottom: 80px;
     background: url(../../assets/images/bg.png)  center no-repeat,#3a136c;
     background-size: cover;
+    min-height: 650px;
 }
 
 .header {
