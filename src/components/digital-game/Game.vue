@@ -166,12 +166,10 @@ let Base64 = require('js-base64').Base64;
                  try{
                     if(this.getQueryString("token")){
                         this.token = this.getQueryString("token")
-                        window.AndroidWebView.showContent('web:'+this.token)
                     }else{
                         var content=window.AndroidWebView.getAppToken();
                         var token = Base64.decode(content)
                         this.token = token
-                        window.AndroidWebView.showContent('app:'+token)
                     }
 
                 }
@@ -268,8 +266,8 @@ let Base64 = require('js-base64').Base64;
             
              //window.AndroidWebView.showContent(123)
             // this.token = window.AndroidWebview.getAppToken()
-            // var test = window.AndroidWebview.getAppToken()
-            // window.AndroidWebView.showContent(test)
+            var test = window.AndroidWebview.getAppToken()
+            window.AndroidWebView.showContent(test)
                this.getAppToken()
             
                 this.getData();
