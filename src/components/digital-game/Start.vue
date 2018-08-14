@@ -245,7 +245,7 @@ let Base64 = require('js-base64').Base64
                             this.start = true
                             clearInterval(timeout)
                 }
-                },1300)
+                },1100)
             },
             proccessActive(time){
                  clearTimeout(timeout1)
