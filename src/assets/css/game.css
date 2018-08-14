@@ -315,7 +315,7 @@ body{
     color: #fff;
     width: 80%;
     margin: auto;
-    animation: count 0.8s linear 3;
+    animation: count 1s linear 3;
     /* transform: scale(0.9);
     transition: all 1s ease; */
 }
@@ -328,11 +328,11 @@ body{
     } */
     0%{
         opacity: 0;
-        transform: scale(1.01);
+        transform: scale(1);
     }
     50%{
         opacity: 1;
-        transform: scale(1.02);
+        transform: scale(1.1);
     }
     100%{
         opacity: 0;
