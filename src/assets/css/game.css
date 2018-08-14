@@ -22,8 +22,8 @@ body{
 .game-container{
     margin-top: 50px;
     padding-bottom: 80px;
-    background: url(../../assets/images/bg.png)  center no-repeat,#3a136c;
-    background-size: cover;
+    background: url(../../assets/images/bg.png)  top no-repeat,#3a136c;
+    background-size: 100%;
     min-height: 650px;
 }
 
