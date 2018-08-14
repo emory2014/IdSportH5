@@ -122,7 +122,7 @@ jawab pertanyaan menangkan Bonus" /> -->
 </div>
 <div class="rule-mask " :class="[noChangeMaskShow? 'show':'hide']">
                     <div class="err-mask-cont cont">
-                        <span class="mask-game-header"><img src="../../assets/images/game-header.png"></span>
+                        <span class="mask-game-header"><img :src="userInfo.avatar"></span>
                         <p class="title">Kesempatan sudah habis, tidak <br> mendapatkan bonus</p>
                         <p class="tip">Kamu bisa pakai cara lain untuk dapat kesempatan jawab <br>
                                 Ayo semangat kamu pasti bisa</p>

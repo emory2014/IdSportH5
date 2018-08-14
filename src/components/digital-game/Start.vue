@@ -32,7 +32,10 @@
                 <i id="subtraction" class="icon-subtraction" @click="nextQustion(0)"></i>
                 <div class="rule-mask " :class="[errMaskShow? 'show':'hide']">
                     <div class="err-mask-cont cont">
-                        <span class="mask-game-header"><img src="../../assets/images/game-header.png"></span>
+                        <span class="mask-game-header">
+                            <!-- <img src="../../assets/images/game-header.png"> -->
+                             <img :src="avatar">
+                        </span>
                         <p class="title">Kamu masih punya <span class="mark">{{gameCount}}x</span> kesempatan</p>
                         <div class="mask-btn" @click="restart()">Coba Lagi</div>
                         <div class="mask-btn" @click="inviteMaskToShow()">Undang teman untuk dapat <br> kesempatan menjawab</div>       
@@ -41,7 +44,10 @@
 
                 <div class="rule-mask " :class="[noChangeMaskShow? 'show':'hide']">
                     <div class="err-mask-cont cont">
-                        <span class="mask-game-header"><img src="../../assets/images/game-header.png"></span>
+                        <span class="mask-game-header">
+                            <!-- <img src="../../assets/images/game-header.png"> -->
+                             <img :src="avatar">
+                        </span>
                         <p class="title">Kesempatan sudah habis, tidak <br> mendapatkan bonus</p>
                         <p class="tip">Kamu bisa pakai cara lain untuk dapat kesempatan jawab <br>
                                 Ayo semangat kamu pasti bisa</p>
@@ -53,7 +59,10 @@
 
                  <div class="rule-mask " :class="[confirmMaskShow? 'show':'hide']">
                     <div class="err-mask-cont cont">
-                        <span class="mask-game-header"><img src="../../assets/images/game-header.png"></span>
+                        <span class="mask-game-header">
+                            <!-- <img src="../../assets/images/game-header.png"> -->
+                            <img :src="avatar">
+                            </span>
                         <p class="title">Kamu yakin mau tukar 100 Koin untuk <br> menjawab pertanyaan? </p>
                         <div class="mask-btn" @click="confirmRechargeCoin()">Iya</div>
                         <div class="mask-btn" @click="cancelRechargeCoin()">Tidak</div>       
