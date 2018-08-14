@@ -87,14 +87,14 @@
         <img class="icon-award" src="../../assets/images/icon-award.png" />
             <p class="title">Kamu jenius</p>
             <p class="text">{{successMsg}}</p>
-        <router-link :to="'/game?token=qwaseqa'+token+'&t='+(new Date()).getTime()+''+(isTitle > -1 ?'&title=1':'')"><div class="mask-btn">saya tahu</div></router-link>
+        <router-link :to="'/game?t='+(new Date()).getTime()+''+(isTitle > -1 ?'&title=1':'')"><div class="mask-btn">saya tahu</div></router-link>
         </div>
     </div>
 
     <div class="rule-mask" :class="[ errMsgShow ? 'show': 'hide']">
         <div class="success-mask-cont pt-30">
             {{errMsg}}
-            <router-link  :to="'/game?token=qwaseqa'+token+'&t='+(new Date()).getTime()+''+(isTitle > -1 ?'&title=1':'')"><div class="mask-btn">Oke</div></router-link>
+            <router-link  :to="'/game?t='+(new Date()).getTime()+''+(isTitle > -1 ?'&title=1':'')"><div class="mask-btn">Oke</div></router-link>
         </div>
     </div>
    

@@ -148,7 +148,7 @@ let Base64 = require('js-base64').Base64
         mounted(){
             // this.token = this.getQueryString("token")
             // this.token = 'e8bc2672c51e0e94540a77ee2df1b9a6'
-            this.getAppToken
+            this.getAppToken()
             this.getData(1)
             this.scrollGetData()
         }
