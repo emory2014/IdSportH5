@@ -1,7 +1,8 @@
 <template> 
 <div>
-<BHeader title="Riwayat Menang" v-if="isTitle > -1" />
-<div class="record-container" :class="[ isTitle > -1 ?'top-50':'']">
+<BHeader title="Riwayat Menang"  />
+    <Loading v-if="!data" />
+<div class="record-container" >
 
 <div class="data-panel" v-if="data">
     <div class="award-avator-box">
@@ -37,17 +38,20 @@
 </template>
 <script>
 import BHeader from "../common/BHeader"
+import Loading from "../Loading"
 
     export default {
         name: 'AwardRecord',
         components: {
-           BHeader
+           BHeader,
+           Loading
         },
         data(){
             return {
                 ruleMask: false,
                 data: null,
                 token: '',
+                defaultShow: false,
                 isTitle: window.location.search.indexOf("title")
             }
         },
@@ -60,11 +64,14 @@ import BHeader from "../common/BHeader"
                 } ,
              getData(){
                this.$http({
-                    url: 'http://www.kilatfintech.com/game/user/center?token='+this.token+'&gameId=1&t='+(new Date()).getTime(),
+                    url: '/game/user/center?token='+this.token+'&gameId=1&t='+(new Date()).getTime(),
                     method: 'get',
                 }).then((res) => {
                     if (res.data.status.code == 200) {
                        this.data = res.data.data
+                       if(!this.data.length){
+                           this.defaultShow = true
+                       }
                 }else  {
                    
                     }
