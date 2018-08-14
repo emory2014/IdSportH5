@@ -38,7 +38,7 @@ jawab pertanyaan menangkan Bonus" /> -->
             </div>
             
              <div class="game-item">
-                  <router-link :to="'/rank?token='+this.token+'&t='+(new Date()).getTime()+''+(isTitle > -1 ? '&title=1':'')">
+                  <router-link :to="'/rank?t='+(new Date()).getTime()+''+(isTitle > -1 ? '&title=1':'')">
                 <p>Daftar Peringkat</p>
                 <span>{{userInfo.rank}}</span>
                 <p class="text">Menangkan hadiah besar</p>
@@ -47,7 +47,7 @@ jawab pertanyaan menangkan Bonus" /> -->
         </div>  
         
 </div>
-<router-link :to="'/detail?token='+this.token+'&t='+(new Date()).getTime()+''+(isTitle > -1 ? '&title=1':'')">
+<router-link :to="'/detail?t='+(new Date()).getTime()+''+(isTitle > -1 ? '&title=1':'')">
 <div class="game-fixed-info" v-if="userInfo">
     Jumlah Saldo :  <span class="num">Rp.{{userInfo.totalWin}}</span>
     <span class="fixed-next">Lihat detail <i class="icon-fixed-next"></i></span>
@@ -81,7 +81,7 @@ jawab pertanyaan menangkan Bonus" /> -->
          <li>
             <i class="order-box">3</i>
             <p class="text">
-                Setiap 1 jam sekali akan diumumkan pemenang, para pemain yang menjawab 50 pertanyaan dengan benar maka akan mendapatkan hadiah uang tunai;
+                 Setiap 1 jam sekali akan diumumkan pemenang. Para pemain yang menjawab 50 pertanyaan dengan benar maka akan mendapatkan hadiah uang tunai;
 
             </p>
         </li>
@@ -89,15 +89,33 @@ jawab pertanyaan menangkan Bonus" /> -->
             <i class="order-box">4</i>
             <p class="text">
                   Jika Saldo Anda mencapai Rp. 20.000 pada Saya-Pencairan Cepat, Anda tidak perlu mengundang teman dan bisa langsung menarik uang tunai;
+
             </p>
         </li>
         <li>
             <i class="order-box">5</i>
             <p class="text">
-                  Undang teman anda untuk mendapatkan kesempatan menjawab pertanyaan atau tukar
+                 Undang teman anda untuk mendapatkan kesempatan menjawab pertanyaan atau tukar koin emas untuk mendapatkan kesempatan menjadi pertanyaan. WAJIB digunakan dihari yang sama, tidak dapat digabungkan pada hari berikutnya;
             </p>
         </li>
-   
+        <li>
+            <i class="order-box">6</i>
+            <p class="text">
+                  Menjawab pertanyaan tidak ada batas waktu, setiap pemain bisa menguji kemampuan kecepatan Anda sendiri dalam menjawab pertanyaan;
+            </p>
+        </li>
+         <li>
+            <i class="order-box">7</i>
+            <p class="text">
+                  Jika ada pelanggaran terhadap partisipasin dalam permainan, NewsCat berhak membatalkan partisipasin dari event, dan jika perlu berhak untuk mengambil langkah hukum;
+            </p>
+        </li>
+         <li>
+            <i class="order-box">8</i>
+            <p class="text">
+                  Peraturan yang dibuat adalah bagian dari hak penyelenggara permainan;
+            </p>
+        </li>
     </ul>
     <i @click="closeRuleMask()" class="icon-close">×</i>
     </div>
@@ -144,13 +162,29 @@ let Base64 = require('js-base64').Base64;
                 if (r != null) return unescape(r[2]); 
                     return null; 
                 } ,
+                 getAppToken(){
+                 try{
+                    if(this.getQueryString("token")){
+                        this.token = this.getQueryString("token")
+                    }else{
+                        var content=window.AndroidWebView.getAppToken();
+                        var token = Base64.decode(content)
+                        this.token = token
+                    }
+
+                }
+                catch(err){
+                    console.log(err)
+                }
+            },
             startGame(){
+                this.getAppToken()
                   this.$http({
-                        url: '/game/check?token='+this.token+'&gameId=2&t='+(new Date()).getTime(),
+                        url: '/game/check?token='+this.token+'&gameId='+this.gameId+'&t='+(new Date()).getTime(),
                         method: 'get',
                 }).then((res) => {
                 if (res.data.status.code == 200) {
-                       this.$router.push("/start?token="+this.token+"&t="+(new Date()).getTime()+""+((this.isTitle > -1) ? "&title=1":""))
+                       this.$router.push("/start?t="+(new Date()).getTime()+""+((this.isTitle > -1) ? "&title=1":""))
                 }else if(res.data.status.code == 2105){
                         this.noChangeMaskShow = true
                 }
@@ -163,12 +197,13 @@ let Base64 = require('js-base64').Base64;
                 });
             },
             confirmRechargeCoin(){
+                   this.getAppToken();
                     this.$http({
                     url: '/game/buy/chance?token='+this.token+'&gameId='+this.gameId+'&t='+(new Date()).getTime(),
                     method: 'get',
                 }).then((res) => {
                     if (res.data.status.code == 200) {
-                        this.$router.push("/start?token="+this.token+"&t="+(new Date()).getTime()+""+(this.isTitle > -1 ? "&title=1":""))
+                        this.$router.push("/start?t="+(new Date()).getTime()+""+(this.isTitle > -1 ? "&title=1":""))
                 }else {
                    this.toastPop(res.data.status.message)
                     }
@@ -231,18 +266,8 @@ let Base64 = require('js-base64').Base64;
             
             // window.AndroidWebView.showContent(123)
             // this.token = window.AndroidWebview.getAppToken()
-                try{
-                    if(this.getQueryString("token")){
-                        this.token = this.getQueryString("token")
-                    }else{
-                        var content=window.AndroidWebView.getAppToken();
-                        var token = Base64.decode(content)
-                        this.token = token
-                    }
-                }
-                catch(err){
-                    console.log(err)
-                }
+            window.AndroidWebView.showContent(window.AndroidWebview.getAppToken())
+               this.getAppToken()
             
                 this.getData();
          

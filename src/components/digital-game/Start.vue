@@ -397,7 +397,7 @@ let Base64 = require('js-base64').Base64
                 });
             },
             cancelRechargeCoin(){
-                this.$router.push("/game?token=ewaeaeu"+this.token+"&t="+(new Date()).getTime()+""+(this.isTitle > -1 ? "&title=1":""))
+                this.$router.push("/game?t="+(new Date()).getTime()+""+(this.isTitle > -1 ? "&title=1":""))
             },
             getData(){
                 this.$http({
@@ -423,8 +423,8 @@ let Base64 = require('js-base64').Base64
         },
         mounted(){
             // this.token = this.getQueryString("token");
-             this.token = 'e8bc2672c51e0e94540a77ee2df1b9a6'
-            // this.getAppToken();
+            //  this.token = 'e8bc2672c51e0e94540a77ee2df1b9a6'
+             this.getAppToken();
             this.countDown();
             this.getData();
         }
