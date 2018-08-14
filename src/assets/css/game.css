@@ -315,7 +315,7 @@ body{
     color: #fff;
     width: 80%;
     margin: auto;
-    /* animation: count 1s linear 3; */
+    animation: count 0.9s linear 3;
     transform: scale(0.9);
     transition: all 1s ease;
 }
