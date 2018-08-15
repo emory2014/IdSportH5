@@ -1,7 +1,8 @@
 <template> 
 <div>
 <div class="rank-container">
-<BHeader title="Riwayat Menang" v-if="isTitle > -1" />
+<BHeader title="Sementara tidak ada konten" />
+ <Loading v-if="!data" />
 <div class="default-sec hide">
     <img src="../../assets/images/award-detail-bg.png">
     <p>Sementara limit kosong</p>
@@ -25,9 +26,9 @@
 </div>
 
 
-<div class="award-detail-box" :class="[defaultShow? 'show':'hide']">
-    <img src="../../assets/images/award-detail-bg.png" />
-    <p>Sementara limit kosong</p>
+<div class="game-dafault" :class="[defaultShow? 'show':'hide']">
+    <img src="../../assets/images/game-default-pic.png" />
+    <p class="default-text">“ Sementara tidak ada detail jumlah ”</p>
 </div>
 
 </div>
@@ -35,11 +36,14 @@
 </template>
 <script>
 import BHeader from "../common/BHeader"
+import Loading from "../Loading"
+let Base64 = require('js-base64').Base64
 
     export default {
         name: 'AwardDetail',
         components: {
-           BHeader
+           BHeader,
+           Loading
         },
         data(){
             return {
@@ -51,7 +55,7 @@ import BHeader from "../common/BHeader"
                 page: 1,
                 token: '',
                 isTitle: window.location.search.indexOf("title"),
-                defaultShow: true
+                defaultShow: false
             }
         },
         methods: {
@@ -63,7 +67,7 @@ import BHeader from "../common/BHeader"
                 } ,
             getData(page){
                this.$http({
-                    url: 'http://www.kilatfintech.com/game/success/record?token='+this.token+'&gameId=1&page='+page+'&t='+(new Date()).getTime(),
+                    url: '/game/success/record?token='+this.token+'&gameId=2&page='+page+'&t='+(new Date()).getTime(),
                     method: 'get',
                 }).then((res) => {
                     this.flag = true;  
@@ -86,6 +90,21 @@ import BHeader from "../common/BHeader"
                     console.log('error: ', res);
                 });
             },
+             getAppToken(){
+                 try{
+                    if(this.getQueryString("token")){
+                        this.token = this.getQueryString("token")
+                    }else{
+                        var content=window.AndroidWebView.getAppToken();
+                        var token = Base64.decode(content)
+                        this.token = token
+                    }
+
+                }
+                catch(err){
+                    console.log(err)
+                }
+            },
           scrollGetData(){
               let _this = this;
                window.addEventListener('scroll',function(){  
@@ -94,8 +113,8 @@ import BHeader from "../common/BHeader"
                 // console.log(document.body.offsetHeight); // 文档高度  
                 // 判断是否滚动到底部  
                 
-                console.log(document.body.scrollTop + window.innerHeight)
-                console.log(document.body.offsetHeight)
+                // console.log(document.body.scrollTop + window.innerHeight)
+                // console.log(document.body.offsetHeight)
                 if(document.body.scrollTop + window.innerHeight <= document.body.offsetHeight) {  
                     // console.log(sw);  
                     // 如果开关打开则加载数据  
@@ -127,7 +146,9 @@ import BHeader from "../common/BHeader"
           }
         },
         mounted(){
-            this.token = this.getQueryString("token")
+            // this.token = this.getQueryString("token")
+            // this.token = 'e8bc2672c51e0e94540a77ee2df1b9a6'
+            this.getAppToken()
             this.getData(1)
             this.scrollGetData()
         }

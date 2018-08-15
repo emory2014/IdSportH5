@@ -1,16 +1,20 @@
-<template> 
+<template>
 <div>
-
+<BHeader title="Kuis" />
 <div class="start-container">
+     <p class="start-title" :class="[ start ? 'show':'hide']">Periode {{period}}</p>
+     <span class="start-num" ref="num" :class="[ !start ? 'show':'hide']">{{count}}</span>
+    <div class="start-sec" :class="[ start ? 'show':'hide']">
 
-    <div class="start-sec">
-        <span class="num" ref="num" :class="[ !start ? 'show':'hide']">{{count}}</span>
-        <div class="question-sec" :class="[ start ? 'show':'hide']">
-            <p class="title">Periode {{period}}</p>
-            <div class="proccess-bar-box">
+        <div class="question-sec">
+            <p class="process-num">{{questionNum}}</p>
+           <div class="process-sec">
+               <CircleProcess />
+           </div>
+            <!-- <div class="proccess-bar-box">
                 <div ref="bar" class="proccess-ing"></div>
-            </div>
-            <p class="text">Pertanyaan {{questionNum}}</p>
+            </div> -->
+            <p class="text" v-if="questions"> {{questionNum}}/{{questions.length}}</p>
             <div class="qustion-cont">
                 <span>{{a}}</span>
                 <span class="plus">{{operator}}</span>
@@ -20,7 +24,7 @@
                 <span>{{result}}</span>
             </div>
         </div>
-            
+
     </div>
 
    <div class="answer" :class="[ start ? 'show':'hide']">
@@ -28,39 +32,55 @@
                 <i id="subtraction" class="icon-subtraction" @click="nextQustion(0)"></i>
                 <div class="rule-mask " :class="[errMaskShow? 'show':'hide']">
                     <div class="err-mask-cont cont">
-                        <p class="title">Anda Punya {{gameCount}} kali ksempatan</p>
+                        <span class="mask-game-header">
+                            <!-- <img src="../../assets/images/game-header.png"> -->
+                             <img :src="avatar">
+                        </span>
+                        <p class="title">Kamu masih punya <span class="mark">{{gameCount}}x</span> kesempatan</p>
                         <div class="mask-btn" @click="restart()">Coba Lagi</div>
-                        <div class="mask-btn" @click="inviteMaskToShow()">Undang Teman Ikut Bermain</div>       
+                        <div class="mask-btn" @click="inviteMaskToShow()">Undang teman untuk dapat <br> kesempatan menjawab</div>
                     </div>
                 </div>
 
                 <div class="rule-mask " :class="[noChangeMaskShow? 'show':'hide']">
                     <div class="err-mask-cont cont">
-                        <p class="title">Anda Punya 0 kali ksempatan</p>
-                        
-                        <div class="mask-btn" @click="inviteMaskToShow()">Undang Teman Ikut Bermain</div>       
-                        <div class="mask-btn" @click="rechargeCoin()">Tukarkan 100 koin emasmu untuk jawab pertanyaan</div>
+                        <span class="mask-game-header">
+                            <!-- <img src="../../assets/images/game-header.png"> -->
+                             <img :src="avatar">
+                        </span>
+                        <p class="title">Kesempatan sudah habis, tidak <br> mendapatkan bonus</p>
+                        <p class="tip">Kamu bisa pakai cara lain untuk dapat kesempatan jawab <br>
+                                Ayo semangat kamu pasti bisa</p>
+                        <div class="mask-btn" @click="inviteMaskToShow()">Undang Teman</div>
+                        <div class="mask-btn" @click="rechargeCoin()">Tukar 100 Koin </div>
+                        <!-- <div class="mask-btn" @click="watchADS()">Nonton Iklan </div> -->
                     </div>
                 </div>
 
-                 <div class="rule-mask " :class="[noChangeMaskShow? 'show':'hide']">
+                 <div class="rule-mask " :class="[confirmMaskShow? 'show':'hide']">
                     <div class="err-mask-cont cont">
-                        <p class="title">Anda Pyakin mau tukarkan 100 koin Emas untuk menjawab peranyaan? </p>
+                        <span class="mask-game-header">
+                            <!-- <img src="../../assets/images/game-header.png"> -->
+                            <img :src="avatar">
+                            </span>
+                        <p class="title">Kamu yakin mau tukar 100 Koin untuk <br> menjawab pertanyaan? </p>
                         <div class="mask-btn" @click="confirmRechargeCoin()">Oke</div>
-                        <div class="mask-btn" @click="cancelRechargeCoin()">Tidak</div>       
-                        
+                        <div class="mask-btn" @click="cancelRechargeCoin()">Tidak</div>
+
                     </div>
                 </div>
 
                 <div class="rule-mask " :class="[inviteMaskShow ? 'show':'hide']">
                     <div class="invite-mask-cont cont">
-                        <p class="text">Setiap mengundang 1 teman, Anda memiliki 
+                        <p class="text">Setiap mengundang 1 teman, Anda memiliki
                             1 kali acara untuk mengik-uti kuis.</p>
                         <p class="text">Mengundang semakin banyak teman, kese-
-                            mpatan berikut kuis Semakin besar.</p> 
+                            mpatan berikut kuis Semakin besar.</p>
                             <div class="invite-icon-group">
-                              
+                              <i @click="facebookShare()" class="icon-facebook"></i>
+                              <i @click="whatsappShare()" class="icon-whatsapp"></i>
                             </div>
+                           <router-link :to="'/game?t='+(new Date()).getTime()+''+(isTitle > -1 ?'&title=1':'')"><p class="invite-cancel-btn">Tidak</p> </router-link>
                     </div>
                 </div>
     </div>
@@ -71,22 +91,22 @@
         mendapatkan total uang cash sebesar<br/> 10.000.000</div>
     </div>
 
-    <div class="rule-mask ":class="[ successShow ? 'show':'hide']">
+    <div class="rule-mask " :class="[ successShow ? 'show':'hide']">
         <div class="success-mask-cont">
         <img class="icon-award" src="../../assets/images/icon-award.png" />
             <p class="title">Kamu jenius</p>
             <p class="text">{{successMsg}}</p>
-        <router-link :to="'/game?token=qwaseqa'+token+'&t='+(new Date()).getTime()+''+(isTitle > -1 ?'&title=1':'')"><div class="mask-btn">saya tahu</div></router-link>
+        <router-link :to="'/game?t='+(new Date()).getTime()+''+(isTitle > -1 ?'&title=1':'')"><div class="mask-btn">saya tahu</div></router-link>
         </div>
     </div>
 
     <div class="rule-mask" :class="[ errMsgShow ? 'show': 'hide']">
         <div class="success-mask-cont pt-30">
             {{errMsg}}
-            <router-link  :to="'/game?token=qwaseqa'+token+'&t='+(new Date()).getTime()+''+(isTitle > -1 ?'&title=1':'')"><div class="mask-btn">Oke</div></router-link>
+            <router-link  :to="'/game?t='+(new Date()).getTime()+''+(isTitle > -1 ?'&title=1':'')"><div class="mask-btn">Oke</div></router-link>
         </div>
     </div>
-   
+
 
 </div>
 <p class="toast-text" v-bind:class="[toastShow? 'show':'hide']">{{msg}}</p>
@@ -94,12 +114,15 @@
 </template>
 <script>
 import BHeader from "../common/BHeader"
+import CircleProcess from "../common/CircleProcess"
 import md5 from 'js-md5'
+let Base64 = require('js-base64').Base64
 
     export default {
         name: 'Start',
         components: {
-           BHeader
+           BHeader,
+           CircleProcess
         },
         data(){
             return {
@@ -118,8 +141,9 @@ import md5 from 'js-md5'
                 is_right: false,
                 questionNum: 1,
                 period: 1,
+                avatar: '',
                 questions: null,
-                gameId: '',
+                gameId: '2',
                 gameCount: 3,
                 time: 0,
                 toastShow: false,
@@ -130,16 +154,32 @@ import md5 from 'js-md5'
                 answer: false,
                 timestamp: 0,
                 successMsg: '',
-                isTitle: window.location.search.indexOf("title")
+                isTitle: window.location.search.indexOf("title"),
+                bugChanceFlag: true
             }
         },
         methods: {
-           getQueryString(name) { 
-                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
-                var r = window.location.search.substr(1).match(reg); 
-                if (r != null) return unescape(r[2]); 
-                    return null; 
+           getQueryString(name) {
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+                var r = window.location.search.substr(1).match(reg);
+                if (r != null) return unescape(r[2]);
+                    return null;
                 } ,
+            getAppToken(){
+                 try{
+                    if(this.getQueryString("token")){
+                        this.token = this.getQueryString("token")
+                    }else{
+                        var content=window.AndroidWebView.getAppToken();
+                        var token = Base64.decode(content)
+                        this.token = token
+                    }
+
+                }
+                catch(err){
+                    console.log(err)
+                }
+            },
             closeRuleMask(){
                 this.ruleMask = false
             },
@@ -151,6 +191,49 @@ import md5 from 'js-md5'
                 this.noChangeMaskShow = false
                 this.inviteMaskShow = true
             },
+            watchADS(){
+                window.AndroidWebView.openGoogleRewardAd();
+            },
+              facebookShare(){
+               this.getAppToken()
+                this.$http({
+                    url: '/api/generate/invitation_code',
+                    method: 'post',
+                    data: {
+                        token: this.token,
+                        channel: 'facebook'
+                    }
+                }).then((res) => {
+                    if (res.data.status.code == 200) {
+                        window.AndroidWebView.shareFacebook(res.data.data.title,res.data.data.link);
+                }else  {
+                   window.AndroidWebView.showContent(res.data.status.message);
+                    }
+
+                }).catch((res) => {
+                    console.log('error: ', res);
+                });
+         },
+         whatsappShare(){
+               this.getAppToken()
+                   this.$http({
+                    url: '/api/generate/invitation_code',
+                    method: 'post',
+                    data: {
+                        token: this.token,
+                        channel: 'whatsapp'
+                    }
+                }).then((res) => {
+                    if (res.data.status.code == 200) {
+                        window.AndroidWebView.shareWhatsApp(res.data.data.title,res.data.data.link);
+                }else  {
+                   window.AndroidWebView.showContent(res.data.status.message);
+                    }
+
+                }).catch((res) => {
+                    console.log('error: ', res);
+                });
+         },
             countDown(){
                     var timeout = setInterval(() => {
                         if(this.count > 1){
@@ -165,22 +248,32 @@ import md5 from 'js-md5'
                 },1000)
             },
             proccessActive(time){
-                clearTimeout(timeout1)
-                clearTimeout(timeout2)
-                document.querySelector(".proccess-ing").style.transition = 'none'                
-                    document.querySelector(".proccess-ing").style.width = '100%'
+                 clearTimeout(timeout1)
+                 clearTimeout(timeout2)
+
+
+                        document.querySelector("#circle").setAttribute("stroke-dasharray", "0,10000");
+                        document.querySelector("#circle").style.transition = 'all 0s linear'
+
+
+
+                    // document.querySelector(".proccess-ing").style.width = '100%'
                 var timeout1= setTimeout(() => {
-                    document.querySelector(".proccess-ing").style.transition = 'width '+time+'s'
-                    document.querySelector(".proccess-ing").style.width = '0'   
-                },500);
+                    document.querySelector("#circle").style.transition = 'all '+time+'s linear'
+                    document.querySelector("#circle").setAttribute("stroke-dasharray", "140,10000");
+
+                },50);
                 let t = (time)*1000;
                 var timeout2 = setTimeout(() => {
                     let t_str = (new Date).getTime() - this.timestamp
-                    if(this.$refs.bar.style.width == "0px" && t_str > time*1000){
-                        this.answerErr()
-                    }
+                    // if(this.$refs.bar.style.width == "0px" && t_str > time*1000){
+                    //     this.answerErr()
+                    // }
+                     if(document.querySelector("#circle").getAttribute("stroke-dasharray") == "140,10000" && t_str > time*1000){
+                         this.answerErr()
+                     }
                 },t)
-               
+
             },
             closeErrMask(){
                 this.errMaskShow = false
@@ -220,11 +313,13 @@ import md5 from 'js-md5'
                 },
 
             toMD5(gameId,ifWin,period,token){
+
                 return md5("gameId="+gameId+"&ifWin="+ifWin+"&period="+period+"&token="+token+"&key=cangque666").toUpperCase()
                 },
             successAjax(){
+                 this.getAppToken()
                  this.$http({
-                url: 'http://www.kilatfintech.com/game/record/result?token='+this.token+'&gameId=1&period='+this.period+'&ifWin=1&sign='+this.toMD5(1,1,this.period,this.token)+'&t='+(new Date()).getTime(),
+                url: '/game/record/result?token='+this.token+'&gameId='+this.gameId+'&period='+this.period+'&ifWin=1&sign='+this.toMD5(this.gameId,1,this.period,this.token)+'&t='+(new Date()).getTime(),
                 method: 'get',
                 }).then((res) => {
                     if (res.data.status.code == 200) {
@@ -249,7 +344,7 @@ import md5 from 'js-md5'
                     }else{
                         this.successAjax()
                     }
-                    
+
                 }else{
                     document.getElementById("plus").addEventListener("click",function(e){
                         e.preventDefault()
@@ -259,22 +354,24 @@ import md5 from 'js-md5'
                     },false)
                     this.answerErr()
                 }
-                
-               
+
+
             },
             restart(){
                 // this.$router.go(0)
-                window.location.reload()
+                // window.location.reload()
+                this.$router.push("/game?t="+(new Date()).getTime()+""+(this.isTitle > -1 ? "&title=1":""))
             },
             answerErr(){
+                this.getAppToken();
                 this.$http({
-                url: 'http://www.kilatfintech.com/game/record/result?token='+this.token+'&gameId=1&period='+this.period+'&ifWin=0&sign='+this.toMD5(1,0,this.period,this.token)+'&t='+(new Date()).getTime(),
+                url: '/game/record/result?token='+this.token+'&gameId='+this.gameId+'&period='+this.period+'&ifWin=0&sign='+this.toMD5(this.gameId,0,this.period,this.token)+'&t='+(new Date()).getTime(),
                 method: 'get',
                 }).then((res) => {
                     if (res.data.status.code == 200) {
                         // document.getElementById("plus").addEventListener("click",this.nextQustion(),false)
                         // document.getElementById("subtraction").addEventListener("click",this.nextQustion(),false)
-                        this.gameCount = res.data.data.chance 
+                        this.gameCount = res.data.data.chance
                         if(res.data.data.chance){
                             this.errMaskShow = true
                         }else{
@@ -291,15 +388,22 @@ import md5 from 'js-md5'
             },
             rechargeCoin(){
                    this.noChangeMaskShow = false
-                   this.confirmMaskShow = true 
+                   this.confirmMaskShow = true
             },
             confirmRechargeCoin(){
+                    this.getAppToken();
+                    if(!this.bugChanceFlag) {
+                        return false;
+                    }
+                    this.bugChanceFlag = false
                     this.$http({
-                    url: 'http://www.kilatfintech.com/game/buy/chance?token='+this.token+'&gameId=1&t='+(new Date()).getTime(),
+                    url: '/game/buy/chance?token='+this.token+'&gameId='+this.gameId+'&t='+(new Date()).getTime(),
                     method: 'get',
                 }).then((res) => {
+                    this.bugChanceFlag = true
                     if (res.data.status.code == 200) {
-                        this.$router.go(0)
+                        // this.$router.go(0)
+                        this.$router.push('/game?t='+(new Date()).getTime()+''+(this.isTitle > -1 ?'&title=1':''))
                 }else {
                    this.toastPop(res.data.status.message)
                     }
@@ -309,17 +413,18 @@ import md5 from 'js-md5'
                 });
             },
             cancelRechargeCoin(){
-                this.$router.push("/game?token=ewaeaeu"+this.token+"&t="+(new Date()).getTime()+""+(this.isTitle > -1 ? "&title=1":""))
+                this.$router.push("/game?t="+(new Date()).getTime()+""+(this.isTitle > -1 ? "&title=1":""))
             },
             getData(){
                 this.$http({
-                url: 'http://www.kilatfintech.com/game/get/question?token='+this.token+'&gameId=1&t='+(new Date()).getTime(),
+                url: '/game/get/question?token='+this.token+'&gameId='+this.gameId+'&t='+(new Date()).getTime(),
                 method: 'get',
                 }).then((res) => {
                     let data = res.data.data;
                     if (res.data.status.code == 200) {
                         this.gameId = data.gameId
                         this.period = data.period
+                        this.avatar = data.avatar
                         this.questions = data.list
                         this.setData()
                 }else if (res.data.status.code == 2105) {
@@ -334,9 +439,13 @@ import md5 from 'js-md5'
             },
         },
         mounted(){
-            this.token = this.getQueryString("token");
+            // this.token = this.getQueryString("token");
+            //  this.token = 'e8bc2672c51e0e94540a77ee2df1b9a6'
+              this.getAppToken();
+            // this.token = 'e8bc2672c51e0e94540a77ee2df1b9a6'
             this.countDown();
-            this.getData()
+           // document.querySelector(".start-num").className = "animation start-num"
+            this.getData();
         }
     }
 </script>
