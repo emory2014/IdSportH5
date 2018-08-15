@@ -55,7 +55,7 @@
                         <div class="mask-btn" @click="rechargeCoin()">Tukar 100 Koin </div>
                         <router-link :to="'/game?t='+(new Date()).getTime()+''+(isTitle > -1 ?'&title=1':'')">
                           <div class="mask-btn" >Kembali ke Awal</div>
-                        </router-link>>
+                        </router-link>
                         <!-- <div class="mask-btn" @click="watchADS()">Nonton Iklan </div> -->
                     </div>
                 </div>

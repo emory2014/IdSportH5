@@ -267,6 +267,8 @@ let Base64 = require('js-base64').Base64;
                        this.$router.push("/start?t="+(new Date()).getTime()+""+((this.isTitle > -1) ? "&title=1":""))
                 }else if(res.data.status.code == 2105){
                         this.noChangeMaskShow = true
+                }else if(res.data.status.code == 401){
+                        window.AndroidWebView.loginApp();
                 }
                 else{
                    this.toastPop(res.data.status.message)
@@ -362,7 +364,7 @@ let Base64 = require('js-base64').Base64;
                 if (res.data.status.code == 200) {
                        this.userInfo = res.data.data
                 }else if(res.data.status.code == 401) {
-                        window.AndroidWebView.loginApp();
+                      //  window.AndroidWebView.loginApp();
                     }
 
                 }).catch((res) => {
