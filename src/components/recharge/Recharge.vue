@@ -1,5 +1,5 @@
-
 <template> 
+
 <div>
 <BHeader title="Top Up Koin" recharge= {true}  />
 <div class="recharge-container">
@@ -11,6 +11,7 @@
     <div class="recharge-panel" v-if="data">
         <div v-for="(item,index) of data.amountInfo" :key="index" class="recharge-item" :class="[active == index ? 'active':'']" @click="addClass(index,item.money,item.buy,item.gift)">
             <span>Rp.{{$utils.parseMoney(item.money)}}</span>
+
         </div>
 
     </div>
@@ -58,18 +59,18 @@ let Base64 = require('js-base64').Base64;
             }
         },
         methods: {
-             getQueryString(name) { 
-                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
-                var r = window.location.search.substr(1).match(reg); 
-                if (r != null) return unescape(r[2]); 
-                    return null; 
-
+             getQueryString(name) {
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+                var r = window.location.search.substr(1).match(reg);
+                if (r != null) return unescape(r[2]);
+                    return null;
                 } ,
             maskPop(e){
                 if(e.target.className.indexOf("mask") > -1){
                     this.maskShow = false
                 }
             },
+
             getData(){
                 var content=window.AndroidWebView.getAppToken();
                 let token = Base64.decode(content)
@@ -87,8 +88,8 @@ let Base64 = require('js-base64').Base64;
                        this.buy = this.data.amountInfo[0].buy
                        this.gift = this.data.amountInfo[0].gift
                 } else if(res.data.status.code == 401){
-                  window.AndroidWebView.closeActivities();
-                  window.AndroidWebView.loginApp();
+                    window.AndroidWebView.closeActivities();
+                    window.AndroidWebView.loginApp();
                 }
                 else {
                    window.AndroidWebView.showContent(res.data.status.message);
@@ -97,6 +98,7 @@ let Base64 = require('js-base64').Base64;
                 }).catch((res) => {
                     console.log('error: ', res);
                 });
+
             },
            recharge(){
                this.maskShow = true
@@ -118,6 +120,7 @@ let Base64 = require('js-base64').Base64;
         mounted(){
             let _this = this;
              this.getData()
+
         }
     }
 </script>
@@ -128,4 +131,3 @@ let Base64 = require('js-base64').Base64;
     background: #fff;
 }
 </style>
-
