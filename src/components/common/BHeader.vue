@@ -16,17 +16,20 @@
         props: {
             title: String,
             recharge: false,
-            backToApp: false
+            backToApp: false,
+            backToActivity: false
         },
         methods: {
             goBack(){
                 if(this.recharge || this.backToApp || this.getparam('push')){
                     window.AndroidWebView.closeActivities();
+                }else if (this.backToActivity) {
+                  this.$router.push("/activity")
                 }
                 else{
                 window.history.go(-1)
-               
-                }    
+
+                }
         },
           getparam(name){
             let reg = new RegExp("(^|\\?|&)" + name + "=([^&]*)(\\s|&|$)","i");

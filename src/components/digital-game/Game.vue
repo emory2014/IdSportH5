@@ -2,7 +2,7 @@
 <div>
 <!-- <BHeader v-if=" isTitle > -1" title="Mari kita sambut Ramadhan yang mendekat,
 jawab pertanyaan menangkan Bonus" /> -->
-<BHeader title="Tantangan Untuk Dapat Uang Tunai" />
+<BHeader backToActivity={true} title="Tantangan Untuk Dapat Uang Tunai" />
 <div class="game-container" :class="[isTitle > -1?'top-50':'']">
 <div class="scroll-box">
 <i class="icon-tip"></i>
