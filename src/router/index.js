@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import User from '@/components/User'
+import Activity from '@/components/Activity'
 import Invite from '@/components/invite/Invite'
 import InviteRecord from '@/components/invite/InviteRecord'
 import Game from '@/components/digital-game/Game'
@@ -29,6 +30,11 @@ export default new Router({
     //   component: User
     // },
     // 
+    {
+      path: '/activity',
+      name: 'Activity',
+      component: Activity
+    },
     {
       path: '/recharge',
       name: 'Recharge',
