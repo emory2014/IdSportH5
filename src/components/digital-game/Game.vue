@@ -268,6 +268,7 @@ let Base64 = require('js-base64').Base64;
                 }else if(res.data.status.code == 2105){
                         this.noChangeMaskShow = true
                 }else if(res.data.status.code == 401){
+                        window.AndroidWebView.closeActivities();
                         window.AndroidWebView.loginApp();
                 }
                 else{
