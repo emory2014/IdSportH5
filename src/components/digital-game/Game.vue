@@ -128,6 +128,7 @@ jawab pertanyaan menangkan Bonus" /> -->
                                 Ayo semangat kamu pasti bisa</p>
                         <div class="mask-btn" @click="inviteMaskToShow()">Undang Teman</div>
                         <div class="mask-btn" @click="rechargeCoin()">Tukar 100 Koin </div>
+                        <div class="mask-btn" @click="cancelNoChangeMask()">Kembali ke Awal </div>
                         <!-- <div class="mask-btn" @click="watchADS()">Nonton Iklan </div> -->
                     </div>
                 </div>
@@ -212,6 +213,9 @@ let Base64 = require('js-base64').Base64;
             },
             cancelInviterMask(){
                 this.inviteMaskShow = false
+            },
+            cancelNoChangeMask(){
+              this.noChangeMaskShow = false
             },
              facebookShare(){
                this.getAppToken()
