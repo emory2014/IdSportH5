@@ -5,7 +5,9 @@
 	
 </div> -->
 <svg>
-    <circle id="circle" class="svg-circle" cx="25" cy="25" r="22" fill="none" stroke-dasharray="0,10000"  stroke="#ffc000" stroke-width="4" stroke-linecap="round"/>
+    <circle id="circle" class="svg-circle" cx="25" cy="25" r="22" fill="none" stroke-dasharray="0,10000"  stroke="#ffc000" stroke-width="4" stroke-linecap="round">
+      
+    </circle>
     <!-- <circle class="demo2" id="J_demo2" cx="55" cy="55" r="50" fill="none" stroke="red" stroke-width="5" stroke-dasharray="0,10000"/> -->
 </svg>
 </template>

@@ -1,4 +1,4 @@
-<template> 
+<template>
 <div>
 <!-- <BHeader v-if=" isTitle > -1" title="Mari kita sambut Ramadhan yang mendekat,
 jawab pertanyaan menangkan Bonus" /> -->
@@ -24,7 +24,7 @@ jawab pertanyaan menangkan Bonus" /> -->
 <p class="game-change-tip">Dapatkan 3x kesempatan menjawab</p>
 
 <div class="game-award-sec" v-if="userInfo">
-    <div class="head-sec"> 
+    <div class="head-sec">
         <span class="game-header">
             <img v-if="userInfo.avatar" :src="userInfo.avatar">
             <img v-else src="../../assets/images/game-header.png">
@@ -36,7 +36,7 @@ jawab pertanyaan menangkan Bonus" /> -->
                 <span>{{userInfo.leastPrize}}</span>
                 <p class="text">Penarikan min.Rp. 20.000</p>
             </div>
-            
+
              <div class="game-item">
                   <router-link :to="'/rank?t='+(new Date()).getTime()+''+(isTitle > -1 ? '&title=1':'')">
                 <p>Daftar Peringkat</p>
@@ -44,8 +44,8 @@ jawab pertanyaan menangkan Bonus" /> -->
                 <p class="text">Menangkan hadiah besar</p>
                 </router-link>
             </div>
-        </div>  
-        
+        </div>
+
 </div>
 <router-link :to="'/detail?t='+(new Date()).getTime()+''+(isTitle > -1 ? '&title=1':'')">
 <div class="game-fixed-info" v-if="userInfo">
@@ -120,13 +120,13 @@ jawab pertanyaan menangkan Bonus" /> -->
     <i @click="closeRuleMask()" class="icon-close">×</i>
     </div>
 </div>
-<div class="rule-mask " :class="[noChangeMaskShow? 'show':'hide']">
+<div class="rule-mask " :class="[noChangeMaskShow? 'show':'hide']" v-if="userInfo">
                     <div class="err-mask-cont cont">
                         <span class="mask-game-header"><img :src="userInfo.avatar"></span>
                         <p class="title">Kesempatan sudah habis, tidak <br> mendapatkan bonus</p>
                         <p class="tip">Kamu bisa pakai cara lain untuk dapat kesempatan jawab <br>
                                 Ayo semangat kamu pasti bisa</p>
-                        <div class="mask-btn" @click="inviteMaskToShow()">Undang Teman</div>       
+                        <div class="mask-btn" @click="inviteMaskToShow()">Undang Teman</div>
                         <div class="mask-btn" @click="rechargeCoin()">Tukar 100 Koin </div>
                         <!-- <div class="mask-btn" @click="watchADS()">Nonton Iklan </div> -->
                     </div>
@@ -135,24 +135,24 @@ jawab pertanyaan menangkan Bonus" /> -->
                     <div class="err-mask-cont cont">
                         <p class="title">Anda Pyakin mau tukarkan 100 koin Emas untuk menjawab peranyaan? </p>
                         <div class="mask-btn" @click="confirmRechargeCoin()">Oke</div>
-                        <div class="mask-btn" @click="cancelRechargeCoin()">Tidak</div>       
-                        
+                        <div class="mask-btn" @click="cancelRechargeCoin()">Tidak</div>
+
                     </div>
                 </div>
                 <div class="rule-mask " :class="[inviteMaskShow ? 'show':'hide']">
                     <div class="invite-mask-cont cont">
-                        <p class="text">Setiap mengundang 1 teman, Anda memiliki 
+                        <p class="text">Setiap mengundang 1 teman, Anda memiliki
                             1 kali acara untuk mengik-uti kuis.</p>
                         <p class="text">Mengundang semakin banyak teman, kese-
-                            mpatan berikut kuis Semakin besar.</p> 
+                            mpatan berikut kuis Semakin besar.</p>
                             <div class="invite-icon-group">
                               <i @click="facebookShare()" class="icon-facebook"></i>
                               <i @click="whatsappShare()" class="icon-whatsapp"></i>
                             </div>
-                           <p @click="cancelInviterMask()" class="invite-cancel-btn">Tidak</p> 
+                           <p @click="cancelInviterMask()" class="invite-cancel-btn">Tidak</p>
                     </div>
                 </div>
-                
+
 <p class="toast-text" v-bind:class="[toastShow? 'show':'hide']">{{msg}}</p>
 
 </div>
@@ -184,11 +184,11 @@ let Base64 = require('js-base64').Base64;
             }
         },
         methods: {
-             getQueryString(name) { 
-                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
-                var r = window.location.search.substr(1).match(reg); 
-                if (r != null) return unescape(r[2]); 
-                    return null; 
+             getQueryString(name) {
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+                var r = window.location.search.substr(1).match(reg);
+                if (r != null) return unescape(r[2]);
+                    return null;
                 } ,
                  getAppToken(){
                  try{
@@ -213,7 +213,7 @@ let Base64 = require('js-base64').Base64;
             cancelInviterMask(){
                 this.inviteMaskShow = false
             },
-             facebookShare(){ 
+             facebookShare(){
                this.getAppToken()
                 this.$http({
                     url: '/api/generate/invitation_code',
@@ -274,7 +274,7 @@ let Base64 = require('js-base64').Base64;
             },
              rechargeCoin(){
                    this.noChangeMaskShow = false
-                   this.confirmMaskShow = true 
+                   this.confirmMaskShow = true
             },
             confirmRechargeCoin(){
                    this.getAppToken();
@@ -305,14 +305,14 @@ let Base64 = require('js-base64').Base64;
                 var scroll = document.getElementById("scroll");
                 var step =1;
                 var w = scroll.scrollWidth - scroll.offsetWidth;
-                this.timer = setInterval(function () 
+                this.timer = setInterval(function ()
                 {
                     scroll.scrollLeft += step;
-                if (scroll.scrollLeft != 0 && scroll.scrollLeft == scroll.scrollWidth - scroll.offsetWidth) 
+                if (scroll.scrollLeft != 0 && scroll.scrollLeft == scroll.scrollWidth - scroll.offsetWidth)
                 {
                     scroll.scrollLeft = 0
                     }
-                
+
                 //  console.log(scroll.scrollLeft)
                 }, 50)
             },
@@ -343,22 +343,22 @@ let Base64 = require('js-base64').Base64;
         mounted(){
             // let token = this.getQueryString("token")
             // this.token = token ? token.substring(7) : "";
-            
+
              //window.AndroidWebView.showContent(123)
             // this.token = window.AndroidWebview.getAppToken()
-           
+
                 this.getAppToken();
-        
+        // this.token = 'e8bc2672c51e0e94540a77ee2df1b9a6'
                 this.getData();
-         
+
                 this.$http({
                     url: '/game/user/center?token='+this.token+'&gameId='+this.gameId+'&t='+(new Date()).getTime(),
                     method: 'get',
                 }).then((res) => {
                 if (res.data.status.code == 200) {
                        this.userInfo = res.data.data
-                }else  {
-                   
+                }else if(res.data.status.code == 401) {
+                        window.AndroidWebView.loginApp();
                     }
 
                 }).catch((res) => {

@@ -176,7 +176,7 @@ body{
 .rule-ul li {
     font-size: 14px;
     /* font-family: SourceHanSansCN-Regular; */
-    color: #333;  
+    color: #333;
     line-height: 1.5;
 }
 
@@ -240,18 +240,18 @@ body{
 .start-sec {
     position: relative;
     width: 100%;
-    background: url(../../assets/images/start-bg.png) top center no-repeat,#fff; 
+    background: url(../../assets/images/start-bg.png) top center no-repeat,#fff;
     background-size: 100%;
     /* height: 450px; */
     border-radius: 15px;
     padding-bottom: 30px;
     width: 90%;
     margin: auto;
-  
+
 }
 
 .question-sec {
-   
+
 }
 
 .process-sec {
@@ -315,7 +315,8 @@ body{
     color: #fff;
     width: 80%;
     margin: auto;
-    /* animation: count 1s  3; */
+    animation: count 1s linear 3;
+    animation-fill-mode: forwards;
     /* transform: scale(0.9);
     transition: all 1s ease; */
 }
@@ -358,7 +359,7 @@ body{
     border-radius: 10px;
     background: #fff;
     margin: auto;
-    box-shadow: 0 2px 2px 1px rgba(4, 76, 28, 0.15);    
+    box-shadow: 0 2px 2px 1px rgba(4, 76, 28, 0.15);
 }
 
 .proccess-ing {
@@ -369,9 +370,9 @@ body{
     width: 100%;
     border-radius: 10px;
     background: -webkit-linear-gradient(right,#bbff54,#46f205);
-    
+
     /* box-shadow: 1px 1px 15px 3px rgba(255, 255, 255, 0.5); */
-    
+
 }
 
 .question-sec .text {
@@ -458,7 +459,7 @@ body{
 .mask-btn {
     width: 90%;
     padding: 12px 0;
-   
+
     color: #fff;
     background: -webkit-linear-gradient(right,#ffa10f,#ffc90e);
     margin: 30px auto 0 auto;
@@ -559,7 +560,7 @@ body{
 }
 
 .my-data-items {
-    margin: 50px 0 30px 0; 
+    margin: 50px 0 30px 0;
 }
 
 .my-data-items .item {
@@ -711,16 +712,16 @@ body{
 }
 
 .rank-panel .center{
-    display: inline-block;    
+    display: inline-block;
     width: 54%;
     text-align: center;
 }
 
 .rank-panel .right{
-    display: inline-block;    
+    display: inline-block;
     width: 28%;
     text-align: center;
-    
+
 }
 
 .rank-ul {
@@ -763,14 +764,14 @@ body{
     display: inline-block;
     width: 28%;
     text-align: center;
-    
+
 }
 
 .footer-data .center {
-    display: inline-block;    
+    display: inline-block;
     width: 40%;
     text-align: center;
-    
+
 }
 
 .footer-data .right {
@@ -875,7 +876,7 @@ body{
     background-size: 90%;
     padding: 32px;
     margin-top: 150px;
-    
+
 }
 
 .game-text-title span {
@@ -926,7 +927,7 @@ body{
     color: #fff;
     font-size: 14px;
     text-align: center;
-    
+
 }
 
 .game-award-sec {

@@ -1,11 +1,11 @@
-<template> 
+<template>
 <div>
 <BHeader title="Kuis" />
 <div class="start-container">
      <p class="start-title" :class="[ start ? 'show':'hide']">Periode {{period}}</p>
      <span class="start-num" ref="num" :class="[ !start ? 'show':'hide']">{{count}}</span>
     <div class="start-sec" :class="[ start ? 'show':'hide']">
-        
+
         <div class="question-sec">
             <p class="process-num">{{questionNum}}</p>
            <div class="process-sec">
@@ -14,7 +14,7 @@
             <!-- <div class="proccess-bar-box">
                 <div ref="bar" class="proccess-ing"></div>
             </div> -->
-            <p class="text"> {{questionNum}}/{{questions.length}}</p>
+            <p class="text" v-if="questions"> {{questionNum}}/{{questions.length}}</p>
             <div class="qustion-cont">
                 <span>{{a}}</span>
                 <span class="plus">{{operator}}</span>
@@ -24,7 +24,7 @@
                 <span>{{result}}</span>
             </div>
         </div>
-            
+
     </div>
 
    <div class="answer" :class="[ start ? 'show':'hide']">
@@ -38,7 +38,7 @@
                         </span>
                         <p class="title">Kamu masih punya <span class="mark">{{gameCount}}x</span> kesempatan</p>
                         <div class="mask-btn" @click="restart()">Coba Lagi</div>
-                        <div class="mask-btn" @click="inviteMaskToShow()">Undang teman untuk dapat <br> kesempatan menjawab</div>       
+                        <div class="mask-btn" @click="inviteMaskToShow()">Undang teman untuk dapat <br> kesempatan menjawab</div>
                     </div>
                 </div>
 
@@ -51,7 +51,7 @@
                         <p class="title">Kesempatan sudah habis, tidak <br> mendapatkan bonus</p>
                         <p class="tip">Kamu bisa pakai cara lain untuk dapat kesempatan jawab <br>
                                 Ayo semangat kamu pasti bisa</p>
-                        <div class="mask-btn" @click="inviteMaskToShow()">Undang Teman</div>       
+                        <div class="mask-btn" @click="inviteMaskToShow()">Undang Teman</div>
                         <div class="mask-btn" @click="rechargeCoin()">Tukar 100 Koin </div>
                         <!-- <div class="mask-btn" @click="watchADS()">Nonton Iklan </div> -->
                     </div>
@@ -65,17 +65,17 @@
                             </span>
                         <p class="title">Kamu yakin mau tukar 100 Koin untuk <br> menjawab pertanyaan? </p>
                         <div class="mask-btn" @click="confirmRechargeCoin()">Oke</div>
-                        <div class="mask-btn" @click="cancelRechargeCoin()">Tidak</div>       
-                        
+                        <div class="mask-btn" @click="cancelRechargeCoin()">Tidak</div>
+
                     </div>
                 </div>
 
                 <div class="rule-mask " :class="[inviteMaskShow ? 'show':'hide']">
                     <div class="invite-mask-cont cont">
-                        <p class="text">Setiap mengundang 1 teman, Anda memiliki 
+                        <p class="text">Setiap mengundang 1 teman, Anda memiliki
                             1 kali acara untuk mengik-uti kuis.</p>
                         <p class="text">Mengundang semakin banyak teman, kese-
-                            mpatan berikut kuis Semakin besar.</p> 
+                            mpatan berikut kuis Semakin besar.</p>
                             <div class="invite-icon-group">
                               <i @click="facebookShare()" class="icon-facebook"></i>
                               <i @click="whatsappShare()" class="icon-whatsapp"></i>
@@ -106,7 +106,7 @@
             <router-link  :to="'/game?t='+(new Date()).getTime()+''+(isTitle > -1 ?'&title=1':'')"><div class="mask-btn">Oke</div></router-link>
         </div>
     </div>
-   
+
 
 </div>
 <p class="toast-text" v-bind:class="[toastShow? 'show':'hide']">{{msg}}</p>
@@ -159,11 +159,11 @@ let Base64 = require('js-base64').Base64
             }
         },
         methods: {
-           getQueryString(name) { 
-                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
-                var r = window.location.search.substr(1).match(reg); 
-                if (r != null) return unescape(r[2]); 
-                    return null; 
+           getQueryString(name) {
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+                var r = window.location.search.substr(1).match(reg);
+                if (r != null) return unescape(r[2]);
+                    return null;
                 } ,
             getAppToken(){
                  try{
@@ -194,7 +194,7 @@ let Base64 = require('js-base64').Base64
             watchADS(){
                 window.AndroidWebView.openGoogleRewardAd();
             },
-              facebookShare(){ 
+              facebookShare(){
                this.getAppToken()
                 this.$http({
                     url: '/api/generate/invitation_code',
@@ -250,18 +250,18 @@ let Base64 = require('js-base64').Base64
             proccessActive(time){
                  clearTimeout(timeout1)
                  clearTimeout(timeout2)
-                  
-                        
+
+
                         document.querySelector("#circle").setAttribute("stroke-dasharray", "0,10000");
-                        document.querySelector("#circle").style.transition = 'all 0s ease'
-                      
-                    
-                               
+                        document.querySelector("#circle").style.transition = 'all 0s linear'
+
+
+
                     // document.querySelector(".proccess-ing").style.width = '100%'
                 var timeout1= setTimeout(() => {
-                    document.querySelector("#circle").style.transition = 'all '+time+'s ease'
-                    document.querySelector("#circle").setAttribute("stroke-dasharray", "200,10000");
-                
+                    document.querySelector("#circle").style.transition = 'all '+time+'s linear'
+                    document.querySelector("#circle").setAttribute("stroke-dasharray", "140,10000");
+
                 },50);
                 let t = (time)*1000;
                 var timeout2 = setTimeout(() => {
@@ -269,11 +269,11 @@ let Base64 = require('js-base64').Base64
                     // if(this.$refs.bar.style.width == "0px" && t_str > time*1000){
                     //     this.answerErr()
                     // }
-                     if(document.querySelector("#circle").getAttribute("stroke-dasharray") == "200,10000" && t_str > time*1000){
+                     if(document.querySelector("#circle").getAttribute("stroke-dasharray") == "140,10000" && t_str > time*1000){
                          this.answerErr()
                      }
                 },t)
-               
+
             },
             closeErrMask(){
                 this.errMaskShow = false
@@ -313,7 +313,7 @@ let Base64 = require('js-base64').Base64
                 },
 
             toMD5(gameId,ifWin,period,token){
-                
+
                 return md5("gameId="+gameId+"&ifWin="+ifWin+"&period="+period+"&token="+token+"&key=cangque666").toUpperCase()
                 },
             successAjax(){
@@ -344,7 +344,7 @@ let Base64 = require('js-base64').Base64
                     }else{
                         this.successAjax()
                     }
-                    
+
                 }else{
                     document.getElementById("plus").addEventListener("click",function(e){
                         e.preventDefault()
@@ -354,8 +354,8 @@ let Base64 = require('js-base64').Base64
                     },false)
                     this.answerErr()
                 }
-                
-               
+
+
             },
             restart(){
                 // this.$router.go(0)
@@ -371,7 +371,7 @@ let Base64 = require('js-base64').Base64
                     if (res.data.status.code == 200) {
                         // document.getElementById("plus").addEventListener("click",this.nextQustion(),false)
                         // document.getElementById("subtraction").addEventListener("click",this.nextQustion(),false)
-                        this.gameCount = res.data.data.chance 
+                        this.gameCount = res.data.data.chance
                         if(res.data.data.chance){
                             this.errMaskShow = true
                         }else{
@@ -388,7 +388,7 @@ let Base64 = require('js-base64').Base64
             },
             rechargeCoin(){
                    this.noChangeMaskShow = false
-                   this.confirmMaskShow = true 
+                   this.confirmMaskShow = true
             },
             confirmRechargeCoin(){
                     this.getAppToken();
@@ -441,7 +441,8 @@ let Base64 = require('js-base64').Base64
         mounted(){
             // this.token = this.getQueryString("token");
             //  this.token = 'e8bc2672c51e0e94540a77ee2df1b9a6'
-             this.getAppToken();
+              this.getAppToken();
+            // this.token = 'e8bc2672c51e0e94540a77ee2df1b9a6'
             this.countDown();
            // document.querySelector(".start-num").className = "animation start-num"
             this.getData();
