@@ -1,8 +1,11 @@
 <template>
-<header class="header">
+<header class="header" :class="[vip?'vip-header':'']">
             　<i class="nc-icon-prev" @click="goBack()"></i>
               <div>{{title}}</div>
-              <router-link to="/record" v-if="recharge"><span  class="recharge-record">Riwayat Transaksi</span></router-link>
+              <router-link to="/record" v-if="recharge">
+              <span  class="recharge-record">Riwayat Transaksi</span>
+              </router-link>
+              <span  class="recharge-record vip-record">Riwayat Transaksi</span>
         </header>
 </template>
 <script>
@@ -17,7 +20,8 @@
             title: String,
             recharge: false,
             backToApp: false,
-            backToActivity: false
+            backToActivity: false,
+            vip: false,
         },
         methods: {
             goBack(){

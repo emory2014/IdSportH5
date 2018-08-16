@@ -16,20 +16,25 @@ import Record from '@/components/recharge/Record'
 import NewsDetail from '@/components/news/NewsDetail'
 import News from '@/components/news/News'
 
+import VipCenter from '@/components/vip/VipCenter'
 
 
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',
-  base: '/web/',
+  // mode: 'history',
+  // base: '/web/',
   routes: [
     // {
     //   path: '/',
     //   name: 'User',
     //   component: User
     // },
-    //
+    {
+      path: '/vip-center',
+      name: 'VipCenter',
+      component: VipCenter
+    },
     {
       path: '/activity',
       name: 'Activity',
