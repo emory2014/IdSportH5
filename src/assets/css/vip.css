@@ -15,7 +15,7 @@ body{
 
 .vip-header .nc-icon-prev{
     background: url(../../assets/images/vip/icon-prev.png) no-repeat center;
-    background-size: 14px 24px;
+    background-size: 12px 22px;
 }
 
 .vip-info-sec{
@@ -88,7 +88,7 @@ body{
 
 .vip-pic{
     position: absolute;
-    bottom: -5px;
+    bottom: -2px;
     left: -5px;
     width: 55px;
 }
@@ -217,4 +217,454 @@ body{
     text-align: center;
     padding: 12px;
     box-sizing: border-box;
+    clear: both;
+}
+
+.access-text{
+    clear: both;
+    font-size: 12px;
+    color: #666666;
+    background: #eeeeee;
+    border-radius: 10px;
+    padding: 10px;
+    width: 80%;
+    margin: auto;
+    position: relative;
+    top: -10px;
+}
+
+.icon-text-caret{
+    display: block;
+    height: 0;
+    width: 0;
+    border-bottom: 8px solid #eee;
+    border-left: 8px solid transparent;
+    border-top: 8px solid transparent;
+    border-right: 8px solid transparent;
+    position: absolute;
+    left: 50px;
+    top: -15px;
+}
+
+.icon-text-close{
+    position: absolute;
+    right: -6px;
+    top: -8px;
+    display: block;
+    font-style: normal;
+    text-align: center;
+    background: #535353;
+    border-radius: 100%;
+    color: #fff;
+    width: 15px;
+    height: 15px;
+    font-size: 14px;
+    line-height: 13px;
+}
+
+.vip-success-mask{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.6);
+
+}
+
+.success-cont {
+    width: 90%;
+    margin: 40% auto;
+    background: #fff;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.icon-vip-success{
+    width: 30%;
+    margin-top: -30px;
+}
+
+.success-cont p {
+    font-size: 16px;
+    color: #666;
+}
+
+.yellow{
+    color: #e0c574;
+}
+
+.success-cont .text{
+    font-size: 12px;
+    color: #999999;
+
+}
+
+.success-cont .vip-btn{
+    color: #e0c574;
+    background: -webkit-linear-gradient(right,#373737,#838383)
+}
+
+.success-mask-close{
+    position: relative;
+    display: block;
+    top: 60px;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #fff;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 100%;
+    font-style: normal;
+    margin: auto;
+}
+
+
+
+.tab-cont {
+    height: 45px;
+    line-height: 45px;
+    background: #fff;
+    box-shadow: 0px 0 0 2px rgba(255,192,0,0.1);
+}
+
+.tab-cont .item{
+    color: #333333;
+    font-size: 16px;
+    display: inline-block;
+    text-align: center;
+    width: 33%;
+    position: relative;
+}
+
+.mandiri .item{
+    width: 50%;
+}
+
+.tab-cont .item.active{
+    font-weight: bold;
+}
+
+.tab-cont .item.active::before{
+    position: absolute;
+    bottom: 0;
+    content: '';
+    width: 12%;
+    height: 4px;
+    left: 44%;
+    display: inline-block;
+    background:  -webkit-linear-gradient(right,#e1c777,#f5e29c);
+    border-radius: 2px;
+}
+
+.record-left {
+    float: left;
+    padding: 0 10px;
+}
+
+.record-left span {
+    display: block;
+    color: #666666;
+    font-size: 12px;
+}
+
+.record-left.text span{
+    text-align: left;
+    line-height: 1.5;
+}
+
+.record-left.text{
+    border-left: 1px solid #ddd;
+    padding-left: 12px;
+}
+
+.record-left .num{
+    color: #e0c574;
+    font-size: 18px;
+}
+
+.cont-panel.record {
+    padding: 15px 10px;
+    box-sizing: border-box;
+    /* margin-bottom: 10px; */
+    overflow: hidden;
+    box-shadow: 0 1px 20px 5px rgba(174, 174, 174, 0.1);
+    width: 90%;
+    margin: 20px auto;
+}
+
+.tab-cont.record .item:first-child {
+    width: 38%;
+}
+
+.tab-cont.record .item:nth-child(2) {
+    width: 36%;
+}
+
+.tab-cont.record .item:nth-child(3) {
+    width: 22%;
+}
+
+.dark{
+    color: #333;
+    font-style: normal;
+}
+
+.vip-record-default{
+    text-align: center;
+}
+
+.vip-default-pic {
+    width: 60%;
+    margin-top: 30%
+}
+
+.record-no-data {
+    font-size: 14px;
+    color: #999;
+    margin-top: 30px;
+}
+
+.wd-num {
+    color: #353535;
+    font-size: 24px;
+    text-align: center;
+    margin: 30px 0 0 0;
+}
+
+.wd-text {
+    font-size: 12px;
+    text-align: center;
+    color: #969696;
+    margin-top: 0;
+}
+
+.vip-input-group{
+    position: relative;
+    height: 45px;
+    line-height: 45px;
+    border-bottom: 1px solid #ddd;
+    width: 90%;
+    margin: auto;
+}
+
+.vip-input-group input {
+    outline: none;
+    height: 45px;
+    line-height: 45px;
+    margin-left: 10px;
+    width: 80%;
+    border: 0;
+    padding: 0;
+    vertical-align: bottom;
+}
+
+.vip-input-group input::placeholder{
+    color: #dddddd;
+    font-size: 14px;
+}
+
+.icon-input {
+    display: inline-block;
+    width: 18px;
+    height: 20px;
+    background: url(../../assets/images/vip/icon-input-group.png) no-repeat center;
+    background-position: 0 0;
+    background-size: 109px 21px;
+    vertical-align: middle;
+}
+
+.icon-input.bank{
+    background-position: -30px 0;
+}
+
+.icon-input.bankno{
+    background-position: -60px 0;
+}
+
+.icon-input.tel{
+    background-position: -92px 0;
+    position: relative;
+    top: -2px;
+}
+
+.wd-label{
+    width:  90%;
+    margin: 20px auto;
+    color: #333333;
+    font-size: 16px;
+}
+
+.wd-val-box{
+    width: 90%;
+    margin: 30px auto;
+    overflow: hidden;
+}
+
+.wd-val-box .item{
+    color: #e0c574;
+    border: 1px solid #e0c574;
+    border-radius: 5px;
+    width: 30%;
+    font-size: 16px;
+    text-align: center;
+    padding: 8px 0;
+    float: left;
+    margin-right: 4%;
+}
+
+.wd-val-box .item.active{
+    color: #e0c574;
+    background: #000000;
+    border: none;
+}
+
+.wd-val-box .item:nth-child(3){
+    margin-right: 0;
+}
+
+.vip-btn.wd{
+   margin-bottom: 10px;
+}
+
+.wd-tips-text{
+    font-size: 14px;
+    color: #e0c574;
+    text-align: center;
+    margin-top: 10px;
+}
+
+a{
+    text-decoration: none;
+}
+
+.wd-tip-title {
+    font-size: 12px;
+    color: #999;
+    width: 90%;
+    margin: auto;
+}
+
+.wd-ol{
+    padding: 0;
+    font-size: 12px;
+    color: #999;
+    width: 84%;
+    margin: auto;
+}
+
+.wd-record-ul {
+    list-style: none;
+    padding: 0;
+    width: 90%;
+    margin: auto;
+}
+
+.wd-record-ul li {
+    position: relative;
+    color: #5f5f5f;
+    font-size: 12px;
+    border-radius: 15px;
+    padding: 12px;
+    margin-top: 15px;
+}
+
+.wd-record-ul li.yellow{
+    border: 1px solid #e0c574;
+    background: url(../../assets/images/vip/icon-applying.png) no-repeat;
+    background-size: 90px 70px;
+    background-position: 230px center;
+}
+
+.wd-record-ul li.red{
+    border: 1px solid #ff0e21;
+    background: url(../../assets/images/vip/icon-reject.png) no-repeat;
+    background-size: 90px 70px;
+    background-position: 230px center;
+}
+
+.wd-record-ul li.green{
+    border: 1px solid #11b800;
+    background: url(../../assets/images/vip/icon-passed.png) no-repeat;
+    background-size: 90px 70px;
+    background-position: 230px center;
+}
+
+.wd-record-ul li p{
+    margin: 0;
+}
+
+.vip-invite-record {
+    background: url(../../assets/images/vip/vip-invite-bg.png) no-repeat;
+    background-size: 100%;
+    text-align: center;
+    width: 90%;
+    margin: 20px auto;
+    box-sizing: border-box;
+    padding: 10px 0;
+    color: #333;
+    overflow: hidden;
+}
+
+.vip-invite-record .num{
+    font-size: 32px;
+    margin: 0;
+}
+
+.vip-invite-record .text{
+    font-size: 14px;
+    margin: 0;
+}
+
+.vip-invite-record .item{
+    float: left;
+    margin-top: 10px;
+    width: 50%;
+    font-size: 12px;
+}
+
+.vip-invite-record .item p {
+    font-size: 23px;
+    text-align: center;
+    margin: 0;
+}
+
+.vip-invite-record-ul {
+    list-style: none;
+    padding: 0;
+    width: 90%;
+    font-size: 14px;
+    color: #666;
+    margin: auto;
+    overflow: hidden;
+}
+
+.vip-invite-record-ul li {
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px solid #ddd;
+}
+
+.vip-invite-record-ul .name,.vip-invite-record-ul .date {
+    display: block;
+    width: 30%;
+    float: left;
+    text-align: center;
+}
+
+.vip-invite-record-ul .rp{
+    display: block;
+    width: 40%;
+    float: left;
+    text-align: center;
+}
+
+.vip-mask-msg{
+    width: 90%;
+    margin: 20px auto;
+    text-align: left;
+    line-height: 1.8;
+    padding-top: 20px;
 }

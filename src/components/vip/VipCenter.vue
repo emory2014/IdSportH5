@@ -1,6 +1,6 @@
 <template>
 <div class="vip-container">
-<BHeader backToApp={true} title="Member Super" vip={true} />
+<BHeader backToApp={true} title="Member Super" vip={true} vipRechargeRecord={true} />
 <!-- <Loading v-if="!data" /> -->
 <div class="vip-info-sec">
     <div class="vip-scroll-box">
@@ -51,6 +51,10 @@
         <p>Bonus Undangan</p>
         <span>Bonus Tinggi</span>
     </div>
+    <div class="access-text">
+        <i class="icon-text-caret"></i><i class="icon-text-close">×</i>
+        Jadi Member, nikmati artikel berkualitas tinggi setiap hari, baca hadiah dan dapatkan lebih banyak.
+        </div>
     <div class="item">
         <i class="icon-vip coin"></i>
         <p>2 kali koin</p>
@@ -63,6 +67,28 @@
     </div>
 </div>
 <div class="vip-btn">Jadi member Rp. 100.000/bulan</div>
+<!-- 开通成功 -->
+<!-- <div class="vip-success-mask">
+    <div class="success-cont">
+        <img class="icon-vip-success" src="../../assets/images/vip/icon-vip-success.png" />
+        <p>Kamu telah berhasil <span class="yellow">menjadi member</span> </p>
+        <p class="text">Nikmati manfaat-manfaat dari keuntungan <br> menjadi Member </p>
+        <div class="vip-btn">Nikmati Sekarang</div>
+        <i class="success-mask-close">×</i>
+    </div>
+</div> -->
+<!-- 非会员提现 -->
+<div class="vip-success-mask">
+    <div class="success-cont">
+        
+        <p class="vip-mask-msg">Jadi member untuk bisa melakukan penarikan member</p>
+        
+        <div class="vip-btn">Segera jadi Member</div>
+        <div class="vip-btn">Tidak</div>
+        <i class="success-mask-close">×</i>
+    </div>
+</div>
+
 </div>
 </template>
 <script>

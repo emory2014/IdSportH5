@@ -1,9 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
 import User from '@/components/User'
+
 import Activity from '@/components/Activity'
+
 import Invite from '@/components/invite/Invite'
 import InviteRecord from '@/components/invite/InviteRecord'
+
 import Game from '@/components/digital-game/Game'
 import Start from '@/components/digital-game/Start'
 import AwardRecord from '@/components/digital-game/AwardRecord'
@@ -13,11 +17,15 @@ import AwardDetail from '@/components/digital-game/AwardDetail'
 import Recharge from '@/components/recharge/Recharge'
 import Process from '@/components/recharge/Process'
 import Record from '@/components/recharge/Record'
+
 import NewsDetail from '@/components/news/NewsDetail'
 import News from '@/components/news/News'
 
 import VipCenter from '@/components/vip/VipCenter'
-
+import VipRechargeRecord from '@/components/vip/VipRechargeRecord'
+import WthdrawDeposit from '@/components/vip/WthdrawDeposit'
+import WDRecord from '@/components/vip/WDRecord'
+import VipInviteRecord from '@/components/vip/VipInviteRecord'
 
 Vue.use(Router)
 
@@ -34,6 +42,26 @@ export default new Router({
       path: '/vip-center',
       name: 'VipCenter',
       component: VipCenter
+    },
+    {
+      path: '/wthdraw-deposit',
+      name: 'WthdrawDeposit',
+      component: WthdrawDeposit
+    },
+    {
+      path: '/wd-record',
+      name: 'WDRecord',
+      component: WDRecord
+    },
+    {
+      path: '/vip-invite-record',
+      name: 'VipInviteRecord',
+      component: VipInviteRecord
+    },
+    {
+      path: '/vip-recharge-record',
+      name: 'VipRechargeRecord',
+      component: VipRechargeRecord
     },
     {
       path: '/activity',

@@ -5,7 +5,9 @@
               <router-link to="/record" v-if="recharge">
               <span  class="recharge-record">Riwayat Transaksi</span>
               </router-link>
+              <router-link to="/vip-recharge-record" v-if="vipRechargeRecord">
               <span  class="recharge-record vip-record">Riwayat Transaksi</span>
+              </router-link>
         </header>
 </template>
 <script>
@@ -22,6 +24,7 @@
             backToApp: false,
             backToActivity: false,
             vip: false,
+            vipRechargeRecord:false
         },
         methods: {
             goBack(){
