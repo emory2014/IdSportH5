@@ -5,12 +5,12 @@
 <div class="vip-info-sec" >
     <div class="vip-scroll-box" v-if="list">
         <i class="icon-vip-tips"></i>
-        <!-- <ul ref="scrollUL">
+        <ul class="scroll-ul" id="scroll">
             <li v-for="(item,index) of list" :key="index"  ref="rollul" >{{item}}</li>
-        </ul> -->
-        <transition  name="slide" mode="out-in">
+        </ul>
+        <!-- <transition  name="slide" mode="out-in">
                 <p  :key="text.id">{{text.val}}</p>
-            </transition>
+            </transition> -->
     </div>
     <div class="info-cont" v-if="data">
         <div class="header-wrapper">
@@ -172,6 +172,21 @@ const totalDuration = 2000;
             title: String
         },
         methods: {
+            scroll(){
+                var scroll = document.getElementById("scroll");
+                var step =1;
+                var w = scroll.scrollWidth - scroll.offsetWidth;
+                this.timer = setInterval(function ()
+                {
+                    scroll.scrollLeft += step;
+                if (scroll.scrollLeft != 0 && scroll.scrollLeft == scroll.scrollWidth - scroll.offsetWidth)
+                {
+                    scroll.scrollLeft = 0
+                    }
+
+                //  console.log(scroll.scrollLeft)
+                }, 50)
+            },
         popAccess(type){
                 this.active = type
         },
@@ -291,17 +306,17 @@ const totalDuration = 2000;
         created(){
             
         },  
-        computed: {
-                text() {
-                    if(this.list){
-                        return {
-                            id: this.number,
-                            val: this.list[this.number]
-                    }
-                    }
+        // computed: {
+        //         text() {
+        //             if(this.list){
+        //                 return {
+        //                     id: this.number,
+        //                     val: this.list[this.number]
+        //             }
+        //             }
                    
-                }
-                },
+        //         }
+        //         },
            mounted(){
                this.startMove()
                this.getAppToken()
