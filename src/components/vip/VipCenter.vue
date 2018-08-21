@@ -3,7 +3,7 @@
 <BHeader backToApp={true} title="Member Super" vip={true}  />
 <!-- <Loading v-if="!data" /> -->
 <div class="vip-info-sec" >
-    <div class="vip-scroll-box" v-if="list">
+    <div class="vip-scroll-box" v-show="list">
         <i class="icon-vip-tips"></i>
         <ul class="scroll-ul" id="scroll">
             <li v-for="(item,index) of list" :key="index"  ref="rollul" >{{item}}</li>
@@ -151,6 +151,7 @@ const totalDuration = 2000;
             return {
             data: null,
             list: null,
+            timer: null,
             msg: '',
             defaultShow: false,
             token: '',
@@ -175,10 +176,13 @@ const totalDuration = 2000;
             scroll(){
                 var scroll = document.getElementById("scroll");
                 var step =1;
+                
                 var w = scroll.scrollWidth - scroll.offsetWidth;
+                console.log(w)
                 this.timer = setInterval(function ()
                 {
                     scroll.scrollLeft += step;
+                    console.log(scroll.scrollLeft)
                 if (scroll.scrollLeft != 0 && scroll.scrollLeft == scroll.scrollWidth - scroll.offsetWidth)
                 {
                     scroll.scrollLeft = 0
@@ -318,9 +322,9 @@ const totalDuration = 2000;
         //         }
         //         },
            mounted(){
-               this.startMove()
+            //    this.startMove()
                this.getAppToken()
-            //this.token = '7bd17a690d11dfb715dffd61aa3c1026'
+            // this.token = '7bd17a690d11dfb715dffd61aa3c1026'
               this.$http({
                 url: '/api/vip/center?t='+(new Date()).getTime(),
                 method: 'post',
@@ -370,6 +374,8 @@ const totalDuration = 2000;
                    
                     if (res.data.status.code == 200) {
                         this.list = res.data.data
+                        this.scroll()
+                        
                         
                 }else if (res.data.status.code == 401) {
                         

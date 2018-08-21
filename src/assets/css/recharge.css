@@ -15,7 +15,11 @@
 }
 
 .recharge-container {
-    padding: 15px;
+    padding: 50px 15px;
+}
+
+.process-container{
+    padding-top: 50px;
 }
 
 .recharge-balance {

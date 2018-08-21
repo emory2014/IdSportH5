@@ -65,16 +65,15 @@ body{
     list-style: none;
     padding: 0;
     margin: 0;
-    /* overflow: hidden; */
+    overflow: hidden;
     height: 40px;
+    width: 90%;
     margin-top: 0;
+    white-space: nowrap;
     /* transition: all 1s; */
     animation: myMove 5s linear infinite;
     animation-fill-mode: forwards;
 }
-@keyframes myMove {
-    
-  }
 
   .slide-enter-active, .slide-leave-active {
     transition: all 0.5s linear;
@@ -87,8 +86,10 @@ body{
   }
 
 .vip-scroll-box li {
+    display: inline-block;
     color: #fff;
     font-size: 12px;
+    margin-right: 20px;
     height: 40px;
     line-height: 40px;
 }
