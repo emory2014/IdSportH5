@@ -1,6 +1,22 @@
 body{
     margin: 0;
 }
+.toast-text{
+    position: fixed;
+    width: 70%;
+    left: 15%;
+    right: 15%;
+    bottom: 30px;
+    background: rgba(0, 0, 0, 0.6);
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 25px;
+    color: #fff;
+    font-size: 15px;
+    z-index: 10;
+    display: none;
+}
 .vip-container{
     padding-top: 50px;
 }
@@ -28,6 +44,8 @@ body{
 .vip-scroll-box{
     width: 90%;
     margin: 0 auto;
+    height: 40px;
+    overflow: hidden;
 }
 
 .icon-vip-tips{
@@ -36,10 +54,10 @@ body{
     height: 16px;
     background: url(../../assets/images/vip/icon-vip-tips.png) no-repeat center;
     background-size: 16px 16px;
-    vertical-align: middle;
+    vertical-align: top;
     margin-right: 5px;
     position: relative;
-    top: -1px;
+    top: 11px;
 }
 
 .vip-scroll-box ul{
@@ -47,8 +65,26 @@ body{
     list-style: none;
     padding: 0;
     margin: 0;
-  
+    /* overflow: hidden; */
+    height: 40px;
+    margin-top: 0;
+    /* transition: all 1s; */
+    animation: myMove 5s linear infinite;
+    animation-fill-mode: forwards;
 }
+@keyframes myMove {
+    
+  }
+
+  .slide-enter-active, .slide-leave-active {
+    transition: all 0.5s linear;
+  }
+  .slide-leave-to {
+    transform: translateY(-20px);
+  }
+  .slide-enter {
+    transform: translateY(20px);
+  }
 
 .vip-scroll-box li {
     color: #fff;
@@ -56,6 +92,17 @@ body{
     height: 40px;
     line-height: 40px;
 }
+
+.vip-scroll-box p {
+    color: #fff;
+    font-size: 12px;
+    height: 40px;
+    line-height: 40px;
+    display: inline-block;
+    width: 90%;
+    margin: 0;
+}
+
 
 .info-cont{
     width: 90%;
@@ -231,6 +278,15 @@ body{
     margin: auto;
     position: relative;
     top: -10px;
+    display: none;
+}
+
+.show{
+    display: block;
+}
+
+.hide{
+    display: none;
 }
 
 .icon-text-caret{
@@ -244,6 +300,11 @@ body{
     position: absolute;
     left: 50px;
     top: -15px;
+}
+
+.icon-text-caret.right{
+    right: 50px;
+    left: initial;
 }
 
 .icon-text-close{
@@ -312,6 +373,7 @@ body{
     top: 60px;
     width: 30px;
     height: 30px;
+    line-height: 30px;
     border: 1px solid #fff;
     color: #fff;
     font-size: 20px;
@@ -642,6 +704,7 @@ a{
 }
 
 .vip-invite-record-ul li {
+    clear: both;
     height: 40px;
     line-height: 40px;
     border-bottom: 1px solid #ddd;
@@ -666,5 +729,11 @@ a{
     margin: 20px auto;
     text-align: left;
     line-height: 1.8;
-    padding-top: 20px;
+    padding-top: 30px;
+}
+
+.vip-default-text{
+    font-size: 16px;
+    text-align: center;
+    color: #666;
 }

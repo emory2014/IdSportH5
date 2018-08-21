@@ -1,32 +1,17 @@
 <template>
 <div class="vip-container">
 <BHeader  title="Riwayat Transaksi" vip={true} />
-<!-- <Loading v-if="!data" /> -->
-<ul class="wd-record-ul">
-    <li class="yellow">
-        <p>Nama：Zhang San</p>
-        <p>Nama bank：BCA</p>
-        <p>Nomor kartu bank：62228888888888</p>
-        <p>Jumlah penarikan：Rp.20,000</p>
-        <p>Status pemrosesan：Dalam proses</p>
-        <p>Waktu：07 May, 13:02:41</p>
+ <Loading v-if="!data" /> 
+<ul v-if="data" class="wd-record-ul">
+    <li :class="themeChoice(item.status)" v-for="(item,index) of data.history" :key="index">
+        <p>Nama：{{item.username}}</p>
+        <p>Nama bank：{{item.bank_code}}</p>
+        <p>Nomor kartu bank：{{item.card_no}}</p>
+        <p>Jumlah penarikan：Rp.{{item.total_amount}}</p>
+        <p>Status pemrosesan：{{item.status}}</p>
+        <p>Waktu：{{item.create_time}}</p>
     </li>
-     <li class="red">
-        <p>Nama：Zhang San</p>
-        <p>Nama bank：BCA</p>
-        <p>Nomor kartu bank：62228888888888</p>
-        <p>Jumlah penarikan：Rp.20,000</p>
-        <p>Status pemrosesan：Dalam proses</p>
-        <p>Waktu：07 May, 13:02:41</p>
-    </li>
-     <li class="green">
-        <p>Nama：Zhang San</p>
-        <p>Nama bank：BCA</p>
-        <p>Nomor kartu bank：62228888888888</p>
-        <p>Jumlah penarikan：Rp.20,000</p>
-        <p>Status pemrosesan：Dalam proses</p>
-        <p>Waktu：07 May, 13:02:41</p>
-    </li>
+    
 </ul> 
 </div>
 
@@ -34,6 +19,8 @@
 <script>
 import BHeader from "../common/BHeader"
 import Loading from "../Loading"
+let Base64 = require('js-base64').Base64
+
     export default {
         name: 'WDRecord',
          components: {
@@ -45,8 +32,11 @@ import Loading from "../Loading"
             data: null,
             msg: '',
             defaultShow: false,
-            type: 'waiting',
-            loading: false
+            loading: false,
+            totalPage: 1,
+            currentPage: 1,
+            flag: true,
+            page: 1,
             }
         },
         props: {
@@ -56,35 +46,87 @@ import Loading from "../Loading"
           goBack(){
                 window.history.go(-1)
         },
+         getAppToken(){
+            var content=window.AndroidWebView.getAppToken();
+            var token = Base64.decode(content)
+            this.token = token
+            },
           toastPop(text){
                 this.toastShow = true
                 this.msg = text
                 setTimeout(() => this.toastShow = false, 2000)
         },
+        themeChoice(status){
+            if(status == "Dalam proses"){
+                return "yellow"
+            }else if(status == "Gagal"){
+                return "red"
+            }else if(status == "Berhasil"){
+                return "green"
+            }
+        },
+           scrollGetData(){
+              let _this = this;
+               window.addEventListener('scroll',function(){
+           
+                // 判断是否滚动到底部
+
+                if(document.body.scrollTop + window.innerHeight <= document.body.offsetHeight) {
+                    // console.log(sw);
+                    // 如果开关打开则加载数据
+                    if(_this.flag == true){
+                        // 将开关关闭
+                        _this.flag = false;
+                        _this.page ++;
+                        if(_this.currentPage < _this.totalPage){
+                             _this.getData(_this.page)
+                        }
+                    }
+                }
+            });
+          },
+          getData(page){
+            //this.token = 'e8bc2672c51e0e94540a77ee2df1b9a6'
+            this.getAppToken();
+              this.$http({
+                url: '/api/user/redeem/history?t='+(new Date()).getTime(),
+                method: 'post',
+                    headers:{
+                        'Content-type': 'application/x-www-form-urlencoded'
+                    },
+                    data:{
+                        token: this.token,
+                        type: 3,
+                        page:page
+                    },
+                    transformRequest: [function (data) {
+                        let ret = ''
+                        for (let it in data) {
+                        ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+                    }
+                    return ret
+                    }],
+                }).then((res) => {
+                   
+                    if (res.data.status.code == 200) {
+                        this.data = res.data.data
+                        this.totalPage = res.data.data.page_info.total_page
+                        this.currentPage = res.data.data.page_info.current_page
+                        
+                }else if (res.data.status.code == 401) {
+                        
+                    }else{
+                        this.toastPop(res.data.status.message)
+                    }
+
+                }).catch((res) => {
+                    console.log('error: ', res);
+                });
+          }
         },
            mounted(){
-            // this.token = this.getQueryString("token");
-            // this.token = 'e8bc2672c51e0e94540a77ee2df1b9a6'
-            //   this.$http({
-            //     url: '/game/activity/entrance?t='+(new Date()).getTime(),
-            //     method: 'get',
-            //     }).then((res) => {
-            //         let data = res.data.data;
-            //         if (res.data.status.code == 200) {
-            //             this.data = res.data.data
-            //             if(!this.data.length){
-            //                 this.defaultShow = true
-            //             }
-                        
-            //     }else if (res.data.status.code == 401) {
-                        
-            //         }else{
-            //             this.toastPop(res.data.status.message)
-            //         }
-
-            //     }).catch((res) => {
-            //         console.log('error: ', res);
-            //     });
+            this.getData(1)
+            
         }
     }
 </script>

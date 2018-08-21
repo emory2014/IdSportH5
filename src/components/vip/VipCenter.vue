@@ -1,36 +1,40 @@
 <template>
 <div class="vip-container">
-<BHeader backToApp={true} title="Member Super" vip={true} vipRechargeRecord={true} />
+<BHeader backToApp={true} title="Member Super" vip={true}  />
 <!-- <Loading v-if="!data" /> -->
-<div class="vip-info-sec">
-    <div class="vip-scroll-box">
+<div class="vip-info-sec" >
+    <div class="vip-scroll-box" v-if="list">
         <i class="icon-vip-tips"></i>
-        <ul>
-            <li>620821****4433 sudah jadi member dapat Rp.20000</li>
-        </ul>
+        <!-- <ul ref="scrollUL">
+            <li v-for="(item,index) of list" :key="index"  ref="rollul" >{{item}}</li>
+        </ul> -->
+        <transition  name="slide" mode="out-in">
+                <p  :key="text.id">{{text.val}}</p>
+            </transition>
     </div>
-    <div class="info-cont">
+    <div class="info-cont" v-if="data">
         <div class="header-wrapper">
             <div class="vip-header-box">
-                <img src="../../assets/images/game-header.png" />
+                <img :src="data.avatar" />
             </div>
-            <img class="vip-pic" src="../../assets/images/vip/vip-gray.png"/>
+            <img v-if="data.is_vip == 1" class="vip-pic" src="../../assets/images/vip/vip-black.png"/>
+            <img v-else class="vip-pic" src="../../assets/images/vip/vip-gray.png"/>
         </div>
         <div class="header-info">
-            <p class="name">620821654114433</p>
-            <span class="tag">Belum jadi Member</span>
+            <p class="name">{{data.username}}</p>
+            <span class="tag">{{data.vip_expired_time}}</span>
         </div>
 
         <div class="vip-val-info">
             <div class="item">
                 <p>Sudah  undang</p>
-                <p><span class="num">1000</span>  orang</p>
-                <span class="tag">Undangan saya ></span>
+                <p><span class="num">{{data.vip_total_number}}</span>  orang</p>
+                <router-link to="/vip-invite-record"><span class="tag">Undangan saya ></span></router-link>
             </div>
             <div class="item">
                 <p>Sudah dapat (Rp.)</p>
-                <p><span class="num">20.000.000</span>  </p>
-                <span class="tag">Penarikan ></span>
+                <p><span class="num">{{data.vip_bonus}}</span>  </p>
+                <span @click="wdMoney()" class="tag">Penarikan ></span>
             </div>
         </div>
     </div>
@@ -41,59 +45,102 @@
         <p class="vip-title-text">Klik gambar dibawah untuk lihat manfaat member</p>
 </div>
 <div class="vip-access-sec">
-    <div class="item">
+    <div class="item" @click="popAccess(1)">
         <i class="icon-vip read"></i>
         <p>Baca berkualitas</p>
         <span>Artikel yang berkualitas</span>
     </div>
-    <div class="item">
+    <div class="item" @click="popAccess(2)">
         <i class="icon-vip invite"></i>
         <p>Bonus Undangan</p>
         <span>Bonus Tinggi</span>
     </div>
-    <div class="access-text">
-        <i class="icon-text-caret"></i><i class="icon-text-close">×</i>
-        Jadi Member, nikmati artikel berkualitas tinggi setiap hari, baca hadiah dan dapatkan lebih banyak.
+    <div class="access-text" :class="[active == 1? 'show':'hide']"> 
+        <i class="icon-text-caret"></i><i @click="popAccessHide()" class="icon-text-close">×</i>
+        Jadi Member, nikmati artikel berkualitas tinggi setiap hari, baca hadiah dan dapatkan lebih banyak
         </div>
-    <div class="item">
+    <div class="access-text" :class="[active == 2? 'show':'hide']">
+    <i class="icon-text-caret right"></i><i @click="popAccessHide()" class="icon-text-close">×</i>
+        Bonus 20% setiap teman yang diundang berhasil jadi Member. Tambah bonus 5% jika teman dari teman yang diundang berhasil jadi member, tanpa batas, melakukan penarikan dengan cepat.
+    </div>
+    <div class="item" @click="popAccess(3)">
         <i class="icon-vip coin"></i>
         <p>2 kali koin</p>
         <span>Koin bisa diuangkan</span>
     </div>
-    <div class="item">
+    
+    <div class="item" @click="popAccess(4)">
         <i class="icon-vip more"></i>
         <p>Masih banyak lagi</p>
         <span>Stay tuned</span>
     </div>
+     <div class="access-text" :class="[active == 3? 'show':'hide']">
+    <i class="icon-text-caret"></i><i @click="popAccessHide()" class="icon-text-close">×</i>
+        Setelah jadi Member, 2 kali lipat koin baca artikel
+    </div>
+     <div class="access-text" :class="[active == 4? 'show':'hide']">
+    <i class="icon-text-caret right"></i><i @click="popAccessHide()" class="icon-text-close">×</i>
+        Stay tuned karena masih banyak lagi hak istimewa yang didapat
+    </div>
 </div>
-<div class="vip-btn">Jadi member Rp. 100.000/bulan</div>
+<div class="vip-btn" v-if="data && data.is_vip != 1" @click="buyVip()">Jadi member Rpc. 200.000/bulan</div>
 <!-- 开通成功 -->
-<!-- <div class="vip-success-mask">
+<div class="vip-success-mask" :class="[successShow?'show':'hide']">
     <div class="success-cont">
         <img class="icon-vip-success" src="../../assets/images/vip/icon-vip-success.png" />
         <p>Kamu telah berhasil <span class="yellow">menjadi member</span> </p>
         <p class="text">Nikmati manfaat-manfaat dari keuntungan <br> menjadi Member </p>
-        <div class="vip-btn">Nikmati Sekarang</div>
-        <i class="success-mask-close">×</i>
+        <!-- 立即体验 -->
+        <div class="vip-btn"  @click="() => { this.successShow = false }">Nikmati Sekarang</div>
+        <i class="success-mask-close" @click="() => { this.successShow = false }">×</i>
     </div>
-</div> -->
+</div>
 <!-- 非会员提现 -->
-<div class="vip-success-mask">
+<div class="vip-success-mask" :class="[notVipShow?'show':'hide']">
     <div class="success-cont">
-        
+        <!-- 开通会员才可以提现会员金额 -->
         <p class="vip-mask-msg">Jadi member untuk bisa melakukan penarikan member</p>
         
-        <div class="vip-btn">Segera jadi Member</div>
-        <div class="vip-btn">Tidak</div>
-        <i class="success-mask-close">×</i>
+        <div class="vip-btn" @click="() => { this.notVipShow = false; this.buyVip()}">Segera jadi Member</div>
+        <div class="vip-btn" @click="() => { this.notVipShow = false }">Tidak</div>
+        <i class="success-mask-close" @click="() => { this.notVipShow = false }">×</i>
+    </div>
+</div>
+<div class="vip-success-mask" :class="[rechargeConfirmShow?'show':'hide']">
+    <div class="success-cont">
+        <!-- 您确定用金币开通会员吗？ -->
+        <p class="vip-mask-msg">Yakin mau pakai koin anda untuk jadi Member?</p>
+        <!-- 立即开通会员 -->
+        <div class="vip-btn" @click="openVip()">Segera jadi Member</div>
+        <!-- 容我想想 -->
+        <div class="vip-btn" @click="() => { this.rechargeConfirmShow = false }">Pikirkan dulu</div>
+        <i class="success-mask-close" @click="() => { this.rechargeConfirmShow = false }">×</i>
     </div>
 </div>
 
+<div class="vip-success-mask" :class="[coinNotEnoughShow?'show':'hide']">
+    <div class="success-cont">
+        <!-- 您的金币剩余100000，还差金币100000 -->
+        <p class="vip-mask-msg">Koin anda sisa {{coinBalance}}, masih ada koin {{needMoreCoin}}</p>
+        <!-- 立即充值 -->
+        <router-link to="/recharge"><div class="vip-btn">Seger isi ulang</div></router-link>
+        <!-- 容我想想 -->
+        <div class="vip-btn" @click="() => { this.coinNotEnoughShow = false }">Pikirkan dulu</div>
+        <i class="success-mask-close" @click="() => { this.coinNotEnoughShow = false }">×</i>
+    </div>
+</div>
+
+
+<p class="toast-text" :class="[toastShow? 'show':'hide']">{{msg}}</p>
 </div>
 </template>
 <script>
 import BHeader from "../common/BHeader"
 import Loading from "../Loading"
+let Base64 = require('js-base64').Base64
+
+const totalDuration = 2000;
+
     export default {
         name: 'VipCenter',
          components: {
@@ -103,46 +150,221 @@ import Loading from "../Loading"
         data(){
             return {
             data: null,
+            list: null,
             msg: '',
-            defaultShow: false
+            defaultShow: false,
+            token: '',
+            active: 0,
+            count: 0,
+            number: 0,
+            wdFlag: true,
+            toastShow:false,
+            rechargeConfirmShow: false, //确认弹框
+            coinNotEnoughShow: false,  //金币不够弹框
+            notVipShow: false,  //非会员提现弹框
+            successShow: false,  //充值成功弹框
+            coinBalance: 0,
+            needMoreCoin: 0,
+         
             }
         },
         props: {
             title: String
         },
         methods: {
-          goBack(){
-                window.history.go(-1)
+        popAccess(type){
+                this.active = type
+        },
+        popAccessHide(){
+                this.active = 0
         },
           toastPop(text){
                 this.toastShow = true
                 this.msg = text
                 setTimeout(() => this.toastShow = false, 2000)
         },
+        wdMoney(){
+            if(this.data.is_vip == 1){
+                this.$router.push("/wthdraw-deposit?m="+this.data.vip_bonus)
+            }else{
+                this.notVipShow = true
+            }
         },
-           mounted(){
-            // this.token = this.getQueryString("token");
-            // this.token = 'e8bc2672c51e0e94540a77ee2df1b9a6'
-            //   this.$http({
-            //     url: '/game/activity/entrance?t='+(new Date()).getTime(),
-            //     method: 'get',
-            //     }).then((res) => {
-            //         let data = res.data.data;
-            //         if (res.data.status.code == 200) {
-            //             this.data = res.data.data
-            //             if(!this.data.length){
-            //                 this.defaultShow = true
-            //             }
-                        
-            //     }else if (res.data.status.code == 401) {
-                        
-            //         }else{
-            //             this.toastPop(res.data.status.message)
-            //         }
+         getAppToken(){
+            var content=window.AndroidWebView.getAppToken();
+            var token = Base64.decode(content)
+            this.token = token
+            },
+        buyVip(){
+            this.getAppToken()
+            if(!this.wdFlag) {
+                    return false;
+                }
+                this.wdFlag = false
+                this.$http({
+                    url: '/api/vip/buy/check?t='+(new Date()).getTime(),
+                    method: 'post',
+                    headers:{
+                        'Content-type': 'application/x-www-form-urlencoded'
+                    },
+                    data:{
+                        token: this.token,
+                    },
+                    transformRequest: [function (data) {
+                        let ret = ''
+                        for (let it in data) {
+                        ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+                    }
+                    return ret
+                    }],
+                    }).then((res) => {
+                       this.wdFlag = true
+                    if (res.data.status.code == 200) {
+                            if(res.data.data.gold_is_enough){
+                                //确认充值
+                                this.rechargeConfirmShow = true
+                            }else{
+                                //金币不够
+                                this.coinNotEnoughShow = true
+                                this.coinBalance = res.data.data.gold
+                                this.needMoreCoin = res.data.data.difference_amount
 
-            //     }).catch((res) => {
-            //         console.log('error: ', res);
-            //     });
+                            }
+                            
+                    }else if (res.data.status.code == 401) {
+                        window.AndroidWebView.closeActivities();
+                        window.AndroidWebView.loginApp();
+                    }else{
+                        this.toastPop(res.data.status.message)
+                    }
+
+                    }).catch((res) => {
+                        console.log('error: ', res);
+                    });
+        },
+        openVip(){
+            this.getAppToken()
+              this.$http({
+                    url: '/api/vip/buy_by_gold?t='+(new Date()).getTime(),
+                    method: 'post',
+                    headers:{
+                        'Content-type': 'application/x-www-form-urlencoded'
+                    },
+                    data:{
+                        token: this.token,
+                    },
+                    transformRequest: [function (data) {
+                        let ret = ''
+                        for (let it in data) {
+                        ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+                    }
+                    return ret
+                    }],
+                    }).then((res) => {
+                    if (res.data.status.code == 200) {
+                          this.successShow = true
+                          this.rechargeConfirmShow = false
+                            
+                    }else if (res.data.status.code == 401) {
+                        window.AndroidWebView.closeActivities();
+                        window.AndroidWebView.loginApp();
+                    }else{
+                        this.toastPop(res.data.status.message)
+                    }
+
+                    }).catch((res) => {
+                        console.log('error: ', res);
+                    });
+        },
+      
+        startMove() {
+        let timer = setTimeout(() => {
+          if (this.number === this.list.length - 1) {
+            this.number = 0;
+          } else {
+            this.number += 1;
+          }
+          this.startMove();
+        }, totalDuration)
+      },
+        },
+        created(){
+            
+        },  
+        computed: {
+                text() {
+                    if(this.list){
+                        return {
+                            id: this.number,
+                            val: this.list[this.number]
+                    }
+                    }
+                   
+                }
+                },
+           mounted(){
+               this.startMove()
+               this.getAppToken()
+            //this.token = '7bd17a690d11dfb715dffd61aa3c1026'
+              this.$http({
+                url: '/api/vip/center?t='+(new Date()).getTime(),
+                method: 'post',
+                headers:{
+                    'Content-type': 'application/x-www-form-urlencoded'
+                },
+                data:{
+                   token: this.token
+                },
+                 transformRequest: [function (data) {
+                    let ret = ''
+                    for (let it in data) {
+                    ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+                }
+                return ret
+                }],
+                }).then((res) => {
+                   
+                    if (res.data.status.code == 200) {
+                        this.data = res.data.data
+                        
+                        
+                }else if (res.data.status.code == 401) {
+                        
+                    }else{
+                        this.toastPop(res.data.status.message)
+                    }
+
+                }).catch((res) => {
+                    console.log('error: ', res);
+                });
+
+              this.$http({
+                url: '/api/vip/center/prizelist?t='+(new Date()).getTime(),
+                method: 'post',
+                headers:{
+                    'Content-type': 'application/x-www-form-urlencoded'
+                },
+                 transformRequest: [function (data) {
+                    let ret = ''
+                    for (let it in data) {
+                    ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+                }
+                return ret
+                }],
+                }).then((res) => {
+                   
+                    if (res.data.status.code == 200) {
+                        this.list = res.data.data
+                        
+                }else if (res.data.status.code == 401) {
+                        
+                    }else{
+                        this.toastPop(res.data.status.message)
+                    }
+
+                }).catch((res) => {
+                    console.log('error: ', res);
+                });
         }
     }
 </script>
