@@ -15,7 +15,7 @@
     </div>
 </div>
 
-<p  v-if="defaultShow" class="vip-default-text">Sementara tidak ada konten</p>
+<p  :class="[defaultShow?'show':'hide']" class="vip-default-text">Sementara tidak ada konten</p>
 <ul class="vip-invite-record-ul" v-if="data">
     <li>
         <span class="name">Nama</span>
