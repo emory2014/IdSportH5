@@ -88,19 +88,22 @@ let Base64 = require('js-base64').Base64
         },
         validateName(){
             if(!this.name){
-                this.toastPop("姓名不能为空");
+                // 姓名不能为空
+                this.toastPop("Nama tidak boleh kosong");
                 return false;
             }
         },
         validateBank(){
              if(!this.bank){
-                this.toastPop("输入的银行不能为空");
+                //  输入的银行不能为空
+                this.toastPop("Bank tidak boleh kosong");
                 return false;
             }
         },
          validateBankno(){
              if(!this.bankno){
-                this.toastPop("输入的银行卡号不能为空");
+                //  输入的银行卡号不能为空
+                this.toastPop("No kartu bank tidak boleh kosongg");
                 return false;
             }
         },
@@ -108,11 +111,13 @@ let Base64 = require('js-base64').Base64
             let reg = /^(6208|628|8|08)\d{9,11}$/;
             if(this.tel){
               if(!reg.test(this.tel)){
-                    this.toastPop("您输入的手机格式不正确");
+                //   您输入的手机格式不正确
+                    this.toastPop("Nomor handphone yang Anda masukkan salah");
                     return false;
                 }
             }else{
-                    this.toastPop("输入的手机号不能为空");
+                // 输入的手机号不能为空
+                    this.toastPop("Nomor handphone tidak boleh kosong");
                     return false;
                 }
             
@@ -132,7 +137,8 @@ let Base64 = require('js-base64').Base64
             if(this.bank && this.bankno && this.name && this.tel) {
                let reg = /^(6208|628|8|08)\d{9,11}$/;
                 if(!reg.test(this.tel)){
-                    this.toastPop("您输入的手机格式不正确");
+                    // 您输入的手机格式不正确
+                    this.toastPop("Nomor handphone yang Anda masukkan salah");
                     return false;
                 }
             this.validateTel()
@@ -142,7 +148,8 @@ let Base64 = require('js-base64').Base64
                 this.submitFlag = false
 
             if(parseInt(this.$route.query.m) < amount){
-                this.toastPop("您的可提取金额不足");
+                // 您的可提取金额不足
+                this.toastPop("Jumlah penarikan Anda tidak mencukupi");
                 return false;
             }
                 this.getAppToken()
@@ -182,7 +189,8 @@ let Base64 = require('js-base64').Base64
                         console.log('error: ', res);
                     });
                 }else{
-                    this.toastPop("您还有未填写的数据")
+                    // 您还有未填写的数据
+                    this.toastPop("Masih ada data yang belum diisi")
                 }
         }
         },
