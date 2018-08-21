@@ -418,7 +418,7 @@ body{
     height: 4px;
     left: 44%;
     display: inline-block;
-    background:  -webkit-linear-gradient(right,#e1c777,#f5e29c);
+    /* background:  -webkit-linear-gradient(right,#e1c777,#f5e29c); */
     border-radius: 2px;
 }
 
