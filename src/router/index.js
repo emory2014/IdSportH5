@@ -30,8 +30,8 @@ import VipInviteRecord from '@/components/vip/VipInviteRecord'
 Vue.use(Router)
 
 export default new Router({
-  // mode: 'history',
-  // base: '/web/',
+  mode: 'history',
+  base: '/web/',
   routes: [
     // {
     //   path: '/',
