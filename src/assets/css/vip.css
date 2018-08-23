@@ -3,9 +3,9 @@ body{
 }
 .toast-text{
     position: fixed;
-    width: 70%;
-    left: 15%;
-    right: 15%;
+    width: 90%;
+    left: 5%;
+    right: 5%;
     bottom: 30px;
     background: rgba(0, 0, 0, 0.6);
     text-align: center;
