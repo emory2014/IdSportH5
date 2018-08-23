@@ -617,6 +617,7 @@ a{
     color: #999;
     width: 84%;
     margin: auto;
+    list-style: decimal!important;
 }
 
 .wd-record-ul {

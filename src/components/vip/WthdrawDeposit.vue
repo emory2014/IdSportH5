@@ -36,7 +36,7 @@
         <li>Transfer lewat rekening, harus memastikan nomorrekening 
      yang di mastkin bener</li>
      <li>
-         Pengantian akun akan di butuhkan 2 hari kerja, tidakermasuk 
+         Pengantian akun akan di butuhkan 7 hari kerja, tidakermasuk 
      pas hari pengantinya dan hari libur
      </li>
     </ol>
