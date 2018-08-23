@@ -92,7 +92,7 @@
         <p class="text">Nikmati manfaat-manfaat dari keuntungan <br> menjadi Member </p>
         <!-- 立即体验 -->
         <div class="vip-btn"  @click="() => { this.successShow = false }">Nikmati Sekarang</div>
-        <i class="success-mask-close" @click="() => { this.successShow = false }">×</i>
+        <!-- <i class="success-mask-close" @click="() => { this.successShow = false }">×</i> -->
     </div>
 </div>
 <!-- 非会员提现 -->
@@ -103,7 +103,7 @@
         
         <div class="vip-btn" @click="() => { this.notVipShow = false; this.buyVip()}">Segera jadi Member</div>
         <div class="vip-btn" @click="() => { this.notVipShow = false }">Tidak</div>
-        <i class="success-mask-close" @click="() => { this.notVipShow = false }">×</i>
+        <!-- <i class="success-mask-close" @click="() => { this.notVipShow = false }">×</i> -->
     </div>
 </div>
 <div class="vip-success-mask" :class="[rechargeConfirmShow?'show':'hide']">
@@ -114,7 +114,7 @@
         <div class="vip-btn" @click="openVip()">Segera jadi Member</div>
         <!-- 容我想想 -->
         <div class="vip-btn" @click="() => { this.rechargeConfirmShow = false }">Pikirkan dulu</div>
-        <i class="success-mask-close" @click="() => { this.rechargeConfirmShow = false }">×</i>
+        <!-- <i class="success-mask-close" @click="() => { this.rechargeConfirmShow = false }">×</i> -->
     </div>
 </div>
 
@@ -126,7 +126,7 @@
         <router-link to="/recharge"><div class="vip-btn">Seger isi ulang</div></router-link>
         <!-- 容我想想 -->
         <div class="vip-btn" @click="() => { this.coinNotEnoughShow = false }">Pikirkan dulu</div>
-        <i class="success-mask-close" @click="() => { this.coinNotEnoughShow = false }">×</i>
+        <!-- <i class="success-mask-close" @click="() => { this.coinNotEnoughShow = false }">×</i> -->
     </div>
 </div>
 
