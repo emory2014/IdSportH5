@@ -20,7 +20,7 @@
     </div>
     <div class="vip-input-group">
         <i class="icon-input tel"></i>
-        <input ref="tel" type="tel" @blur="validateTel()" v-model="tel" maxlength="13" placeholder="Nomor handphone" />
+        <input ref="tel" type="tel" @blur="validateTel()" v-model="tel"  placeholder="Nomor handphone" />
     </div>
 <p class="wd-label">Saldo penarikan (Unit: Rp)</p>
     <div class="wd-val-box">
@@ -178,7 +178,7 @@ let Base64 = require('js-base64').Base64
                        this.submitFlag = true
                     if (res.data.status.code == 200) {
                             this.toastPop('success') 
-                            this.$route.push("/wd-record")
+                            this.$router.push("/wd-record")
                     }else if (res.data.status.code == 401) {
                             
                     }else{
