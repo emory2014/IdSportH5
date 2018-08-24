@@ -18,6 +18,10 @@
     padding: 50px 15px;
 }
 
+.process-container{
+    padding-top: 50px;
+}
+
 .recharge-balance {
     width: 100%;
     background: url(../../assets/images/recharge/recharge-bg.png) no-repeat center;
