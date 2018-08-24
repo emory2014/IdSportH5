@@ -38,6 +38,36 @@
             </div>
         </div>
     </div>
+
+ <div class="info-cont" v-if="!token">
+        <div class="header-wrapper">
+            <div class="vip-header-box">
+                <img src="../../assets/images/game-header.png" />
+            </div>
+            
+            <img class="vip-pic" src="../../assets/images/vip/vip-gray.png"/>
+        </div>
+        <div class="header-info">
+            <!-- 未登录 -->
+            <p class="name">Belum masuk</p>
+            <span class="tag">Belum jadi Member</span>
+        </div>
+
+        <div class="vip-val-info">
+            <div class="item">
+                <p>Sudah  undang</p>
+                <p><span class="num">0</span>  orang</p>
+                <span @click="toInviteRecord()" class="tag">Undangan saya ></span>
+            </div>
+            <div class="item">
+                <p>Sudah dapat (Rp.)</p>
+                <p><span class="num">0</span>  </p>
+                <span @click="wdMoney()" class="tag">Penarikan ></span>
+            </div>
+        </div>
+    </div>
+
+
 </div>
 
  <div class="vip-title-sec">
@@ -190,6 +220,14 @@ const totalDuration = 2000;
 
                 //  console.log(scroll.scrollLeft)
                 }, 50)
+            },
+            toInviteRecord(){
+                if(this.token){
+                    this.$router.push("/vip-invite-record")
+                }else{
+                    window.AndroidWebView.closeActivities();
+                    window.AndroidWebView.loginApp();
+                }
             },
         popAccess(type){
                 this.active = type
