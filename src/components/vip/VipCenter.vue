@@ -95,7 +95,7 @@
     </div>
     <div class="item" @click="popAccess(3)">
         <i class="icon-vip coin"></i>
-        <p>2 kali koin</p>
+        <p>5 kali koin</p>
         <span>Koin bisa diuangkan</span>
     </div>
     
@@ -106,7 +106,7 @@
     </div>
      <div class="access-text" :class="[active == 3? 'show':'hide']">
     <i class="icon-text-caret"></i><i @click="popAccessHide()" class="icon-text-close">×</i>
-        Setelah jadi Member, 2 kali lipat koin baca artikel
+        Setelah jadi Member, 5 kali lipat koin baca artikel
     </div>
      <div class="access-text" :class="[active == 4? 'show':'hide']">
     <i class="icon-text-caret right"></i><i @click="popAccessHide()" class="icon-text-close">×</i>
