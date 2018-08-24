@@ -1,6 +1,6 @@
 <template>
 <div class="vip-container">
-<BHeader backToApp={true} title="Member Super" vip={true}  />
+<BHeader backToApp={true} title="Pusat Member" vip={true}  />
 <!-- <Loading v-if="!data" /> -->
 <div class="vip-info-sec" >
     <div class="vip-scroll-box" v-show="list">
