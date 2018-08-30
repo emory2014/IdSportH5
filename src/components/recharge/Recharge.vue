@@ -54,8 +54,8 @@ let Base64 = require('js-base64').Base64;
                 active: 0,
                 amount: 0,
                 method: 1,
-                buy:40000,
-                gift:0
+                buy: 0,
+                gift: 0
             }
         },
         methods: {
@@ -82,6 +82,7 @@ let Base64 = require('js-base64').Base64;
                         token: token,
                     }
                 }).then((res) => {
+                    window.AndroidWebView.showContent(res.data.status.message);
                     if (res.data.status.code == 200) {
                        this.data = res.data.data
                        this.balance = res.data.data.gold
