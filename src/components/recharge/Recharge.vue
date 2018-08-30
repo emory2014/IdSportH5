@@ -10,7 +10,7 @@
     <p class="recharge-title">Silakan pilih Nominalnya</p>
     <div class="recharge-panel" v-if="data">
         <div v-for="(item,index) of data.amountInfo" :key="index" class="recharge-item" :class="[active == index ? 'active':'']" @click="addClass(index,item.money,item.buy,item.gift)">
-            <span v-if="!this.$route.query.vip">Rp.{{$utils.parseMoney(item.money)}}</span>
+            <span v-if="!from">Rp.{{$utils.parseMoney(item.money)}}</span>
 
         </div>
 
@@ -55,7 +55,8 @@ let Base64 = require('js-base64').Base64;
                 amount: 0,
                 method: 1,
                 buy: 0,
-                gift: 0
+                gift: 0,
+                from: this.$route.query.vip
             }
         },
         methods: {
