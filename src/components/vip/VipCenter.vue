@@ -153,7 +153,7 @@
         <!-- 您的金币剩余100000，还差金币100000 -->
         <p class="vip-mask-msg">Koin anda sisa {{coinBalance}}, masih ada koin {{needMoreCoin}}</p>
         <!-- 立即充值 -->
-        <router-link to="/recharge"><div class="vip-btn">Seger isi ulang</div></router-link>
+        <router-link to="/recharge?vip=1"><div class="vip-btn">Seger isi ulang</div></router-link>
         <!-- 容我想想 -->
         <div class="vip-btn" @click="() => { this.coinNotEnoughShow = false }">Pikirkan dulu</div>
         <!-- <i class="success-mask-close" @click="() => { this.coinNotEnoughShow = false }">×</i> -->
