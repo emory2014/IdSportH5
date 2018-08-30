@@ -82,12 +82,13 @@ let Base64 = require('js-base64').Base64;
                         token: token,
                     }
                 }).then((res) => {
-                    window.AndroidWebView.showContent(res.data.status.message);
+                    
                     if (res.data.status.code == 200) {
                        this.data = res.data.data
                        this.balance = res.data.data.gold
                        this.buy = this.data.amountInfo[0].buy
                        this.gift = this.data.amountInfo[0].gift
+                       window.AndroidWebView.showContent(this.balance);
                 } else if(res.data.status.code == 401){
                     window.AndroidWebView.closeActivities();
                     window.AndroidWebView.loginApp();
