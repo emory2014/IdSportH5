@@ -10,7 +10,7 @@
     <p class="recharge-title">Silakan pilih Nominalnya</p>
     <div class="recharge-panel" v-if="data">
         <div v-for="(item,index) of data.amountInfo" :key="index" class="recharge-item" :class="[active == index ? 'active':'']" @click="addClass(index,item.money,item.buy,item.gift)">
-            <span v-if=" this.$route.query.vip && index > 1 || !this.$route.query.vip">Rp.{{$utils.parseMoney(item.money)}}</span>
+            <span>Rp.{{$utils.parseMoney(item.money)}}</span>
 
         </div>
 
