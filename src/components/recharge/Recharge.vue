@@ -87,8 +87,14 @@ let Base64 = require('js-base64').Base64;
                     if (res.data.status.code == 200) {
                        this.data = res.data.data
                        this.balance = res.data.data.gold
-                       this.buy = this.data.amountInfo[0].buy
-                       this.gift = this.data.amountInfo[0].gift
+                       if(from){
+                         this.buy = this.data.amountInfo[2].buy
+                         this.gift = this.data.amountInfo[2].gift
+                       }else{
+                         this.buy = this.data.amountInfo[0].buy
+                         this.gift = this.data.amountInfo[0].gift
+                       }
+                       
                        window.AndroidWebView.showContent(this.$route.query.vip);
                 } else if(res.data.status.code == 401){
                     window.AndroidWebView.closeActivities();
