@@ -187,6 +187,8 @@ body{
     color: #d7be9d;
     vertical-align: middle;
     height: 35px;
+    position: relative;
+    top: 2px;
 }
 
 .rank-info p{
