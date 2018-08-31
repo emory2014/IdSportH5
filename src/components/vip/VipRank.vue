@@ -115,7 +115,7 @@ body{
 }
 .vip-rank-container{
     background: url(../../assets/images/vip/datu.png) no-repeat top center,#080706;
-    background-size: cover; 
+    background-size: 100%; 
     padding: 180px 0 0 0;
 }
 
@@ -182,7 +182,7 @@ body{
 
 .rank-info{
     display: inline-block;
-    width: 76%;
+    width: 74%;
     font-size: 12px;
     color: #d7be9d;
     vertical-align: middle;
@@ -225,13 +225,13 @@ body{
 }
 
 .vip-rank-ol{
-    list-style: decimal;
     color: #d7be9d;
     font-size: 12px;
     padding: 0 0 0 12px;
 }
 .vip-rank-ol li {
     line-height: 2;
+    list-style: decimal;
 }
 
 .vip-rank-ol .font-14{
