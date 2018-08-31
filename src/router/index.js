@@ -25,6 +25,7 @@ import VipCenter from '@/components/vip/VipCenter'
 import VipRechargeRecord from '@/components/vip/VipRechargeRecord'
 import WthdrawDeposit from '@/components/vip/WthdrawDeposit'
 import WDRecord from '@/components/vip/WDRecord'
+import VipRank from '@/components/vip/VipRank'
 import VipInviteRecord from '@/components/vip/VipInviteRecord'
 
 Vue.use(Router)
@@ -38,6 +39,11 @@ export default new Router({
     //   name: 'User',
     //   component: User
     // },
+    {
+      path: '/vip-rank',
+      name: 'VipRank',
+      component: VipRank
+    },
     {
       path: '/vip-center',
       name: 'VipCenter',
