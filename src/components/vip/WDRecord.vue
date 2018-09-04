@@ -13,6 +13,12 @@
     </li>
     
 </ul> 
+
+<div :class="[defaultShow ? 'show':'hide']" class="vip-record-default">
+    <img src="../../assets/images/vip/vip-default-pic.png" />
+    <p>“ Sementara tidak ada konten ”</p>
+</div>
+
 </div>
 
 </template>
@@ -112,6 +118,12 @@ let Base64 = require('js-base64').Base64
                         this.data = res.data.data
                         this.totalPage = res.data.data.page_info.total_page
                         this.currentPage = res.data.data.page_info.current_page
+
+                        if(!this.data.history.length){
+                            this.defaultShow = true
+                        }else{
+                            this.defaultShow = false
+                        }
                         
                 }else if (res.data.status.code == 401) {
                         
