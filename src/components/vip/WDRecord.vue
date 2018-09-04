@@ -10,6 +10,7 @@
         <p>Jumlah penarikan：Rp.{{item.total_amount}}</p>
         <p>Status pemrosesan：{{item.status}}</p>
         <p>Waktu：{{item.create_time}}</p>
+        <p v-if="item.status == 'Gagal'">Saran: <span class="wd-detail">{{item.comment}}</span></p>
     </li>
     
 </ul> 
@@ -92,7 +93,7 @@ let Base64 = require('js-base64').Base64
             });
           },
           getData(page){
-            //this.token = 'e8bc2672c51e0e94540a77ee2df1b9a6'
+            // this.token = '3ec8d21bd2629ed365d60e57d9336c7e'
             this.getAppToken();
               this.$http({
                 url: '/api/user/redeem/history?t='+(new Date()).getTime(),

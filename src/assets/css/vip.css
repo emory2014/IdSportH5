@@ -751,3 +751,9 @@ a{
 .vip-record-default img{
     width: 70%;
 }
+
+.wd-detail{
+    display: inline-block;
+    width: 80%;
+    vertical-align: text-top;
+}
