@@ -12,12 +12,13 @@
     </div>
     <div class="vip-input-group">
         <i class="icon-input bank"></i>
-        <select ref="bank" class="vip-select" type="text"   v-model="bank" >
-           <option>BCA</option>
-           <option>BRI</option>
-           <option>MANDIRI</option>
-           <option>BNI</option>
-        </select>
+        <input type="text" ref="bank" v-model="bank" placeholder="BCA/BRI/MANDIRI/BNI" @click="showBank()" >
+        <ul class="vip-select" :class="[bankShow ? 'show':'hide']" >
+           <li @click="selectBank('BCA')">BCA</li>
+           <li @click="selectBank('BRI')">BRI</li>
+           <li @click="selectBank('MANDIRI')">MANDIRI</li>
+           <li @click="selectBank('BNI')">BNI</li>
+        </ul>
     </div>
     <div class="vip-input-group">
         <i class="icon-input bankno"></i>
@@ -71,7 +72,7 @@ let Base64 = require('js-base64').Base64
             tel: '',
             toastShow: false,
             submitFlag: true,
-            banks: []
+            bankShow: false
             
             }
         },
@@ -92,6 +93,13 @@ let Base64 = require('js-base64').Base64
                 this.toastShow = true
                 this.msg = text
                 setTimeout(() => this.toastShow = false, 2000)
+        },
+        showBank(){
+            this.bankShow = true
+        },
+        selectBank(bank){
+            this.bankShow = false
+            this.bank = bank
         },
         validateName(){
             if(!this.name){
@@ -202,36 +210,7 @@ let Base64 = require('js-base64').Base64
         }
         },
            mounted(){
-            
              this.token = 'b96984d9a8d76523a1f732bb75fa3aa0'
-
-              this.$http({
-                    url: '/api/vip/bank/list?t='+(new Date()).getTime(),
-                    method: 'post',
-                    headers:{
-                        'Content-type': 'application/x-www-form-urlencoded'
-                    },
-                    transformRequest: [function (data) {
-                        let ret = ''
-                        for (let it in data) {
-                        ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
-                    }
-                    return ret
-                    }],
-                    }).then((res) => {
-                       
-                    if (res.data.status.code == 200) {
-                            this.banks = res.data.data.banks
-                    }else if (res.data.status.code == 401) {
-                            
-                    }else{
-                        this.toastPop(res.data.status.message)
-                    }
-
-                    }).catch((res) => {
-                        console.log('error: ', res);
-                    });
-             
         }
     }
 </script>
