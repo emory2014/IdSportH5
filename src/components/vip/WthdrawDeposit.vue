@@ -19,6 +19,7 @@
            <li @click="selectBank('MANDIRI')">MANDIRI</li>
            <li @click="selectBank('BNI')">BNI</li>
         </ul>
+        <i class="icon-caret"></i>
     </div>
     <div class="vip-input-group">
         <i class="icon-input bankno"></i>
