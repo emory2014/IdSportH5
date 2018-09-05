@@ -12,11 +12,14 @@
     </div>
     <div class="vip-input-group">
         <i class="icon-input bank"></i>
-        <input ref="bank" type="text" @blur="validateBank()" v-model="bank" placeholder="Nomor rekening" />
+        <select ref="bank" class="vip-select" type="text"   v-model="bank" >
+            <option v-for="(item,index) of banks" :key="index">{{item}}</option>
+           
+        </select>
     </div>
     <div class="vip-input-group">
         <i class="icon-input bankno"></i>
-        <input ref="bankno" type="text" @blur="validateBankno()" v-model="bankno" placeholder="Nama tanda terima" />
+        <input ref="bankno" type="text" @blur="validateBankno()" v-model="bankno" placeholder="Nomor rekening" />
     </div>
     <div class="vip-input-group">
         <i class="icon-input tel"></i>
@@ -65,7 +68,8 @@ let Base64 = require('js-base64').Base64
             bankno: '',
             tel: '',
             toastShow: false,
-            submitFlag: true
+            submitFlag: true,
+            banks: []
             
             }
         },
@@ -76,6 +80,7 @@ let Base64 = require('js-base64').Base64
           wdMoney(type){
                 this.active = type
         },
+      
         getAppToken(){
             var content=window.AndroidWebView.getAppToken();
             var token = Base64.decode(content)
@@ -196,7 +201,34 @@ let Base64 = require('js-base64').Base64
         },
            mounted(){
             
-            // this.token = 'e8bc2672c51e0e94540a77ee2df1b9a6'
+             this.token = 'b96984d9a8d76523a1f732bb75fa3aa0'
+
+              this.$http({
+                    url: '/api/vip/bank/list?t='+(new Date()).getTime(),
+                    method: 'post',
+                    headers:{
+                        'Content-type': 'application/x-www-form-urlencoded'
+                    },
+                    transformRequest: [function (data) {
+                        let ret = ''
+                        for (let it in data) {
+                        ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+                    }
+                    return ret
+                    }],
+                    }).then((res) => {
+                       
+                    if (res.data.status.code == 200) {
+                            this.banks = res.data.data.banks
+                    }else if (res.data.status.code == 401) {
+                            
+                    }else{
+                        this.toastPop(res.data.status.message)
+                    }
+
+                    }).catch((res) => {
+                        console.log('error: ', res);
+                    });
              
         }
     }

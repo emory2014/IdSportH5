@@ -525,9 +525,21 @@ body{
     vertical-align: bottom;
 }
 
+
 .vip-input-group input::placeholder{
     color: #dddddd;
     font-size: 14px;
+}
+
+.vip-select{
+    outline: none;
+    height: 45px;
+    line-height: 45px;
+    margin-left: 6px;
+    width: 80%;
+    border: 0;
+    padding: 0;
+    background: transparent;
 }
 
 .icon-input {
