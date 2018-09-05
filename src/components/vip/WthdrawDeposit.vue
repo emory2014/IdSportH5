@@ -12,7 +12,7 @@
     </div>
     <div class="vip-input-group">
         <i class="icon-input bank"></i>
-        <input type="text" ref="bank" v-model="bank" placeholder="BCA/BRI/MANDIRI/BNI" @click="showBank()" >
+        <input type="text" ref="bank" readonly v-model="bank" placeholder="BCA/BRI/MANDIRI/BNI" @click="showBank()" >
         <ul class="vip-select" :class="[bankShow ? 'show':'hide']" >
            <li @click="selectBank('BCA')">BCA</li>
            <li @click="selectBank('BRI')">BRI</li>
