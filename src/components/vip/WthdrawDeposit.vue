@@ -13,8 +13,10 @@
     <div class="vip-input-group">
         <i class="icon-input bank"></i>
         <select ref="bank" class="vip-select" type="text"   v-model="bank" >
-            <option v-for="(item,index) of banks" :key="index">{{item}}</option>
-           
+           <option>BCA</option>
+           <option>BRI</option>
+           <option>MANDIRI</option>
+           <option>BNI</option>
         </select>
     </div>
     <div class="vip-input-group">
