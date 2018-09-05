@@ -629,6 +629,9 @@ a{
     color: #999;
     width: 84%;
     margin: auto;
+}
+
+.wd-ol li{
     list-style: decimal!important;
 }
 
