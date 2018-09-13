@@ -289,6 +289,7 @@ body{
     vertical-align: middle;
     text-align: center;
     margin: 0 4px;
+    line-height: 31px;
 }
 
 .play-caret{
@@ -300,7 +301,6 @@ body{
     border-right: 10px solid transparent;
     border-bottom: 6px solid transparent;
     position: relative;
-    top: 2px;
     left: 5px;
 }
 
