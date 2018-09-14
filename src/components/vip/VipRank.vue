@@ -1,6 +1,8 @@
 <template>
 <div class="vip-rank-container">
-
+    <a href="https://www.youtube.com/watch?v=d1ItTqU_VFw">
+        <img class="rank-play" src="../../assets/images/rank-play.png" />
+    </a>
  <!-- <Loading v-if="!data" />  -->
     <p class="title">Jadi Member, Bonus Baca 5 kali lipat, Undang <br>
     teman hasilkan puluhan ribu rupiah, <br>
@@ -117,6 +119,15 @@ body{
     background: url(../../assets/images/vip/datu.png) no-repeat top center,#080706;
     background-size: 100%; 
     padding: 180px 0 0 0;
+}
+
+.rank-play{
+    position: fixed;
+    bottom: 30px;
+    right: 5%;
+    width: 75px;
+    height: 80px;
+    z-index: 1;
 }
 
 .vip-rank-container .title{
