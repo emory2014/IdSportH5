@@ -28,17 +28,25 @@ import WDRecord from '@/components/vip/WDRecord'
 import VipRank from '@/components/vip/VipRank'
 import VipInviteRecord from '@/components/vip/VipInviteRecord'
 
+import MyFollow from '@/components/post/MyFollow'
+
+
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',
-  base: '/web/',
+  // mode: 'history',
+  // base: '/web/',
   routes: [
     // {
     //   path: '/',
     //   name: 'User',
     //   component: User
     // },
+    {
+      path: '/my-follow',
+      name: 'MyFollow',
+      component: MyFollow
+    },
     {
       path: '/vip-rank',
       name: 'VipRank',
