@@ -5,6 +5,9 @@ import User from '@/components/User'
 
 import Activity from '@/components/Activity'
 
+import Questions from '@/components/Questions'
+
+
 import Invite from '@/components/invite/Invite'
 import InviteRecord from '@/components/invite/InviteRecord'
 
@@ -146,6 +149,11 @@ export default new Router({
       path: '/detail',
       name: 'AwardDetail',
       component: AwardDetail
+    },
+    {
+      path: '/question',
+      name: 'Questions',
+      component: Questions
     },
   ]
 })

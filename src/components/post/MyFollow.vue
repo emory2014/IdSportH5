@@ -17,7 +17,7 @@
         <div class="follow-default" v-if="!totalPage">
             <img src="../../assets/images/recharge/recharge-default.png" />
             <p>“ Belum ada orang yang diikuti ”</p>
-            <div class="follow-btn-large">Lihat Goretan</div>
+            <div class="follow-btn-large" @click="backToFollow()">Lihat Goretan</div>
         </div>
     </div>
 </template>
@@ -55,6 +55,10 @@ import md5 from 'js-md5'
                     }  
                 }  
             });  
+          },
+          backToFollow(){
+              window.AndroidWebView.closeActivities()
+              window.AndroidWebView.gotoTopics()
           },
              getData(){
                 this.$http({
