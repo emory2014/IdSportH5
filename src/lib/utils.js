@@ -18,10 +18,10 @@ export default{
             }
         },
         Vue.prototype.getAppToken = function(){
-            // var content=window.AndroidWebView.getAppToken();
-            // var token = Base64.decode(content)
-            // return token
-            return '1f1a85824d9e1b50c0dd152ab1e92e13'
+            var content=window.AndroidWebView.getAppToken();
+            var token = Base64.decode(content)
+            return token
+            // return '1f1a85824d9e1b50c0dd152ab1e92e13'
         }
     }
    

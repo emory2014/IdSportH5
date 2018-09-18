@@ -1,8 +1,8 @@
 <template>
     <div class="follow-container">
-        <BHeader title="Yang Saya Ikuti" />
+        <BHeader title="Yang Saya Ikuti" backToApp={true} />
         <ul class="my-follow-ul" v-if="list.length">
-            <li v-for="(item,index) of list" :key="index" :id="'follow_'+item.follow_id">
+            <li v-for="(item,index) of list" :key="index" :id="'follow_'+item.follow_user_id">
                 <div class="avatar-box">
                     <img :src="item.avatar" />
                 </div>
@@ -10,7 +10,7 @@
                 <img v-if="item.gender == 1" src="../../assets/images/male@2x.png" class="gender" />
                 <img v-else-if="item.gender == 2" src="../../assets/images/female@2x.png" class="gender" />
                
-                <span class="follow-btn" @click="cancelFollow(item.follow_id)">Berhenti Ikut</span>
+                <span class="follow-btn" @click="cancelFollow(item.follow_user_id)">Berhenti Ikut</span>
             </li>
            
         </ul>

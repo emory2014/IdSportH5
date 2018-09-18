@@ -34,8 +34,8 @@ import MyFollow from '@/components/post/MyFollow'
 Vue.use(Router)
 
 export default new Router({
-  // mode: 'history',
-  // base: '/web/',
+  mode: 'history',
+  base: '/web/',
   routes: [
     // {
     //   path: '/',
