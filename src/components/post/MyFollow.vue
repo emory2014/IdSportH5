@@ -3,7 +3,7 @@
         <BHeader title="Yang Saya Ikuti" backToApp={true} />
         <ul class="my-follow-ul" v-if="list.length">
             <li v-for="(item,index) of list" :key="index" :id="'follow_'+item.follow_user_id">
-                <div class="avatar-box">
+                <div class="avatar-box" @click="toFollowList(item.follow_user_id)">
                     <img :src="item.avatar" />
                 </div>
                 <span class="name">{{item.username}}</span>
@@ -39,6 +39,9 @@ import md5 from 'js-md5'
             }
         },
         methods:{
+            toFollowList(id){
+             window.AndroidWebView.gotoTopicDetail(id)
+            },
              scrollGetData(){
               let _this = this;
                window.addEventListener('scroll',function(){  
