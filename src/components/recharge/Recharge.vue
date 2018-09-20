@@ -10,13 +10,13 @@
     <p class="recharge-title">Silakan pilih Nominalnya</p>
     <div class="recharge-panel" v-if="data">
         <div v-for="(item,index) of data.amountInfo" :key="index" v-if="!from || from && index > 1" class="recharge-item" :class="[active == index ? 'active':'']" @click="addClass(index,item.money,item.buy,item.gift)">
-            <span >Rp.{{$utils.parseMoney(item.money)}}</span>
+            <span >Rp.{{parseMoney(item.money)}}</span>
 
         </div>
 
     </div>
-    <p class="recharge-text" v-if="buy">Koin yang didapat：<span class="recharge-val">Rpc.{{$utils.parseMoney(buy)}}</span></p>
-    <p class="recharge-text" v-if="gift">Bonus pembelian Koin：<span class="recharge-val">Rpc.{{$utils.parseMoney(gift)}}</span></p>
+    <p class="recharge-text" v-if="buy">Koin yang didapat：<span class="recharge-val">Rpc.{{parseMoney(buy)}}</span></p>
+    <p class="recharge-text" v-if="gift">Bonus pembelian Koin：<span class="recharge-val">Rpc.{{parseMoney(gift)}}</span></p>
     <div class="recharge-btn" @click="recharge()">BELI</div>
 
 </div>

@@ -21,7 +21,7 @@
                 </div>
                 <div class="rank-info">
                     <p class="invite"><span class="left">{{item.username}}</span> <span class="right">Sudah Undang {{item.count}} orang</span></p>
-                    <p class="font">Sudah Dapat <span class="yellow">Rp.{{$utils.parseMoney(item.amount)}}</span></p>
+                    <p class="font">Sudah Dapat <span class="yellow">Rp.{{parseMoney(item.amount)}}</span></p>
                 </div>
             </li>
              
