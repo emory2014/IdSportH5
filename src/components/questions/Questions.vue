@@ -4,9 +4,9 @@
           <div class="ques-btn-group">
                 <a href="#baru" @click="() => { active = 1 }"><span class="tag " :class="[active == 1 ? 'active':'']">Member Baru</span></a>
                 <a href="#rpc" @click="() => { active = 2 }"><span class="tag" :class="[active == 2 ? 'active':'']">RPC</span></a>
-                <!-- <span class="tag">Mengundang</span>
-                <span class="tag">Penarikan</span>
-                <span class="tag">Akun</span> -->
+                <a href="#invite" @click="() => { active = 3 }"><span class="tag" :class="[active == 3 ? 'active':'']">Mengundang</span></a>
+                <a href="#wd" @click="() => { active = 4 }"><span class="tag" :class="[active == 4 ? 'active':'']">Penarikan</span></a>
+                <a href="#acount" @click="() => { active = 5 }"><span class="tag" :class="[active == 5 ? 'active':'']">Akun</span></a>
           </div>
           <div class="ques-title" id="baru">
               Member Baru
@@ -19,7 +19,7 @@
 
                 Selain kalian bisa menambah pengetahuan menjadi lebih luas, kalian juga bisa mendapatkan penghasilan.
           </div>
-          <!-- <p class="sub-title">Cara menggunakan NewsCat <i class="icon-link"></i></p> -->
+          <router-link to="/how-play"><p class="sub-title">Cara menggunakan NewsCat <i class="icon-link"></i></p></router-link>
           <p class="sub-title" :class="[ open == 2 ? 'open':'']" @click="fold(2)">Berita tidak muncul <i class="icon-arrow"></i></p>
           <div class="ques-anwser" :class="[ open == 2 ? 'open':'']" @click="fold(2)">
               Apakah kamu tidak bisa memuat semua berita atau hanya sebagian saja?
@@ -72,25 +72,69 @@
 
             ke versi paling baru.<br>
           </div>
-          <!-- <div class="ques-title">
+          <div class="ques-title" id="invite">
               Mengundang
           </div>
-          <p class="sub-title">Bagaimana cara mengundang teman?<i class="icon-arrow"></i></p>
-          <div class="ques-title">
+          <router-link to="/how-invite"><p class="sub-title">Bagaimana cara mengundang teman?<i class="icon-link"></i></p></router-link>
+
+          <div class="ques-title" id="wd">
               Penarikan
           </div>
-          <p class="sub-title">Butuh berapa lama untuk bisa masuk rekening?<i class="icon-arrow"></i></p>
-          <div class="ques-title">
+          <p class="sub-title" :class="[ open == 6 ? 'open':'']" @click="fold(6)">Butuh berapa lama untuk bisa masuk rekening?<i class="icon-arrow"></i></p>
+          <div class="ques-anwser" :class="[ open == 6 ? 'open':'']" @click="fold(6)">
+
+            Setelah kamu meminta untuk penarikan, proses penarikan 1 - 7 hari untuk
+
+            sampai masuk ke rekening. Jika ada hari libur, proses penarikan mungkin
+
+            akan telat, harap bersabar untuk menunggu.
+          </div>
+          <div class="ques-title" id="acount">
               Akun
           </div>
-          <p class="sub-title">Tidak bisa daftar?<i class="icon-arrow"></i></p>
-          <p class="sub-title two">Peraturan jika kedapatan curang dan<br> hukumannya<i class="icon-arrow"></i></p>
-          <p class="sub-title">Kenapa  akun saya diblokir?<i class="icon-arrow"></i></p> -->
+          <p class="sub-title" :class="[ open == 7 ? 'open':'']" @click="fold(7)">Tidak bisa daftar?<i class="icon-arrow"></i></p>
+          <div class="ques-anwser" :class="[ open == 7 ? 'open':'']" @click="fold(7)">
+              Sekarang 1 nomor handphone hanya bisa daftar 1 handphone. Jika kamu
+
+                sudah mendaftarkan nomor handphone kamu sebelumnya, maka kamu
+
+                tidak bisa mendaftar lagi.
+          </div>
+          <p class="sub-title two" :class="[ open == 8 ? 'open':'']" @click="fold(8)">Peraturan jika kedapatan curang dan<br> hukumannya<i class="icon-arrow"></i></p>
+           <div class="ques-anwser" :class="[ open == 8 ? 'open':'']" @click="fold(8)">
+              Perilaku curang meliputi:<br>
+
+                (1) Menggunakan nomor virtual, nomor kosong, nomor ponsel yang tidak terverifikas nama asli, dll.
+
+                Undangan atau penghasilan nomor virtual;
+
+               <br> (2) Menggunakan program yang tidak diizinkan (baca: bot, sistem kontrol grup, dll.),
+
+                pembacaan tidak normal untuk mendapatkan penghasilan;
+
+               <br> (3) Menggunakan program (perangkat lunak, skrip, dll.) Mengoperasikan
+
+                undangan untuk memperoleh pendapatan, brush interface dan seterusnya mengundang temn dengan
+
+                perilaku yang tidak normal..
+          </div>
+          <p class="sub-title" :class="[ open == 9 ? 'open':'']" @click="fold(9)">Kenapa  akun saya diblokir?<i class="icon-arrow"></i></p>
+          <div class="ques-anwser" :class="[ open == 9 ? 'open':'']" @click="fold(9)">
+                NewsCat memiliki mekanisme anti-kecurangan yang sangat ketat.
+
+                Jika sekali ditemukan bahwa ada kecurangan maka akan dilarang
+
+                selamanya,
+
+                kami berharap semua orang dapat bekerja sama untuk demi menjaga
+
+                kelancaran dan ketertiban NewsCat.
+          </div>
 
   </div>
 </template>
 <script>
-import BHeader from "./common/BHeader"
+import BHeader from "../common/BHeader"
 export default {
   name: 'Questions',
   components: {
@@ -123,11 +167,13 @@ body{
     padding-top: 50px;
 }
 
+a{
+    text-decoration: none;
+}
+
 .ques-btn-group {
     padding: 12px 20px 0 20px;
     box-sizing: border-box;
-    margin-top: 20px;
-
 }
 
 .ques-btn-group .tag{
@@ -199,14 +245,14 @@ body{
     height: 12px;
     margin-right: 13px;
     vertical-align: middle;
-    background: url(../assets/images/icon-arrow-down@2x.png) no-repeat center;
+    background: url(../../assets/images/icon-arrow-down@2x.png) no-repeat center;
     background-size: 15px 12px;
     position: relative;
     top: 3px;
 }
 
 .open .icon-arrow {
-    background: url(../assets/images/icon-arrow-up@2x.png) no-repeat center;
+    background: url(../../assets/images/icon-arrow-up@2x.png) no-repeat center;
     background-size: 15px 12px;
 }
 
@@ -217,7 +263,7 @@ body{
     height: 15px;
     margin-right: 13px;
     vertical-align: middle;
-    background: url(../assets/images/icon-link@2x.png) no-repeat center;
+    background: url(../../assets/images/icon-link@2x.png) no-repeat center;
     background-size: 15px 15px;
     position: relative;
     top: 3px;

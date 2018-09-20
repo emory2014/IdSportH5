@@ -5,7 +5,9 @@ import User from '@/components/User'
 
 import Activity from '@/components/Activity'
 
-import Questions from '@/components/Questions'
+import Questions from '@/components/questions/Questions'
+import HowInvite from '@/components/questions/HowInvite'
+import HowPlay from '@/components/questions/HowPlay'
 
 
 import Invite from '@/components/invite/Invite'
@@ -154,6 +156,16 @@ export default new Router({
       path: '/question',
       name: 'Questions',
       component: Questions
+    },
+    {
+      path: '/how-invite',
+      name: 'HowInvite',
+      component: HowInvite
+    },
+    {
+      path: '/how-play',
+      name: 'HowPlay',
+      component: HowPlay
     },
   ]
 })
