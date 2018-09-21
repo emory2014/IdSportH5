@@ -78,6 +78,8 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     font-weight: bold;
+    height: 50px;
+    line-height: 50px;
 }
 
 .nc-icon-prev{
