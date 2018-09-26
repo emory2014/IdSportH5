@@ -321,8 +321,9 @@ let Base64 = require('js-base64').Base64
                 },
             successAjax(){
                 // this.getAppToken()
+                var t = (new Date()).getTime();
                  this.$http({
-                url: '/game/record/result?token='+this.getAppToken()+'&gameId='+this.gameId+'&period='+this.period+'&ifWin=1&sign='+this.toMD5(this.gameId,1,this.period,this.getAppToken(),(new Date()).getTime())+'&time='+(new Date()).getTime(),
+                url: '/game/record/result?token='+this.getAppToken()+'&gameId='+this.gameId+'&period='+this.period+'&ifWin=1&sign='+this.toMD5(this.gameId,1,this.period,this.getAppToken(),t)+'&time='+t,
                 method: 'get',
                 }).then((res) => {
                     if (res.data.status.code == 200) {
@@ -370,8 +371,9 @@ let Base64 = require('js-base64').Base64
             },
             answerErr(){
                // this.getAppToken();
+                var t = (new Date()).getTime();
                 this.$http({
-                url: '/game/record/result?token='+this.getAppToken()+'&gameId='+this.gameId+'&period='+this.period+'&ifWin=0&sign='+this.toMD5(this.gameId,0,this.period,this.getAppToken(),(new Date()).getTime())+'&time='+(new Date()).getTime(),
+                url: '/game/record/result?token='+this.getAppToken()+'&gameId='+this.gameId+'&period='+this.period+'&ifWin=0&sign='+this.toMD5(this.gameId,0,this.period,this.getAppToken(),t)+'&time='+t,
                 method: 'get',
                 }).then((res) => {
                     console.log(res.data.status.code)
