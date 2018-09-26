@@ -168,21 +168,21 @@ let Base64 = require('js-base64').Base64
                 if (r != null) return unescape(r[2]);
                     return null;
                 } ,
-            getAppToken(){
-                 try{
-                    if(this.getQueryString("token")){
-                        this.token = this.getQueryString("token")
-                    }else{
-                        var content=window.AndroidWebView.getAppToken();
-                        var token = Base64.decode(content)
-                        this.token = token
-                    }
+            // getAppToken(){
+            //      try{
+            //         if(this.getQueryString("token")){
+            //             this.token = this.getQueryString("token")
+            //         }else{
+            //             var content=window.AndroidWebView.getAppToken();
+            //             var token = Base64.decode(content)
+            //             this.token = token
+            //         }
 
-                }
-                catch(err){
-                    console.log(err)
-                }
-            },
+            //     }
+            //     catch(err){
+            //         console.log(err)
+            //     }
+            // },
             closeRuleMask(){
                 this.ruleMask = false
             },
@@ -198,12 +198,12 @@ let Base64 = require('js-base64').Base64
                 window.AndroidWebView.openGoogleRewardAd();
             },
               facebookShare(){
-               this.getAppToken()
+               //this.getAppToken()
                 this.$http({
                     url: '/api/generate/invitation_code',
                     method: 'post',
                     data: {
-                        token: this.token,
+                        token: this.getAppToken(),
                         channel: 'facebook'
                     }
                 }).then((res) => {
@@ -218,12 +218,12 @@ let Base64 = require('js-base64').Base64
                 });
          },
          whatsappShare(){
-               this.getAppToken()
+               //this.getAppToken()
                    this.$http({
                     url: '/api/generate/invitation_code',
                     method: 'post',
                     data: {
-                        token: this.token,
+                        token: this.getAppToken(),
                         channel: 'whatsapp'
                     }
                 }).then((res) => {
@@ -320,9 +320,9 @@ let Base64 = require('js-base64').Base64
                 return md5("gameId="+gameId+"&ifWin="+ifWin+"&period="+period+"&token="+token+"&key=cangque666").toUpperCase()
                 },
             successAjax(){
-                 this.getAppToken()
+                // this.getAppToken()
                  this.$http({
-                url: '/game/record/result?token='+this.token+'&gameId='+this.gameId+'&period='+this.period+'&ifWin=1&sign='+this.toMD5(this.gameId,1,this.period,this.token)+'&t='+(new Date()).getTime(),
+                url: '/game/record/result?token='+this.getAppToken()+'&gameId='+this.gameId+'&period='+this.period+'&ifWin=1&sign='+this.toMD5(this.gameId,1,this.period,this.token)+'&t='+(new Date()).getTime(),
                 method: 'get',
                 }).then((res) => {
                     if (res.data.status.code == 200) {
@@ -334,6 +334,9 @@ let Base64 = require('js-base64').Base64
 
                 }).catch((res) => {
                     console.log('error: ', res);
+                     //网络异常
+                    this.errMsgShow = true
+                    this.errMsg = "Internet Tidak Normal"
                 });
             },
             nextQustion(item){
@@ -366,11 +369,12 @@ let Base64 = require('js-base64').Base64
                 this.$router.push("/game?t="+(new Date()).getTime()+""+(this.isTitle > -1 ? "&title=1":""))
             },
             answerErr(){
-                this.getAppToken();
+               // this.getAppToken();
                 this.$http({
-                url: '/game/record/result?token='+this.token+'&gameId='+this.gameId+'&period='+this.period+'&ifWin=0&sign='+this.toMD5(this.gameId,0,this.period,this.token)+'&t='+(new Date()).getTime(),
+                url: '/game/record/result?token='+this.getAppToken()+'&gameId='+this.gameId+'&period='+this.period+'&ifWin=0&sign='+this.toMD5(this.gameId,0,this.period,this.token)+'&t='+(new Date()).getTime(),
                 method: 'get',
                 }).then((res) => {
+                    console.log(res.data.status.code)
                     if (res.data.status.code == 200) {
                         // document.getElementById("plus").addEventListener("click",this.nextQustion(),false)
                         // document.getElementById("subtraction").addEventListener("click",this.nextQustion(),false)
@@ -386,6 +390,9 @@ let Base64 = require('js-base64').Base64
                     }
 
                 }).catch((res) => {
+                    //网络异常
+                    this.errMsgShow = true
+                    this.errMsg = "Internet Tidak Normal"
                     console.log('error: ', res);
                 });
             },
@@ -394,13 +401,13 @@ let Base64 = require('js-base64').Base64
                    this.confirmMaskShow = true
             },
             confirmRechargeCoin(){
-                    this.getAppToken();
+                    //this.getAppToken();
                     if(!this.bugChanceFlag) {
                         return false;
                     }
                     this.bugChanceFlag = false
                     this.$http({
-                    url: '/game/buy/chance?token='+this.token+'&gameId='+this.gameId+'&t='+(new Date()).getTime(),
+                    url: '/game/buy/chance?token='+this.getAppToken()+'&gameId='+this.gameId+'&t='+(new Date()).getTime(),
                     method: 'get',
                 }).then((res) => {
                     this.bugChanceFlag = true
@@ -420,7 +427,7 @@ let Base64 = require('js-base64').Base64
             },
             getData(){
                 this.$http({
-                url: '/game/get/question?token='+this.token+'&gameId='+this.gameId+'&t='+(new Date()).getTime(),
+                url: '/game/get/question?token='+this.getAppToken()+'&gameId='+this.gameId+'&t='+(new Date()).getTime(),
                 method: 'get',
                 }).then((res) => {
                     let data = res.data.data;
@@ -444,7 +451,7 @@ let Base64 = require('js-base64').Base64
         mounted(){
             // this.token = this.getQueryString("token");
             //  this.token = 'e8bc2672c51e0e94540a77ee2df1b9a6'
-              this.getAppToken();
+              //this.getAppToken();
             // this.token = 'e8bc2672c51e0e94540a77ee2df1b9a6'
             this.countDown();
            // document.querySelector(".start-num").className = "animation start-num"
