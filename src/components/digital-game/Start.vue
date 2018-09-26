@@ -315,14 +315,14 @@ let Base64 = require('js-base64').Base64
                 setTimeout(() => this.toastShow = false, 2000)
                 },
 
-            toMD5(gameId,ifWin,period,token){
+            toMD5(gameId,ifWin,period,token,time){
 
-                return md5("gameId="+gameId+"&ifWin="+ifWin+"&period="+period+"&token="+token+"&key=cangque666").toUpperCase()
+                return md5("gameId="+gameId+"&ifWin="+ifWin+"&period="+period+"&time="+time+"&token="+token+"&key=cangque666").toUpperCase()
                 },
             successAjax(){
                 // this.getAppToken()
                  this.$http({
-                url: '/game/record/result?token='+this.getAppToken()+'&gameId='+this.gameId+'&period='+this.period+'&ifWin=1&sign='+this.toMD5(this.gameId,1,this.period,this.token)+'&t='+(new Date()).getTime(),
+                url: '/game/record/result?token='+this.getAppToken()+'&gameId='+this.gameId+'&period='+this.period+'&ifWin=1&sign='+this.toMD5(this.gameId,1,this.period,this.getAppToken(),(new Date()).getTime())+'&time='+(new Date()).getTime(),
                 method: 'get',
                 }).then((res) => {
                     if (res.data.status.code == 200) {
