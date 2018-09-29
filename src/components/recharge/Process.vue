@@ -40,7 +40,7 @@
                 <li>Pergi ke ATM bank apa saja dan masukkan kartu ATM anda,pilih"Transaksi Lain"->"Transfer"->"Bank Lain". </li>
                 <li>Masukkan kode bank"<span class="yellow">013</span>"dan pilih "Benar".</li>
                 <li>Masukkan jumlah transfer(<span class="yellow">{{this.getQueryString("m")}}</span>)”. </li>
-                <li>Masukkan kode transaksi:(<span class="yellow">2202020202020202</span>) .</li>
+                <li>Masukkan kode transaksi:(<span class="yellow">{{data}}</span>) .</li>
                 <li>Pilih "benar" untuk konfirmasi transfer.</li>
                 <li>Bukti Pembayaran dalam bentuk struk agar disimpan sebagai bukti pembayaran yangsah dari Bank.</li>
             </ol>
@@ -57,7 +57,7 @@
                 <li>Pilih “Transfer”pada menu. </li>
                 <li>Pilih “Ke Bank Lain”pada menu.</li>
                 <li>Masukkan kode bank "Bank Permata(<span class="yellow">013</span>)" </li>
-                <li>Masukkan"kode Pembayan"(<span class="yellow">2202020202020202</span>) pada tujuan transfer.</li>
+                <li>Masukkan"kode Pembayan"(<span class="yellow">{{data}}</span>) pada tujuan transfer.</li>
                 <li>Masukkan jumlah transfer Anda Rp(<span class="yellow">{{this.getQueryString("m")}}</span>)dan pilih "OK".</li>
                 <li>Ikuti langkah selanjutnya sampai transaksi berhasil.</li>
             </ol>
@@ -74,7 +74,7 @@
                 <li>Pilih “Transfer”pada menu. </li>
                 <li>Pilih “Ke Bank Lain”pada menu.</li>
                 <li>Masukkan kode bank "Bank Permata(<span class="yellow">013</span>)" </li>
-                <li>Masukkan"kode Pembayan"(<span class="yellow">2202020202020202</span>) pada tujuan transfer.</li>
+                <li>Masukkan"kode Pembayan"(<span class="yellow">{{data}}</span>) pada tujuan transfer.</li>
                 <li>Masukkan jumlah transfer Anda Rp(<span class="yellow">{{this.getQueryString("m")}}</span>)dan pilih "OK".</li>
                 <li>Ikuti langkah selanjutnya sampai transaksi berhasil.</li>
             </ol>
@@ -97,7 +97,7 @@
                 <li>Pilih menu BAYAR/BELI.</li>
                 <li>Pilih menu MULTI PAYMENT. </li>
                 <li>Ketik Kode Perusahaan, yaitu ”88908” (PT SINAR DIGITAL TERDEPAN), tekan BENAR.</li>
-                <li>Isi No Virtual Account (<span class="yellow">89020202020202</span>) lengkap dengan code perusahaan, kemudian tekan BENAR.</li>
+                <li>Isi No Virtual Account (<span class="yellow">{{data}}</span>) lengkap dengan code perusahaan, kemudian tekan BENAR.</li>
                 <li>Isi NOMINAL(<span class="yellow">{{this.getQueryString("m")}}</span>), kemudian tekan BENAR. </li>
                 <li>Muncul konfirmasi data customer. Pilih Nomor 1 sesuai tagihan yang akan dibayar, kemudian tekan YA.</li>
                 <li>Muncul konfirmasi pembayaran. Tekan YA untuk melakukan pembayaran.</li>
@@ -120,7 +120,7 @@
                 <li>Pilih “No Rekening Anda”. </li>
                 <li>Pilih Penyedia Jasa “PT Sinar Digital Terdepan”.</li>
                 <li>Pilih “No Virtual Account “.</li>
-                <li>Masukkan nomor virtual account(<span class="yellow">890202020220202</span>) anda.  </li>
+                <li>Masukkan nomor virtual account(<span class="yellow">{{data}}</span>) anda.  </li>
                 <li>Masuk ke halaman konfirmasi 1.</li>
                 <li>Apabila benar/ sesuai, klik tombol tagihan TOTAL, kemudian klik “Lanjutkan”.</li>
                 <li>Masuk ke halaman konfirmasi 2.</li>
@@ -143,7 +143,7 @@
                 <li>Pergi ke ATM bank apa saja dan masukkan kartu ATM anda, pilih “Transaksi Lain” -> “Transfer” -> “Bank Lain”.</li>
                 <li>Masukkan kode bank “<span class="yellow">013</span>” dan pilih “Benar”. </li>
                 <li>Masukkan jumlah transfer （<span class="yellow">{{this.getQueryString("m")}}</span>).</li>
-                <li>Masukkan kode transaksi: (<span class="yellow">5602020202020202</span>)</li>
+                <li>Masukkan kode transaksi: (<span class="yellow">{{data}}</span>)</li>
                 <li>Pilih “benar” untuk konfirmasi transfer. </li>
                 <li>Bukti Pembayaran dalam bentuk struk agar disimpan sebagai bukti pembayaran yang sah dari Bank.</li>
                
@@ -161,7 +161,7 @@
                 <li>Pilih “Transfer”pada menu. </li>
                 <li>Pilih “Ke Bank Lain”pada menu. </li>
                 <li>Masukkan kode bank "Bank Permata(<span class="yellow">013</span>)"</li>
-                <li>Masukkan"kode Pembayan"(<span class="yellow">2202020202020202</span>) pada tujuan transfer</li>
+                <li>Masukkan"kode Pembayan"(<span class="yellow">{{data}}</span>) pada tujuan transfer</li>
                 <li>Masukkan jumlah transfer Anda Rp(<span class="yellow">{{this.getQueryString("m")}}</span>)dan pilih "OK".</li>
                 <li>Ikuti langkah selanjutnya sampai transaksi berhasil.</li>
             </ol>
@@ -179,7 +179,7 @@
                 <li>Pilih “Transfer”pada menu. </li>
                 <li>Pilih “Ke Bank Lain”pada menu.</li>
                 <li>Masukkan kode bank "Bank Permata(<span class="yellow">013</span>)"</li>
-                <li>Masukkan"kode Pembayan"(<span class="yellow">2202020202020202</span>) pada tujuan transfer</li>
+                <li>Masukkan"kode Pembayan"(<span class="yellow">{{data}}</span>) pada tujuan transfer</li>
                 <li>Masukan jumlah transfer Anda Rp(<span class="yellow">{{this.getQueryString("m")}}</span>) dan pilih “OK”</li>
                 <li>Ikuti langkah selanjutnya sampai transaksi berhasil.</li>
                
