@@ -1,9 +1,9 @@
 <template>
   <div class="question-container">
-          <BHeader title="Cara menggunakan NewsCat" />
+          <BHeader title="Cara menggunakan Danaunta" />
           <div class="ques-play-title">
                <img src="../../assets/images/question/logo@2x.png" />
-               <p>Mengajari kamu bermain NewsCat <br>
+               <p>Mengajari kamu bermain Danaunta <br>
                     Mudah meghasilkan uang</p>
                     Masih tidak tahu cara menghasilkan uang jajan!
                     Dibawah ini kita sama sama liat bagaimana 
@@ -13,7 +13,7 @@
           <p class="sub-title bt" :class="[ open == 1 ? 'open':'']" @click="fold(1)">Bonus membaca artikel<i class="icon-arrow"></i></p>
           <div class="ques-anwser" :class="[ open == 1 ? 'open':'']" @click="fold(1)">
                (1) Setelah Login kalian bisa melihat artikel yang 
-      kami sarankan untuk ada baca di NewsCat,jika 
+      kami sarankan untuk ada baca di Danaunta,jika 
       kalian melihat artikel yang menarik kalian bisa 
       langsung klik untuk baca, baca seluruhnya,kalian 
       bisa secara acak dapat bonus sampai <span class="yellow">100 RPC</span>.
@@ -34,7 +34,7 @@
             (2) Buka Kotak Emas : buka kotak emas tiap 4 jam 
                 sekali, bonus 10 RPC tiap kali buka kotak emas
                 <img src="../../assets/images/question/ques8@2x.png" />
-            (3) Tugas setiap hari : Buka NewsCat klik "Tugas", 
+            (3) Tugas setiap hari : Buka Danaunta klik "Tugas", 
                 selesaikan tugas sesuai dengan yang diminta. 
                 (Perhatikan: Tugas setiap hari bisa dilakukan 
                 setiap hari)
@@ -46,7 +46,7 @@
           <div class="ques-anwser" :class="[ open == 3 ? 'open':'']" @click="fold(3)">
               Bisa langsung dapat bonus tertinggi jika mengundang teman, setiap mengundang 1 orang teman kamu akan dapat Rp.6000 (dibagikan bertahap, 
               silahkan cek peraturan untuk lebih detail);<br>
-              Buka NewsCat klik "Saya" -> "Mengundang teman" -> salin URL, bagikan URL Undangan lewat Facebook dan WhatsApp, lalu teman kamu akan memasukkan nomor handphone dan langsung unduh lalu
+              Buka Danaunta klik "Saya" -> "Mengundang teman" -> salin URL, bagikan URL Undangan lewat Facebook dan WhatsApp, lalu teman kamu akan memasukkan nomor handphone dan langsung unduh lalu
                 pendaftaran berhasil, mengundang teman juga telah berhasil.
                 <img src="../../assets/images/question/ques10@2x.png" />
                 <img src="../../assets/images/question/ques11@2x.png" />
@@ -71,7 +71,7 @@
                 <img src="../../assets/images/question/ques17@2x.png" />
 
           </div>
-        <a href="http://www.newscat.com/page/invite"><div class="ques-play-btn"> Penghasilan dan penarikan </div></a>
+        <a href="http://www.danaunta.com/page/invite"><div class="ques-play-btn"> Penghasilan dan penarikan </div></a>
   </div>
 </template>
 <script>
