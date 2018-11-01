@@ -11,15 +11,15 @@
           <div class="ques-title" id="baru">
               Member Baru
           </div>
-          <p class="sub-title " :class="[ open == 1 ? 'open':'']" @click="fold(1)">Kenapa NewsCat bisa kasih bonus? <i class="icon-arrow"></i></p>
+          <p class="sub-title " :class="[ open == 1 ? 'open':'']" @click="fold(1)">Kenapa Danaunta bisa kasih bonus? <i class="icon-arrow"></i></p>
           <div class="ques-anwser" :class="[ open == 1 ? 'open':'']" @click="fold(1)">
-               NewsCat mendukung peyediaan pengalaman membaca bacaan yang berkualitas.
+               Danaunta mendukung peyediaan pengalaman membaca bacaan yang berkualitas.
 
                 Di dalam pengalaman membaca tersebut, kami memberikan apresiasi dalam bentuk RPC, sebagai pengganti uang.
 
                 Selain kalian bisa menambah pengetahuan menjadi lebih luas, kalian juga bisa mendapatkan penghasilan.
           </div>
-          <router-link to="/how-play"><p class="sub-title">Cara menggunakan NewsCat <i class="icon-link"></i></p></router-link>
+          <router-link to="/how-play"><p class="sub-title">Cara menggunakan Danaunta <i class="icon-link"></i></p></router-link>
           <p class="sub-title" :class="[ open == 2 ? 'open':'']" @click="fold(2)">Berita tidak muncul <i class="icon-arrow"></i></p>
           <div class="ques-anwser" :class="[ open == 2 ? 'open':'']" @click="fold(2)">
               Apakah kamu tidak bisa memuat semua berita atau hanya sebagian saja?
@@ -33,13 +33,13 @@
           </div>
           <p class="sub-title" :class="[ open == 3 ? 'open':'']" @click="fold(3)">Apa itu RPC?<i class="icon-arrow"></i></p>
           <div class="ques-anwser" :class="[ open == 3 ? 'open':'']" @click="fold(3)">
-            RPC adalah sebuah unit mata uang didalam NewsCat. Semua RPC yang dihasilkan bisa anda tukarkan
+            RPC adalah sebuah unit mata uang didalam Danaunta. Semua RPC yang dihasilkan bisa anda tukarkan
 
             dengan Pencairan Cepat atau Pencairan Bersyarat, bisa ditemukan di "Saya" -> "Penghasilan Saya"
           </div>
           <p class="sub-title" :class="[ open == 4 ? 'open':'']" @click="fold(4)">Bonus Absen/Bonus Buka Peti Emas<i class="icon-arrow"></i></p>
           <div class="ques-anwser" :class="[ open == 4 ? 'open':'']" @click="fold(4)">
-            Bonus Absen : Buka NewsCat selama 7 hari secara berurutan pada
+            Bonus Absen : Buka Danaunta selama 7 hari secara berurutan pada
 
             "Tugas" bisa dapat bonus RPC, setiap hari bisa diambil! Bonus dibagi
 
@@ -66,9 +66,9 @@
             pemberitahuan bonus tidak muncul.<br>
 
 
-            Situasi 4 : Silahkan periksa kembali versi aplikasi NewsCat pastikan versi
+            Situasi 4 : Silahkan periksa kembali versi aplikasi Danaunta pastikan versi
 
-            NewsCat kamu adalah yang paling baru, jika belum silahkan perbaharui
+            Danaunta kamu adalah yang paling baru, jika belum silahkan perbaharui
 
             ke versi paling baru.<br>
           </div>
@@ -120,7 +120,7 @@
           </div>
           <p class="sub-title" :class="[ open == 9 ? 'open':'']" @click="fold(9)">Kenapa  akun saya diblokir?<i class="icon-arrow"></i></p>
           <div class="ques-anwser" :class="[ open == 9 ? 'open':'']" @click="fold(9)">
-                NewsCat memiliki mekanisme anti-kecurangan yang sangat ketat.
+                Danaunta memiliki mekanisme anti-kecurangan yang sangat ketat.
 
                 Jika sekali ditemukan bahwa ada kecurangan maka akan dilarang
 
@@ -128,7 +128,7 @@
 
                 kami berharap semua orang dapat bekerja sama untuk demi menjaga
 
-                kelancaran dan ketertiban NewsCat.
+                kelancaran dan ketertiban Danaunta.
           </div>
 
   </div>
