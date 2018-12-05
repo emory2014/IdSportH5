@@ -63,13 +63,13 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-<<<<<<< Updated upstream
+
     // assetsPublicPath: 'http://front.danaunta.com/',
     assetsPublicPath: '/',
-=======
-    assetsPublicPath: 'http://test.cangquetech.com/',
-    // assetsPublicPath: '/',
->>>>>>> Stashed changes
+
+    
+    
+
     /**
      * Source Maps
      */
