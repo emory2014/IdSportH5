@@ -1,29 +1,28 @@
 import Vue from 'vue'
 let Base64 = require('js-base64').Base64
 
-export default{
-    install: function(){
-       Vue.prototype.parseMoney = function(str){
-            str = str.toString()
-            let i = str.length
-            if(i <= 3){
-                return str;
-            }
-            else if(i > 3 && i <= 6){
-                return str.substring(0,i-3)+","+str.substring(i-3)
-            }else if(i > 6 && i <= 9){
-               return str.substring(0,i-6)+","+str.substring(i-6,i-3)+","+str.substring(i-3)
-            }else{
-                return str
-            }
-        },
-        Vue.prototype.getAppToken = function(){
-            var content=window.AndroidWebView.getAppToken();
-            var token = Base64.decode(content)
-            return token
-
-            // return '3d2c408ec77b6351081f1da8fe2ea5a4'
+export default {
+  install: function() {
+    Vue.prototype.parseMoney = function(str) {
+        str = str.toString()
+        let i = str.length
+        if (i <= 3) {
+          return str;
+        } else if (i > 3 && i <= 6) {
+          return str.substring(0, i - 3) + "," + str.substring(i - 3)
+        } else if (i > 6 && i <= 9) {
+          return str.substring(0, i - 6) + "," + str.substring(i - 6, i - 3) + "," + str.substring(i - 3)
+        } else {
+          return str
         }
-    }
-   
+      },
+      Vue.prototype.getAppToken = function() {
+        var content = window.AndroidWebView.getAppToken();
+        var token = Base64.decode(content)
+        return token
+
+        // return '3d8fc5d316fefc7cb091e838df169214'
+      }
+  }
+
 }
