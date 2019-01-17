@@ -21,7 +21,9 @@ export default {
         var token = Base64.decode(content)
         return token
 
-        // return '3d8fc5d316fefc7cb091e838df169214'
+        // return '0821fcd5f1c0b66701c31a3806b2b4af'
+
+
       }
   }
 
