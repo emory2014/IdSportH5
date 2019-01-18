@@ -48,7 +48,7 @@
       </li>
     </ul>
     <div v-if="!today" class="task-btn-large" @click="signIn()"> Absen untuk dapat Koin</div>
-    <div v-else class="task-btn-large disabled"> 已连续签到{{continuousDays}}天</div>
+    <div v-else class="task-btn-large disabled"> Sudah absen {{continuousDays}} hari</div>
 
   </div>
   <p class="task-title">
