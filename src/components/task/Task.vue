@@ -180,7 +180,8 @@ export default {
       this.$router.push({
         path: '/ad',
         query: {
-          mid: id
+          mid: id,
+          from: 'task'
         }
 
       })
