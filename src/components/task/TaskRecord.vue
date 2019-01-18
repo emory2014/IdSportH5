@@ -1,6 +1,6 @@
 <template>
 <div>
-  <div class="task-record-container">
+  <div class="task-record-container" :style="{paddingTop: $route.query.from == 'task' ? '72px': '50px'}">
     <BHeader title="Riwayat Transaksi" />
 
     <Loading v-if="loading" />
