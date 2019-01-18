@@ -30,9 +30,9 @@ export default {
     goBack() {
       if (this.recharge || this.backToApp || this.getparam('push')) {
         if (this.$route.query.from == 'task') {
-          window.AndroidWebView.closeActivities();
-        } else {
           window.history.go(-1)
+        } else {
+          window.AndroidWebView.closeActivities();
         }
 
       } else if (this.backToActivity) {
