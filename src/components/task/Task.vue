@@ -210,7 +210,8 @@ export default {
           this.$router.push({
             path: '/ad',
             query: {
-              mid: this.activeMissionsId
+              mid: this.activeMissionsId,
+              from: 'task'
             }
 
           })
