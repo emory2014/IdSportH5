@@ -436,13 +436,13 @@ a {
   color: #666;
   width: 70%;
   margin: 0 10px;
-  padding: 5px 10px;
+  padding: 6px 10px;
 }
 
 .unfold-btn {
   position: absolute;
   right: 10px;
-  bottom: 5px;
+  bottom: 4px;
   background: linear-gradient(90deg, rgba(255, 224, 80, 1), rgba(255, 192, 0, 1));
   border-radius: 25px;
   font-size: 12px;
