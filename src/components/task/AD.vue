@@ -66,7 +66,7 @@
         bonusnya ya.
       </div>
       <!-- 查看 -> 跳转我的收益 -->
-      <div class="task-success-btn">Cek Bonus</div>
+      <div class="task-success-btn" @click="goToMyIncome()">Cek Bonus</div>
       <span class="task-close" @click="() => { this.allTaskShow = false }">×</span>
     </div>
   </div>
@@ -98,6 +98,9 @@ export default {
     }
   },
   methods: {
+    goToMyIncome() {
+      window.AndroidWebView.showMyIncomeGold();
+    },
     goBack() {
       if (this.count > 0) {
         this.exitShow = true

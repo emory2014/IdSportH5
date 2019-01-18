@@ -15,7 +15,7 @@
 
     <div v-if="data.length">
       <div class="task-record-panel" v-for="(item,index) of data" :key="index">
-        <p>Nama Tugas: <span class="bold">{{item.titile}}</span> </p>
+        <p>Nama Tugas: <span class="bold">{{item.title}}</span> </p>
         <p>Koin Terpakai: <span class="bold">{{item.expend}}</span></p>
 
         <p>Koin yang didapat: <span class="bold">{{item.status == 1 ?  0 : item.income}}</span></p>

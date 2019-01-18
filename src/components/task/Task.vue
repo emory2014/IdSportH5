@@ -52,7 +52,7 @@
 
   </div>
   <p class="task-title">
-    Tugas Khusus <router-link to="/task-record"><span class="right">Riwayat Tugas ></span></router-link>
+    Tugas Khusus <router-link :to="{ path: '/task-record', query: {from: 'task'} }"><span class="right">Riwayat Tugas ></span></router-link>
   </p>
   <p class="task-subtitle">
     Semakin tinggi koin untuk membuka tugas, semakin
