@@ -77,7 +77,7 @@
         <!-- 3 明天继续 -->
         <div v-else-if="item.status == 3" class="unfold-btn gray"><span class="wrapper">Selesaikan<br>besok</span></div>
         <!-- 4 已完成 -->
-        <div v-else="item.status == 4" class="unfold-btn gray">Berhasil</div>
+        <div v-else-if="item.status == 4" class="unfold-btn gray">Berhasil</div>
 
 
       </div>
