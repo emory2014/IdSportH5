@@ -117,9 +117,10 @@
         isi ulang koin. Setelah isi ulang berhasil,
         kembali ke Tugas untuk ambil tugas.
       </div>
-      <router-link to="/recharge">
+      <router-link :to="{ path: '/recharge', query: {from: 'task'} }">
         <div class="task-success-btn">Top Up </div>
       </router-link>
+
     </div>
   </div>
 
