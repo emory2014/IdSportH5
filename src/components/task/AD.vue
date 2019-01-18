@@ -58,7 +58,7 @@
 
   <!-- 所有任务完成弹框 -->
   <div class="task-confirm-mask" :class="allTaskShow ? 'show': 'hide'">
-    <div class="task-confirm-cont">
+    <div class="task-confirm-cont finished">
       <div class="task-confirm-text success">
         Selamat kamu telah menyelesaikan
         tugas bonus {{gold}} koin. Klik Saya -
