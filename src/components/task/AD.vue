@@ -35,8 +35,8 @@
         Jika ditutup, kamu harus beli koin
         lagi untuk menyelesaikan tugas loh.
       </div>
-      <div class="task-confirm-btn" @click="() => { this.exitShow = false }">TUTUP</div>
-      <div class="task-confirm-btn ok" @click="exitAd()">Lanjut baca</div>
+      <div class="task-confirm-btn" @click="exitAd()">TUTUP</div>
+      <div class="task-confirm-btn ok" @click="() => { this.exitShow = false }">Lanjut baca</div>
     </div>
   </div>
 
