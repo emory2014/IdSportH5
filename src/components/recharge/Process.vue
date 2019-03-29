@@ -246,7 +246,8 @@
       </div>
 
     </div>
-    <div :class="[method == 3 ? 'show':'hide']">
+    <!-- 2019-03-29 -->
+    <!-- <div :class="[method == 3 ? 'show':'hide']">
       <div class="tab-cont">
         <div class="item" :class="[active == 1 ? 'active':'']" @click="addClass(1)">ATM</div>
         <div class="item" :class="[active == 2 ? 'active':'']" @click="addClass(2)">ONLINE</div>
@@ -284,7 +285,6 @@
             <li>Isi kode merchant “078”</li>
             <li>Pilih “TRANSFER ANTAR REKENING BNI”, kemudian pilih rekening tujuan </li>
             <li>Masukkan Kode Pembayaran (<span class="yellow">{{amount}}</span>) dengan 8 digit kode terakhir dan pilih “lanjut”</li>
-            <!-- <li>Pilih Rekening Debit dan ketik nominal (<span class="yellow">{{amount}}</span>), lalu masukkan kode otentikasi token</li> -->
             <li> Ikuti langkah selanjutnya hingga pembayaran selesai.</li>
           </ol>
         </div>
@@ -309,8 +309,7 @@
           </ol>
         </div>
       </div>
-
-    </div>
+    </div> -->
     <div :class="[method == 5  ? 'show':'hide']">
       <div class="tab-cont">
         <div class="item" :class="[active == 1 ? 'active':'']" @click="addClass(1)">ATM</div>
@@ -430,7 +429,7 @@
       </div>
 
     </div>
-    <div :class="[method == 6  ? 'show':'hide']">
+    <div :class="[method == 6 || method == 3 ? 'show':'hide']">
       <div class="tab-cont">
         <div class="item" :class="[active == 1 ? 'active':'']" @click="addClass(1)">ATM</div>
         <div class="item" :class="[active == 2 ? 'active':'']" @click="addClass(2)">ONLINE</div>
