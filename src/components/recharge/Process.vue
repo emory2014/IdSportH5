@@ -310,7 +310,8 @@
         </div>
       </div>
     </div> -->
-    <div :class="[method == 5  ? 'show':'hide']">
+    <!-- 2019-03-30 -->
+    <!-- <div :class="[method == 5  ? 'show':'hide']">
       <div class="tab-cont">
         <div class="item" :class="[active == 1 ? 'active':'']" @click="addClass(1)">ATM</div>
         <div class="item" :class="[active == 2 ? 'active':'']" @click="addClass(2)">ONLINE</div>
@@ -346,7 +347,6 @@
             <li>Jika Nomor rekening tujuan berhasil ditambahkan, kembali ke menu “TRANSFER”. </li>
             <li>Ikuti langkah selanjutnya sampai transaksi berhasil.</li>
             <li>Pilih “TRANSFER ANTAR REKENING BNI”, kemudian pilih rekening tujuan </li>
-            <!-- <li>Pilih Rekening Debit dan ketik nominal (<span class="yellow">{{amount}}</span>), lalu masukkan kode otentikasi token</li> -->
             <li>Pilih Rekening Debit dan ketik nominal, lalu masukkan kode otentikasi token</li>
           </ol>
         </div>
@@ -363,14 +363,14 @@
             <li>Pilih menu "Transfer", lalu pilih "Antar Rekening BNI". </li>
             <li>Pilih "Input Rekening Baru"</li>
             <li>Masukkan "Rekening Debet", "Rekening Tujuan" Kode Pembayaran (<span class="yellow">{{data}}</span>) dan "Nominal"
-              <!-- (<span class="yellow">{{amount}}</span>) -->
+
               kemudian klik "Lanjut".</li>
             <li>Periksa kembali data transaksi Anda, masukkan “Password Transaksi” kemudian klik “Lanjut”. </li>
           </ol>
         </div>
       </div>
 
-    </div>
+    </div> -->
 
     <div :class="[method == 10  ? 'show':'hide']">
       <div class="tab-cont">
@@ -429,7 +429,7 @@
       </div>
 
     </div>
-    <div :class="[method == 6 || method == 3 ? 'show':'hide']">
+    <div :class="[method == 6 || method == 3||method == 5 ? 'show':'hide']">
       <div class="tab-cont">
         <div class="item" :class="[active == 1 ? 'active':'']" @click="addClass(1)">ATM</div>
         <div class="item" :class="[active == 2 ? 'active':'']" @click="addClass(2)">ONLINE</div>
