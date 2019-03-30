@@ -386,14 +386,13 @@
         <div class="text-cont">
           <ol>
             <li>Masukkan Kartu ATM Permata dan PIN. </li>
-            <li>Pilih “Transaksi Lainya” > Pilih “Pembayaran” > Pilih “ Lainya” > Pilih “Virtual Account.</li>
-            <li>Masukkan Kode Pembayaran (<span class="yellow">{{data}}</span>).</li>
-            <li>Masukkan nominal. </li>
+            <li>Pilih “Transaksi Lainya” > Pilih “Transfer” > Pilih “Rekening NSB di Permata"</li>
+            <li>Masukkan Kode Pembayaran (<span class="yellow">{{data}}</span>)</li>
+            <li>Masukkan nominal </li>
             <li>Ikuti Instruksi untuk menyelesaikan transaksi</li>
           </ol>
         </div>
       </div>
-
       <div class="cont-panel" :class="[active == 2 ? 'show':'hide']">
         <p class="title">{{amount}}</p>
         <p class="subtitle">Jumlah</p>
