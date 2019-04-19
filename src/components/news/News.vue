@@ -13,12 +13,19 @@
         <div class="text-sec" v-html="data.article.body">
         </div>
         <div class="like-sec">
-            <i class="icon-zan" :class="[pickShow ? 'active':'']" @click="toPick()"></i>
-            <i class="icon-cai" :class="[dissShow ? 'active':'']" @click="toDiss()"></i>
-            <p class="like-num-sec">
+            <span class="left">
+                <i class="icon-zan" :class="[pickShow ? 'active':'']" @click="toPick()"></i>
+                <span @click="toPick()" :class="[pickShow ? 'active':'']" class="pick">{{pick}}</span>
+            </span>
+            <span class="left">
+                <i class="icon-cai" :class="[dissShow ? 'active':'']" @click="toDiss()"></i>
+                <span @click="toDiss()" :class="[dissShow ? 'active':'']" class="diss">{{diss}}</span>
+            </span>
+
+            <!-- <p class="like-num-sec">
                 <span @click="toPick()" :class="[pickShow ? 'active':'']">{{pick}}</span>
                 <span @click="toDiss()" :class="[dissShow ? 'active':'']">{{diss}}</span>
-            </p>
+            </p> -->
         </div>
         <!-- <ins class="adsbygoogle"
      style="display:inline-block;width:100%;"
@@ -46,7 +53,7 @@
         </ul>
     </div>
     <div class="last-child" v-if="data && comments.length">
-    <p id="comment" class="recommend-tilte title" index="02">Komentar terbaru</p>
+    <!-- <p id="comment" class="recommend-tilte title" index="02">Komentar terbaru</p> -->
     <div class="news-cont " v-for="(item,index) of comments" :key='index'>
         
         <div class="comment-user-sec">
@@ -54,27 +61,41 @@
                 <img class="" :src="item.avatar" />
             </div>
             <div class="comment-user-name">
-                <p class="name">{{item.username}}</p>
-                <p class="date">{{item.create_time}}</p>
+                <span class="name">{{item.username}}</span>
+                <div class="zan-right" :data-index="index" :class="[item.like_active?'active':'']"  @click="toLike(item.cid,$event)">
+                    <i class="icon-comment-zan"></i>
+                    <span>{{item.like_count}}</span>
+                </div>
+                <!-- <p class="date">{{item.create_time}}</p> -->
             </div>
-            <div class="zan-right" :data-index="index" :class="[item.like_active?'active':'']"  @click="toLike(item.cid,$event)">
+            <!-- <div class="zan-right" :data-index="index" :class="[item.like_active?'active':'']"  @click="toLike(item.cid,$event)">
                 <i class="icon-comment-zan"></i>
                 <span>{{item.like_count}}</span>
-            </div>
+            </div> -->
         </div>
         <div class="comment-text" @click="toReplyShow(item.cid,null,item.username)">
-            {{item.content}}
+            sdasdssdsdsadsadasdsadsadsadsadasdsadsadsadsadasdsadasdasdsadsadsadsadasdsadsada{{item.content}}
         </div>
+        <p class="date">{{item.create_time}}<span @click="toComment('comment')">·Balas</span></p>
         <div class="comment-sec" v-if="item.reply.length">
-            <p  v-for="(v,i) of item.reply" :key="i"><span @click="toReplyShow(item.cid,v.from_user_id,v.from_username)">{{v.from_username}}</span><span  v-if="v.to_username" class="reply">Balas</span><span @click="toReplyShow(item.cid,v.from_user_id,v.from_username)">{{v.to_username}}</span>: {{v.content}}</p>
+            <p  v-for="(v,i) of item.reply" :key="i">
+                <span @click="toReplyShow(item.cid,v.from_user_id,v.from_username)">{{v.from_username}}</span>
+                <span  v-if="v.to_username" class="reply">Balas</span><span @click="toReplyShow(item.cid,v.from_user_id,v.from_username)">{{v.to_username}}</span>
+                : {{v.content}}
+                <span @click="toReplyShow(item.cid,v.from_user_id,v.from_username)" class="balas">·&nbspBalas</span>
+            </p>
              <!-- <p><span>sss&ee</span><span class="reply">Balas</span><span>Rika</span>: wwewe wewe wewe we wewewewewewewewe</p> -->
               <p v-if="parseInt(item.reply_count) > 4" class="comment-more" @click="goToDetail(item.cid)">Lihat semua {{item.reply_count}} ulasan <i class="icon-comment-more"></i></p>
         </div>
      </div>
   </div>
+    <!-- <div class="fixed-comment" v-if="data && this.getparam('uAgent')">
     <div class="fixed-comment" v-if="data && this.getparam('uAgent')">
+    <div class="fixed-comment" v-if="data && this.getparam('uAgent')">
+    <div class="fixed-comment" v-if="data && this.getparam('uAgent')"> -->
+    <div class="fixed-comment" >
         <input readonly class="comment-input" @click="toComment('comment')" v-model="commentText"  placeholder="Komentar…" /> 
-        <input readonly class="comment-input reply" @click="toComment('reply')" :class="[replyShow? 'show':'hide']" v-model="replyText"    :placeholder="holder"  />
+        <input readonly class="comment-input reply" @click="toComment('reply')" :class="[replyShow? 'show':'hide']" v-model="replyText" :placeholder="holder"  />
         <a id="navigation" href="javascript:void(0)" @click="goAnchor()">
             <span  class="comment-msg" :class="[!commentLink ? 'show':'hide']">
               <i class="icon-msg"></i>
@@ -95,8 +116,11 @@
 
     <div class="reply-mask" @click="replyMaskHide($event)" :class="[ replyMask? 'show':'hide']">
         <div class="reply-cont">
-            <p class="reply-mask-title"><span class="left" @click="cancelMaskShow()">Batal</span><span class="right" @click="submitInfo()">Kirim</span></p>
+            <!-- 旧版 -->
+            <!-- <p class="reply-mask-title"><span class="left" @click="cancelMaskShow()">Batal</span><span class="right" @click="submitInfo()">Kirim</span></p>
+            <textarea autofocus maxlength="1000" v-model="ctext" placeholder="Komentar..." /> -->
             <textarea autofocus maxlength="1000" v-model="ctext" placeholder="Komentar..." />
+            <span class="right" @click="submitInfo()">Oke</span>
         </div>
     </div>
 
@@ -519,7 +543,8 @@ let Base64 = require('js-base64').Base64;
          },
           getData(page){
                this.$http({
-                    url: '/api/comments?aid='+this.getparam("aid")+'&page='+page,
+                    // url: '/api/comments?aid='+this.getparam("aid")+'&page='+page,
+                    url: '/api/comments?aid='+3698+'&page='+page,
                     method: 'post',
                     data:{
                         token: this.getToken()
@@ -591,7 +616,8 @@ let Base64 = require('js-base64').Base64;
         mounted(){
            
             this.$http({
-                url: '/article/detail?aid='+this.getparam("aid"),
+                // url: '/article/detail?aid='+this.getparam("aid"),
+                url: '/article/detail?aid='+3698,
                 method: 'post',
                 data: {
                     token: this.getToken()
@@ -738,7 +764,25 @@ body{
 }
 
 .like-sec {
+    display: flex;
     text-align: center;
+    position: relative;
+    justify-content: space-around
+}
+.like-sec .left {
+    display: inline-block;
+    border: 2px solid #DDDDDD;
+    border-radius: 40px
+}
+.like-sec .pick {
+    position: absolute;
+    top: 14px;
+    left: 110px 
+}
+.like-sec .diss {
+    position: absolute;
+    top: 14px;
+    right: 60px 
 }
 .icon-zan, .icon-cai {
     display: inline-block;
@@ -749,29 +793,30 @@ body{
 
 .icon-zan {
     background: url(../../assets/images/icon-zan.png) no-repeat center;
-    background-size: 50px 50px;
-    margin: 15px 35px 0 35px;
+    background-size: 25px 25px;
+    /* margin: 15px 35px 0 35px; */
+    margin: -4px 35px -7px 35px
 }
 
 .icon-zan.active {
     background: url(../../assets/images/icon-zan-active.png) no-repeat center;
-    background-size: 50px 50px;
-    margin: 15px 35px 0 35px;
+    background-size: 25px 25px;
+    margin: -4px 35px -7px 35px;
     animation: scale 0.2s ease;
 }
 
 
 .icon-cai {
     background: url(../../assets/images/icon-cai.png) no-repeat center;
-    background-size: 50px 50px;
-    margin: 15px 35px 0 35px;
+    background-size: 25px 25px;
+    margin: -4px 35px -7px 35px
    
 }
 
 .icon-cai.active {
     background: url(../../assets/images/icon-cai-active.png) no-repeat center;
-    background-size: 50px 50px;
-    margin: 15px 35px 0 35px;
+    background-size: 25px 25px;
+    margin: -4px 35px -7px 35px;
     animation: scale 0.2s ease;
    
 }
@@ -894,26 +939,29 @@ body{
 
 .comment-user-name .name {
     margin: 0 10px 0 10px;
-    color: #333333;
-    font-size: 16px;
-}
-
-.comment-user-name .date {
-    margin: 5px 10px 0 10px;
-    color: #999;
+    color: #999999;
     font-size: 14px;
 }
 
+ .date {
+    margin: 5px 10px 0 62px;
+    color: #999;
+    font-size: 14px;
+}
+.date span {
+    color: #666666;
+    padding-left: 6px
+}
 .zan-right {
     float: right;
-    margin-top: 15px;
+    margin-right: -118px
 }
 
 .zan-right.active .icon-comment-zan{
     display: inline-block;
     width: 17px;
     height: 16px;
-    background: url(../../assets/images/icon-comment-active-zan.png) no-repeat center;
+    background: url(../../assets/images/icon-zan-active.png) no-repeat center;
     background-size: 17px 16px;
     animation: move 0.2s ease-in-out;
 }
@@ -930,7 +978,8 @@ body{
 }
 
 .zan-right.active span {
-    color: #ffc000;
+    /* color: #ffc000; */
+    color: #E93F3F;
 }
 
 .icon-comment-zan {
@@ -949,6 +998,7 @@ body{
     margin-right: 20px;
     line-height: 1.5;
     width: 80%;
+    margin-top: -25px;
     word-break: break-word;
 }
 
@@ -975,9 +1025,11 @@ body{
     width: 100%;
     word-break: break-word;
 }
-
+.comment-sec .balas{
+    color: #333333;
+}
 .comment-sec span {
-    color: #619cff;
+    color: #E93F3F;
 }
 
 .comment-sec .reply {
@@ -1062,7 +1114,7 @@ body{
 }
 
 .comment-msg .num {
-    color: #619cff;
+    color: #E93F3F;
     font-size: 14px;
     position: absolute;
     left: 15px;
@@ -1165,20 +1217,36 @@ body{
 }
 
 .reply-mask-title .right{
-    color: #ffc000;
+    /* color: #ffc000; */
+    color: #E93F3F;
     float: right; 
 }
 
 .reply-cont textarea {
-    height: 120px;
+    outline: none;
+    border: none;
+    background-color: #F8F8F8;
+    margin: 10px 0 5px 10px;
+    border-radius: 10px;
+    height: 40px;
     font-size: 14px;
     color: #333333;
     padding: 10px;
-    line-height: 1.5;
-    width: 100%;
+    /* line-height: 1.5; */
+    width: 75%;
     box-sizing: border-box;
     resize: none;
-
+}
+.reply-cont span {
+    display: inline-block;
+    color:#FFFFFF;
+    padding: 4px 8px;
+    border-radius: 5px;
+    background-color: #E93F3F;
+    margin-top: -15px;
+    position: absolute;
+    bottom: 14px;
+    right: 18px;
 }
 
 .reply-cont textarea::placeholder{

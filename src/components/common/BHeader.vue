@@ -1,5 +1,5 @@
 <template>
-<header class="header" :class="[vip?'vip-header':'']" :style="{marginTop: $route.query.from == 'task' ? '22px': ''}">
+<header class="header"  :style="{marginTop: $route.query.from == 'task' ? '22px': ''}">
   　<i class="nc-icon-prev" @click="goBack()"></i>
   <div>{{title}}</div>
   <router-link to="/record" v-if="recharge">
@@ -71,7 +71,6 @@ export default {
   margin-bottom: 8px;
   width: 100%;
   z-index: 1;
-  box-shadow: 1px 1px 1px 1px rgba(255, 194, 30, 0.1);
 }
 
 .header div {
@@ -86,19 +85,28 @@ export default {
 }
 
 .nc-icon-prev {
-  position: absolute;
+    display: inline-block;
+    position:absolute;
+    left: 15px;
+    top: 20px;
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid #000000;
+    border-right: 2px solid #000000;
+    transform: rotate(-135deg);
+  /* position: absolute;
   left: 15px;
   top: 13px;
   display: block;
   background: url(../../assets/images/prev.png);
   height: 25px;
   width: 20px;
-  background-size: 20px 25px;
+  background-size: 20px 25px; */
 }
 
 .recharge-record {
   position: absolute;
-  color: #333;
+  color: #999999;
   font-size: 12px;
   right: 10px;
   top: 1px;

@@ -1,45 +1,20 @@
 <template>
-<div>
-  <div class="box-wrapper">
-    <div class="coin-group" v-if="!isOpen">
-      <img class="coin1" src="../../assets/images/task-coin1.png" />
-      <img class="coin2" src="../../assets/images/task-coin1.png" />
-      <img class="coin3" src="../../assets/images/task-coin1.png" />
-      <img class="coin4" src="../../assets/images/task-coin1.png" />
-      <img class="coin5" src="../../assets/images/task-coin2.png" />
-      <img class="coin6" src="../../assets/images/task-coin2.png" />
-      <img class="coin7" src="../../assets/images/task-coin2.png" />
-    </div>
-    <div class="fixed-num">Koin emas: {{gold}}</div>
-    <a @click="toExchangePage()" class="task-link">Segera tukarkan ></a>
-    <router-link to="/sign-rule">
-      <div class="task-rule"> <i class="icon-task-info">!</i> Peraturan main</div>
-    </router-link>
-    <div class="task-light">
-
-      <div class="outer-circle" v-if="data">
-
-
-        <span class="box-open-btn" @click="openBox()" v-if="!isOpen">Buka Kotak Harta Karun</span>
-        <span class="box-open-btn" id="countdown" v-else>03:59:00</span>
-        <!-- <div class="inner-circle"> -->
-        <img class="box" v-if="!isOpen" src="../../assets/images/box@2x.png" />
-        <img class="box" v-else src="../../assets/images/box-gray@2x.png" />
-        <!-- </div> -->
-
-      </div>
-    </div>
-  </div>
-
+<div style="padding-top:90px"> 
+  <header class="beheader">Tugas</header>
   <div class="open-mask" :class="[boxShow ? 'show':'hide']">
-    <div class="open-text">+{{prize}}</div>
+    <div class="open-text">+{{prize}}Koin</div>
     <div class="open-img-box">
-      <img class="box" src="../../assets/images/open-box.gif">
+      <img class="box" src="../../assets/images/boxOpen@2x.png">
       <img class="light" src="../../assets/images/light@2x.png" />
     </div>
   </div>
-
   <div class="days-wrapper" v-if="data">
+    <div class="tanda">
+      <span class="title">Tanda</span>
+      <div class="fixed-num">Koin emas: {{gold}}</div>
+      <div class="peraturan">segera tukarkan</div>
+      <div class="segera">peraturan main</div>
+    </div>
     <ul class="task-day-ul">
 
       <li :class="[index < continuousDays ? '':'disabled']" v-for="(item,index) of list" :key="index">
@@ -49,10 +24,26 @@
     </ul>
     <div v-if="!today" class="task-btn-large" @click="signIn()"> Absen untuk dapat Koin</div>
     <div v-else class="task-btn-large disabled"> Sudah absen {{continuousDays}} hari</div>
+  </div>
 
+  <div class="outer-circle" v-if="data">
+    <!-- <span class="box-open-btn" @click="openBox()" v-if="!isOpen">Buka Kotak Harta Karun</span>
+    <span class="box-open-btn" id="countdown" v-else>03:59:00</span> -->
+    <div class="buka" @click="openBox()" v-if="!isOpen">
+      <span>Buka Peti Emas</span>
+      <span>Dapatkan hadiah</span>
+      <span>menarik, buka setiap 4 jam</span>
+    </div>
+    <div class="buka" v-else>
+      <span class="box-open-btn" id="countdown">03:59:59</span>
+      <span>Peti Harta</span>
+      <span>Karun Segera Dibuka</span>
+    </div>
+    <img class="box" v-if="!isOpen" src="../../assets/images/chest@2x.png" />
+    <img class="box" v-else src="../../assets/images/box-gray@2x.png" />
   </div>
   <p class="task-title">
-    Tugas Khusus <router-link :to="{ path: '/task-record', query: {from: 'task'} }"><span class="right">Riwayat Tugas ></span></router-link>
+    Tugas Khusus <router-link :to="{ path: '/task-record', query: {from: 'task'} }"><span class="right">Riwayat Tugas</span></router-link>
   </p>
   <p class="task-subtitle">
     Semakin tinggi koin untuk membuka tugas, semakin
@@ -61,7 +52,7 @@
   <ul class="task-ul" v-if="data && missions">
     <li v-for=" (item,index) of missions" :Key="item.id">
       <p><span class="title-ogrange">{{item.title}}</span> <span class="task-coin">Dapat {{item.income}} <i class="icon-coin"></i></span></p>
-      <p class="mark" @click="togglePanel(index)">(Baca iklan berturut-turut (<span class="red">{{item.continuous}}</span>/{{item.days}}) <span class="icon-task-arrow" :class="[item.unfold?'open':'']"></span></p>
+      <p class="mark" @click="togglePanel(index)">Baca iklan berturut-turut (<span class="red">{{item.continuous}}</span>/{{item.days}}) <span class="icon-task-arrow" :class="[item.unfold?'open':'']"></span></p>
       <div class="unfold-panel" :class="[item.unfold ? 'open':'']">
         <!-- <div class="scroll-panel" v-if="item.date">
           <span v-for="(i,index) of item.date" :key="index">
@@ -88,8 +79,8 @@
   <!-- 确认购买弹框 -->
   <div class="task-confirm-mask" :class="[confirmShow ? 'show' : 'hide']">
     <div class="task-confirm-cont">
-      <div class="task-confirm-text">Kamu yakin mau pakai<br>
-        {{expend}} koin untuk selesaikan misi?
+      <div class="task-confirm-text">Kamu yakin mau pakai 100 koin<br>
+        {{expend}}  untuk selesaikan misi?
       </div>
       <div class="task-confirm-btn" @click="() => {this.confirmShow = false}">TIDAK</div>
       <div class="task-confirm-btn ok" @click="bugTask()">Selesaikan</div>
@@ -105,7 +96,7 @@
         dapatkan bonus yang lebih banyak
 
       </div>
-      <div class="task-success-btn">Dapetin Bonus</div>
+      <div class="task-success-btn" style="color:#E93F3F">Dapetin Bonus</div>
     </div>
   </div>
 
@@ -113,12 +104,10 @@
   <div class="task-confirm-mask" :class="[balanceShow ? 'show' : 'hide']">
     <div class="task-confirm-cont">
       <div class="task-confirm-text success">
-        Saldo koin kamu tidak cukup, silahkan
-        isi ulang koin. Setelah isi ulang berhasil,
-        kembali ke Tugas untuk ambil tugas.
+        Saldo dan Koin kamu tidak <br> silakan Top Up Koin <br>  kamu.
       </div>
       <router-link :to="{ path: '/recharge', query: {from: 'task'} }">
-        <div class="task-success-btn">Top Up </div>
+        <div class="task-success-btn" style="color:#E93F3F">Top Up </div>
       </router-link>
 
     </div>
@@ -130,8 +119,12 @@
 import TaskScrollItem from './TaskScrollItem.vue'
 export default {
   name: 'Task',
+  components: {
+    TaskScrollItem,
+  },
   data() {
     return {
+      c:0,
       data: null,
       isOpen: 0,
       boxShow: false,
@@ -153,9 +146,6 @@ export default {
       expend: ''
     }
   },
-  components: {
-    TaskScrollItem
-  },
   props: {
 
   },
@@ -169,6 +159,8 @@ export default {
     clearInterval(this.interval)
   },
   methods: {
+
+
     confirmBuyTask(id, expend) {
       console.log(124)
       this.confirmShow = true

@@ -3,15 +3,19 @@
 <BHeader  title="Undangan Member Saya" vip={true} />
 <!-- <Loading v-if="!data" /> -->
 <div class="vip-invite-record" v-if="info">
-    <p class="num">{{info.vip_bonus}}</p>
+    <p class="num"><span>Rp.</span>{{info.vip_bonus|thousands}}</p>
     <p class="text">Jumlah uang dari undangan member (Rp)</p>
     <div class="item">
-        <p>{{info.today_vip_total_number}}</p>
-        <span>Undangan Member Hari Ini (orang)</span>
+        <p>{{info.today_vip_total_number|thousands}}
+            <span>orang</span>
+        </p>
+        <span>Undangan Member Hari Ini </span>
     </div>
     <div class="item">
-        <p>{{info.vip_total_number}}</p>
-        <span>Jumlah Undangan Member (orang)</span>
+        <p>{{info.vip_total_number|thousands}}
+            <span>orang</span>
+        </p>
+        <span>Jumlah Undangan Member </span>       
     </div>
 </div>
 
@@ -82,9 +86,10 @@ let Base64 = require('js-base64').Base64
             });
           },
            getAppToken(){
-            var content=window.AndroidWebView.getAppToken();
-            var token = Base64.decode(content)
-            this.token = token
+            // var content=window.AndroidWebView.getAppToken();
+            // var token = Base64.decode(content)
+            // this.token = token
+            this.token = 'b10f1d9b43ea42c1bf78269c6b4499d0'
             },
           getData(page){
                //  this.token = 'e8bc2672c51e0e94540a77ee2df1b9a6'

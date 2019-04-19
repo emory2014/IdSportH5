@@ -41,6 +41,8 @@ body {
   color: #999;
   font-size: 14px;
   margin-top: 5%;
+  height: 320px;
+  line-height: 320px;
 }
 
 .record-default-pic {
@@ -51,8 +53,8 @@ body {
 .record-default-btn {
   width: 80%;
   height: 45px;
-  border-radius: 25px;
-  background: -webkit-linear-gradient(right, #ffc000, #ffd450);
+  border-radius: 2px;
+  background:#E93F3F;
   margin: 12% auto;
   font-size: 18px;
   color: #fff;
@@ -71,18 +73,21 @@ body {
 
 .fixed-num {
   position: absolute;
-  left: 0;
-  top: 35px;
-  background: #fff;
-  border-top-right-radius: 25px;
-  border-bottom-right-radius: 25px;
-  box-shadow: 0px 0px 15px 0px rgba(255, 192, 0, 0.5) inset;
-  font-size: 14px;
-  color: #ffc000;
-  text-align: center;
-  height: 25px;
-  line-height: 25px;
-  padding: 0 15px;
+  right:5%;
+  top: 0;
+  color: #DE4141;
+}
+.peraturan {
+  position: absolute;
+  right:5%;
+  top: 25px;
+  color: #666666;
+}
+.segera {
+  position: absolute;
+  left: 15px;
+  top: 25px;
+  color: #666666;
 }
 
 .show {
@@ -130,14 +135,14 @@ a {
 }
 
 .outer-circle {
-  position: relative;
-  text-align: center;
-  width: 165px;
-  height: 165px;
-  border-radius: 100%;
-  margin: 100px auto;
-  /* background: rgba(255,224,80,0.4); */
-  overflow: hidden;
+  display: flex;
+  justify-content: space-around;
+  width: 91%;
+  margin: auto;
+  background:rgba(255,255,255,1);
+  box-shadow:0px 4px 10px 0px rgba(245,245,245,1),0px -4px 10px 0px rgba(245,245,245,1);
+  border-radius:10px;
+  padding: 5px 0;
 }
 
 .inner-circle {
@@ -151,22 +156,39 @@ a {
 }
 
 .outer-circle .box {
-  width: 90px;
-  vertical-align: middle;
-  margin: auto;
-  display: block;
+  width: 76px;
+  height: 60px;
+  /* vertical-align:text-bottom; */
+  /* margin: auto;
+  display: block; */
 }
+.buka span {
+  display: block
+}
+.buka span:not(:first-child){
+  color: #999999;
+  font-size:14px;
 
+}
+.buka span:first-child {
+  padding-bottom: 3px;
+}
 .days-wrapper {
-  width: 90%;
+  /* width: 90%; */
   margin: auto;
   background: #fff;
-  box-shadow: 0px 1px 40px 0px rgba(255, 192, 0, 0.2);
+  /* box-shadow: 0px 1px 40px 0px rgba(255, 192, 0, 0.2); */
   height: 135px;
   margin-top: -30px;
   border-radius: 15px;
   position: relative;
   overflow: hidden;
+  padding-top: 50px;
+}
+.tanda .title {
+ position: absolute;
+ left: 15px;
+ top: 0px
 }
 
 .task-title {
@@ -178,8 +200,8 @@ a {
 }
 
 .title-ogrange {
-  color: #FFC000;
-  font-size: 16px;
+  color: #E93F3F;
+  font-size: 12px;
 }
 
 .scroll-panel {
@@ -194,13 +216,13 @@ a {
   display: inline-block;
   height: 20px;
   line-height: 20px;
-  background: rgba(255, 213, 52, 1);
+  background: #E93F3F;
   width: 45px;
   text-align: center;
   margin-top: 10px;
   border-radius: 10px;
   font-size: 12px;
-  color: #000;
+  color: #FFFFFF;
 }
 
 .scroll-item.three {
@@ -210,7 +232,7 @@ a {
 .scroll-devider {
   display: inline-block;
   height: 4px;
-  background: rgba(255, 213, 52, 1);
+  background: #E93F3F;
   width: 40px;
   position: relative;
   top: -2px;
@@ -266,18 +288,18 @@ a {
   height: 40px;
   line-height: 40px;
   text-align: center;
-  background: linear-gradient(90deg, rgba(255, 212, 80, 1), rgba(255, 192, 0, 1));
+  /* background: #E93F3F; */
   border-radius: 25px;
   margin-bottom: 20px;
   font-size: 18px;
-  color: #000;
+  color: #999999;
 }
 
 .task-confirm-btn {
   float: left;
   width: 50%;
   text-align: center;
-  color: #000;
+  color: #999999;
   font-size: 16px;
   height: 50px;
   line-height: 50px;
@@ -287,13 +309,14 @@ a {
 }
 
 .task-confirm-btn.ok {
-  color: #FFC000;
+  color: #E93F3F;
 }
 
 .task-subtitle {
   margin: 0 auto 15px auto;
-  font-size: 14px;
+  font-size: 12px;
   width: 90%;
+  color: #666666;
 }
 
 .task-close {
@@ -345,7 +368,7 @@ a {
 
 .task-process-sec .process .finished {
   display: inline-block;
-  background: #FFD534;
+  background: #E93F3F;
   width: 33%;
   height: 4px;
   border-radius: 2px;
@@ -361,7 +384,7 @@ a {
 }
 
 .task-process-sec .label .hightlight {
-  color: #FFD534;
+  color: #E93F3F;
 }
 
 .ad-title {
@@ -372,7 +395,7 @@ a {
 
 .task-title .right {
   float: right;
-  color: #999;
+  color: #E93F3F;
   font-size: 12px;
   transform: scale(0.95);
   transform-origin: right;
@@ -382,19 +405,31 @@ a {
 .task-record-panel {
   width: 85%;
   margin: 10px auto;
-  box-shadow: 1px 1px 15px 3px rgba(255, 194, 30, 0.1);
   padding: 3px 10px;
-  border-radius: 5px;
+  background:rgba(255,255,255,1);
+  box-shadow:0px 2px 8px 0px rgba(0,0,0,0.06);
+  border-radius:10px;
 }
-
+.task-record-panel .title {
+  color: #999999;
+  padding-bottom: 5px;
+  margin: auto;
+  width: 97%;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: #DDDDDD 1px solid;
+}
+.title .red {
+  color: #E93F3F;
+}
 .task-record-panel p {
   margin: 5px;
-  font-size: 12px;
-  color: #666;
+  font-size: 14px;
+  color: #999999;
 }
 
 .task-record-panel p .bold {
-  color: #333;
+  color: #606060;
 }
 
 .task-ul {
@@ -444,10 +479,10 @@ a {
   position: absolute;
   right: 10px;
   bottom: 4px;
-  background: linear-gradient(90deg, rgba(255, 224, 80, 1), rgba(255, 192, 0, 1));
+  background: #E93F3F;
   border-radius: 25px;
   font-size: 12px;
-  color: #333;
+  color: #FFFFFF;
   padding: 0 10px;
   height: 45px;
   line-height: 45px;
@@ -470,7 +505,8 @@ a {
 }
 
 .task-coin {
-  color: #ffc000;
+  font-size: 12px;
+  color: #E93F3F;
   margin-left: 10px;
   float: right;
 }
@@ -547,7 +583,7 @@ a {
   line-height: 30px;
   color: #333333;
   font-size: 12px;
-  background: linear-gradient(-90deg, rgba(255, 192, 0, 1), rgba(255, 224, 80, 1));
+  background-color: #E93F3F;
   border-radius: 100%;
   margin-left: 12px;
 }
@@ -565,10 +601,10 @@ a {
 .task-btn-large {
   width: 80%;
   margin: 15px auto;
-  color: #333;
+  color: #FFFFFF;
   font-size: 16px;
   text-align: center;
-  background: linear-gradient(-90deg, rgba(255, 192, 0, 1), rgba(255, 224, 80, 1));
+  background: #E93F3F;
   border-radius: 25px;
   height: 35px;
   line-height: 35px;
@@ -840,4 +876,19 @@ a {
 
 .rule-container.task {
   padding-top: 83px;
+}
+.beheader {
+  position: fixed;
+  top: 0;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  font-size: 16px;
+  color: #333333;
+  background: #fff;
+  margin-bottom: 8px;
+  width: 100%;
+  z-index: 1;
+  background:rgba(255,255,255,1);
+  box-shadow:0px 2px 8px 0px rgba(0,0,0,0.06)
 }

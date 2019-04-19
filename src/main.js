@@ -21,7 +21,14 @@ router.beforeEach((to, from, next) => {
     }
     next();
 })
-
+//千分位过滤器
+Vue.filter('thousands',function(num) {
+    num = Math.round(num)
+    var str = num+'';
+    return str.split("").reverse().reduce((prev, next, index) => {
+        return ((index % 3) ? next : (next + '.')) + prev;
+    })
+})
  /* eslint-disable no-new */
 new Vue({
    el: '#app',

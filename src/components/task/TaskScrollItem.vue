@@ -65,7 +65,8 @@ export default {
 .scroll-devider {
   display: inline-block;
   height: 4px;
-  background: rgba(255, 213, 52, 1);
+  /* background: rgba(255, 213, 52, 1); */
+  background-color: #E93F3F;
   width: 40px;
   position: relative;
   top: -2px;

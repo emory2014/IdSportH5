@@ -44,7 +44,7 @@
   <div class="task-confirm-mask" :class="[someTaskShow ?'show':'hide']">
     <div class="task-confirm-cont">
       <div class="task-confirm-text success">
-        SELAMAT!<br>
+        <span style="color:#E93F3F">SELAMAT!</span><br>
         Selangkah lagi kamu bakal sukses,
         setelah menyelesaikan tugas {{allTask - task}} hari lagi,
         dapatkan semua koinnya.

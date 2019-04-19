@@ -1,14 +1,18 @@
 <template>
-<div class="vip-container">
-<BHeader  title="Riwayat Transaksi" vip={true} />
+<div class="vip-container" style="background-color:#F8F8F8">
+<BHeader  title="Penarikan" vip={true} />
  <Loading v-if="!data" /> 
 <ul v-if="data" class="wd-record-ul">
     <li :class="themeChoice(item.status)" v-for="(item,index) of data.history" :key="index">
-        <p>Nama：{{item.username}}</p>
-        <p>Nama bank：{{item.bank_code}}</p>
-        <p>Nomor kartu bank：{{item.card_no}}</p>
-        <p>Jumlah penarikan：Rp.{{item.total_amount}}</p>
-        <p>Status pemrosesan：{{item.status}}</p>
+        <div>
+            <span>Jumlah penarikan</span>
+            <span class="money">+{{item.total_amount|thousands}}</span> 
+            <span class="name">{{item.status}}</span>
+        </div>
+        <p><span>{{item.status}}</span></p>
+        <p>Nama：<span>{{item.username}}</span></p>
+        <p>Nama bank：<span>{{item.bank_code}}</span></p>
+        <p>Nomor kartu bank：<span>{{item.card_no}}</span></p>
         <p>Waktu：{{item.create_time}}</p>
         <p v-if="item.status == 'Gagal'">Saran: <span class="wd-detail">{{item.comment}}</span></p>
     </li>
@@ -54,9 +58,9 @@ let Base64 = require('js-base64').Base64
                 window.history.go(-1)
         },
          getAppToken(){
-            var content=window.AndroidWebView.getAppToken();
-            var token = Base64.decode(content)
-            this.token = token
+            // var content=window.AndroidWebView.getAppToken();
+            // var token = Base64.decode(content)
+            this.token = '2fa5c9883a8612aba8474d2439793925'
             },
           toastPop(text){
                 this.toastShow = true

@@ -339,7 +339,8 @@ body{
 
 .comment-user-sec {
     width: 92%;
-    margin: 10px auto;
+    /* margin: 10px auto; */
+    margin: 55px auto;
     overflow: hidden;
 }
 

@@ -9,21 +9,22 @@
         </header> -->
         <div class="nc-body" :class="[!load ? 'show':'hide']">
           <BHeader v-if="!getparam('version')" title="Selesaikan data Pribadi" backToApp={true} /> 
-            <ul class="nc-ul" :style="{'border-top':getparam('version') ? '8px solid #f5f5f5':'none'}">
-                 <li v-if="!getparam('version')" @click="selectProfle()" >
-                    <div class="nc-item" id="profil">
+            <ul class="nc-ul" :style="{'border-top':getparam('version') ? '8px solid #f5f5f5':'none'}" style="padding-top:70px">
+                 <li v-if="!getparam('version')"  class="photo">
+                    <!-- <div class="nc-item" id="profil"> -->
 
-                          <label for="uploads">Profil</label>
+                          <!-- <label for="uploads">Profil</label> -->
                           <!-- <input type="file" id="uploads" capture="camera" style="position:absolute; clip:rect(0 0 0 0);" accept="image/png, image/jpeg, image/jpg" @change="uploadImg($event, 1)"> -->
-                          <span class="pic-box"><img id="avatar" class="header-pic" src = "../assets/images/header.png" ></span>
-                          <i class="icon-next"></i>
-                    </div>
+                          <img id="avatar" class="header-pic" src = "../assets/images/header.png" @click="selectProfle()" >
+                          <i class="camer"></i>
+                          <!-- <i class="icon-next"></i> -->
+                    <!-- </div> -->
                 </li> 
                 <li @click="selectName()">
                       <div class="nc-item modal" id="nicName">
                             Nama
                             <span class="item-right" v-if="!nameShow && name">{{name}}</span>
-                            <span class="item-right default" v-else>Silakan Pilih</span>
+                            <span class="item-right default" v-else>Pengaturan Nama Pengguna</span>
                             <i class="icon-next"></i>
                       </div>
                   </li>
@@ -106,11 +107,18 @@
           </div>
         <div class="mask mask-nicName" v-bind:class="[nameShow? 'show':'hide']">
             <div class="pop-hobby-cont">
-              <p class="btn-box"><span class="btn-cancel cancel" @click = "cancelShow()">Batal</span>
-                  <span class="btn-ok name-ok" @click="nameComplete()">Oke</span></p>
+              <p class="btn-box">
+                <!-- <span class="btn-cancel cancel" @click = "cancelShow()">Batal</span>
+                <span class="btn-ok name-ok" @click="nameComplete()">Oke</span> -->
+              </p>
               <input minlength="8" maxlength="50" placeholder="Masukan Pilihan"
               v-on:input="nameInput()" v-model="name" class="nic-name-input" type="text" />
-              <p class="tips"><i class="icon-ntips"></i>8-50 kata,harus ada huruf dan angka</p>
+              <span class="num">50</span>
+              <div>
+                <span class='left'>harus ada huruf dan angka</span>
+                <span class="ok">Oke</span>
+              </div>             
+              <!-- <p class="tips"><i class="icon-ntips"></i>8-50 kata,harus ada huruf dan angka</p> -->
             </div>
         </div>
 
@@ -664,19 +672,17 @@ uploadImg (e, num) {
       this.formatEdu();
       this.formatOccupation();
       this.formatDate();
-      if(!this.getparam('version')){
-       var content=window.AndroidWebView.getAppToken();
-       let token = Base64.decode(content)
-       this.token = token
-      }
-       
-     
+      // if(!this.getparam('version')){
+      //  var content=window.AndroidWebView.getAppToken();
+      //  let token = Base64.decode(content)
+      //  this.token = token
+      // }
       this.$http({
         url: '/api/personal/info?'+new Date().getTime(),
         method: 'post',
         data: {
-           token: this.token
-          //  token: '7a1097395e3f0039801c371a7fe28542'
+          //  token: this.token
+           token: 'b10f1d9b43ea42c1bf78269c6b4499d0'
         }
     }).then((res) => {
       this.load = false;
@@ -710,6 +716,11 @@ uploadImg (e, num) {
      //window.setPhotoData = this.setPhotoData(msg)
 
   },
+  // watch: {
+  //   name(v) {
+  //     this.nameLenth = v.length;
+  //   }
+  // },
   created(){
    window.setPhotoData  = this.setPhotoData
   }
@@ -740,8 +751,8 @@ body{
     background: #f5f5f5;
 }
 
-.ios-select-widget-box header.iosselect-header a {
-  color: #ffc21e;
+.ios-select-widget-box header.iosselect-header .close {
+  color: #999999;
 }
 .ios-select-widget-box.olay{
   background: rgba(0, 0, 0, 0.3);

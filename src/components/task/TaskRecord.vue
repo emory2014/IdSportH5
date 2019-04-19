@@ -1,11 +1,11 @@
 <template>
 <div>
   <div class="task-record-container" :style="{paddingTop: $route.query.from == 'task' ? '72px': '50px'}">
-    <BHeader title="Riwayat Transaksi" />
+    <BHeader title="Riwayat Tugas" />
 
     <Loading v-if="loading" />
     <div v-if="!loading && !data.length" class="recharge-record-default">
-      <img class="record-default-pic" src="../../assets/images/recharge/recharge-default.png" />
+      <!-- <img class="record-default-pic" src="../../assets/images/recharge/recharge-default.png" /> -->
       <p class="record-no-data">“ Belum ada orang yang diikuti ”</p>
       <router-link to="/task">
         <div class="record-default-btn">Selesaikan Tugas</div>
@@ -15,13 +15,15 @@
 
     <div v-if="data.length">
       <div class="task-record-panel" v-for="(item,index) of data" :key="index">
-        <p>Nama Tugas: <span class="bold">{{item.title}}</span> </p>
+        <div class="title">
+          <span>Tugas {{index+1}}</span>
+          <span v-if="item.status == 1">Gagal</span>
+          <span v-else-if="item.status == 2" class="red">Berhasil</span>
+        </div>
+        <!-- <p>Nama Tugas: <span class="bold">{{item.title}}</span> </p> -->
         <p>Koin Terpakai: <span class="bold">{{item.expend}}</span></p>
 
         <p>Koin yang didapat: <span class="bold">{{item.status == 1 ?  0 : item.income}}</span></p>
-        <p v-if="item.status == 1">Status: <span class="bold">Gagal </span></p>
-        <p v-else="item.status == 2">Status: <span class="bold">Berhasil</span></p>
-
         <p>Waktu: <span class="bold">{{item.break_time}}</span></p>
       </div>
 

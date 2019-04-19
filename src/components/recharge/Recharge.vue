@@ -2,9 +2,13 @@
 <div>
   <BHeader title="Top Up Koin" recharge={true} />
   <div class="recharge-container">
-    <div class="recharge-balance">
+    <!-- <div class="recharge-balance">
       <p class="balance">{{balance}}</p>
       <p>Poin sekarang(Rpc)</p>
+    </div> -->
+    <div class="recharge-balance">
+      <span>Saldo Saat Ini(Rp)</span>
+      <span>{{balance}}</span>
     </div>
     <p class="recharge-title">Silakan pilih Nominalnya</p>
     <div class="recharge-panel" v-if="data">

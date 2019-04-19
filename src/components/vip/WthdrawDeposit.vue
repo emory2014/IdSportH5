@@ -3,8 +3,8 @@
 <BHeader  title="Penarikan Member" vip={true} />
 <!-- <Loading v-if="!data" /> -->
 
- <p class="wd-num">{{this.$route.query.m}}</p>
- <p class="wd-text">Bonus Member saat ini (Rp)</p>
+ <p class="wd-num"><span>Rp.</span>{{this.$route.query.m|thousands}}</p>
+ <p class="wd-text">Bonus Member saat ini</p>
 
     <div class="vip-input-group">
         <i class="icon-input name"></i>
@@ -12,7 +12,7 @@
     </div>
     <div class="vip-input-group">
         <i class="icon-input bank"></i>
-        <input type="text" ref="bank" readonly v-model="bank" placeholder="BCA/BRI/MANDIRI/BNI" @click="showBank()" >
+        <input type="text" ref="bank" readonly v-model="bank" placeholder="Nomor rekening" @click="showBank()" >
         <ul class="vip-select" :class="[bankShow ? 'show':'hide']" >
            <li @click="selectBank('BCA')">BCA</li>
            <li @click="selectBank('BRI')">BRI</li>
@@ -23,18 +23,18 @@
     </div>
     <div class="vip-input-group">
         <i class="icon-input bankno"></i>
-        <input ref="bankno" type="text" @blur="validateBankno()" v-model="bankno" placeholder="Nomor rekening" />
+        <input ref="bankno" type="text" @blur="validateBankno()" v-model="bankno" placeholder="Silahkan pilih bank" />
     </div>
     <div class="vip-input-group">
         <i class="icon-input tel"></i>
         <input ref="tel" type="tel" @blur="validateTel()" v-model="tel"  placeholder="Nomor handphone" />
     </div>
-<p class="wd-label">Saldo penarikan (Unit: Rp)</p>
     <div class="wd-val-box">
         <div @click="wdMoney(1)"  class="item" :class="[active == 1 ? 'active':'']">20,000</div>
         <div @click="wdMoney(2)"  class="item" :class="[active == 2 ? 'active':'']">50,000</div>
         <div @click="wdMoney(3)"  class="item" :class="[active == 3 ? 'active':'']">100,000</div>
     </div>
+    <p class="wd-label">Saldo penarikan (Unit: Rp)</p>
     <div class="vip-btn wd" @click="submitWD()">PENARIKAN</div>
     <router-link to="/wd-record"><p class="wd-tips-text">Riwayat transaksi ></p></router-link>
 
@@ -97,6 +97,9 @@ let Base64 = require('js-base64').Base64
         },
         showBank(){
             this.bankShow = true
+        },
+        closeBank() {
+            this.bankShow = false
         },
         selectBank(bank){
             this.bankShow = false
