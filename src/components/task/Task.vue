@@ -62,7 +62,7 @@
         <TaskScrollItem :data="item.date" :continuous="item.continuous" />
         <div class="panel-text">{{item.description}}</div>
         <!-- 1 挑战任务 -->
-        <div v-if="item.status == 1" class="unfold-btn" @click="confirmBuyTask(item.id,item.expend)"><span class="wrapper">Selesaikan<br>Tugas</span></div>
+        <div v-if="item.status == 1" class="unfold-btn" @click="confirmBuyTask(item.id,item.expend,item.income)"><span class="wrapper">Selesaikan<br>Tugas</span></div>
         <!-- 2 继续挑战 -->
         <div v-else-if="item.status == 2" class="unfold-btn" @click="continueTask(item.id)">Lanjutkan</div>
         <!-- 3 明天继续 -->
@@ -79,8 +79,8 @@
   <!-- 确认购买弹框 -->
   <div class="task-confirm-mask" :class="[confirmShow ? 'show' : 'hide']">
     <div class="task-confirm-cont">
-      <div class="task-confirm-text">Kamu yakin mau pakai 100 koin<br>
-        {{expend}}  untuk selesaikan misi?
+      <div class="task-confirm-text">Kamu yakin mau pakai {{expend}} koin<br>
+        {{income}}  untuk selesaikan misi?
       </div>
       <div class="task-confirm-btn" @click="() => {this.confirmShow = false}">TIDAK</div>
       <div class="task-confirm-btn ok" @click="bugTask()">Selesaikan</div>
@@ -143,7 +143,8 @@ export default {
       balanceShow: false,
       missions: [],
       activeMissionsId: '',
-      expend: ''
+      expend: '',
+      inconme: ''
     }
   },
   props: {
@@ -161,11 +162,11 @@ export default {
   methods: {
 
 
-    confirmBuyTask(id, expend) {
-      console.log(124)
+    confirmBuyTask(id, expend,income) {
       this.confirmShow = true
       this.activeMissionsId = id
       this.expend = expend
+      this.income = income
     },
     continueTask(id) {
       this.activeMissionsId = id

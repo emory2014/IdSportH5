@@ -86,13 +86,12 @@ let Base64 = require('js-base64').Base64
             });
           },
            getAppToken(){
-            // var content=window.AndroidWebView.getAppToken();
-            // var token = Base64.decode(content)
-            // this.token = token
-            this.token = 'b10f1d9b43ea42c1bf78269c6b4499d0'
+            var content=window.AndroidWebView.getAppToken();
+            var token = Base64.decode(content)
+            this.token = token
+            // this.token = 'b10f1d9b43ea42c1bf78269c6b4499d0'
             },
           getData(page){
-               //  this.token = 'e8bc2672c51e0e94540a77ee2df1b9a6'
               this.getAppToken()
               this.$http({
                 url: '/api/vip/invitee/prizelist?t='+(new Date()).getTime(),
@@ -140,7 +139,6 @@ let Base64 = require('js-base64').Base64
         },
            mounted(){
             this.getAppToken()
-            //this.token = 'e8bc2672c51e0e94540a77ee2df1b9a6'
               this.$http({
                 url: '/api/vip/invitee/info?t='+(new Date()).getTime(),
                   method: 'post',

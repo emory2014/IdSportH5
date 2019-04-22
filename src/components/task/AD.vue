@@ -57,17 +57,17 @@
   </div>
 
   <!-- 所有任务完成弹框 -->
-  <div class="task-confirm-mask" :class="allTaskShow ? 'show': 'hide'">
+  <div class="task-confirm-mask" :class="true ? 'show': 'hide'">
     <div class="task-confirm-cont finished">
       <div class="task-confirm-text success">
         Selamat kamu telah menyelesaikan
-        tugas bonus {{gold}} koin. Klik Saya -
+        tugas bonus {{gold}} koin. Klik Saya
         Penghasilan Saya untuk cek
         bonusnya ya.
       </div>
       <!-- 查看 -> 跳转我的收益 -->
       <div class="task-success-btn" @click="goToMyIncome()">Cek Bonus</div>
-      <span class="task-close" @click="() => { this.allTaskShow = false }">×</span>
+      <!-- <span class="task-close" @click="() => { this.allTaskShow = false }">×</span> -->
     </div>
   </div>
 </div>
@@ -198,6 +198,7 @@ export default {
         data: {
           token: this.token,
           mid: this.$route.query.mid
+          // mid: 4
         },
         transformRequest: [function(data) {
           let ret = ''

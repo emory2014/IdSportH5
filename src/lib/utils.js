@@ -21,7 +21,7 @@ export default {
         var token = Base64.decode(content)
         return token
 
-        // return '94eb0a409cccc9b72a776c8422cbb8aa'
+        // return '97e6ee8b18dbb6ba037d2c2e74dbe9c4'
 
 
       }

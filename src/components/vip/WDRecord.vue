@@ -1,5 +1,5 @@
 <template>
-<div class="vip-container" style="background-color:#F8F8F8">
+<div class="vip-container background">
 <BHeader  title="Penarikan" vip={true} />
  <Loading v-if="!data" /> 
 <ul v-if="data" class="wd-record-ul">
@@ -7,13 +7,12 @@
         <div>
             <span>Jumlah penarikan</span>
             <span class="money">+{{item.total_amount|thousands}}</span> 
-            <span class="name">{{item.status}}</span>
+            <span class="name" :class="[item.status == 'Berhasil'?'success':'']">{{item.status}}</span>
         </div>
-        <p><span>{{item.status}}</span></p>
         <p>Nama：<span>{{item.username}}</span></p>
         <p>Nama bank：<span>{{item.bank_code}}</span></p>
         <p>Nomor kartu bank：<span>{{item.card_no}}</span></p>
-        <p>Waktu：{{item.create_time}}</p>
+        <p>Waktu：<span>{{item.create_time}}</span></p>
         <p v-if="item.status == 'Gagal'">Saran: <span class="wd-detail">{{item.comment}}</span></p>
     </li>
     
@@ -150,3 +149,14 @@ let Base64 = require('js-base64').Base64
 <style>
 @import  "../../assets/css/vip.css";
 </style>
+<style scoped>
+    .background {
+       background-color: rgb(248, 248, 248);
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        }
+</style>
+
