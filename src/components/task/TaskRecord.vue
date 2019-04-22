@@ -5,7 +5,6 @@
 
     <Loading v-if="loading" />
     <div v-if="!loading && !data.length" class="recharge-record-default">
-      <!-- <img class="record-default-pic" src="../../assets/images/recharge/recharge-default.png" /> -->
       <p class="record-no-data">“ Belum ada orang yang diikuti ”</p>
       <router-link to="/task">
         <div class="record-default-btn">Selesaikan Tugas</div>
@@ -22,7 +21,6 @@
         </div>
         <!-- <p>Nama Tugas: <span class="bold">{{item.title}}</span> </p> -->
         <p>Koin Terpakai: <span class="bold">{{item.expend}}</span></p>
-
         <p>Koin yang didapat: <span class="bold">{{item.status == 1 ?  0 : item.income}}</span></p>
         <p>Waktu: <span class="bold">{{item.break_time}}</span></p>
       </div>

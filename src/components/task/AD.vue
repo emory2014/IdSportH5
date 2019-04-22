@@ -57,7 +57,7 @@
   </div>
 
   <!-- 所有任务完成弹框 -->
-  <div class="task-confirm-mask" :class="true ? 'show': 'hide'">
+  <div class="task-confirm-mask" :class="allTaskShow ? 'show': 'hide'">
     <div class="task-confirm-cont finished">
       <div class="task-confirm-text success">
         Selamat kamu telah menyelesaikan
@@ -106,6 +106,7 @@ export default {
         this.exitShow = true
       } else {
         window.history.go(-1)
+        clearTimeout(this.timeout)
       }
     },
     exitAd() {

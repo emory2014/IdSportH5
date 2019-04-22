@@ -12,8 +12,10 @@
     <div class="tanda">
       <span class="title">Tanda</span>
       <div class="fixed-num">Koin emas: {{gold}}</div>
-      <div class="peraturan">segera tukarkan</div>
-      <div class="segera">peraturan main</div>
+      <div class="peraturan" @click="toExchangePage()">segera tukarkan&nbsp<span>></span></div>
+       <router-link to="/sign-rule">
+        <div class="segera">peraturan main</div>
+       </router-link>
     </div>
     <ul class="task-day-ul">
 
@@ -29,7 +31,7 @@
   <div class="outer-circle" v-if="data">
     <!-- <span class="box-open-btn" @click="openBox()" v-if="!isOpen">Buka Kotak Harta Karun</span>
     <span class="box-open-btn" id="countdown" v-else>03:59:00</span> -->
-    <div class="buka" @click="openBox()" v-if="!isOpen">
+    <div class="buka" v-if="!isOpen">
       <span>Buka Peti Emas</span>
       <span>Dapatkan hadiah</span>
       <span>menarik, buka setiap 4 jam</span>
@@ -39,7 +41,7 @@
       <span>Peti Harta</span>
       <span>Karun Segera Dibuka</span>
     </div>
-    <img class="box" v-if="!isOpen" src="../../assets/images/chest@2x.png" />
+    <img class="box"  @click="openBox()"  v-if="!isOpen" src="../../assets/images/chest@2x.png" />
     <img class="box" v-else src="../../assets/images/box-gray@2x.png" />
   </div>
   <p class="task-title">
@@ -96,7 +98,7 @@
         dapatkan bonus yang lebih banyak
 
       </div>
-      <div class="task-success-btn" style="color:#E93F3F">Dapetin Bonus</div>
+      <div class="task-success-btn" style="color:#E93F3F" @click="toAd()">Dapetin Bonus</div>
     </div>
   </div>
 
@@ -144,7 +146,7 @@ export default {
       missions: [],
       activeMissionsId: '',
       expend: '',
-      inconme: ''
+      income: ''
     }
   },
   props: {
@@ -179,6 +181,16 @@ export default {
 
       })
     },
+    toAd(){
+       this.$router.push({
+            path: '/ad',
+            query: {
+              mid: this.activeMissionsId,
+              from: 'task'
+            }
+
+          })
+    },
     bugTask() {
       this.token = this.getAppToken()
       this.$http({
@@ -200,14 +212,7 @@ export default {
         }],
       }).then((res) => {
         if (res.data.status.code == 200) {
-          this.$router.push({
-            path: '/ad',
-            query: {
-              mid: this.activeMissionsId,
-              from: 'task'
-            }
-
-          })
+          this.successShow = true;
         } else if (res.data.status.code == 518) {
           this.confirmShow = false
           this.balanceShow = true

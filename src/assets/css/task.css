@@ -83,6 +83,12 @@ body {
   top: 25px;
   color: #666666;
 }
+.peraturan span {
+  font-size: 5px;
+  color: #DDDDDD;
+  position: relative;
+  top:-1px;
+}
 .segera {
   position: absolute;
   left: 15px;
@@ -288,7 +294,6 @@ a {
   line-height: 40px;
   text-align: center;
   border-top: 1px solid #DDDDDD;
-  margin-bottom: 20px;
   font-size: 18px;
   color: #999999;
 }
@@ -579,7 +584,7 @@ a {
   width: 30px;
   height: 30px;
   line-height: 30px;
-  color: #333333;
+  color: #FFFFFF;
   font-size: 12px;
   background-color: #E93F3F;
   border-radius: 100%;
@@ -594,6 +599,7 @@ a {
 
 .task-day-ul li.disabled .coin {
   background: #ddd;
+  color: #999999;
 }
 
 .task-btn-large {
@@ -624,17 +630,12 @@ a {
 
 .box-open-btn {
   position: relative;
-  top: 56px;
-  display: inline-block;
-  background: rgba(0, 0, 0, 0.6);
+  top: -5px;
+  left: -14px;
   border-radius: 25px;
-  font-size: 12px;
+  font-size: 18px;
   padding: 3px 12px;
-  /* transform: scale(0.7); */
-  color: #ffe050;
-  box-sizing: border-box;
-  transform-origin: center;
-  z-index: 4;
+  color: #333333;
 }
 
 .open-mask {

@@ -1,19 +1,22 @@
 <template>
-<div class="vip-container">
+<div class="vip-container" style="padding-top:50px">
 <BHeader  title="Riwayat Transaksi" vip={true} />
  <Loading v-if="!data" /> 
-<ul v-if="data" class="wd-record-ul">
-    <li :class="themeChoice(item.status)" v-for="(item,index) of data.history" :key="index">
-        <p>Nama：{{item.username}}</p>
-        <p>Nama bank：{{item.bank_code}}</p>
-        <p>Nomor kartu bank：{{item.card_no}}</p>
-        <p>Jumlah penarikan：Rp.{{item.total_amount}}</p>
-        <p>Status pemrosesan：{{item.status}}</p>
-        <p>Waktu：{{item.create_time}}</p>
-        <p v-if="item.status == 'Gagal'">Saran: <span class="wd-detail">{{item.comment}}</span></p>
-    </li>
-    
-</ul> 
+ <div v-if="data.length">
+      <div class="task-record-panel" v-for="(item,index) of data" :key="index">
+        <div class="title">
+          <span>Koin Terbeli(Keping)<span>{{}}</span></span>
+          <span v-if="item.status == 3">Gagal</span>
+          <span v-if="item.status == 2" class="red">Berhasil</span>
+        </div>
+        <!-- <p>Nama Tugas: <span class="bold">{{item.title}}</span> </p> -->
+        <p>Koin Terpakai: <span class="bold">{{item.expend}}</span></p>      
+        <p>Koin yang didapat: <span class="bold">{{item.status == 1 ?  0 : item.income}}</span></p>
+        <p>Cara:<span>Top Up Member</span></p>
+        <p>Waktu: <span class="bold">{{item.break_time}}</span></p>
+      </div>
+
+    </div>
 
 <div :class="[defaultShow ? 'show':'hide']" class="vip-record-default">
     <img src="../../assets/images/vip/vip-default-pic.png" />
@@ -36,7 +39,7 @@ let Base64 = require('js-base64').Base64
         },
         data(){
             return {
-            data: null,
+            data: [],
             msg: '',
             defaultShow: false,
             loading: false,
@@ -54,9 +57,9 @@ let Base64 = require('js-base64').Base64
                 window.history.go(-1)
         },
          getAppToken(){
-            var content=window.AndroidWebView.getAppToken();
-            var token = Base64.decode(content)
-            this.token = token
+            // var content=window.AndroidWebView.getAppToken();
+            // var token = Base64.decode(content)
+            this.token = 'c5c312847b1234d93417a47b314cd763'
             },
           toastPop(text){
                 this.toastShow = true
@@ -93,14 +96,15 @@ let Base64 = require('js-base64').Base64
             });
           },
           getData(page){
-                var content=window.AndroidWebView.getAppToken();
-                // var content = 'b10f1d9b43ea42c1bf78269c6b4499d0'
-                let token = Base64.decode(content);
+                // var content=window.AndroidWebView.getAppToken(
+                   
+                // );
+                // let token = Base64.decode(content);
                 this.$http({
                      url: '/api/recharge/history?t='+(new Date()).getTime(),
                     method: 'post',
                     data: {
-                        token: token,
+                        token:'c5c312847b1234d93417a47b314cd763',
                         type: this.type,
                         page: page
                     }
@@ -126,12 +130,11 @@ let Base64 = require('js-base64').Base64
                 });
             }
         },
-           mounted(){
+        created(){
             this.getData(1)
-            
-        }
+        },
     }
 </script>
 <style>
-@import  "../../assets/css/vip.css";
+@import  "../../assets/css/task.css";
 </style>
