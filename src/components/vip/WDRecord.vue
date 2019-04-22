@@ -57,9 +57,8 @@ let Base64 = require('js-base64').Base64
                 window.history.go(-1)
         },
          getAppToken(){
-            // var content=window.AndroidWebView.getAppToken();
-            // var token = Base64.decode(content)
-            this.token = '2fa5c9883a8612aba8474d2439793925'
+            var content=window.AndroidWebView.getAppToken();
+            var token = Base64.decode(content)
             },
           toastPop(text){
                 this.toastShow = true
@@ -96,7 +95,6 @@ let Base64 = require('js-base64').Base64
             });
           },
           getData(page){
-            // this.token = '3ec8d21bd2629ed365d60e57d9336c7e'
             this.getAppToken();
               this.$http({
                 url: '/api/user/redeem/history?t='+(new Date()).getTime(),

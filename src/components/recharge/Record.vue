@@ -5,15 +5,19 @@
  <div v-if="data.length">
       <div class="task-record-panel" v-for="(item,index) of data" :key="index">
         <div class="title">
-          <span>Koin Terbeli(Keping)<span>{{}}</span></span>
-          <span v-if="item.status == 3">Gagal</span>
-          <span v-if="item.status == 2" class="red">Berhasil</span>
+          <span class="koin">
+              <span> Terbeli(Keping)</span>
+              <span class="gold">&nbsp+{{item.gold|thousands}}</span>
+         </span>
+          <span v-if="item.status == 2">Gagal</span>
+          <span v-else-if="item.status == 1" class="red">Berhasil</span>
+          <span v-else-if="item.status == 0" >Dalam proses</span>
         </div>
         <!-- <p>Nama Tugas: <span class="bold">{{item.title}}</span> </p> -->
-        <p>Koin Terpakai: <span class="bold">{{item.expend}}</span></p>      
-        <p>Koin yang didapat: <span class="bold">{{item.status == 1 ?  0 : item.income}}</span></p>
-        <p>Cara:<span>Top Up Member</span></p>
-        <p>Waktu: <span class="bold">{{item.break_time}}</span></p>
+        <p>Isi UlangVia: <span class="bold">{{item.method}}</span></p>      
+        <p>Isi Ulang(Rp): <span class="bold">{{item.amount|thousands}}</span></p>
+        <p>Cara:<span class="bold">Top Up Member</span></p>
+        <p>Waktu: <span class="bold">{{item.update_time}}</span></p>
       </div>
 
     </div>
@@ -57,9 +61,9 @@ let Base64 = require('js-base64').Base64
                 window.history.go(-1)
         },
          getAppToken(){
-            // var content=window.AndroidWebView.getAppToken();
-            // var token = Base64.decode(content)
-            this.token = 'c5c312847b1234d93417a47b314cd763'
+            var content=window.AndroidWebView.getAppToken();
+            var token = Base64.decode(content)
+            // this.token = 'c5c312847b1234d93417a47b314cd763'
             },
           toastPop(text){
                 this.toastShow = true
@@ -135,6 +139,20 @@ let Base64 = require('js-base64').Base64
         },
     }
 </script>
+<style>
+    .koin{
+        color:#999999;
+        font-size: 12px;
+    }
+    .koin span:first-child {
+        position: relative;
+        top: -1px;
+    }
+    .gold{
+        color: #333333;
+        font-size: 16px;
+    }
+</style>
 <style>
 @import  "../../assets/css/task.css";
 </style>

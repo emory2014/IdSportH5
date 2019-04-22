@@ -214,7 +214,7 @@ let Base64 = require('js-base64').Base64
         }
         },
            mounted(){
-             this.token = 'b96984d9a8d76523a1f732bb75fa3aa0'
+            //  this.token = 'b96984d9a8d76523a1f732bb75fa3aa0'
         }
     }
 </script>

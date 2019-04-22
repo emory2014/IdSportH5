@@ -17,7 +17,7 @@
         <div class="title">
           <span>Tugas {{index+1}}</span>
           <span v-if="item.status == 3">Gagal</span>
-          <span v-if="item.status == 2" class="red">Berhasil</span>
+          <span v-else-if="item.status == 2" class="red">Berhasil</span>
         </div>
         <!-- <p>Nama Tugas: <span class="bold">{{item.title}}</span> </p> -->
         <p>Koin Terpakai: <span class="bold">{{item.expend}}</span></p>

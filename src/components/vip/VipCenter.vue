@@ -294,10 +294,9 @@ export default {
       }
     },
     getAppToken() {
-    //   var content = window.AndroidWebView.getAppToken();
-    //   var token = Base64.decode(content)
-    //   this.token = token
-      this.token = 'ee7ed869296033b5579ba082d431d5a5'
+      var content = window.AndroidWebView.getAppToken();
+      var token = Base64.decode(content)
+      this.token = token
     },
     buyVip() {
       this.getAppToken()
@@ -411,7 +410,6 @@ export default {
   mounted() {
     //    this.startMove()
     this.getAppToken()
-    // this.token = '7bd17a690d11dfb715dffd61aa3c1026'
     this.$http({
       url: '/api/vip/package_price?t=' + (new Date()).getTime(),
       method: 'post',

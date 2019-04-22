@@ -44,10 +44,10 @@
     <img class="box"  @click="openBox()"  v-if="!isOpen" src="../../assets/images/chest@2x.png" />
     <img class="box" v-else src="../../assets/images/box-gray@2x.png" />
   </div>
-  <p class="task-title">
+  <p class="task-title" v-if="data" >
     Tugas Khusus <router-link :to="{ path: '/task-record', query: {from: 'task'} }"><span class="right">Riwayat Tugas</span></router-link>
   </p>
-  <p class="task-subtitle">
+  <p class="task-subtitle" v-if="data">
     Semakin tinggi koin untuk membuka tugas, semakin
     besar juga penghasilan yang didapatkan
   </p>
@@ -409,15 +409,18 @@ export default {
       });
     }
   },
-  mounted() {
-    var that = this;
+  created(){
+     var that = this;
 
     this.token = this.getAppToken()
 
     //获取默认数据
     this.getData()
-
-
+  },
+  mounted() {
+    // var that = this;
+    // this.token = this.getAppToken()
+    // this.getData()
     // var interval = setInterval(() => {
     //   if (that.token) {
     //     that.getData()
