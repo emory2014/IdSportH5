@@ -219,19 +219,6 @@ a {
   white-space: nowrap;
 }
 
-.scroll-item {
-  display: inline-block;
-  height: 20px;
-  line-height: 20px;
-  background: #E93F3F;
-  width: 45px;
-  text-align: center;
-  margin-top: 10px;
-  border-radius: 10px;
-  font-size: 12px;
-  color: #FFFFFF;
-}
-
 .scroll-item.three {
   width: 80px;
 }

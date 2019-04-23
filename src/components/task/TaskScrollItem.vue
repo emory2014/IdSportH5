@@ -49,13 +49,13 @@ export default {
   display: inline-block;
   height: 20px;
   line-height: 20px;
-  background: rgba(255, 213, 52, 1);
+  background: #E93F3F;
   width: 45px;
   text-align: center;
   margin-top: 10px;
   border-radius: 10px;
   font-size: 12px;
-  color: #000;
+  color: #FFFFFF;
 }
 
 .scroll-item.three {

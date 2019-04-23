@@ -28,12 +28,12 @@
       <div class="vip-val-info">
         <div class="item">
           <p>Sudah undang</p>
-          <p><span class="num">{{data.vip_total_number}}</span> orang</p>
+          <p><span class="num">{{data.vip_total_number}}</span> &nbsp<span class="rp">orang</span></p>
           <router-link to="/vip-invite-record"><span class="tag"> </span></router-link>
         </div>
         <div class="item">
-          <p>Sudah dapat (Rp.)</p>
-          <p><span class="num">{{data.vip_bonus | formatVipBonus}}</span> </p>
+          <p>Sudah dapat</p>
+          <p><span class="num">{{data.vip_bonus | formatVipBonus}}</span>&nbsp<span class="rp">Rp.</span> </p>
           <span @click="wdMoney()" class="pen"></span>
         </div>
       </div>
@@ -70,12 +70,12 @@
 
   </div>
 
-  <div class="vip-title-sec">
+  <div class="vip-title-sec"  v-if="data.is_vip == 0">
     <i class="left"></i>
     <span>JADI VIP</span>
     <i class="right"></i>
   </div>
-  <div class="vip-category">
+  <div class="vip-category" v-if='data.is_vip == 0'>
     <div v-for="(time,price,index) in vipPackage" :key="index" @click="select(index,price)" :class="[current==index? 'selected':'vipitems']">
       <div class="vip-up">
         <div class="rpc">Rpc.</div>

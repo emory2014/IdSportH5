@@ -172,7 +172,10 @@ body{
     text-align: center;
     padding-bottom: 25px;
 }
-
+.vip-val-info .item .rp {
+    font-size: 14px;
+    color: #FFFFFF
+}
 .vip-val-info .item p{
     margin:5px 0;
 }
@@ -355,9 +358,9 @@ body{
 
 .access-text{
     clear: both;
-    font-size: 12px;
+    font-size: 10px;
     color: #666666;
-    background: #eeeeee;
+    background: #FFF3E9;
     border-radius: 10px;
     padding: 10px;
     width: 80%;
