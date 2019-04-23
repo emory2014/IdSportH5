@@ -106,12 +106,10 @@ export default {
         this.exitShow = true
       } else {
         window.history.go(-1)
-        clearTimeout(this.timeout)
       }
     },
     exitAd() {
       window.history.go(-1)
-      clearTimeout(this.timeout)
     },
     getparam(name) {
       let reg = new RegExp("(^|\\?|&)" + name + "=([^&]*)(\\s|&|$)", "i");
@@ -234,6 +232,9 @@ export default {
   mounted() {
 
     this.getData()
+  },
+  destroyed(){
+    clearTimeout(this.timeout)
   }
 
 }
