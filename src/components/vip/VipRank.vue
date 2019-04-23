@@ -1,5 +1,9 @@
 <template>
 <div class="vip-rank-container">
+    <div class="peringKat">
+        <div>Peringkat Bonus Undangan</div>
+        <div>Member Kemarin </div>                   
+    </div>
     <a href="https://www.youtube.com/watch?v=d1ItTqU_VFw">
         <img class="rank-play" src="../../assets/images/rank-play.png" />
     </a>
@@ -116,11 +120,24 @@ body{
     margin: 0;
 }
 .vip-rank-container{
-    background: url(../../assets/images/vip/datu.png) no-repeat top center,#080706;
+    background: url(../../assets/images/vip/jadilah.png) no-repeat top center,#080706;
     background-size: 100%; 
-    padding: 180px 0 0 0;
+    padding: 235px 0 0 0;
 }
-
+.peringKat {
+    font-size: 18px;
+    color: #856435;
+    text-align: center;
+    margin: auto;
+    width: 90%;
+    border-radius: 32px;
+    background:rgba(236,215,191,1);
+    box-shadow:0px 8px 24px 0px rgba(190,140,83,0.23);
+    height: 64px;
+}
+.peringKat div:first-child {
+    padding-top: 10px
+}
 .rank-play{
     position: fixed;
     bottom: 30px;

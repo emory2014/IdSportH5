@@ -37,7 +37,7 @@
       <span>menarik, buka setiap 4 jam</span>
     </div>
     <div class="buka" v-else>
-      <span class="box-open-btn" id="countdown">03:59:59</span>
+      <span class="box-open-btn" id="countdown">03:59:00</span>
       <span>Peti Harta</span>
       <span>Karun Segera Dibuka</span>
     </div>

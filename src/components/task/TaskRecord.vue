@@ -1,6 +1,6 @@
 <template>
 <div>
-  <div class="task-record-container" :style="{paddingTop: $route.query.from == 'task' ? '72px': '50px'}">
+  <div class="task-record-container" :style="{paddingTop: $route.query.from == 'task' ? '72px': '72px'}">
     <BHeader title="Riwayat Tugas" />
 
     <Loading v-if="loading" />

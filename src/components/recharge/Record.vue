@@ -100,15 +100,13 @@ let Base64 = require('js-base64').Base64
             });
           },
           getData(page){
-                // var content=window.AndroidWebView.getAppToken(
-                   
-                // );
+                // var content=window.AndroidWebView.getAppToken();
                 // let token = Base64.decode(content);
                 this.$http({
                      url: '/api/recharge/history?t='+(new Date()).getTime(),
                     method: 'post',
                     data: {
-                        token:'c5c312847b1234d93417a47b314cd763',
+                        token:this.getAppToken(),
                         type: this.type,
                         page: page
                     }
