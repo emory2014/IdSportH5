@@ -49,7 +49,7 @@ export default {
   display: inline-block;
   height: 20px;
   line-height: 20px;
-  background: #E93F3F;
+  background: #E93F3F!important;
   width: 45px;
   text-align: center;
   margin-top: 10px;
