@@ -8,12 +8,12 @@
         <img class="rank-play" src="../../assets/images/rank-play.png" />
     </a>
  <!-- <Loading v-if="!data" />  -->
-    <p class="title">Jadi Member, Bonus Baca 5 kali lipat, Undang <br>
+    <!-- <p class="title">Jadi Member, Bonus Baca 5 kali lipat, Undang <br>
     teman hasilkan puluhan ribu rupiah, <br>
-    dan bisa cepat dicairkan</p>
+    dan bisa cepat dicairkan</p> -->
 
     <div class="vip-rank-cont">
-        <img class="vip-rank-title"  src="../../assets/images/vip/vip-rank-title.png" />
+        <!-- <img class="vip-rank-title"  src="../../assets/images/vip/vip-rank-title.png" /> -->
         <ul class="vip-rank-ul" v-if="data">
             <li v-for="(item,index) of data" :key="index">
                 <img v-if="item.ranking == 1" class="icon-vip-order" src="../../assets/images/vip/icon-vip-one.png">
@@ -125,11 +125,12 @@ body{
     padding: 235px 0 0 0;
 }
 .peringKat {
+    position: relative;
     font-size: 18px;
     color: #856435;
     text-align: center;
     margin: auto;
-    width: 90%;
+    width: 80%;
     border-radius: 32px;
     background:rgba(236,215,191,1);
     box-shadow:0px 8px 24px 0px rgba(190,140,83,0.23);
@@ -155,10 +156,10 @@ body{
 }
 
 .vip-rank-cont{
-    background: #231d18;
+    background: rgba(254,248,237,1);
     border-radius: 15px;
     width: 90%;
-    margin: 20px auto;
+    margin: -20px auto 20px;
     padding: 15px;
     box-sizing: border-box;
 }
@@ -183,8 +184,8 @@ body{
     display: inline-block;
     height: 20px;
     width: 20px;
-    color: #231d18;
-    background: #d7be9e;
+    color: #856435;
+    background: #ECD7BF;
     font-size: 12px;
     text-align: center;
     line-height: 20px;

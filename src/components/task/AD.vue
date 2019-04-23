@@ -1,6 +1,6 @@
 <template>
 <div class="rule-container" :style="{paddingTop: $route.query.from == 'task' ? '72px': '72px'}">
-  <header class="header" :style="{borderTop: $route.query.from == 'task' ? '22px solid #fff': ''}">
+  <header class="header" :style="{borderTop: $route.query.from == 'task' ? 'solid #fff': ''}">
     　<i class="nc-icon-prev" @click="goBack()"></i>
     <div class="task-process-sec" v-if="data">
       <div class="label"><span class="hightlight">{{task}}</span>/{{allTask}}</div>
