@@ -111,6 +111,7 @@ export default {
     },
     exitAd() {
       window.history.go(-1)
+      clearTimeout(this.timeout)
     },
     getparam(name) {
       let reg = new RegExp("(^|\\?|&)" + name + "=([^&]*)(\\s|&|$)", "i");
