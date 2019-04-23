@@ -1,5 +1,5 @@
 <template>
-<header class="header"  :style="{marginTop: $route.query.from == 'task' ? '22px': ''}">
+<header class="header">
   　<i class="nc-icon-prev" @click="goBack()"></i>
   <div>{{title}}</div>
   <router-link to="/record" v-if="recharge">
@@ -62,9 +62,9 @@ export default {
 .header {
   position: fixed;
   top: 0;
-  height: 50px;
+  height: 60px;
   text-align: center;
-  line-height: 50px;
+  line-height: 60px;
   font-size: 16px;
   color: #333333;
   background: #fff;
@@ -80,15 +80,15 @@ export default {
   white-space: nowrap;
   text-overflow: ellipsis;
   font-weight: bold;
-  height: 50px;
-  line-height: 50px;
+  /* height: 50px;
+  line-height: 50px; */
 }
 
 .nc-icon-prev {
     display: inline-block;
     position:absolute;
     left: 15px;
-    top: 20px;
+    top: 25px;
     width: 10px;
     height: 10px;
     border-top: 2px solid #000000;

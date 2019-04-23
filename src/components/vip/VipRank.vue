@@ -32,8 +32,9 @@
             
         </ul>
     </div>
+    <div class="pertanyaan">Pertanyaan Umum</div>
     <div class="vip-rank-cont no-mb">
-        <img class="vip-rank-rule" src="../../assets/images/vip/vip-rank-rule.png" />
+        
         <ol  class="vip-rank-ol">
             <li>
                 <span class="font-14">Manfaat Jadi Member?</span><br>
@@ -122,7 +123,7 @@ body{
 .vip-rank-container{
     background: url(../../assets/images/vip/jadilah.png) no-repeat top center,#080706;
     background-size: 100%; 
-    padding: 235px 0 0 0;
+    padding: 235px 0 10px 0;
 }
 .peringKat {
     position: relative;
@@ -159,7 +160,7 @@ body{
     background: rgba(254,248,237,1);
     border-radius: 15px;
     width: 90%;
-    margin: -20px auto 20px;
+    margin: -20px auto 45px;
     padding: 15px;
     box-sizing: border-box;
 }
@@ -212,8 +213,7 @@ body{
 .rank-info{
     display: inline-block;
     width: 74%;
-    font-size: 12px;
-    color: #d7be9d;
+    font-size: 11px;
     vertical-align: middle;
     height: 35px;
     position: relative;
@@ -223,6 +223,7 @@ body{
 .rank-info p{
     margin: 0;
     display: inline-block;
+    color: #856435;
 }
 
 .rank-info .invite{
@@ -242,7 +243,7 @@ body{
 }
 
 .rank-info .yellow{
-    color: #ffc000;
+    color: #DB9F64;
 }
 
 .rank-info .font{
@@ -258,16 +259,19 @@ body{
 .vip-rank-ol{
     color: #d7be9d;
     font-size: 12px;
-    padding: 0 0 0 12px;
+    padding: 10px 0 0 12px;
 }
 .vip-rank-ol li {
     line-height: 2;
     list-style: decimal;
+    color:rgba(133,100,53,1)
 }
 
 .vip-rank-ol .font-14{
-    font-size: 14px;
+    font-size: 12px;
     font-weight: bold;
+    background: linear-gradient(-90deg,rgba(254,248,237,1) 0%,rgba(236,214,190,1) 100%);
+    color: #856435;
 }
 
 .no-mb{
@@ -277,5 +281,18 @@ body{
 .icon-vip-order{
     width: 20px;
     margin-right: 4px;
+}
+.pertanyaan {
+    position: relative;
+    color: #856435;
+    font-size: 18px;
+    width: 80%;
+    height: 50px;
+    line-height: 50px;
+    margin: auto;
+    text-align: center;
+    background-color:rgba(236,214,190,1);
+    box-shadow:0px 8px 24px 0px rgba(190,140,83,0.23);
+    border-radius:25px;
 }
 </style>

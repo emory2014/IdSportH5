@@ -1,6 +1,6 @@
 <template>
 <div>
-  <BHeader title="Top Up Koin" recharge={true} />
+  <BHeader title="Top Up Koin" recharge={true} style="padding-top:20px"/>
   <div class="recharge-container">
     <!-- <div class="recharge-balance">
       <p class="balance">{{balance}}</p>

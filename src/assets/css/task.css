@@ -5,9 +5,9 @@ body {
 .header {
   position: fixed;
   top: 0;
-  height: 50px;
+  height: 60px;
   text-align: center;
-  line-height: 50px;
+  line-height: 60px;
   font-size: 16px;
   color: #333333;
   background: #fff;
@@ -21,7 +21,7 @@ body {
   display: inline-block;
     position:absolute;
     left: 15px;
-    top: 20px;
+    top: 25px;
     width: 10px;
     height: 10px;
     border-top: 2px solid #000000;
@@ -504,7 +504,7 @@ a {
   margin-top: 8px;
 }
 
-.red {
+.mark .red {
   color: #FF0000;
 }
 
