@@ -62,9 +62,9 @@ export default {
 .header {
   position: fixed;
   top: 0;
-  height: 60px;
+  height: 55px;
   text-align: center;
-  line-height: 60px;
+  line-height: 55px;
   font-size: 16px;
   color: #333333;
   background: #fff;

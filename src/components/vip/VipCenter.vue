@@ -293,13 +293,13 @@ export default {
         this.notVipShow = true
       }
     },
-    getAppToken() {
-      var content = window.AndroidWebView.getAppToken();
-      var token = Base64.decode(content)
-      this.token = token
-    },
+    // getAppToken() {
+    //   var content = window.AndroidWebView.getAppToken();
+    //   var token = Base64.decode(content)
+    //   this.token = token
+    // },
     buyVip() {
-      this.getAppToken()
+      this.token = this.getAppToken()
       if (!this.wdFlag) {
         return false;
       }
@@ -347,7 +347,7 @@ export default {
       });
     },
     openVip() {
-      this.getAppToken()
+      this.token = this.getAppToken()
       this.$http({
         url: '/api/vip/buy_by_gold?t=' + (new Date()).getTime(),
         method: 'post',
@@ -409,7 +409,7 @@ export default {
   //         },
   mounted() {
     //    this.startMove()
-    this.getAppToken()
+    this.token= this.getAppToken()
     this.$http({
       url: '/api/vip/package_price?t=' + (new Date()).getTime(),
       method: 'post',
