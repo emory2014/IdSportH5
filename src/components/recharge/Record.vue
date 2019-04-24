@@ -1,5 +1,5 @@
 <template>
-<div class="vip-container" style="padding-top:50px">
+<div class="vip-container background" style="padding-top:50px">
 <BHeader  title="Riwayat Transaksi" vip={true} />
  <Loading v-if="!data" /> 
  <div v-if="data.length">
@@ -60,11 +60,6 @@ let Base64 = require('js-base64').Base64
           goBack(){
                 window.history.go(-1)
         },
-         getAppToken(){
-            var content=window.AndroidWebView.getAppToken();
-            var token = Base64.decode(content)
-            // this.token = 'c5c312847b1234d93417a47b314cd763'
-            },
           toastPop(text){
                 this.toastShow = true
                 this.msg = text
@@ -106,7 +101,7 @@ let Base64 = require('js-base64').Base64
                      url: '/api/recharge/history?t='+(new Date()).getTime(),
                     method: 'post',
                     data: {
-                        token:this.getAppToken(),
+                        token:token,
                         type: this.type,
                         page: page
                     }
@@ -132,12 +127,20 @@ let Base64 = require('js-base64').Base64
                 });
             }
         },
-        created(){
+        created(){ 
             this.getData(1)
         },
     }
 </script>
 <style>
+    .background {
+        background-color: rgb(248, 248, 248);
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
     .koin{
         color:#999999;
         font-size: 12px;

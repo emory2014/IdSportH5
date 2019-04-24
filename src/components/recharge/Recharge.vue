@@ -8,7 +8,7 @@
     </div> -->
     <div class="recharge-balance">
       <span>Saldo Saat Ini(Rp)</span>
-      <span>{{balance}}</span>
+      <span>{{balance|thousands}}</span>
     </div>
     <p class="recharge-title">Silakan pilih Nominalnya</p>
     <div class="recharge-panel" v-if="data">
@@ -20,7 +20,7 @@
     </div>
     <p class="recharge-text" v-if="buy">Koin yang didapat：<span class="recharge-val">Rpc.{{parseMoney(buy)}}</span></p>
     <p class="recharge-text" v-if="gift">Bonus pembelian Koin：<span class="recharge-val">Rpc.{{parseMoney(gift)}}</span></p>
-    <div class="recharge-btn" @click="recharge()">BELI</div>
+    <div class="recharge-btn" @click="recharge()">Beil</div>
 
   </div>
 

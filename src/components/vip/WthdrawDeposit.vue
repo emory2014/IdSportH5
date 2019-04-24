@@ -1,6 +1,6 @@
 <template>
 <div class="vip-container">
-<BHeader  title="Penarikan Member" vip={true} />
+<BHeader  title="Undangan Member Saya" vip={true} />
 <!-- <Loading v-if="!data" /> -->
 
  <p class="wd-num"><span>Rp.</span>{{this.$route.query.m|thousands}}</p>
@@ -10,20 +10,20 @@
         <i class="icon-input name"></i>
         <input ref="name" type="text" @blur="validateName()" v-model="name" placeholder="Nama pemilik rekening" />
     </div>
+ 
     <div class="vip-input-group">
+        <i class="icon-input bankno"></i>
+        <input ref="bankno" type="text" @blur="validateBankno()" v-model="bankno" placeholder="Nomor rekening" />
+    </div>
+       <div class="vip-input-group">
         <i class="icon-input bank"></i>
-        <input type="text" ref="bank" readonly v-model="bank" placeholder="Nomor rekening" @click="showBank()" >
+        <input type="text" ref="bank" readonly v-model="bank" placeholder="Silahkan pilih bank " @click="showBank()" >
         <ul class="vip-select" :class="[bankShow ? 'show':'hide']" >
            <li @click="selectBank('BCA')">BCA</li>
            <li @click="selectBank('BRI')">BRI</li>
            <li @click="selectBank('MANDIRI')">MANDIRI</li>
            <li @click="selectBank('BNI')">BNI</li>
         </ul>
-        <i class="icon-caret"></i>
-    </div>
-    <div class="vip-input-group">
-        <i class="icon-input bankno"></i>
-        <input ref="bankno" type="text" @blur="validateBankno()" v-model="bankno" placeholder="Silahkan pilih bank" />
     </div>
     <div class="vip-input-group">
         <i class="icon-input tel"></i>
@@ -87,7 +87,7 @@ let Base64 = require('js-base64').Base64
       
         getAppToken(){
             var content=window.AndroidWebView.getAppToken();
-            var token = Base64.decode(content)
+            var token = Base64.decode(content);
             this.token = token
             },
           toastPop(text){

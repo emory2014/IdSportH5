@@ -56,10 +56,6 @@ let Base64 = require('js-base64').Base64
           goBack(){
                 window.history.go(-1)
         },
-         getAppToken(){
-            var content=window.AndroidWebView.getAppToken();
-            var token = Base64.decode(content)
-            },
           toastPop(text){
                 this.toastShow = true
                 this.msg = text
@@ -95,7 +91,7 @@ let Base64 = require('js-base64').Base64
             });
           },
           getData(page){
-            this.getAppToken();
+            this.token = this.getAppToken();
               this.$http({
                 url: '/api/user/redeem/history?t='+(new Date()).getTime(),
                 method: 'post',

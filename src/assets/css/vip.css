@@ -812,10 +812,12 @@ a{
 }
 
 .wd-record-ul li {
+    background:rgba(255,255,255,1);
+    box-shadow:0px 2px 8px 0px rgba(0,0,0,0.06);
+    border-radius: 5px;
     position: relative;
     color: #999999;
     font-size: 14px;
-    border-radius: 15px;
     padding: 12px;
     margin-top: 15px;
 }
@@ -840,25 +842,7 @@ a{
 .wd-record-ul li .success {
     color: #E93F3F;
 }
-.wd-record-ul li.yellow{
-    background:rgba(255,255,255,1);
-    box-shadow:0px 2px 8px 0px rgba(0,0,0,0.06);
-    border-radius:10px;
-}
 
-.wd-record-ul li.red{
-    border: 1px solid #ff0e21;
-    background: url(../../assets/images/vip/icon-reject.png) no-repeat;
-    background-size: 90px 70px;
-    background-position: 230px center;
-}
-
-.wd-record-ul li.green{
-    border: 1px solid #11b800;
-    background: url(../../assets/images/vip/icon-passed.png) no-repeat;
-    background-size: 90px 70px;
-    background-position: 230px center;
-}
 
 .wd-record-ul li p{
     margin: 0;
@@ -1036,3 +1020,4 @@ a{
     height: 1px;
     background: linear-gradient(270deg,rgba(255,255,255,1) 0%,rgba(221,221,221,1) 51%,rgba(255,255,255,1) 100%);
 }
+
