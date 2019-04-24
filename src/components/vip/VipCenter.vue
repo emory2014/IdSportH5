@@ -75,7 +75,7 @@
     <span>JADI VIP</span>
     <i class="right"></i>
   </div>
-  <div class="vip-category" v-if='data && data.is_vip == 0'>
+  <div class="vip-category" v-if='!data && data.is_vip == 0'>
     <div v-for="(time,price,index) in vipPackage" :key="index" @click="select(index,price)" :class="[current==index? 'selected':'vipitems']">
       <div class="vip-up">
         <div class="rpc">Rpc.</div>
