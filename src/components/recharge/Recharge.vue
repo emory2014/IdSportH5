@@ -124,7 +124,7 @@ export default {
       this.$router.push("/process?m=" + this.amount + "&method=" + this.method)
     }
   },
-  mounted() {
+  created() {
     let _this = this;
     this.getData()
 
