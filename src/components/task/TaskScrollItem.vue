@@ -73,7 +73,7 @@ export default {
 }
 
 .scroll-devider.gray,
-.scroll-item.gray {
+.scroll-item .gray {
   background: #ddd;
 }
 </style>
