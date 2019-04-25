@@ -97,7 +97,8 @@ let Base64 = require('js-base64').Base64
         },
         showBank(){
             let KeyboardStatus = window.AndroidWebView.getKeyboardStatus();
-            if(!KeyboardStatus == 0){
+            if(KeyboardStatus == 0){
+                this.toastPop("成功");
                 setTimeout(()=>{
                         this.bankShow = true;
                 },50)
