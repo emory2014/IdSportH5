@@ -96,9 +96,12 @@ let Base64 = require('js-base64').Base64
                 setTimeout(() => this.toastShow = false, 2000)
         },
         showBank(){
-            setTimeout(()=>{
-                    this.bankShow = true;
-            },50)
+            let KeyboardStatus = window.AndroidWebView.getKeyboardStatus();
+            if(!KeyboardStatus == 0){
+                setTimeout(()=>{
+                        this.bankShow = true;
+                },50)
+            }
         },
         closeBank() {
             this.bankShow = false

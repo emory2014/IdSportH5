@@ -669,16 +669,6 @@ body{
     box-sizing: border-box;
     padding: 0px;
     list-style: none;
-    /* position: absolute;
-    top: 257px;
-    left: -35px;
-    list-style: none;
-    margin-left: 6px;
-    width: 100%;
-    
-    padding: 0;
-    background: #f5f5f5;
-    z-index: 1; */
 }
 
 .vip-select li {

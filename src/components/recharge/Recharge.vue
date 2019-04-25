@@ -1,5 +1,5 @@
 <template>
-<div>
+<div v-on:click="hidePanel">
   <BHeader title="Top Up Koin" recharge={true} />
   <div class="recharge-container">
     <!-- <div class="recharge-balance">
@@ -24,15 +24,19 @@
 
   </div>
 
-  <div class="mask" @click="maskPop($event)" :class="[maskShow?'show':'hide']">
+  <!-- <div class="mask" @click="maskPop($event)" :class="[maskShow?'show':'hide']">
     <div class="mask-cont">
       <p class="mask-cont-title">Transaksi Via</p>
       <ul v-if="data">
         <li v-for="(item,key,index) of data.banks" :key="index" @click="selectBank(key)">{{item}}</li>
       </ul>
     </div>
+  </div> -->
+  <div class="mask" @click="maskPop($event)" :class="[maskShow?'show':'hide']">
+    <ul class="bank-select"   v-if="maskShow && data" >
+        <li v-for="(item,key,index) of data.banks" :key="index" @click="selectBank(key)">{{item}}</li>
+    </ul>
   </div>
-
 
 
 
@@ -50,6 +54,7 @@ export default {
   },
   data() {
     return {
+      panelShow:true,
       data: null,
       myData: null,
       balance: '--',
@@ -63,6 +68,12 @@ export default {
     }
   },
   methods: {
+    hidePanel(event){
+      if(event.target.className != 'recharge-btn'){
+        console.log(event.target)
+      this.maskShow = false;
+      }
+    },
     getQueryString(name) {
       var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
       var r = window.location.search.substr(1).match(reg);
@@ -107,8 +118,9 @@ export default {
       });
 
     },
-    recharge() {
-      this.maskShow = true
+    recharge() {   
+      this.maskShow = true 
+      console.log('this.maskShow',this.maskShow)  
     },
     addClass(index, money, buy, gift) {
       this.active = index
@@ -128,7 +140,7 @@ export default {
     let _this = this;
     this.getData()
 
-  }
+  },
 }
 </script>
 <style>
@@ -137,5 +149,27 @@ export default {
 body {
   margin: 0;
   background: #fff;
+}
+.bank-select{
+    background: #f5f5f5;
+    position: fixed;
+    width: 100%;
+    height: 170px;
+    left:0;
+    padding: 0px;
+    margin: 0px;
+    bottom: 0;
+    z-index: 1;
+    box-sizing: border-box;
+    padding: 0px;
+    list-style: none;
+}
+.bank-select li {
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+}
+.bank-select li:hover {
+   background-color: #E4B68B;
 }
 </style>
