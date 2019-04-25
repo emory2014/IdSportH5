@@ -96,13 +96,15 @@ let Base64 = require('js-base64').Base64
                 setTimeout(() => this.toastShow = false, 2000)
         },
         showBank(){
-            let KeyboardStatus = window.AndroidWebView.getKeyboardStatus();
-            this.toastPop(KeyboardStatus)
-            window.AndroidWebView.showContent(KeyboardStatus)
-            if(KeyboardStatus == 0){
-                this.toastPop("成功");
-                this.bankShow = true;
-            }
+            window.AndroidWebView.hideKeyboard();
+            setTimeout(()=>this.bankShow = true,200)
+        //     let KeyboardStatus = window.AndroidWebView.getKeyboardStatus();
+        //     this.toastPop(KeyboardStatus)
+        //     window.AndroidWebView.showContent(KeyboardStatus)
+        //     if(KeyboardStatus == 0){
+        //         this.toastPop("成功");
+        //         this.bankShow = true;
+        //     }
         },
         closeBank() {
             this.bankShow = false
