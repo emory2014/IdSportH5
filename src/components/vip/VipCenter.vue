@@ -115,7 +115,7 @@
     </div>
     <div class="item" @click="popAccess(3)">
       <i class="icon-vip coin"></i>
-      <p>5 kali koin</p>
+      <p>Baca berkualitas</p>
       <span>Artikel yang berkualitas</span>
     </div>
 
