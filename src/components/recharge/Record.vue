@@ -1,7 +1,7 @@
 <template>
 <div class="vip-container background" style="padding-top:50px">
 <BHeader  title="Riwayat Transaksi" vip={true} />
- <Loading v-if="!data" /> 
+ <!-- <Loading v-if="!data" /> 
  <div v-if="data.length">
       <div class="task-record-panel" v-for="(item,index) of data" :key="index">
         <div class="title">
@@ -13,17 +13,16 @@
           <span v-else-if="item.status == 1" class="red">Berhasil</span>
           <span v-else-if="item.status == 0" >Dalam proses</span>
         </div>
-        <!-- <p>Nama Tugas: <span class="bold">{{item.title}}</span> </p> -->
         <p>Isi UlangVia: <span class="bold">{{item.method}}</span></p>      
         <p>Isi Ulang(Rp): <span class="bold">{{item.amount|thousands}}</span></p>
         <p>Cara:<span class="bold">Top Up Member</span></p>
         <p>Waktu: <span class="bold">{{item.update_time}}</span></p>
       </div>
 
-    </div>
+    </div> -->
 
-<div :class="[defaultShow ? 'show':'hide']" class="vip-record-default">
-    <img src="../../assets/images/vip/vip-default-pic.png" />
+<div :class="[true ? 'show':'hide']" class="vip-record-default">
+    <!-- <img src="../../assets/images/vip/vip-default-pic.png" /> -->
     <p>“ Sementara tidak ada konten ”</p>
 </div>
 
@@ -95,8 +94,8 @@ let Base64 = require('js-base64').Base64
             });
           },
           getData(page){
-                var content=window.AndroidWebView.getAppToken();
-                let token = Base64.decode(content);
+                // var content=window.AndroidWebView.getAppToken();
+                let token = this.getAppToken();
                 this.$http({
                      url: '/api/recharge/history?t='+(new Date()).getTime(),
                     method: 'post',
@@ -152,6 +151,12 @@ let Base64 = require('js-base64').Base64
     .gold{
         color: #333333;
         font-size: 16px;
+    }
+    .vip-record-default{
+        padding-top: 270px;
+        text-align: center;
+        color:#999999;
+        font-size: 14px;      
     }
 </style>
 <style>
