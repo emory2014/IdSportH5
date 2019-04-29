@@ -55,7 +55,7 @@
 <script>
 import { Picker,Popup } from 'vant'
 import 'vant/lib/picker/style';
-import 'vant/lib/Popup/style';
+import 'vant/lib/popup/style';
 import BHeader from "../common/BHeader"
 let Base64 = require('js-base64').Base64;
 
