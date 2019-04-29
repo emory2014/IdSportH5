@@ -7,11 +7,14 @@
    </div> -->
     <div :class="[method == 1 ? 'show':'hide']">
       <div class="cont-panel">
-        <p class="title">{{amount}}</p>
-        <p class="subtitle">Jumlah</p>
-        <p class="code">{{data}}</p>
-        <p class="subtitle">Kode Pembayaran</p>
-        <div class="text-cont">
+        <div class="top">
+          <p class="title">{{amount}}</p>
+          <p class="subtitle">Jumlah</p>
+          <p class="code">{{data}}</p>
+          <p class="subtitle">Kode Pembayaran</p>
+        </div>
+<i class="fixDash"></i>
+        <div class="text-cont  fix" >
           <ol>
             <li>Catat Kode Pembayaran di atas dan datang ke gerai Alfamart, Alfa Midi, Alfa Express, dan Lawson </li>
             <li> Beritahukan ke kasir bahwa anda ingin melakukan pembayaran Nama Merchant ”BMY” </li>
@@ -34,10 +37,13 @@
         <div class="item" :class="[active == 3 ?'active':'']" @click="addClass(3)">MBANKING</div>
       </div>
       <div class="cont-panel" :class="[active == 1 ?'show':'hide']">
-        <p class="title">{{amount}}</p>
-        <p class="subtitle">Jumlah</p>
-        <p class="code">{{data}}</p>
-        <p class="subtitle">Kode Pembayaran</p>
+        <div class="top">
+          <p class="title">{{amount}}</p>
+          <p class="subtitle">Jumlah</p>
+          <p class="code">{{data}}</p>
+          <p class="subtitle">Kode Pembayaran</p>
+        </div>
+        <i class="dash"></i>
         <div class="text-cont">
           <ol>
             <li>Pilih “Transfer” pada menu. </li>
@@ -52,10 +58,13 @@
       </div>
 
       <div class="cont-panel" :class="[active == 2 ?'show':'hide']">
-        <p class="title">{{amount}}</p>
-        <p class="subtitle">Jumlah</p>
-        <p class="code">{{data}}</p>
-        <p class="subtitle">Kode Pembayaran</p>
+        <div class="top">
+          <p class="title">{{amount}}</p>
+          <p class="subtitle">Jumlah</p>
+          <p class="code">{{data}}</p>
+          <p class="subtitle">Kode Pembayaran</p>
+        </div>
+<i class="dash"></i>
         <div class="text-cont">
           <p>Daftarkan VA anda untuk pertama kali</p>
           <ol>
@@ -87,10 +96,13 @@
       </div>
 
       <div class="cont-panel" :class="[active == 3 ?'show':'hide']">
-        <p class="title">{{amount}}</p>
-        <p class="subtitle">Jumlah</p>
-        <p class="code">{{data}}</p>
-        <p class="subtitle">Kode Pembayaran</p>
+        <div class="top">
+          <p class="title">{{amount}}</p>
+          <p class="subtitle">Jumlah</p>
+          <p class="code">{{data}}</p>
+          <p class="subtitle">Kode Pembayaran</p>
+        </div>
+<i class="dash"></i>
         <div class="text-cont">
           <p>Daftarkan VA anda untuk pertama kali</p>
           <ol>
@@ -189,10 +201,13 @@
         <div class="item" :class="[active == 3 ? 'active':'']" @click="addClass(3)">MBANKING</div>
       </div>
       <div class="cont-panel" :class="[active ==1 ? 'show':'hide']">
-        <p class="title">{{amount}}</p>
-        <p class="subtitle">Jumlah</p>
-        <p class="code">{{data}}</p>
-        <p class="subtitle">Kode Pembayaran</p>
+        <div class="top">
+          <p class="title">{{amount}}</p>
+          <p class="subtitle">Jumlah</p>
+          <p class="code">{{data}}</p>
+          <p class="subtitle">Kode Pembayaran</p>
+        </div>
+<i class="dash"></i>  
         <div class="text-cont">
           <ol>
             <li>Masukkan kartu dan pin ATM.</li>
@@ -208,10 +223,13 @@
       </div>
 
       <div class="cont-panel" :class="[active ==2 ? 'show':'hide']">
-        <p class="title">{{amount}}</p>
-        <p class="subtitle">Jumlah</p>
-        <p class="code">{{data}}</p>
-        <p class="subtitle">Kode Pembayaran</p>
+        <div class="top">
+          <p class="title">{{amount}}</p>
+          <p class="subtitle">Jumlah</p>
+          <p class="code">{{data}}</p>
+          <p class="subtitle">Kode Pembayaran</p>
+        </div>
+<i class="dash"></i> 
         <div class="text-cont">
           <ol>
             <li>Login di <a href="https://ib.bri.co.id/ib-bri/">https://ib.bri.co.id/ib-bri/</a>, masukkan username dan password.</li>
@@ -227,10 +245,13 @@
       </div>
 
       <div class="cont-panel" :class="[active == 3 ? 'show':'hide']">
-        <p class="title">{{amount}}</p>
-        <p class="subtitle">Jumlah</p>
-        <p class="code">{{data}}</p>
-        <p class="subtitle">Kode Pembayaran</p>
+        <div class="top">
+          <p class="title">{{amount}}</p>
+          <p class="subtitle">Jumlah</p>
+          <p class="code">{{data}}</p>
+          <p class="subtitle">Kode Pembayaran</p>
+        </div>
+<i class="dash"></i> 
         <div class="text-cont">
           <ol>
             <li>Masuk ke aplikias BRI Mobile.</li>
@@ -379,10 +400,13 @@
         <div class="item" :class="[active == 3 ? 'active':'']" @click="addClass(3)">MBANKING</div>
       </div>
       <div class="cont-panel" :class="[active == 1 ? 'show':'hide']">
-        <p class="title">{{amount}}</p>
-        <p class="subtitle">Jumlah</p>
-        <p class="code">{{data}}</p>
-        <p class="subtitle">Kode Pembayaran</p>
+        <div class="top">
+          <p class="title">{{amount}}</p>
+          <p class="subtitle">Jumlah</p>
+          <p class="code">{{data}}</p>
+          <p class="subtitle">Kode Pembayaran</p>
+        </div>
+<i class="dash"></i>
         <div class="text-cont">
           <ol>
             <li>Masukkan Kartu ATM Permata dan PIN. </li>
@@ -394,10 +418,13 @@
         </div>
       </div>
       <div class="cont-panel" :class="[active == 2 ? 'show':'hide']">
-        <p class="title">{{amount}}</p>
-        <p class="subtitle">Jumlah</p>
-        <p class="code">{{data}}</p>
-        <p class="subtitle">Kode Pembayaran</p>
+        <div class="top">
+          <p class="title">{{amount}}</p>
+          <p class="subtitle">Jumlah</p>
+          <p class="code">{{data}}</p>
+          <p class="subtitle">Kode Pembayaran</p>
+        </div>
+<i class="dash"></i>
         <div class="text-cont">
           <ol>
             <li>Kunjungi Internet Banking Permata</li>
@@ -412,10 +439,13 @@
       </div>
 
       <div class="cont-panel" :class="[active == 3 ? 'show':'hide']">
-        <p class="title">{{amount}}</p>
-        <p class="subtitle">Jumlah</p>
-        <p class="code">{{data}}</p>
-        <p class="subtitle">Kode Pembayaran</p>
+       <div class="top">
+          <p class="title">{{amount}}</p>
+          <p class="subtitle">Jumlah</p>
+          <p class="code">{{data}}</p>
+          <p class="subtitle">Kode Pembayaran</p>
+        </div>
+<i class="dash"></i>
         <div class="text-cont">
           <ol>
             <li>Buka Aplikasi Mobile Banking Permata di HP</li>
@@ -435,10 +465,13 @@
         <div class="item" :class="[active == 3 ? 'active':'']" @click="addClass(3)">MBANKING</div>
       </div>
       <div class="cont-panel" :class="[active == 1 ? 'show':'hide']">
-        <p class="title">{{amount}}</p>
-        <p class="subtitle">Jumlah</p>
-        <p class="code">{{data}}</p>
-        <p class="subtitle">Kode Pembayaran</p>
+        <div class="top">
+          <p class="title">{{amount}}</p>
+          <p class="subtitle">Jumlah</p>
+          <p class="code">{{data}}</p>
+          <p class="subtitle">Kode Pembayaran</p>
+        </div>
+<i class="dash"></i>
         <div class="text-cont">
           <ol>
             <li>Pilih “Transfer” pada menu </li>
@@ -452,10 +485,13 @@
       </div>
 
       <div class="cont-panel" :class="[active == 2 ? 'show':'hide']">
-        <p class="title">{{amount}}</p>
-        <p class="subtitle">Jumlah</p>
-        <p class="code">{{data}}</p>
-        <p class="subtitle">Kode Pembayaran</p>
+        <div class="top">
+          <p class="title">{{amount}}</p>
+          <p class="subtitle">Jumlah</p>
+          <p class="code">{{data}}</p>
+          <p class="subtitle">Kode Pembayaran</p>
+        </div>
+<i class="dash"></i>
         <div class="text-cont">
           <ol>
             <li>Pilih “Transfer” pada menu </li>
@@ -470,10 +506,13 @@
       </div>
 
       <div class="cont-panel" :class="[active == 3 ? 'show':'hide']">
-        <p class="title">{{amount}}</p>
-        <p class="subtitle">Jumlah</p>
-        <p class="code">{{data}}</p>
-        <p class="subtitle">Kode Pembayaran</p>
+        <div class="top">
+          <p class="title">{{amount}}</p>
+          <p class="subtitle">Jumlah</p>
+          <p class="code">{{data}}</p>
+          <p class="subtitle">Kode Pembayaran</p>
+        </div>
+<i class="dash"></i>
         <div class="text-cont">
           <ol>
             <li>Pilih “Transfer” pada menu</li>
@@ -649,6 +688,7 @@ export default {
   }
 }
 </script>
-<style>
-@import "../../assets/css/recharge.css";
+<style >
+ @import "../../assets/css/recharge.css";
 </style>
+

@@ -37,7 +37,7 @@
       <span>menarik, buka setiap 4 jam</span>
     </div>
     <div class="buka" v-else>
-      <span class="box-open-btn" id="countdown">03:59:00</span>
+      <span class="box-open-btn" id="countdown">03:59:59</span>
       <span>Peti Harta</span>
       <span>Karun Segera Dibuka</span>
     </div>
@@ -162,13 +162,38 @@ export default {
     clearInterval(this.interval)
   },
   methods: {
-
-
     confirmBuyTask(id, expend,income) {
-      this.confirmShow = true
       this.activeMissionsId = id
       this.expend = expend
       this.income = income
+      
+      this.token = this.getAppToken()
+      this.$http({
+        url: '/api/mission/buy',
+        method: 'post',
+        headers: {
+          'Content-type': 'application/x-www-form-urlencoded'
+        },
+        data: {
+          token: this.token,
+          mid: this.activeMissionsId
+        },
+        transformRequest: [function(data) {
+          let ret = ''
+          for (let it in data) {
+            ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+          }
+          return ret
+        }],
+      }).then((res) => {
+        if (res.data.status.code == 576) {
+          window.AndroidWebView.showContent(res.data.status.message)
+        } else {
+          this.confirmShow = true
+        }
+      }).catch((res) => {
+        console.log('error: ', res);
+      });
     },
     continueTask(id) {
       this.activeMissionsId = id

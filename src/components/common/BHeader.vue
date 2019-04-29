@@ -64,7 +64,7 @@ export default {
   top: 0;
   height: 55px;
   text-align: center;
-  line-height: 60px;
+  line-height: 70px;
   font-size: 16px;
   color: #333333;
   background: #fff;
@@ -88,7 +88,7 @@ export default {
     display: inline-block;
     position:absolute;
     left: 15px;
-    top: 25px;
+    top: 30px;
     width: 10px;
     height: 10px;
     border-top: 2px solid #000000;

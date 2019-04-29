@@ -97,7 +97,7 @@ let Base64 = require('js-base64').Base64
         },
         showBank(){
             window.AndroidWebView.hideKeyboard();
-            setTimeout(()=>this.bankShow = true,200)
+            setTimeout(()=>this.bankShow = true,150)
         //     let KeyboardStatus = window.AndroidWebView.getKeyboardStatus();
         //     this.toastPop(KeyboardStatus)
         //     window.AndroidWebView.showContent(KeyboardStatus)

@@ -1,7 +1,7 @@
 <template>
-<div v-on:click="hidePanel">
+<div>
   <BHeader title="Top Up Koin" recharge={true} />
-  <div class="recharge-container">
+  <div class="recharge-container" >
     <!-- <div class="recharge-balance">
       <p class="balance">{{balance}}</p>
       <p>Poin sekarang(Rpc)</p>
@@ -14,9 +14,7 @@
     <div class="recharge-panel" v-if="data">
       <div v-for="(item,index) of data.amountInfo" :key="index" v-if="!from || from && index > 1" class="recharge-item" :class="[active == index ? 'active':'']" @click="addClass(index,item.money,item.buy,item.gift)">
         <span>Rp.{{parseMoney(item.money)}}</span>
-
       </div>
-
     </div>
     <p class="recharge-text" v-if="buy">Koin yang didapat：<span class="recharge-val">Rpc.{{parseMoney(buy)}}</span></p>
     <p class="recharge-text" v-if="gift">Bonus pembelian Koin：<span class="recharge-val">Rpc.{{parseMoney(gift)}}</span></p>
@@ -32,11 +30,22 @@
       </ul>
     </div>
   </div> -->
-  <div class="mask" @click="maskPop($event)" :class="[maskShow?'show':'hide']">
-    <ul class="bank-select"   v-if="maskShow && data" >
+  <!-- <div class="mask" @click="maskPop($event)" :class="[maskShow?'show':'hide']">
+    <Picker :columns="dataList" @change="onChange" class="bank-select" :default-index="2" /> -->
+    <!-- <ul class="bank-select"   v-if="maskShow && data" >
         <li v-for="(item,key,index) of data.banks" :key="index" @click="selectBank(key)">{{item}}</li>
-    </ul>
+    </ul> -->
+  <!-- </div> -->
+  <div @click="closePup">
+    <Popup v-model="popupShow" position="bottom">
+      <Picker
+        :columns="dataList" 
+        @change="onChange" 
+        :default-index="2" 
+        />
+    </Popup>
   </div>
+  
 
 
 
@@ -44,16 +53,24 @@
 </div>
 </template>
 <script>
+import { Picker,Popup } from 'vant'
+import 'vant/lib/picker/style';
+import 'vant/lib/Popup/style';
 import BHeader from "../common/BHeader"
 let Base64 = require('js-base64').Base64;
 
 export default {
   name: 'Recharge',
   components: {
-    BHeader
+    BHeader,
+    Picker,
+    Popup
   },
   data() {
     return {
+      keyId:'',
+      popupShow: false,
+      banks: [],
       panelShow:true,
       data: null,
       myData: null,
@@ -67,13 +84,44 @@ export default {
       from: this.$route.query.vip
     }
   },
+  computed: {
+    dataList(){
+      let res = Object.keys(this.banks).reduce((r,c) => {
+        return [
+          ...r,
+          {
+            text:this.banks[c],
+            id: c
+          }
+        ]      
+      },[])
+      return res
+    }
+  },
   methods: {
-    hidePanel(event){
-      if(event.target.className != 'recharge-btn'){
-        console.log(event.target)
-      this.maskShow = false;
-      }
+    closePup(e){
+      this.keyId = 3;
+       setTimeout(()=>{ this.popupShow = false},300)
+        if(e.target.className.indexOf("van-picker-column__item") >-1){
+          if (!this.amount) {
+            this.amount = this.data.amountInfo[0].money
+          }
+          this.$router.push("/process?m=" + this.amount + "&method=" + this.keyId)         
+        }
+       
+     
     },
+    onChange(picker, value, index) {
+      let keyId = value.id;
+      this.keyId = keyId
+      console.log('当前值'+keyId );
+    },
+    // hidePanel(event){
+    //   if(event.target.className != 'recharge-btn'){
+    //     console.log('d',event.target)
+    //   this.maskShow = false;
+    //   }
+    // },
     getQueryString(name) {
       var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
       var r = window.location.search.substr(1).match(reg);
@@ -97,6 +145,7 @@ export default {
 
         if (res.data.status.code == 200) {
           this.data = res.data.data
+          this.banks = this.data.banks
           this.balance = res.data.data.gold
           if (this.from) {
             this.buy = this.data.amountInfo[2].buy
@@ -119,8 +168,7 @@ export default {
 
     },
     recharge() {   
-      this.maskShow = true 
-      console.log('this.maskShow',this.maskShow)  
+      this.popupShow = true 
     },
     addClass(index, money, buy, gift) {
       this.active = index
@@ -139,7 +187,6 @@ export default {
   created() {
     let _this = this;
     this.getData()
-
   },
 }
 </script>
@@ -151,18 +198,11 @@ body {
   background: #fff;
 }
 .bank-select{
-    background: #f5f5f5;
+    background: #FFFFFF;
     position: fixed;
     width: 100%;
-    height: 170px;
-    left:0;
-    padding: 0px;
-    margin: 0px;
+    height: 30%;
     bottom: 0;
-    z-index: 1;
-    box-sizing: border-box;
-    padding: 0px;
-    list-style: none;
 }
 .bank-select li {
     height: 45px;
@@ -172,4 +212,5 @@ body {
 .bank-select li:hover {
    background-color: #E4B68B;
 }
+
 </style>
