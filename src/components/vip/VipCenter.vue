@@ -116,13 +116,13 @@
     <div class="item" @click="popAccess(3)">
       <i class="icon-vip coin"></i>
       <p>5 kali koin</p>
-      <span>Koin bisa diuangkan</span>
+      <span>Artikel yang berkualitas</span>
     </div>
 
     <div class="item" @click="popAccess(4)">
       <i class="icon-vip more"></i>
       <p>Masih banyak lagi</p>
-      <span>Stay tuned</span>
+      <span>Bonus Tinggi</span>
     </div>
     <div class="access-text" :class="[active == 3? 'show':'hide']">
       <i class="icon-text-caret"></i><i @click="popAccessHide()" class="icon-text-close">×</i>

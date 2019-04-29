@@ -219,13 +219,27 @@ body{
     background-size: 100% 35%;
     width: 35px;
     height: 15px
+    /* position: relative;
+    top: -4px;
+    display: inline-block;
+    background: url(../../assets/images/vip/vip-jadi-left.png) center no-repeat;    
+    background-size: 100% 100%;
+    width: 40px;
+    height: 6px; */
 }
 .vip-title-sec .right {
     display: inline-block;
     background: url(../../assets/images/vip/vip-jadi-right.png) center no-repeat;
     background-size: 100% 35%;
     width: 35px;
-    height: 15px
+    height: 15px;
+    /* position: relative;
+    top: -4px;
+    display: inline-block;
+    background: url(../../assets/images/vip/vip-jadi-right.png) center no-repeat;   
+     background-size: 100% 100%;
+    width: 40px;
+    height: 6px; */
 }
 .vip-title-sec span {
     margin: 0 10px 0 10px
@@ -973,6 +987,7 @@ a{
     font-size: 10px;
 }
 .down-content {
+    padding: 3px;
     text-align: center;
  }
 .selected {
