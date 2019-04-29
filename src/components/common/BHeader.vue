@@ -62,9 +62,9 @@ export default {
 .header {
   position: fixed;
   top: 0;
-  height: 55px;
+  height: 70px;
   text-align: center;
-  line-height: 70px;
+  line-height: 85px;
   font-size: 16px;
   color: #333333;
   background: #fff;
@@ -88,7 +88,7 @@ export default {
     display: inline-block;
     position:absolute;
     left: 15px;
-    top: 30px;
+    top: 38px;
     width: 10px;
     height: 10px;
     border-top: 2px solid #000000;
