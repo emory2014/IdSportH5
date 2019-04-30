@@ -229,11 +229,11 @@ export default {
       });
     }
   },
-  beforeCreate(){
+  created(){
     window.AndroidWebView.showLoading()
   },
   mounted() {
-    window.AndroidWebView.dismissLoading()
+    // window.AndroidWebView.dismissLoading()
     this.getData()
   },
   destroyed(){
