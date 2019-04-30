@@ -1,7 +1,7 @@
 <template>
 <div class="vip-container background" style="padding-top:50px">
 <BHeader  title="Riwayat Transaksi" vip={true} />
- <!-- <Loading v-if="!data" /> 
+ <Loading v-if="!data" /> 
  <div v-if="data.length">
       <div class="task-record-panel" v-for="(item,index) of data" :key="index">
         <div class="title">
@@ -19,9 +19,9 @@
         <p>Waktu: <span class="bold">{{item.update_time}}</span></p>
       </div>
 
-    </div> -->
+    </div>
 
-<div :class="[true ? 'show':'hide']" class="vip-record-default">
+<div :class="[defaultShow ? 'show':'hide']" class="vip-record-default">
     <!-- <img src="../../assets/images/vip/vip-default-pic.png" /> -->
     <p>“ Sementara tidak ada konten ”</p>
 </div>

@@ -19,7 +19,7 @@
 </ul> 
 
 <div :class="[defaultShow ? 'show':'hide']" class="vip-record-default">
-    <img src="../../assets/images/vip/vip-default-pic.png" />
+    <!-- <img src="../../assets/images/vip/vip-default-pic.png" /> -->
     <p>“ Sementara tidak ada konten ”</p>
 </div>
 
@@ -144,6 +144,11 @@ let Base64 = require('js-base64').Base64
 @import  "../../assets/css/vip.css";
 </style>
 <style scoped>
+    .vip-record-default {
+        padding-top: 270px;
+        color:#999999;
+        font-size: 14px;
+    }
     .background {
        background-color: rgb(248, 248, 248);
         position: absolute;
