@@ -434,8 +434,10 @@ export default {
       });
     }
   },
-  created(){
+  beforeCreate(){
     window.AndroidWebView.showLoading()
+  },
+  created(){
      var that = this;
 
     this.token = this.getAppToken()
