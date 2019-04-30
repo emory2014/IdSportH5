@@ -233,8 +233,8 @@ export default {
     window.AndroidWebView.showLoading()
   },
   mounted() {
-    // window.AndroidWebView.dismissLoading()
     this.getData()
+    window.AndroidWebView.dismissLoading()
   },
   destroyed(){
     clearTimeout(this.timeout)
