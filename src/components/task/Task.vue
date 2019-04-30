@@ -1,5 +1,5 @@
 <template>
-<div style="padding-top:90px"> 
+<div style="padding-top:110px">
   <header class="beheader">Tugas</header>
   <div class="open-mask" :class="[boxShow ? 'show':'hide']">
     <div class="open-text">+{{prize}}Koin</div>
@@ -186,7 +186,7 @@ export default {
           return ret
         }],
       }).then((res) => {
-        if (res.data.status.code == !200) {
+        if (res.data.status.code !=200) {
           window.AndroidWebView.showContent(res.data.status.message)
         } else {
           this.confirmShow = true
@@ -435,6 +435,7 @@ export default {
     }
   },
   created(){
+    window.AndroidWebView.showLoading()
      var that = this;
 
     this.token = this.getAppToken()
@@ -443,6 +444,7 @@ export default {
     this.getData()
   },
   mounted() {
+    window.AndroidWebView.dismissLoading()
     // var that = this;
     // this.token = this.getAppToken()
     // this.getData()
@@ -453,9 +455,6 @@ export default {
     //     clearInterval(interval)
     //   }
     // }, 500)
-
-
-
   }
 }
 </script>

@@ -5,9 +5,9 @@ body {
 .header {
   position: fixed;
   top: 0;
-  height: 60px;
+  height: 70px;
   text-align: center;
-  line-height: 60px;
+  line-height: 85px;
   font-size: 16px;
   color: #333333;
   background: #fff;
@@ -21,7 +21,7 @@ body {
   display: inline-block;
     position:absolute;
     left: 15px;
-    top: 25px;
+    top: 39px;
     width: 10px;
     height: 10px;
     border-top: 2px solid #000000;
@@ -342,7 +342,7 @@ a {
 .task-process-sec {
   position: absolute;
   width: 60% !important;
-  top: 10px;
+  top: 28px;
   left: 20% !important;
   font-size: 12px;
 }
@@ -866,9 +866,9 @@ a {
 .beheader {
   position: fixed;
   top: 0;
-  height: 50px;
+  height: 70px;
   text-align: center;
-  line-height: 60px;
+  line-height: 85px;
   font-size: 16px;
   color: #333333;
   background: #fff;

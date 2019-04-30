@@ -135,12 +135,13 @@
 }
 
 .cont-panel {
+  position: relative;
   margin: -5px auto 20px;
   width: 92%;
   /* background: rgba(255,255,255,1); */
   border-radius: 8px;
   text-align: center;
-  color: #333333;
+  color: #666666;
   font-size: 14px;
   overflow: hidden;
   /* box-shadow: 0px 2px 8px 0px rgba(0,0,0,0.08);; */
@@ -155,11 +156,11 @@
 .cont-panel .dash {
   background: url(../../assets/images/recharge/dash.png) no-repeat left center;
   display: block;
-  width: 80%;
+  width: 88%;
   height: 1px;
   position:absolute;
-  top: 318px;
-  left: 36px;
+  top: 222x;
+  left: 19px;
   background-size: 100% 100%
 }
 .cont-panel .title {
@@ -187,13 +188,13 @@
   height: 100%;
   background-size: 100% 100%;
   margin-top: 0px;
-  padding-top: 20px
+  padding-top: 20px;
 }
 
 .text-cont ol {
   /* list-style: none; */
   text-align: left;
-  color: #333333;
+  color: #666666;
   font-size: 14px;
   padding: 0;
   margin: 20px 30px;
@@ -205,7 +206,7 @@
 }
 
 .yellow {
-  color: #E93F3F
+  color: #E93F3F;
 }
 
 .tab-cont {
@@ -215,7 +216,7 @@
 }
 
 .tab-cont .item {
-  color: #333333;
+  color: #999999;
   font-size: 16px;
   display: inline-block;
   text-align: center;
@@ -230,6 +231,7 @@
 
 .tab-cont .item.active {
   font-weight: bold;
+  color: #E93F3F;
 }
 
 .tab-cont .item.active::before {
@@ -340,17 +342,17 @@
   background: url(/static/img/retangular-bottom.9b7a259.png) top center;
   width: 100%;
   height: 100%;
-  margin-top: 0px;
   padding-top: 20px;
-  background-size: 100% 50%
+  background-size: 100% 100%;
+  background-position-y: -10px;
 }
 .fixDash {
   background: url(../../assets/images/recharge/dash.png) no-repeat left center;
   display: block;
-  width: 80%;
+  width: 89%;
   height: 1px;
   position:absolute;
-  left: 36px;
+  left: 18px;
   background-size: 100% 100%;
-  top: 270px
+  top: 224px
 }

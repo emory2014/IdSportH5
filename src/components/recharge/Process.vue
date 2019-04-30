@@ -49,7 +49,7 @@
             <li>Pilih “Transfer” pada menu. </li>
             <li>Pilih “Ke Bank Lain” pada menu .</li>
             <li>Masukan kode bank “<span class="yellow">013</span>” dan pilih “Benar” . </li>
-            <li>Masukan Kode Pembayaran (<span class="yellow">{{data}}</span>) pada tujuan transfer .</li>
+            <li>Masukan Kode Pembayaran <span class="yellow">({{data}})</span> pada tujuan transfer.</li>
             <!-- <li>Masukan nominal (<span class="yellow">{{amount}}</span>) dan pilih “Benar” .</li> -->
             <li>Masukan nominal yang harus dibayarkan dan pilih “Benar”</li>
             <li>Ikuti langkah selanjutnya sampai transaksi berhasil.</li>

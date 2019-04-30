@@ -36,7 +36,7 @@
         <li v-for="(item,key,index) of data.banks" :key="index" @click="selectBank(key)">{{item}}</li>
     </ul> -->
   <!-- </div> -->
-  <div @click="closePup">
+  <div @click="closePup($event)">
     <Popup v-model="popupShow" position="bottom">
       <Picker
         :columns="dataList" 
@@ -100,9 +100,12 @@ export default {
   },
   methods: {
     closePup(e){
-      this.keyId = 3;
+      console.log(e.target)
        setTimeout(()=>{ this.popupShow = false},300)
-        if(e.target.className.indexOf("van-picker-column__item") >-1){
+        if(e.target.className.indexOf("van-picker-column__item") > -1){
+          if(e.target.innerHTML.indexOf('MANDIRI') > -1){
+            this.keyId = 3;
+          }
           if (!this.amount) {
             this.amount = this.data.amountInfo[0].money
           }

@@ -164,7 +164,7 @@ body{
 }
 
 .question-container{
-    padding-top: 50px;
+    padding-top: 70px;
 }
 
 a{
