@@ -91,7 +91,7 @@ let Base64 = require('js-base64').Base64
             });
           },
           getData(page){
-            this.token = this.getAppToken();
+            let token = this.getAppToken();
               this.$http({
                 url: '/api/user/redeem/history?t='+(new Date()).getTime(),
                 method: 'post',
@@ -99,7 +99,7 @@ let Base64 = require('js-base64').Base64
                         'Content-type': 'application/x-www-form-urlencoded'
                     },
                     data:{
-                        token: this.token,
+                        token: token,
                         type: 3,
                         page:page
                     },
