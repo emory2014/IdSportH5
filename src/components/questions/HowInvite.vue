@@ -2,8 +2,7 @@
   <div class="question-invie-container">
           <BHeader title="Tutorial Cara Mengundang Teman" />
           <p class="ques-invite-title">
-               [Danaunta] <br>
-                Bagaimana mengundang teman?
+            Bagaimana mengundang teman?
           </p>
          <div class="ques-invite-text">
              Saat Anda mengadakan pesta dengan teman dan keluarga, mengobrol, bertemu, dan sebagainya.
@@ -18,7 +17,7 @@
             </li>
             <li>
               klik <span class="yellow"> "Undang Teman" (2) </span> untuk masuk ke halaman mengundang teman.
-            <img src="../../assets/images/question/ques1@2x.png" />
+            <img src="../../assets/images/question/que1@2x.png" />
             </li>
             <li>
                  Klik "Copy Url" untuk bisa langsung kirim tautan ke 
@@ -30,9 +29,9 @@
                 Unduh" akan langsung diarahkan ke Google Play 
                 Store untuk unduh aplikasi Danaunta, 
                 mengundang teman sukses.
-                <img src="../../assets/images/question/ques2@2x.png" />
-                <img src="../../assets/images/question/ques3@2x.png" />
-                <img src="../../assets/images/question/ques4@2x.png" />
+                <img src="../../assets/images/question/que2@2x.png" />
+                <img src="../../assets/images/question/que3@2x.png" />
+                <!-- <img src="../../assets/images/question/ques4@2x.png" /> -->
             </li>
         </ol>
   </div>
@@ -101,7 +100,4 @@ body{
     margin: auto;
 }
 
-.yellow {
-    color: #ffc000;
-}
 </style>

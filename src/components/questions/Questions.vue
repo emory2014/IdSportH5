@@ -13,13 +13,12 @@
           </div>
           <p class="sub-title " :class="[ open == 1 ? 'open':'']" @click="fold(1)">Kenapa Danaunta bisa kasih bonus? <i class="icon-arrow"></i></p>
           <div class="ques-anwser" :class="[ open == 1 ? 'open':'']" @click="fold(1)">
-               Danaunta mendukung peyediaan pengalaman membaca bacaan yang berkualitas.
-
-                Di dalam pengalaman membaca tersebut, kami memberikan apresiasi dalam bentuk RPC, sebagai pengganti uang.
-
-                Selain kalian bisa menambah pengetahuan menjadi lebih luas, kalian juga bisa mendapatkan penghasilan.
+               Unta mendukung peyediaan pengalaman membaca bacaan yang berkualitas. Di dalam pengalaman membaca tersebut,
+               kami memberikan apresiasi dalam bentuk RPC,
+               sebagai pengganti uang.Selain kalian bisa menambah pengetahuan menjadi lebih luas,
+               kalian juga bisa mendapatkan penghasilan.
           </div>
-          <router-link to="/how-play"><p class="sub-title">Cara menggunakan Danaunta <i class="icon-link"></i></p></router-link>
+          <router-link to="/how-play"><p class="sub-title"><i class="icon-hot"></i>Cara menggunakan Danaunta <i class="icon-link"></i></p></router-link>
           <p class="sub-title" :class="[ open == 2 ? 'open':'']" @click="fold(2)">Berita tidak muncul <i class="icon-arrow"></i></p>
           <div class="ques-anwser" :class="[ open == 2 ? 'open':'']" @click="fold(2)">
               Apakah kamu tidak bisa memuat semua berita atau hanya sebagian saja?
@@ -75,7 +74,7 @@
           <div class="ques-title" id="invite">
               Mengundang
           </div>
-          <router-link to="/how-invite"><p class="sub-title">Bagaimana cara mengundang teman?<i class="icon-link"></i></p></router-link>
+          <router-link to="/how-invite"><p class="sub-title"><i class="icon-hot"></i>Bagaimana cara mengundang teman?<i class="icon-link"></i></p></router-link>
 
           <div class="ques-title" id="wd">
               Penarikan
@@ -120,15 +119,9 @@
           </div>
           <p class="sub-title" :class="[ open == 9 ? 'open':'']" @click="fold(9)">Kenapa  akun saya diblokir?<i class="icon-arrow"></i></p>
           <div class="ques-anwser" :class="[ open == 9 ? 'open':'']" @click="fold(9)">
-                Danaunta memiliki mekanisme anti-kecurangan yang sangat ketat.
-
-                Jika sekali ditemukan bahwa ada kecurangan maka akan dilarang
-
-                selamanya,
-
-                kami berharap semua orang dapat bekerja sama untuk demi menjaga
-
-                kelancaran dan ketertiban Danaunta.
+               Unta memiliki mekanisme anti-kecurangan yang sangat ketat.
+               Jika sekali ditemukan bahwa ada kecurangan maka akan dilarang selamanya, 
+               kami berharap semua orang dapat bekerja sama untuk demi menjaga kelancaran dan ketertiban Unta.
           </div>
 
   </div>
@@ -178,28 +171,28 @@ a{
 
 .ques-btn-group .tag{
     font-size: 14px;
-    color: #666;
     padding: 3px 10px;
-    border-radius: 15px;
-    border: 1px solid #999;
+    border-radius:5px;
+    border:1px solid rgba(233,63,63,1);
     margin: 0 12px 12px 0;
-    box-sizing: border-box;
     display: inline-block;
+    border: 1px solid #DDDDDD;
+    color: #999999;
 }
 
 .ques-btn-group .tag.active{
-    background: #FFC000;
-    color: #fff;
-    border: none;
+    color: #E93F3F;
+    border:1px solid rgba(233,63,63,1);
 }
 
 .ques-title{
     margin: 0;
-    color: #FFC000;
+    color: #333333;
     font-size: 16px;
     padding: 16px 0 16px 16px;
-    background: #F5F5F5;
+    /* background: #F5F5F5; */
     font-weight:bold;
+    border-bottom: 1px solid #DDDDDD;
 }
 
 .sub-title{
@@ -263,9 +256,20 @@ a{
     height: 15px;
     margin-right: 13px;
     vertical-align: middle;
-    background: url(../../assets/images/icon-link@2x.png) no-repeat center;
+    background: url(../../assets/images/lianjie@2x.png) no-repeat center;
     background-size: 15px 15px;
     position: relative;
     top: 3px;
+}
+.icon-hot {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+    vertical-align: middle;
+    background: url(../../assets/images/icon-hot.png) no-repeat center;
+    background-size: 15px 15px;
+    position: relative;
+    top: -3px;
 }
 </style>

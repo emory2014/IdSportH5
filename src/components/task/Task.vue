@@ -435,12 +435,9 @@ export default {
     }
   },
   created(){
-    window.AndroidWebView.showLoading()
-     var that = this;
-
+    window.AndroidWebView.showLoading();
+    var that = this;
     this.token = this.getAppToken()
-
-    //获取默认数据
     this.getData()
   },
   mounted() {

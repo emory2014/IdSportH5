@@ -1,9 +1,9 @@
 <template>
   <div class="question-container">
-          <BHeader title="Cara menggunakan Danaunta" />
+          <BHeader title="Cara menggunakan Unta" />
           <div class="ques-play-title">
                <img src="../../assets/images/question/logo@2x.png" />
-               <p>Mengajari kamu bermain Danaunta <br>
+               <p>Mengajari kamu bermain Unta <br>
                     Mudah meghasilkan uang</p>
                     Masih tidak tahu cara menghasilkan uang jajan!
                     Dibawah ini kita sama sama liat bagaimana 
@@ -25,20 +25,18 @@
       
           </div>
          
-          <p class="sub-title" :class="[ open == 2 ? 'open':'']" @click="fold(2)">Bonus membaca artikel <i class="icon-arrow"></i></p>
+          <p class="sub-title" :class="[ open == 2 ? 'open':'']" @click="fold(2)">Bonus Tugas<i class="icon-arrow"></i></p>
           <div class="ques-anwser" :class="[ open == 2 ? 'open':'']" @click="fold(2)">
               (1) Setiap hari absen bisa dapat RPC : Buka News
                 Cat  klik <span class="yellow">"Tugas" -> "Absen"</span> langsung dapat bonus.  (Perhatikan: Jika tidak absen sehari, absen akan 
                 diulang dari awal)
-                <img src="../../assets/images/question/ques7@2x.png" />
+                <img src="../../assets/images/question/Bitmap@2x.png" />
             (2) Buka Kotak Emas : buka kotak emas tiap 4 jam 
                 sekali, bonus 10 RPC tiap kali buka kotak emas
-                <img src="../../assets/images/question/ques8@2x.png" />
-            (3) Tugas setiap hari : Buka Danaunta klik "Tugas", 
-                selesaikan tugas sesuai dengan yang diminta. 
-                (Perhatikan: Tugas setiap hari bisa dilakukan 
-                setiap hari)
-                <img src="../../assets/images/question/ques9@2x.png" />
+                <img src="../../assets/images/question/Bitmap8@2x.png" />
+            (3) tantangan : beli tugas yang dipilih,dan menyelesaikan tugasnya,
+                jika tantangan berhasil,maka koin yang dibeli sebelumnya akan dibalikan bahkan dapat bonus lebih.
+                <img src="../../assets/images/question/Bitmap9@2x.png" />
 
           </div>
         
@@ -46,32 +44,32 @@
           <div class="ques-anwser" :class="[ open == 3 ? 'open':'']" @click="fold(3)">
               Bisa langsung dapat bonus tertinggi jika mengundang teman, setiap mengundang 1 orang teman kamu akan dapat Rp.6000 (dibagikan bertahap, 
               silahkan cek peraturan untuk lebih detail);<br>
-              Buka Danaunta klik "Saya" -> "Mengundang teman" -> salin URL, bagikan URL Undangan lewat Facebook dan WhatsApp, lalu teman kamu akan memasukkan nomor handphone dan langsung unduh lalu
-                pendaftaran berhasil, mengundang teman juga telah berhasil.
-                <img src="../../assets/images/question/ques10@2x.png" />
-                <img src="../../assets/images/question/ques11@2x.png" />
+              Buka Danaunta klik <span class="redMark">"Saya" -> "Mengundang teman" -> salin URL, bagikan URL Undangan lewat Facebook dan WhatsApp, lalu teman kamu akan memasukkan nomor handphone dan langsung unduh lalu
+                pendaftaran berhasil, mengundang teman juga telah berhasil.</span>
+                <img src="../../assets/images/question/que10@2x.png" />
+                <img src="../../assets/images/question/que11@2x.png" />
 
           </div>
 
         <p class="sub-title" :class="[ open == 4 ? 'open':'']" @click="fold(4)">Penghasilan dan penarikan <i class="icon-arrow"></i></p>
           <div class="ques-anwser" :class="[ open == 4 ? 'open':'']" @click="fold(4)">
-             (1) Cek Penghasilan : Bonus RPC dapat dihasilkan 
-            dari kegiatan diatas, bisa dicek di <span class="yellow">"Saya -> 
+            (1) Cek Penghasilan : Bonus RPC dapat dihasilkan 
+            dari kegiatan diatas, bisa dicek di <span class="redMark">"Saya -> 
             Penghasilan saya"</span>.
-                <img src="../../assets/images/question/ques12@2x.png" />
-                <img src="../../assets/images/question/ques13@2x.png" />
-            (2) Tukarkan RPC dan tarik uang tunai : RPC yang didapat dapat ditukarkan dengan Pencairan Cepat atau Pencairan Bersyarat.
-            Pencairan Cepat: 1 RPC = Rp 0.05,- dan RPC yang ditukarkan bisa langsung dicairkan.
-            Pencairan Bersyarat : 1 RPC = Rp 2,- lalu RPC yang diturkankan harus mengundang teman baru bisa dicairkan. (Perhatikan : Waktu melakukan penarikan, informasi rekening harus diisi dengan benar)
-            Langkah-langkah melakukan penarikan : Klik <span class="yellow">"Saya" -> "Tukar Koin" -> "Pilih Pencairan Cepat atau Pencairan Bersyarat"</span>
-                <img src="../../assets/images/question/ques14@2x.png" />
-                <img src="../../assets/images/question/ques15@2x.png" />
-            Penarikan : klik "Saya" -> "Tarik Tunai" -> "Pilih Pencairan Cepat atau Pencairan Bersyarat"
-                <img src="../../assets/images/question/ques16@2x.png" />
-                <img src="../../assets/images/question/ques17@2x.png" />
+                <img src="../../assets/images/question/que12@2x.png" />
+                <img src="../../assets/images/question/que13@2x.png" />
+            (2) Tukarkan RPC dan tarik uang tunai : RPC yang didapat dapat ditukarkan dengan Pencairan Cepat atau Pencairan Bersyarat.Pencairan Cepat: 1 RPC = Rp 0.05,
+            - dan RPC yang ditukarkan bisa langsung dicairkan.Pencairan Bersyarat : 1 RPC = Rp 2,- lalu RPC yang diturkankan harus mengundang teman baru bisa dicairkan. 
+            (Perhatikan : Waktu melakukan penarikan, informasi rekening harus diisi dengan benar)
+            Langkah-langkah melakukan penarikan : Klik <span class="redMark">"Saya" -> "Tukar Koin" -> "Pilih Pencairan Cepat atau Pencairan Bersyarat"</span>
+                <img src="../../assets/images/question/que14@2x.png" />
+                <img src="../../assets/images/question/que15@2x.png" />
+            Penarikan : klik <span class="redMark">"Saya" -> "Tarik Tunai" -> "Pilih Pencairan Cepat atau Pencairan Bersyarat"</span>
+                <img src="../../assets/images/question/que16@2x.png" />
+                <img src="../../assets/images/question/que17@2x.png" />
 
           </div>
-        <a href="http://www.danaunta.com/page/invite"><div class="ques-play-btn"> Penghasilan dan penarikan </div></a>
+        <a href="http://www.danaunta.com/page/invite"><div class="ques-play-btn"> Saya mengerti, mulai hasilkan </div></a>
   </div>
 </template>
 <script>
@@ -114,7 +112,7 @@ a{
 
 .ques-play-title {
    text-align: center;
-   font-size: 12px;
+   font-size: 14px;
    color: #666;
    width: 80%;
    margin: 20px auto;
@@ -128,7 +126,7 @@ a{
 }
 
 .ques-play-title img {
-    width: 20%;
+    width: 91px;
 }
 
 .ques-btn-group .tag{
@@ -143,9 +141,9 @@ a{
 }
 
 .ques-btn-group .tag.active{
-    background: #FFC000;
+    /* background: #FFC000;
     color: #fff;
-    border: none;
+    border: none; */
 }
 
 .ques-title{
@@ -161,7 +159,7 @@ a{
     margin: 0px;
     padding: 18px 0 17px 16px;
     font-size: 14px;
-    color: #333;
+    color: #333333;
     border-bottom: 1px solid #ddd;
     line-height: 1;
     box-sizing: border-box;
@@ -226,19 +224,24 @@ a{
 
 
 .ques-play-btn{
-    width: 90%;
-    margin: 10% auto;
+    /* width: 100%;
+    position: absolute;
+    bottom: 0px;
     background: -webkit-linear-gradient(right,#FFC000,#FFE050);
     height: 50px;
     line-height: 50px;
     text-align: center;
-    border-radius: 25px;
+    color: #fff;
+    font-size: 18px; */
+    margin: 10% auto 0px;
+    background: #E93F3F;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
     color: #fff;
     font-size: 18px;
-    box-shadow: 1px 4px 16px 10px rgba(255, 194, 30, 0.1);
 }
-.yellow {
-    color: #ffc000;
+.redMark {
+    color:red;
 }
-
 </style>
