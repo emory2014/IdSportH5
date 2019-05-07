@@ -377,8 +377,8 @@ export default {
           minute = parseInt(minute) < 10 && parseInt(minute) >= 0 ? '0' + minute : minute
           second = parseInt(second) < 10 && parseInt(second) >= 0 ? '0' + second : second
           var countdownStr = hour + ':' + minute + ':' + second
-          document.getElementById('countdown').innerHTML = countdownStr
           sec--
+          document.getElementById('countdown').innerHTML = countdownStr
           // if (sec <= 0) {
           //   window.location.reload()
           // }
