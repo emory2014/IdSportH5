@@ -1,5 +1,5 @@
 <template>
-<div class="vip-container background" style="padding-top:50px">
+<div class="background" >
 <BHeader  title="Riwayat Transaksi" vip={true} />
  <Loading v-if="!data" /> 
  <div v-if="data.length">
@@ -133,6 +133,7 @@ let Base64 = require('js-base64').Base64
 </script>
 <style>
     .background {
+        padding-top: 70px;
         background-color: rgb(248, 248, 248);
         position: absolute;
         top: 0;

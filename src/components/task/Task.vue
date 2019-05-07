@@ -186,7 +186,7 @@ export default {
           return ret
         }],
       }).then((res) => {
-        if (res.data.status.code =570) {
+        if (res.data.status.code == 570) {
           window.AndroidWebView.showContent(res.data.status.message)
         } else {
           this.confirmShow = true
