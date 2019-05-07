@@ -1,6 +1,7 @@
 <template>
   <div class="question-container">
           <BHeader title="Cara menggunakan Unta" />
+          <div class="fixContant">
           <div class="ques-play-title">
                <img src="../../assets/images/question/logo@2x.png" />
                <p>Mengajari kamu bermain Unta <br>
@@ -69,6 +70,7 @@
                 <img src="../../assets/images/question/que17@2x.png" />
 
           </div>
+          </div>
         <a href="http://www.danaunta.com/page/invite"><div class="ques-play-btn"> Saya mengerti, mulai hasilkan </div></a>
   </div>
 </template>
@@ -103,7 +105,7 @@ body{
 }
 
 .question-container{
-    padding-top: 50px;
+    padding-top: 70px;
 }
 
 a{
@@ -224,22 +226,19 @@ a{
 
 
 .ques-play-btn{
-    /* width: 100%;
-    position: absolute;
-    bottom: 0px;
-    background: -webkit-linear-gradient(right,#FFC000,#FFE050);
-    height: 50px;
-    line-height: 50px;
-    text-align: center;
-    color: #fff;
-    font-size: 18px; */
-    margin: 10% auto 0px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    right: 0;
     background: #E93F3F;
     height: 50px;
     line-height: 50px;
     text-align: center;
     color: #fff;
     font-size: 18px;
+}
+.fixContant {
+    padding-bottom: 50px;
 }
 .redMark {
     color:red;
