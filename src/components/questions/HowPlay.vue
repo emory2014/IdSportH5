@@ -142,20 +142,6 @@ a{
     display: inline-block;
 }
 
-.ques-btn-group .tag.active{
-    /* background: #FFC000;
-    color: #fff;
-    border: none; */
-}
-
-.ques-title{
-    margin: 0;
-    color: #FFC000;
-    font-size: 16px;
-    padding: 16px 0 16px 16px;
-    background: #F5F5F5;
-    font-weight:bold;
-}
 
 .sub-title{
     margin: 0px;
