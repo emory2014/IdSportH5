@@ -169,7 +169,7 @@ export default {
       
       this.token = this.getAppToken()
       this.$http({
-        url: '/api/mission/buy',
+        url: '/api/mission/buycheck',
         method: 'post',
         headers: {
           'Content-type': 'application/x-www-form-urlencoded'
