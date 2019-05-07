@@ -133,7 +133,7 @@ export default {
       count: '',
       timestamp: 0,
       list: [],
-      timeout: null,
+      timeout1: null,
       interval: null,
       gold: '--',
       continuousDays: 0,
@@ -158,7 +158,7 @@ export default {
     })
   },
   beforeDestroy() {
-    clearTimeout(this.timeout)
+    clearTimeout(this.timeout1)
     clearInterval(this.interval)
   },
   methods: {
@@ -354,7 +354,7 @@ export default {
       });
     },
     countDown(sec) {
-      this.timeout = setTimeout(function() {
+      this.timeout1 = setTimeout(function() {
         var hour = 0
         var minute = 0
         var second = 0
