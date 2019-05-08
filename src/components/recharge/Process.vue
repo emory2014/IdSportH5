@@ -46,13 +46,13 @@
         <i class="dash"></i>
         <div class="text-cont">
           <ol>
-            <li>Pilih “Transfer” pada menu. </li>
-            <li>Pilih “Ke Bank Lain” pada menu .</li>
-            <li>Masukan kode bank “<span class="yellow">013</span>” dan pilih “Benar” . </li>
-            <li>Masukan Kode Pembayaran <span class="yellow">({{data}})</span> pada tujuan transfer.</li>
+            <li>Pilih “Transfer” pada menu </li>
+            <li>Pilih “Ke Bank Lain” pada menu </li>
+            <li>Masukan kode bank “<span class="yellow">013</span>” dan pilih “Benar” </li>
+            <li>Masukan Kode Pembayaran <span class="yellow">({{data}})</span> pada tujuan transfer</li>
             <!-- <li>Masukan nominal (<span class="yellow">{{amount}}</span>) dan pilih “Benar” .</li> -->
             <li>Masukan nominal yang harus dibayarkan dan pilih “Benar”</li>
-            <li>Ikuti langkah selanjutnya sampai transaksi berhasil.</li>
+            <li>Ikuti langkah selanjutnya sampai transaksi berhasil</li>
           </ol>
         </div>
       </div>
@@ -210,10 +210,10 @@
 <i class="dash"></i>  
         <div class="text-cont">
           <ol>
-            <li>Masukkan kartu dan pin ATM.</li>
+            <li>Masukkan kartu dan pin atm.</li>
             <li>Pilih menu “Transfer”.</li>
             <li>Pilih menu “Ke Rek Bank Lain”.</li>
-            <li>Masukkan sandi Bank “<span class="yellow">013</span>” dan pilih “Benar”. </li>
+            <li>Masukkan sandi Bank “013” dan pilih “Benar”. </li>
             <li>Masukkan nomor rekening (Kode Pembayaran) yang dituju dengan (<span class="yellow">{{data}}</span>) dan pilih “Benar”. </li>
             <!-- <li>Masukkan nominal isi ulang (<span class="yellow">{{amount}}</span>) dan pilih “Benar”.</li> -->
             <li>Masukkan nominal isi ulang dan pilih “Benar”</li>
@@ -232,11 +232,11 @@
 <i class="dash"></i> 
         <div class="text-cont">
           <ol>
-            <li>Login di <a href="https://ib.bri.co.id/ib-bri/">https://ib.bri.co.id/ib-bri/</a>, masukkan username dan password.</li>
-            <li>Pilih menu “Transfer”. </li>
-            <li>Pilih menu “Bank Lain”.</li>
-            <li>Pilih kode Bank “Bank PERMATA (<span class="yellow">013</span>)”.</li>
-            <li>Masukkan nomor rekening (Kode Pembayaran) yang dituju dengan (<span class="yellow">{{data}}</span>). </li>
+            <li>Login di https://ib.bri.co.id/ib-bri/, masukkan username dan password</li>
+            <li>Pilih menu “Transfer” </li>
+            <li>Pilih menu “Bank Lain”</li>
+            <li>Pilih kode Bank “Bank PERMATA (<span class="yellow">013</span>)”</li>
+            <li>Masukkan nomor rekening (Kode Pembayaran) yang dituju dengan (<span class="yellow">{{data}}</span>)</li>
             <!-- <li>Masukkan jumlah transfer (<span class="yellow">{{amount}}</span>)</li> -->
             <li>Masukkan jumlah transfer (nominal isi ulang)</li>
             <li>Pilih OK</li>
@@ -496,7 +496,7 @@
           <ol>
             <li>Pilih “Transfer” pada menu </li>
             <li>Pilih “Ke Bank Lain” pada menu </li>
-            <li>Masukan kode bank “Bank PERMATA (013)”</li>
+            <li>Masukan kode bank “Bank PERMATA <span class="yellow">(013)</span>”</li>
             <li>Masukan Kode Pembayaran (<span class="yellow">{{data}}</span>) pada tujuan transfer</li>
             <li>Masukan nominal yang harus dibayarkan dan pilih “OK” </li>
             <li>Ikuti langkah selanjutnya sampai transaksi berhasil.</li>
@@ -517,7 +517,7 @@
           <ol>
             <li>Pilih “Transfer” pada menu</li>
             <li>Pilih “Ke Bank Lain” pada menu </li>
-            <li>Masukan kode bank “Bank PERMATA (013)” </li>
+            <li>Masukan kode bank “Bank PERMATA <span class="yellow">(013)”</span> </li>
             <li>Masukan Kode Pembayaran (<span class="yellow">{{data}}</span>) pada tujuan transfer</li>
             <li>Masukan nominal yang harus dibayarkan dan pilih “OK” </li>
             <li> Ikuti langkah selanjutnya sampai transaksi berhasil</li>
@@ -623,7 +623,7 @@ export default {
       } else if (method == 5) {
         return "BNI"
       } else if (method == 6) {
-        return "CIMB"
+        return "Bank Lain"
       } else if (method == 7) {
         return "MEGA"
       } else if (method == 8) {
