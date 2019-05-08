@@ -17,10 +17,10 @@
       kami sarankan untuk ada baca di Danaunta,jika 
       kalian melihat artikel yang menarik kalian bisa 
       langsung klik untuk baca, baca seluruhnya,kalian 
-      bisa secara acak dapat bonus sampai <span class="yellow">100 RPC</span>.
-      <img src="../../assets/images/question/ques5@2x.png" />
+      bisa secara acak dapat bonus sampai <span class="redMark">100 RPC</span>.
+      <img src="../../assets/images/question/readBonus.png" />
       (2) Setiap kamu membaca artikel menarik dan kamu 
-      bagikan ke teman-teman,kalian bisa dapat bonus <span class="yellow">30 RPC</span> (teman yang sama hanya dihitung 1 kali 
+      bagikan ke teman-teman,kalian bisa dapat bonus <span class="redMark">30 RPC</span> (teman yang sama hanya dihitung 1 kali 
       bonus)
       <img src="../../assets/images/question/ques6@2x.png" />
       
@@ -29,7 +29,7 @@
           <p class="sub-title" :class="[ open == 2 ? 'open':'']" @click="fold(2)">Bonus Tugas<i class="icon-arrow"></i></p>
           <div class="ques-anwser" :class="[ open == 2 ? 'open':'']" @click="fold(2)">
               (1) Setiap hari absen bisa dapat RPC : Buka News
-                Cat  klik <span class="yellow">"Tugas" -> "Absen"</span> langsung dapat bonus.  (Perhatikan: Jika tidak absen sehari, absen akan 
+                Cat  klik <span class="redMark">"Tugas" -> "Absen"</span> langsung dapat bonus.  (Perhatikan: Jika tidak absen sehari, absen akan 
                 diulang dari awal)
                 <img src="../../assets/images/question/Bitmap@2x.png" />
             (2) Buka Kotak Emas : buka kotak emas tiap 4 jam 
@@ -45,8 +45,8 @@
           <div class="ques-anwser" :class="[ open == 3 ? 'open':'']" @click="fold(3)">
               Bisa langsung dapat bonus tertinggi jika mengundang teman, setiap mengundang 1 orang teman kamu akan dapat Rp.6000 (dibagikan bertahap, 
               silahkan cek peraturan untuk lebih detail);<br>
-              Buka Danaunta klik <span class="redMark">"Saya" -> "Mengundang teman" -> salin URL, bagikan URL Undangan lewat Facebook dan WhatsApp, lalu teman kamu akan memasukkan nomor handphone dan langsung unduh lalu
-                pendaftaran berhasil, mengundang teman juga telah berhasil.</span>
+              Buka Danaunta klik <span class="redMark">"Saya" -> "Mengundang teman" -> salin URL,</span> bagikan URL Undangan lewat Facebook dan WhatsApp, lalu teman kamu akan memasukkan nomor handphone dan langsung unduh lalu
+                pendaftaran berhasil, mengundang teman juga telah berhasil.
                 <img src="../../assets/images/question/que10@2x.png" />
                 <img src="../../assets/images/question/que11@2x.png" />
 
@@ -227,6 +227,6 @@ a{
     padding-bottom: 50px;
 }
 .redMark {
-    color:red;
+    color:#E93F3F;
 }
 </style>
