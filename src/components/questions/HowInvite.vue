@@ -67,7 +67,7 @@ body{
 }
 
 .question-invie-container{
-    padding: 50px 20px 20px 20px;
+    padding: 55px 20px 20px 20px;
 }
 
 .ques-invite-title {
@@ -97,7 +97,7 @@ body{
 .ques-invite-ol li img {
     width: 90%;
     display: block;
-    margin: auto;
+    margin:6px auto;
 }
 
 </style>
