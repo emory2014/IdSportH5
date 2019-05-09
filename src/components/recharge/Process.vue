@@ -76,7 +76,7 @@
             <li>Pilih "YA" untuk Penduduk.</li>
             <li>Pilih "YA" untuk WNI</li>
             <li>Masukkan Nama Penerima “BLUEPAY”</li>
-            <li>Masukkan No. Rekening Tujuan dengan Kode Pembayaran (<span class="yellow">{{data}}</span>) </li>
+            <li>Masukkan No. Rekening Tujuan dengan Kode Pembayaran <span class="yellow">({{data}})</span> </li>
             <li>Masukkan 8 Angka yang tertera kedalam Key BCA Anda</li>
             <li>Masukkan Angka yang tertera setelah respon didapat dari Key BCA </li>
             <li>Lalu Klik Kirim</li>
@@ -110,7 +110,7 @@
             <li>Masukkan kode akses.</li>
             <li>Pilih “m-Transfer”</li>
             <li>Pada kolom Daftar Transfer, pilih “Antar Bank”.</li>
-            <li>Pilih bank “PERMATA”, lalu masukkan Kode Pembayaran (<span class="yellow">{{data}}</span>).</li>
+            <li>Pilih bank “PERMATA”, lalu masukkan Kode Pembayaran <span class="yellow">({{data}})</span>.</li>
             <li>Klik “Send”.</li>
           </ol>
           <p>Pembayaran VA yang sudah di daftarkan.</p>
@@ -147,7 +147,7 @@
             <li>Pilih “Lainnya > Lainnya > Multipayment”.</li>
             <li>Isi kode perusahaan “70002” dan pilih “Benar”. </li>
             <li>Isi kode merchant “078” dan pilih “Benar”.</li>
-            <li>Masukkan 8 digit terakhir Kode Pembayaran (<span class="yellow">{{data}}</span>) dan pilih “Benar”.</li>
+            <li>Masukkan 8 digit terakhir Kode Pembayaran <span class="yellow">({{data}})</span> dan pilih “Benar”.</li>
             <li>Ikuti langkah selanjutnya sampai transaksi berhasil dengan nominal (<span class="yellow">{{amount}}</span>).</li>
           </ol>
         </div>
@@ -166,7 +166,7 @@
             <li>Pilih Multi Payment .</li>
             <li>Pilih lainnya > penyedia layanan > pilih DOKU.</li>
             <li>Isi kode merchant “078”.</li>
-            <li> Masukkan Kode Pembayaran (<span class="yellow">{{data}}</span>) dengan 8 digit kode terakhir dan pilih “lanjut” </li>
+            <li> Masukkan Kode Pembayaran <span class="yellow">({{data}})</span> dengan 8 digit kode terakhir dan pilih “lanjut” </li>
             <li>Ikuti langkah selanjutnya hingga pembayaran selesai dengan nominal (<span class="yellow">{{amount}}</span>)</li>
           </ol>
         </div>
@@ -186,7 +186,7 @@
             <li>Pilih Multi Payment.</li>
             <li>Pilih lainnya > penyedia layanan > pilih DOKU .</li>
             <li>Isi kode merchant “078” </li>
-            <li>Masukkan Kode Pembayaran (<span class="yellow">{{data}}</span>) dengan 8 digit kode terakhir dan pilih “lanjut”</li>
+            <li>Masukkan Kode Pembayaran <span class="yellow">({{data}})</span> dengan 8 digit kode terakhir dan pilih “lanjut”</li>
             <li>Ikuti langkah selanjutnya hingga pembayaran selesai (<span class="yellow">{{amount}}</span>).</li>
           </ol>
         </div>
@@ -214,7 +214,7 @@
             <li>Pilih menu “Transfer”.</li>
             <li>Pilih menu “Ke Rek Bank Lain”.</li>
             <li>Masukkan sandi Bank “013” dan pilih “Benar”. </li>
-            <li>Masukkan nomor rekening (Kode Pembayaran) yang dituju dengan (<span class="yellow">{{data}}</span>) dan pilih “Benar”. </li>
+            <li>Masukkan nomor rekening (Kode Pembayaran) yang dituju dengan <span class="yellow">({{data}})</span>dan pilih “Benar”. </li>
             <!-- <li>Masukkan nominal isi ulang (<span class="yellow">{{amount}}</span>) dan pilih “Benar”.</li> -->
             <li>Masukkan nominal isi ulang dan pilih “Benar”</li>
             <li>Pilih “Benar” pada halaman konfirmasi</li>
@@ -235,8 +235,8 @@
             <li>Login di https://ib.bri.co.id/ib-bri/, masukkan username dan password</li>
             <li>Pilih menu “Transfer” </li>
             <li>Pilih menu “Bank Lain”</li>
-            <li>Pilih kode Bank “Bank PERMATA (<span class="yellow">013</span>)”</li>
-            <li>Masukkan nomor rekening (Kode Pembayaran) yang dituju dengan (<span class="yellow">{{data}}</span>)</li>
+            <li>Pilih kode Bank “Bank PERMATA (013)”</li>
+            <li>Masukkan nomor rekening (Kode Pembayaran) yang dituju dengan <span class="yellow">({{data}})</span></li>
             <!-- <li>Masukkan jumlah transfer (<span class="yellow">{{amount}}</span>)</li> -->
             <li>Masukkan jumlah transfer (nominal isi ulang)</li>
             <li>Pilih OK</li>
@@ -258,7 +258,7 @@
             <li>Pilih menu “Transfer”. </li>
             <li>Pilih menu “Bank Lain”.</li>
             <li>Pilih kode Bank “Bank PERMATA” (013).</li>
-            <li>Masukkan nomor rekening (Kode Pembayaran) yang dituju dengan (<span class="yellow">{{data}}</span>) . </li>
+            <li>Masukkan nomor rekening (Kode Pembayaran) yang dituju dengan <span class="yellow">({{data}})</span> . </li>
             <!-- <li>Masukkan jumlah transfer (<span class="yellow">{{amount}}</span>). </li> -->
             <li>Masukkan jumlah transfer (nominal isi ulang)</li>
             <li>Pilih OK </li>
@@ -285,7 +285,7 @@
             <li>Pilih “Lainnya > Lainnya > Multipayment”.</li>
             <li>Isi kode perusahaan “70002” dan pilih “Benar”.</li>
             <li>Isi kode merchant “078” dan pilih “Benar”</li>
-            <li>Masukkan 8 digit terakhir Kode Pembayaran (<span class="yellow">{{data}}</span>) dan pilih “Benar”. </li>
+            <li>Masukkan 8 digit terakhir Kode Pembayaran <span class="yellow">({{data}})</span> dan pilih “Benar”. </li>
             <li>Ikuti langkah selanjutnya sampai transaksi berhasil</li>
           </ol>
         </div>
@@ -348,7 +348,7 @@
             <li>Masukkan kartu, pilih bahasa kemudian masukkan PIN Anda. </li>
             <li>Pilih "Menu Lainnya" lalu pilih "Transfer".</li>
             <li>Pilih "Tabungan" lalu "Rekening BNI Virtual Account".</li>
-            <li>Masukkan nomor Virtual Account Kode Pembayaran (<span class="yellow">{{data}}</span>) dan nominal yang ingin Anda bayar. </li>
+            <li>Masukkan nomor Virtual Account Kode Pembayaran <span class="yellow">({{data}})</span> dan nominal yang ingin Anda bayar. </li>
             <li>Periksa kembali data transaksi kemudian tekan "Ya"</li>
           </ol>
         </div>
@@ -364,7 +364,7 @@
             <li>Login di <a href="https://ibank.bni.co.id">https://ibank.bni.co.id</a>, masukkan User ID dan Password .</li>
             <li>Pilih “TRANSFER” lalu pilih “Tambah Rekening Favorit”. </li>
             <li>Jika Anda menggunakan desktop untuk menambah rekening, pilih “Transaksi” lalu pilih “Atur Rekening Tujuan” kemudian “Tambah Rekening Tujuan” </li>
-            <li>Masukkan Nama dan nomor Virtual Account Kode Pembayaran (<span class="yellow">{{data}}</span>) Anda, lalu masukkan Kode Otentikasi Token .</li>
+            <li>Masukkan Nama dan nomor Virtual Account Kode Pembayaran <span class="yellow">({{data}})</span> Anda, lalu masukkan Kode Otentikasi Token .</li>
             <li>Jika Nomor rekening tujuan berhasil ditambahkan, kembali ke menu “TRANSFER”. </li>
             <li>Ikuti langkah selanjutnya sampai transaksi berhasil.</li>
             <li>Pilih “TRANSFER ANTAR REKENING BNI”, kemudian pilih rekening tujuan </li>
@@ -383,7 +383,7 @@
             <li>Login ke BNI Mobile Banking, masukkan User ID dan MPIN.</li>
             <li>Pilih menu "Transfer", lalu pilih "Antar Rekening BNI". </li>
             <li>Pilih "Input Rekening Baru"</li>
-            <li>Masukkan "Rekening Debet", "Rekening Tujuan" Kode Pembayaran (<span class="yellow">{{data}}</span>) dan "Nominal"
+            <li>Masukkan "Rekening Debet", "Rekening Tujuan" Kode Pembayaran <span class="yellow">({{data}})</span> dan "Nominal"
 
               kemudian klik "Lanjut".</li>
             <li>Periksa kembali data transaksi Anda, masukkan “Password Transaksi” kemudian klik “Lanjut”. </li>
@@ -411,7 +411,7 @@
           <ol>
             <li>Masukkan Kartu ATM Permata dan PIN. </li>
             <li>Pilih “Transaksi Lainya” > Pilih “Transfer” > Pilih “Rekening NSB di Permata"</li>
-            <li>Masukkan Kode Pembayaran (<span class="yellow">{{data}}</span>)</li>
+            <li>Masukkan Kode Pembayaran <span class="yellow">({{data}})</span></li>
             <li>Masukkan nominal </li>
             <li>Ikuti Instruksi untuk menyelesaikan transaksi</li>
           </ol>
@@ -450,7 +450,7 @@
           <ol>
             <li>Buka Aplikasi Mobile Banking Permata di HP</li>
             <li>Masukkan User Name dan Password </li>
-            <li>Pilih Pembayaran > Virtual Account > Pilih Rekening untuk Pembayaran > Pilih Tagihan Baru > Masukkan Kode Pembayaran (<span class="yellow">{{data}}</span>)</li>
+            <li>Pilih Pembayaran > Virtual Account > Pilih Rekening untuk Pembayaran > Pilih Tagihan Baru > Masukkan Kode Pembayaran <span class="yellow">({{data}})</span></li>
             <li>Masukkan Nominal</li>
             <li>Ikuti langkah selanjutnya sampai transaksi di nyatakan berhasil. </li>
           </ol>
@@ -477,7 +477,7 @@
             <li>Pilih “Transfer” pada menu </li>
             <li>Pilih “Ke Bank Lain” pada menu </li>
             <li>Masukan kode bank “013” dan pilih “Benar”</li>
-            <li>Masukan Kode Pembayaran (<span class="yellow">{{data}}</span>) pada tujuan transfer </li>
+            <li>Masukan Kode Pembayaran <span class="yellow">({{data}})</span> pada tujuan transfer </li>
             <li>Masukan nominal yang harus dibayarkan dan pilih “Benar” </li>
             <li>Ikuti langkah selanjutnya sampai transaksi berhasil</li>
           </ol>
@@ -496,8 +496,8 @@
           <ol>
             <li>Pilih “Transfer” pada menu </li>
             <li>Pilih “Ke Bank Lain” pada menu </li>
-            <li>Masukan kode bank “Bank PERMATA <span class="yellow">(013)</span>”</li>
-            <li>Masukan Kode Pembayaran (<span class="yellow">{{data}}</span>) pada tujuan transfer</li>
+            <li>Masukan kode bank “Bank PERMATA (013)”</li>
+            <li>Masukan Kode Pembayaran <span class="yellow">({{data}})</span> pada tujuan transfer</li>
             <li>Masukan nominal yang harus dibayarkan dan pilih “OK” </li>
             <li>Ikuti langkah selanjutnya sampai transaksi berhasil.</li>
 
@@ -517,8 +517,8 @@
           <ol>
             <li>Pilih “Transfer” pada menu</li>
             <li>Pilih “Ke Bank Lain” pada menu </li>
-            <li>Masukan kode bank “Bank PERMATA <span class="yellow">(013)”</span> </li>
-            <li>Masukan Kode Pembayaran (<span class="yellow">{{data}}</span>) pada tujuan transfer</li>
+            <li>Masukan kode bank “Bank PERMATA (013)”</li>
+            <li>Masukan Kode Pembayaran <span class="yellow">({{data}})</span> pada tujuan transfer</li>
             <li>Masukan nominal yang harus dibayarkan dan pilih “OK” </li>
             <li> Ikuti langkah selanjutnya sampai transaksi berhasil</li>
           </ol>
@@ -559,7 +559,7 @@
             <li>Pilih “Transfer” pada menu. </li>
             <li>Pilih “Ke Bank Lain” pada menu. </li>
             <li>Masukkan kode bank "Bank BNI(<span class="yellow">009</span>)"</li>
-            <li>Masukkan "Kode Pembayaran"(<span class="yellow">{{data}}</span>) pada tujuan transfer</li>
+            <li>Masukkan "Kode Pembayaran"<span class="yellow">({{data}})</span> pada tujuan transfer</li>
             <li>Masukan nominal (<span class="yellow">{{amount}}</span>)dan pilih "OK".</li>
             <li>Ikuti langkah selanjutnya sampai transaksi berhasil.</li>
           </ol>
@@ -577,7 +577,7 @@
             <li>Pilih “Transfer” pada menu. </li>
             <li>Pilih “Ke Bank Lain” pada menu.</li>
             <li>Masukkan kode bank "Bank BNI(<span class="yellow">009</span>)"</li>
-            <li>Masukkan "Kode Pembayaran"(<span class="yellow">{{data}}</span>) pada tujuan transfer</li>
+            <li>Masukkan "Kode Pembayaran"<span class="yellow">({{data}})</span> pada tujuan transfer</li>
             <li>Masukan nominal (<span class="yellow">{{amount}}</span>) dan pilih “OK”</li>
             <li>Ikuti langkah selanjutnya sampai transaksi berhasil.</li>
           </ol>
