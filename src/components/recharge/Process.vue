@@ -496,7 +496,7 @@
           <ol>
             <li>Pilih “Transfer” pada menu </li>
             <li>Pilih “Ke Bank Lain” pada menu </li>
-            <li>Masukan kode bank “Bank PERMATA (013)”</li>
+            <li>Masukan kode bank “Bank Permata <span class="yellow">(013)</span> ”</li>
             <li>Masukan Kode Pembayaran <span class="yellow">({{data}})</span> pada tujuan transfer</li>
             <li>Masukan nominal yang harus dibayarkan dan pilih “OK” </li>
             <li>Ikuti langkah selanjutnya sampai transaksi berhasil.</li>
@@ -517,7 +517,7 @@
           <ol>
             <li>Pilih “Transfer” pada menu</li>
             <li>Pilih “Ke Bank Lain” pada menu </li>
-            <li>Masukan kode bank “Bank PERMATA (013)”</li>
+            <li>Masukan kode bank “Bank Permata <span class="yellow">(013)</span>”</li>
             <li>Masukan Kode Pembayaran <span class="yellow">({{data}})</span> pada tujuan transfer</li>
             <li>Masukan nominal yang harus dibayarkan dan pilih “OK” </li>
             <li> Ikuti langkah selanjutnya sampai transaksi berhasil</li>
