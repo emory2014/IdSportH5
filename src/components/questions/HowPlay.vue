@@ -183,7 +183,7 @@ a{
 .ques-anwser img {
     width: 90%;
     display: block;
-    margin: auto;
+    margin: 6px auto;
 }
 
 .open.ques-anwser {
