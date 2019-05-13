@@ -232,7 +232,7 @@
 <i class="dash"></i> 
         <div class="text-cont">
           <ol>
-            <li>Login di <a  href = " javascript: void ( 0 )" @click="openBrowser()"> https://ib.bri.co.id/ib-bri/</a> ,masukkan username dan password</li>
+            <li>Login di <span @click="openBrowser()"> https://ib.bri.co.id/ib-bri/</span> ,masukkan username dan password</li>
             <li>Pilih menu “Transfer” </li>
             <li>Pilih menu “Bank Lain”</li>
             <li>Pilih kode Bank “Bank PERMATA (013)”</li>
