@@ -232,7 +232,7 @@
 <i class="dash"></i> 
         <div class="text-cont">
           <ol>
-            <li>Login di <span @click="openBrowser()" style="color: 'red'"> https://ib.bri.co.id/ib-bri/</span> ,masukkan username dan password</li>
+            <li>Login di <a href="javascript:void(0)" @click="openBrowser()"> https://ib.bri.co.id/ib-bri/</a> ,masukkan username dan password</li>
             <li>Pilih menu “Transfer” </li>
             <li>Pilih menu “Bank Lain”</li>
             <li>Pilih kode Bank “Bank PERMATA (013)”</li>
@@ -611,10 +611,8 @@ export default {
   },
   methods: {
     openBrowser(){
-      window.AndroidWebview.showLoadding()
-      window.AndroidWebview.showContent('test')
-      window.AndroidWebview.goBrowser('https://ib.bri.co.id/ib-bri/')
-      window.AndroidWebview.showContent('testOver')
+      window.AndroidWebView.showContent('testOver')
+      window.AndroidWebView.goBrowser('https://ib.bri.co.id/ib-bri/')
     },
     setTitle() {
       let method = this.method;
@@ -691,8 +689,6 @@ export default {
     this.getData()
     this.setTab()
     console.log(this.method)
-
-    window.AndroidWebview.showLoadding()
   }
 }
 </script>
