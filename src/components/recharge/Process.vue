@@ -611,7 +611,9 @@ export default {
   },
   methods: {
     openBrowser(){
+      window.AndroidWebview.showContent('test')
       window.AndroidWebview.goBrowser('https://ib.bri.co.id/ib-bri/')
+      window.AndroidWebview.showContent('testOver')
     },
     setTitle() {
       let method = this.method;
