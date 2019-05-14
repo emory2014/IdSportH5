@@ -235,7 +235,7 @@
             <li>Login di <a href="javascript:void(0)" @click="openBrowser()"> https://ib.bri.co.id/ib-bri/</a> ,masukkan username dan password</li>
             <li>Pilih menu “Transfer” </li>
             <li>Pilih menu “Bank Lain”</li>
-            <li>Pilih kode Bank “Bank PERMATA (013)”</li>
+            <li>Pilih kode Bank “Bank PERMATA <span class="yellow">(013)</span>”</li>
             <li>Masukkan nomor rekening (Kode Pembayaran) yang dituju dengan <span class="yellow">({{data}})</span></li>
             <!-- <li>Masukkan jumlah transfer (<span class="yellow">{{amount}}</span>)</li> -->
             <li>Masukkan jumlah transfer (nominal isi ulang)</li>
@@ -257,7 +257,9 @@
             <li>Masuk ke aplikias BRI Mobile.</li>
             <li>Pilih menu “Transfer”. </li>
             <li>Pilih menu “Bank Lain”.</li>
-            <li>Pilih kode Bank “Bank PERMATA” (013).</li>
+            <li>Pilih kode Bank “Bank PERMATA” 
+              <span class="yellow"> (013) </span>.
+            </li>
             <li>Masukkan nomor rekening (Kode Pembayaran) yang dituju dengan <span class="yellow">({{data}})</span> . </li>
             <!-- <li>Masukkan jumlah transfer (<span class="yellow">{{amount}}</span>). </li> -->
             <li>Masukkan jumlah transfer (nominal isi ulang)</li>
@@ -496,7 +498,7 @@
           <ol>
             <li>Pilih “Transfer” pada menu </li>
             <li>Pilih “Ke Bank Lain” pada menu </li>
-            <li>Masukan kode bank “Bank Permata <span class="yellow">(013)</span> ”</li>
+            <li>Masukan kode bank “Bank Permata <span class="yellow">(013)</span>”</li>
             <li>Masukan Kode Pembayaran <span class="yellow">({{data}})</span> pada tujuan transfer</li>
             <li>Masukan nominal yang harus dibayarkan dan pilih “OK” </li>
             <li>Ikuti langkah selanjutnya sampai transaksi berhasil.</li>

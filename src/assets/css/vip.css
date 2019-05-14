@@ -279,7 +279,7 @@ body{
     width: 36px;
     height: 32px;
     background: url(../../assets/images/vip/icon-vip-group.png) no-repeat;
-    background-position: 0 0;
+    background-position: 7px 0;
     background-size: 355%;
 }
 
@@ -294,7 +294,7 @@ body{
 }
 
 .icon-vip.more{
-    background-position: -98px 0;
+    background-position: -106px 0;
     background-size: 370%;
 }
 
@@ -982,11 +982,14 @@ a{
     text-align: center;
     border-image: linear-gradient(270deg,rgba(255,255,255,1) 0%,rgba(221,221,221,1) 51%,rgba(255,255,255,1) 100%) round;;
 }
+.vipitems .rpc {
+    color: #DDDDDD ;
+}
 .vip-up .rpc {
-    color: #666666 ;
     font-size: 10px;
 }
 .down-content {
+    font-size: 14px;
     padding: 3px;
     text-align: center;
  }
