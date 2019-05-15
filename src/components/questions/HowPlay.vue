@@ -18,7 +18,7 @@
       kalian melihat artikel yang menarik kalian bisa 
       langsung klik untuk baca, baca seluruhnya,kalian 
       bisa secara acak dapat bonus sampai <span class="redMark">100 RPC</span>.
-      <img src="../../assets/images/question/readBonus.png" />
+      <img src="../../assets/images/question/readBonus@2x.png" />
       (2) Setiap kamu membaca artikel menarik dan kamu 
       bagikan ke teman-teman,kalian bisa dapat bonus <span class="redMark">30 RPC</span> (teman yang sama hanya dihitung 1 kali 
       bonus)
