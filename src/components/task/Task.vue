@@ -435,23 +435,13 @@ export default {
     }
   },
   created(){
-    // window.AndroidWebView.showLoading();
+    window.AndroidWebView.showLoading();
     var that = this;
     this.token = this.getAppToken()
     this.getData()
   },
   mounted() {
-    // window.AndroidWebView.dismissLoading()
-    // var that = this;
-    // this.token = this.getAppToken()
-    // this.getData()
-    // var interval = setInterval(() => {
-    //   if (that.token) {
-    //     that.getData()
-    //   } else {
-    //     clearInterval(interval)
-    //   }
-    // }, 500)
+    window.AndroidWebView.dismissLoading()
   }
 }
 </script>
