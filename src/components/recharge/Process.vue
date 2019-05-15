@@ -213,7 +213,7 @@
             <li>Masukkan kartu dan pin atm.</li>
             <li>Pilih menu “Transfer”.</li>
             <li>Pilih menu “Ke Rek Bank Lain”.</li>
-            <li>Masukkan sandi Bank “013” dan pilih “Benar”. </li>
+            <li>Masukkan sandi Bank “<span class="yellow">013</span>” dan pilih “Benar”. </li>
             <li>Masukkan nomor rekening (Kode Pembayaran) yang dituju dengan <span class="yellow">({{data}})</span>dan pilih “Benar”. </li>
             <!-- <li>Masukkan nominal isi ulang (<span class="yellow">{{amount}}</span>) dan pilih “Benar”.</li> -->
             <li>Masukkan nominal isi ulang dan pilih “Benar”</li>
@@ -478,7 +478,7 @@
           <ol>
             <li>Pilih “Transfer” pada menu </li>
             <li>Pilih “Ke Bank Lain” pada menu </li>
-            <li>Masukan kode bank “013” dan pilih “Benar”</li>
+            <li>Masukan kode bank “<span class="yellow">013</span>” dan pilih “Benar”</li>
             <li>Masukan Kode Pembayaran <span class="yellow">({{data}})</span> pada tujuan transfer </li>
             <li>Masukan nominal yang harus dibayarkan dan pilih “Benar” </li>
             <li>Ikuti langkah selanjutnya sampai transaksi berhasil</li>
