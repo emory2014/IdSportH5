@@ -3,8 +3,10 @@
   <div class="task-record-container" :style="{paddingTop: $route.query.from == 'task' ? '72px': '72px'}">
     <BHeader title="Riwayat Tugas" />
 
-    <Loading v-if="loading" />
-    <div v-if="!loading && !data.length" class="recharge-record-default">
+    <!-- <Loading v-if="loading" /> -->
+    <!-- <div v-if="!loading && !data.length" class="recharge-record-default"> -->
+      <div  class="recharge-record-default">
+      <img src="../../assets/images/vip/noVipRecord.png" />
       <p class="record-no-data">“ Belum ada orang yang diikuti ”</p>
       <router-link to="/task">
         <div class="record-default-btn">Selesaikan Tugas</div>
@@ -12,20 +14,18 @@
     </div>
 
 
-    <div v-if="data.length">
+    <!-- <div v-if="data.length">
       <div class="task-record-panel" v-for="(item,index) of data" :key="index">
         <div class="title">
           <span>Tugas {{index+1}}</span>
           <span v-if="item.status == 3">Gagal</span>
           <span v-else-if="item.status == 2" class="red">Berhasil</span>
         </div>
-        <!-- <p>Nama Tugas: <span class="bold">{{item.title}}</span> </p> -->
         <p>Koin Terpakai: <span class="bold">{{item.expend}}</span></p>
         <p>Koin yang didapat: <span class="bold">{{item.status == 1 ?  0 : item.income}}</span></p>
         <p>Waktu: <span class="bold">{{item.break_time}}</span></p>
       </div>
-
-    </div>
+    </div> -->
   </div>
 
 

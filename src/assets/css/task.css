@@ -30,9 +30,13 @@ body {
 }
 
 .recharge-record-default {
+  padding-top: 140px;
   text-align: center
 }
-
+.recharge-record-default img{
+  width: 76px;
+  height: 118px;
+}
 .recharge-record-default a {
   text-decoration: none;
 }
@@ -41,9 +45,6 @@ body {
   text-align: center;
   color: #999;
   font-size: 14px;
-  margin-top: 5%;
-  height: 320px;
-  line-height: 320px;
 }
 
 .record-default-pic {
@@ -56,7 +57,7 @@ body {
   height: 45px;
   border-radius: 2px;
   background:#E93F3F;
-  margin: 12% auto;
+  margin: 24% auto;
   font-size: 18px;
   color: #fff;
   text-align: center;
