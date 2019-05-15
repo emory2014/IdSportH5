@@ -1,33 +1,30 @@
 <template>
-<div class="background" >
-<BHeader  title="Riwayat Transaksi" vip={true} />
- <Loading v-if="!data" /> 
- <div v-if="data.length">
-      <div class="task-record-panel" v-for="(item,index) of data" :key="index">
-        <div class="title">
-          <span class="koin">
-              <span> Terbeli(Keping)</span>
-              <span class="gold">&nbsp+{{item.gold|thousands}}</span>
-         </span>
-          <span v-if="item.status == 2">Gagal</span>
-          <span v-else-if="item.status == 1" class="red">Berhasil</span>
-          <span v-else-if="item.status == 0" >Dalam proses</span>
+    <div class="background" >
+        <BHeader  title="Riwayat Transaksi" vip={true} />
+        <Loading v-if="!data" /> 
+        <div v-if="data.length">
+            <div class="task-record-panel" v-for="(item,index) of data" :key="index">
+                <div class="title">
+                <span class="koin">
+                    <span> Terbeli(Keping)</span>
+                    <span class="gold">&nbsp+{{item.gold|thousands}}</span>
+                </span>
+                <span v-if="item.status == 2">Gagal</span>
+                <span v-else-if="item.status == 1" class="red">Berhasil</span>
+                <span v-else-if="item.status == 0" >Dalam proses</span>
+                </div>
+                <p>Isi UlangVia: <span class="bold">{{item.method}}</span></p>      
+                <p>Isi Ulang(Rp): <span class="bold">{{item.amount|thousands}}</span></p>
+                <p>Cara:<span class="bold">Top Up Member</span></p>
+                <p>Waktu: <span class="bold">{{item.update_time}}</span></p>
+            </div>
         </div>
-        <p>Isi UlangVia: <span class="bold">{{item.method}}</span></p>      
-        <p>Isi Ulang(Rp): <span class="bold">{{item.amount|thousands}}</span></p>
-        <p>Cara:<span class="bold">Top Up Member</span></p>
-        <p>Waktu: <span class="bold">{{item.update_time}}</span></p>
-      </div>
-
+        <div :class="[defaultShow ? 'show':'hide']" class="vip-record-default">
+            <img src="../../assets/images/vip/noVipRecord.png" />
+            <p>“ Sementara tidak ada konten ”</p>
+            <div @click="goRecharge()">Top up Koin</div>
+        </div>
     </div>
-
-<div :class="[defaultShow ? 'show':'hide']" class="vip-record-default">
-    <!-- <img src="../../assets/images/vip/vip-default-pic.png" /> -->
-    <p>“ Sementara tidak ada konten ”</p>
-</div>
-
-</div>
-
 </template>
 <script>
 import BHeader from "../common/BHeader"
@@ -56,23 +53,28 @@ let Base64 = require('js-base64').Base64
             title: String
         },
         methods: {
-          goBack(){
+            goRecharge(){
+                this.$router.push({
+                    path: '/recharge',
+                })
+            },
+            goBack(){
                 window.history.go(-1)
         },
-          toastPop(text){
+            toastPop(text){
                 this.toastShow = true
                 this.msg = text
                 setTimeout(() => this.toastShow = false, 2000)
         },
-        themeChoice(status){
-            if(status == "Dalam proses"){
-                return "yellow"
-            }else if(status == "Gagal"){
-                return "red"
-            }else if(status == "Berhasil"){
-                return "green"
-            }
-        },
+            themeChoice(status){
+                if(status == "Dalam proses"){
+                    return "yellow"
+                }else if(status == "Gagal"){
+                    return "red"
+                }else if(status == "Berhasil"){
+                    return "green"
+                }
+            },
            scrollGetData(){
               let _this = this;
                window.addEventListener('scroll',function(){
@@ -154,10 +156,25 @@ let Base64 = require('js-base64').Base64
         font-size: 16px;
     }
     .vip-record-default{
-        padding-top: 270px;
+        padding-top: 140px;
         text-align: center;
         color:#999999;
         font-size: 14px;      
+    }
+    .vip-record-default img {
+        width: 76px;
+        height: 118px;
+    } 
+    .vip-record-default div{
+        width: 90%;
+        margin: auto;
+        background-color: #E93F3F;
+        border-radius:2px;
+        font-size: 18px;
+        height: 45px;
+        line-height: 45px;
+        color: #FFFFFF;
+        margin-top: 90px;
     }
 </style>
 <style>
