@@ -5,7 +5,7 @@
     <Loading v-if="loading" />
     <div v-if="!loading && !data.length" class="recharge-record-default">
       <img src="../../assets/images/vip/noVipRecord.png" />
-      <p class="record-no-data">“ Belum ada orang yang diikuti ”</p>
+      <p class="record-no-data">Belum ada orang yang diikuti</p>
       <router-link to="/task">
         <div class="record-default-btn">Selesaikan Tugas</div>
       </router-link>

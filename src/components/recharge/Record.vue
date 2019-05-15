@@ -21,7 +21,7 @@
         </div>
         <div :class="[defaultShow ? 'show':'hide']" class="vip-record-default">
             <img src="../../assets/images/vip/noVipRecord.png" />
-            <p>“ Sementara tidak ada konten ”</p>
+            <p>Sementara tidak ada konten</p>
             <div @click="goRecharge()">Top up Koin</div>
         </div>
     </div>
