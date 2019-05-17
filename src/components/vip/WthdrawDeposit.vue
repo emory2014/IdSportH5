@@ -12,11 +12,11 @@
     </div>
  
     <div class="vip-input-group">
-        <i class="icon-input bank"></i>
+        <i class="icon-input bankno"></i>
         <input ref="bankno" type="text" @blur="validateBankno()" v-model="bankno" placeholder="Nomor rekening" />
     </div>
        <div class="vip-input-group">
-        <i class="icon-input bankno"></i>
+        <i class="icon-input bank"></i>
         <input type="text" ref="bank" readonly v-model="bank" placeholder="Silahkan pilih bank " @click="showBank()" @blur.prevent="closeBank()">
         <ul class="vip-select" :class="[bankShow ? 'show':'hide']" >
            <li @click="selectBank('BCA')">BCA</li>
