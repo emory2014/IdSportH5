@@ -642,7 +642,7 @@ a {
   font-size: 47px;
   margin-top: 30%;
   opacity: 0;
-  animation: textScale 2s linear 2s;
+  animation: textScale 2s linear;
 }
 
 @keyframes textScale {
