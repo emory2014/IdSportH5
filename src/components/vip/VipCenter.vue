@@ -29,7 +29,7 @@
         <div class="item">
           <p>Sudah undang</p>
           <p><span class="num">{{data.vip_total_number}}</span> &nbsp<span class="rp">orang</span></p>
-          <router-link to="/vip-invite-record"><span class="tag"> </span></router-link>
+          <router-link to="/vip-invite-record" tag="span"><span class="tag"> </span></router-link>
         </div>
         <div class="item">
           <p>Sudah dapat</p>
@@ -293,11 +293,6 @@ export default {
         this.notVipShow = true
       }
     },
-    // getAppToken() {
-    //   var content = window.AndroidWebView.getAppToken();
-    //   var token = Base64.decode(content)
-    //   this.token = token
-    // },
     buyVip() {
       this.token = this.getAppToken()
       if (!this.wdFlag) {

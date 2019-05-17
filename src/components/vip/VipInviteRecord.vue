@@ -19,7 +19,7 @@
     </div>
 </div>
 
-<p  :class="[defaultShow?'show':'hide']" class="vip-default-text">Sementara tidak ada konten</p>
+<!-- <p  :class="[defaultShow?'show':'hide']" class="vip-default-text">Sementara tidak ada konten</p> -->
 <ul class="vip-invite-record-ul" v-if="data">
     <li>
         <span class="name">Nama</span>
@@ -31,8 +31,11 @@
         <span class="rp">{{item.prize_money}}</span>
         <span class="date">{{item.create_time}}</span>
     </li>
-   
 </ul>
+<div v-if="defaultShow" class="vip-default-text">
+    <img src="../../assets/images/vip/noVipRecord.png" />
+    <p>Sementara tidak ada konten</p>
+</div>
 </div>
 
 </template>
@@ -85,14 +88,8 @@ let Base64 = require('js-base64').Base64
                 }
             });
           },
-           getAppToken(){
-            var content=window.AndroidWebView.getAppToken();
-            var token = Base64.decode(content)
-            this.token = token
-            // this.token = 'b10f1d9b43ea42c1bf78269c6b4499d0'
-            },
           getData(page){
-              this.getAppToken()
+              this.token = this.getAppToken()
               this.$http({
                 url: '/api/vip/invitee/prizelist?t='+(new Date()).getTime(),
                 method: 'post',
@@ -116,7 +113,7 @@ let Base64 = require('js-base64').Base64
                     if (res.data.status.code == 200) {
                         this.data = res.data.data.list
                         if(!this.data.length){
-                            this.defaultShow = false
+                            this.defaultShow = true
                         }
                         this.totalPage = res.data.data.page_info.total_page
                         this.currentPage = res.data.data.page_info.current_page
@@ -138,7 +135,7 @@ let Base64 = require('js-base64').Base64
         },
         },
            mounted(){
-            this.getAppToken()
+            this.token = this.getAppToken()
               this.$http({
                 url: '/api/vip/invitee/info?t='+(new Date()).getTime(),
                   method: 'post',
@@ -176,5 +173,17 @@ let Base64 = require('js-base64').Base64
     }
 </script>
 <style>
-@import  "../../assets/css/vip.css";
+    .vip-default-text{
+        padding-top: 65px;
+        text-align: center;
+        color:#999999;
+        font-size: 14px;      
+    }
+    .vip-default-text img {
+        width: 76px;
+        height: 118px;
+    } 
+</style>
+<style>
+    @import  "../../assets/css/vip.css";
 </style>

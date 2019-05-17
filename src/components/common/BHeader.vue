@@ -67,10 +67,11 @@ export default {
   line-height: 85px;
   font-size: 16px;
   color: #333333;
-  background: #fff;
+  background:rgba(255,255,255,1);
   margin-bottom: 8px;
   width: 100%;
   z-index: 1;
+  box-shadow:0px 2px 8px 0px rgba(0,0,0,0.06);
 }
 
 .header div {

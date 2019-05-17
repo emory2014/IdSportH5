@@ -5,7 +5,7 @@
     <div class="open-text">+{{prize}}Koin</div>
     <div class="open-img-box">
       <img class="box" src="../../assets/images/boxOpen@2x.png">
-      <img class="light" src="../../assets/images/light@2x.png" />
+      <!-- <img class="light" src="../../assets/images/light@2x.png" /> -->
     </div>
   </div>
   <div class="days-wrapper" v-if="data">
@@ -13,7 +13,7 @@
       <span class="title">Tanda</span>
       <div class="fixed-num">Koin emas: {{gold}}</div>
       <div class="peraturan" @click="toExchangePage()">segera tukarkan&nbsp<span>></span></div>
-       <router-link to="/sign-rule">
+       <router-link to="/sign-rule" tag="span">
         <div class="segera">peraturan main</div>
        </router-link>
     </div>
@@ -45,7 +45,7 @@
     <img class="box" v-else src="../../assets/images/box-gray@2x.png" />
   </div>
   <p class="task-title" v-if="data" >
-    Tugas Khusus <router-link :to="{ path: '/task-record', query: {from: 'task'} }"><span class="right">Riwayat Tugas</span></router-link>
+    Tugas Khusus <router-link :to="{ path: '/task-record', query: {from: 'task'} }" tag="span"><span class="right">Riwayat Tugas</span></router-link>
   </p>
   <p class="task-subtitle" v-if="data">
     Semakin tinggi koin untuk membuka tugas, semakin
@@ -106,7 +106,7 @@
   <div class="task-confirm-mask" :class="[balanceShow ? 'show' : 'hide']">
     <div class="task-confirm-cont">
       <div class="task-confirm-text success">
-        Saldo dan Koin kamu tidak <br> silakan Top Up Koin <br>  kamu.
+        Saldo dan Koin kamu tidak <br>mencukupi silakan Top Up Koin <br>  kamu.
       </div>
       <router-link :to="{ path: '/recharge', query: {from: 'task'} }">
         <div class="task-success-btn" style="color:#E93F3F">Top Up </div>
@@ -373,11 +373,11 @@ export default {
             hour = 0
             minute = 0
           }
+          sec--
           hour = parseInt(hour) < 10 && parseInt(hour) >= 0 ? '0' + hour : hour
           minute = parseInt(minute) < 10 && parseInt(minute) >= 0 ? '0' + minute : minute
           second = parseInt(second) < 10 && parseInt(second) >= 0 ? '0' + second : second
           var countdownStr = hour + ':' + minute + ':' + second
-          sec--
           document.getElementById('countdown').innerHTML = countdownStr
           // if (sec <= 0) {
           //   window.location.reload()
@@ -435,13 +435,13 @@ export default {
     }
   },
   created(){
-    window.AndroidWebView.showLoading();
+    // window.AndroidWebView.showLoading();
     var that = this;
     this.token = this.getAppToken()
     this.getData()
   },
   mounted() {
-    window.AndroidWebView.dismissLoading()
+    // window.AndroidWebView.dismissLoading()
   }
 }
 </script>
