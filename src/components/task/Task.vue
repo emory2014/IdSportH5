@@ -37,7 +37,7 @@
       <span>menarik, buka setiap 4 jam</span>
     </div>
     <div class="buka" v-else>
-      <span class="box-open-btn" id="countdown">03:59:59</span>
+      <span class="box-open-btn" id="countdown" ></span>
       <span>Peti Harta</span>
       <span>Karun Segera Dibuka</span>
     </div>
@@ -126,7 +126,7 @@ export default {
   },
   data() {
     return {
-      c:0,
+      countdownStr:'',
       data: null,
       isOpen: 0,
       boxShow: false,
@@ -377,7 +377,7 @@ export default {
           hour = parseInt(hour) < 10 && parseInt(hour) >= 0 ? '0' + hour : hour
           minute = parseInt(minute) < 10 && parseInt(minute) >= 0 ? '0' + minute : minute
           second = parseInt(second) < 10 && parseInt(second) >= 0 ? '0' + second : second
-          var countdownStr = hour + ':' + minute + ':' + second
+          this.countdownStr = hour + ':' + minute + ':' + second
           document.getElementById('countdown').innerHTML = countdownStr
           // if (sec <= 0) {
           //   window.location.reload()
@@ -435,13 +435,13 @@ export default {
     }
   },
   created(){
-    // window.AndroidWebView.showLoading();
+    window.AndroidWebView.showLoading();
     var that = this;
     this.token = this.getAppToken()
     this.getData()
   },
   mounted() {
-    // window.AndroidWebView.dismissLoading()
+    window.AndroidWebView.dismissLoading()
   }
 }
 </script>
