@@ -71,7 +71,7 @@
 
           </div>
           </div>
-        <a href="http://www.danaunta.com/page/invite"><div class="ques-play-btn"> Saya mengerti, mulai hasilkan </div></a>
+        <a href="http://test.cangquetech.com/page/invite"><div class="ques-play-btn"> Saya mengerti, mulai hasilkan </div></a>
   </div>
 </template>
 <script>
