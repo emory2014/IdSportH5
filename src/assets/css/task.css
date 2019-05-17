@@ -617,6 +617,7 @@ a {
 }
 
 .box-open-btn {
+  height: 25px;
   position: relative;
   top: -5px;
   left: -14px;
