@@ -61,9 +61,6 @@ export default new Router({
     {
       path: '/task',
       name: 'Task',
-      meta: {
-        keepAlive: true
-      },
       component: resolve => require(['@/components/task/Task'], resolve)
     },
     {

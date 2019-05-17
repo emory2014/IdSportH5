@@ -435,13 +435,13 @@ export default {
     }
   },
   created(){
-    // window.AndroidWebView.showLoading();
+    window.AndroidWebView.showLoading();
     var that = this;
     this.token = this.getAppToken()
     this.getData()
   },
   mounted() {
-    // window.AndroidWebView.dismissLoading()
+    window.AndroidWebView.dismissLoading()
   }
 }
 </script>

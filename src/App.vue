@@ -1,12 +1,7 @@
 <template>
   <div id="app">
     <!-- <img src="./assets/logo.png"> -->
-    <keep-alive>
-        <router-view v-if="$route.meta.keepAlive"/>
-   </keep-alive> 
-   <keep-alive>
-        <router-view v-if="!$route.meta.keepAlive"/>
-   </keep-alive> 
+   <router-view/> 
     <!-- <div @click="doTakePhotoW()">相机测试</div>
     <div @click="doPickPhotoFromGalleryW()">相册测试</div> -->
     <!-- <p>JS和Android交互</p>
