@@ -170,6 +170,8 @@ a{
 }
 
 .ques-btn-group .tag{
+    height: 33px;
+    line-height: 33px;
     font-size: 14px;
     padding: 3px 10px;
     border-radius:5px;
@@ -186,18 +188,19 @@ a{
 }
 
 .ques-title{
-    margin: 0;
+    width: 90%;
+    margin: auto;
     color: #333333;
-    font-size: 16px;
-    padding: 16px 0 16px 16px;
-    /* background: #F5F5F5; */
+    font-size: 18px;
+    padding: 10px 0 10px 0px;
     font-weight:bold;
     border-bottom: 1px solid #DDDDDD;
 }
 
 .sub-title{
-    margin: 0px;
-    padding: 18px 0 17px 16px;
+    width: 90%;
+    margin: auto;
+    padding: 16px 0 15px 0px;
     font-size: 14px;
     color: #333;
     border-bottom: 1px solid #ddd;
@@ -234,32 +237,32 @@ a{
 .icon-arrow {
     display: inline-block;
     float: right;
-    width: 15px;
-    height: 12px;
-    margin-right: 13px;
+    width: 9px;
+    height: 5px;
+    margin-right: 2px;
     vertical-align: middle;
     background: url(../../assets/images/icon-arrow-down@2x.png) no-repeat center;
-    background-size: 15px 12px;
+    background-size: 9px 5px;
     position: relative;
-    top: 3px;
+    top: 6px;
 }
 
 .open .icon-arrow {
     background: url(../../assets/images/icon-arrow-up@2x.png) no-repeat center;
-    background-size: 15px 12px;
+    background-size: 9px 5px;
 }
 
 .icon-link {
     display: inline-block;
     float: right;
-    width: 15px;
-    height: 15px;
-    margin-right: 13px;
+    width: 12px;
+    height: 12px;
+    margin-right: 2px;
     vertical-align: middle;
     background: url(../../assets/images/lianjie@2x.png) no-repeat center;
-    background-size: 15px 15px;
+    background-size: 12px 12px;
     position: relative;
-    top: 3px;
+    top: 6px;
 }
 .icon-hot {
     display: inline-block;

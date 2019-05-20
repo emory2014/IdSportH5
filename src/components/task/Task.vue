@@ -12,7 +12,7 @@
     <div class="tanda">
       <span class="title">Tanda</span>
       <div class="fixed-num">Koin emas: {{gold}}</div>
-      <div class="peraturan" @click="toExchangePage()">segera tukarkan&nbsp<span>></span></div>
+      <div class="peraturan" @click="toExchangePage()">segera tukarkan&nbsp<i class="arrowToRecord"></i></div>
        <router-link to="/sign-rule" tag="span">
         <div class="segera">peraturan main</div>
        </router-link>

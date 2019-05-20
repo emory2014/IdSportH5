@@ -18,7 +18,7 @@ body{
     display: none;
 }
 .vip-container{
-    padding-top: 65px;
+    padding-top: 51px;
 }
 .vip-record{
     color: #999999!important;
@@ -335,14 +335,12 @@ body{
     color: #999999;
 }
 .vip-play-btn{
-    width: 90%;
-    margin: 10px auto 30px auto;
-    font-size: 18px;
-    color: #ffd450;
-    text-align: center;
-    background: -webkit-linear-gradient(314deg,rgba(44,43,50,1) 0%,rgba(87,86,92,1) 100%);
-    border-radius: 15px;
-    padding: 25px 5px;
+    display: inline-block;
+    width: 330px;
+    height: 70px;
+    background: url(../../assets/images/vip/vip-button.png) no-repeat center;
+    background-position: 0 0;
+    background-size: 100% 100%;
 }
 
 .play-box{
@@ -1006,20 +1004,11 @@ a{
 }
 .vip-category .line {
     display: inline-block;
-    background: url(../../assets/images/vip/vip-invite-bg.png)  center no-repeat;
-    background-size: 100% 100%;
-    width: 90%;
-    height: 1px;
-    background-position: 10px 0;
-}
-.vip-category .line {
-    display: inline-block;
-    background: url(../../assets/images/vip/vip-invite-bg.png)  center no-repeat;
+    background: url(../../assets/images/vip/vip-btn-line.png)  center no-repeat;
     background-size: 100% 100%;
     width: 90%;
     height: 1px;
     position: absolute;
-    /* top: 20px; */
     background-position: 10px 0;
 }
 .vip-category .notHighlight {
@@ -1028,4 +1017,8 @@ a{
     height: 1px;
     background: linear-gradient(270deg,rgba(255,255,255,1) 0%,rgba(221,221,221,1) 51%,rgba(255,255,255,1) 100%);
 }
+.btnContainer {
+    width: 330px;
+    margin: auto;
+  }
 

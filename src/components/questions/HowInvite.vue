@@ -1,6 +1,6 @@
 <template>
   <div class="question-invie-container">
-          <BHeader title="Tutorial Cara Mengundang Teman" />
+          <BHeader title="Tutorial Cara Mengundang Teman" style="left:0px"/>
           <p class="ques-invite-title">
             Bagaimana mengundang teman?
           </p>
@@ -97,7 +97,7 @@ body{
 .ques-invite-ol li img {
     width: 90%;
     display: block;
-    margin:6px auto;
+    margin:15px auto;
 }
 
 </style>

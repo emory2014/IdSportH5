@@ -131,7 +131,7 @@ a{
     width: 91px;
 }
 
-.ques-btn-group .tag{
+/* .ques-btn-group .tag{
     font-size: 14px;
     color: #666;
     padding: 3px 10px;
@@ -140,19 +140,18 @@ a{
     margin: 0 12px 12px 0;
     box-sizing: border-box;
     display: inline-block;
-}
-
+} */
 
 .sub-title{
-    margin: 0px;
-    padding: 18px 0 17px 16px;
+    width: 90%;
+    margin: auto;
+    padding: 16px 0 15px 0px;
     font-size: 14px;
-    color: #333333;
+    color: #333;
     border-bottom: 1px solid #ddd;
     line-height: 1;
     box-sizing: border-box;
     height: 50px;
-
 }
 
 .sub-title.bt{
@@ -194,19 +193,19 @@ a{
 .icon-arrow {
     display: inline-block;
     float: right;
-    width: 15px;
-    height: 12px;
-    margin-right: 13px;
+    width: 9px;
+    height: 5px;
+    margin-right: 2px;
     vertical-align: middle;
-    background: url(../../assets/images/icon-arrow-down@2x.png) no-repeat center;
-    background-size: 15px 12px;
+    background: url(../../assets/images/arrow-down@2x.png) no-repeat center;
+    background-size: 9px 5px;
     position: relative;
-    top: 3px;
+    top: 6px;
 }
 
 .open .icon-arrow {
     background: url(../../assets/images/icon-arrow-up@2x.png) no-repeat center;
-    background-size: 15px 12px;
+    background-size: 9px 5px;
 }
 
 

@@ -62,9 +62,9 @@ export default {
 .header {
   position: fixed;
   top: 0;
-  height: 70px;
+  height: 50px;
   text-align: center;
-  line-height: 85px;
+  line-height: 50px;
   font-size: 16px;
   color: #333333;
   background:rgba(255,255,255,1);
@@ -81,15 +81,15 @@ export default {
   white-space: nowrap;
   text-overflow: ellipsis;
   font-weight: bold;
-  /* height: 50px;
-  line-height: 50px; */
+  height: 50px;
+  line-height: 50px;
 }
 
 .nc-icon-prev {
     display: inline-block;
     position:absolute;
     left: 15px;
-    top: 38px;
+    top: 20px;
     width: 10px;
     height: 10px;
     border-top: 2px solid #000000;
