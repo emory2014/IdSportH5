@@ -165,18 +165,22 @@ a{
 }
 
 .ques-btn-group {
-    padding: 12px 20px 0 20px;
+    display: flex;
+    flex-wrap:wrap;
     box-sizing: border-box;
+    /* justify-content: space-between; */
 }
 
 .ques-btn-group .tag{
+    margin: 0 10px 15px 10px;
+    text-align: center;
     height: 33px;
+    width: 90px;
     line-height: 33px;
     font-size: 14px;
-    padding: 3px 10px;
+    padding: 3px 3px;
     border-radius:5px;
     border:1px solid rgba(233,63,63,1);
-    margin: 0 12px 12px 0;
     display: inline-block;
     border: 1px solid #DDDDDD;
     color: #999999;
