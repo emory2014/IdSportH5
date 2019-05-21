@@ -495,7 +495,7 @@ a {
 .unfold-btn {
   position: absolute;
   right: 15px;
-  bottom: 15px;
+  bottom: 15px !important;
   background: #E93F3F;
   border-radius: 25px;
   font-size: 12px;
