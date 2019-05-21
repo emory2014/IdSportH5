@@ -868,6 +868,14 @@ a {
 .rule-light {
   color: #FFC000;
 }
+
+.rule-container.task .header {
+  top: 25px;
+}
+
+.rule-container.task {
+  padding-top: 70px;
+}
 .beheader {
   position: fixed;
   top: 0;
