@@ -62,7 +62,7 @@ export default new Router({
       path: '/task',
       name: 'Task',
       component: resolve => require(['@/components/task/Task'], resolve)
-    },
+    }, 
     {
       path: '/sign-rule',
       name: 'SignRule',

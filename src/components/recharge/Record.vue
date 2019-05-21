@@ -1,6 +1,6 @@
 <template>
     <div class="background" >
-        <BHeader  title="Riwayat Transaksi" vip={true} />
+        <BHeader  title="Riwayat Transaksi" vip={true} style="height:50px"/>
         <Loading v-if="!data" /> 
         <div v-if="data.length">
             <div class="task-record-panel" v-for="(item,index) of data" :key="index">
