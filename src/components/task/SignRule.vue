@@ -1,7 +1,7 @@
 <template>
 <div class="rule-container task">
-  <BHeader title="Aturan Absen" />
-  <div class="rule-title">Aturan Absen</div>
+  <BHeader title="Aturan Absen" class=""/>
+  <!-- <div class="rule-title">Aturan Absen</div> -->
   <p class="text">
     Setiap hari masuk aplikasi untuk absen, klik gambar koin untuk mendapatkan jumlah koin emas<span class="rule-light">
       (tiap hari absen berturut-turut bisa dapat koin lebih banyak, jumlah absen akan diulang jika bolos)

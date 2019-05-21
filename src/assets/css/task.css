@@ -2,7 +2,7 @@ body {
   margin: 0;
 }
 
-.rule-container,.task-record-container .header {
+.task-record-container .header {
   position: fixed;
   top: 0;
   height: 70px;
@@ -867,14 +867,6 @@ a {
 
 .rule-light {
   color: #FFC000;
-}
-
-.rule-container.task .header {
-  top: 25px;
-}
-
-.rule-container.task {
-  padding-top: 83px;
 }
 .beheader {
   position: fixed;
