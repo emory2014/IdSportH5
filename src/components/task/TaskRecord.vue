@@ -1,7 +1,10 @@
 <template>
 <div>
   <div class="task-record-container">
-    <BHeader title="Riwayat Tugas" />
+    <header class="header">
+  　<i class="nc-icon-prev" @click="goBack()" style="top:38px"></i>
+    <div class="headerBold">Riwayat Tugas</div>
+  </header>
     <Loading v-if="loading" />
     <div v-if="!loading && !data.length" class="recharge-record-default">
       <img src="../../assets/images/vip/noVipRecord.png" />

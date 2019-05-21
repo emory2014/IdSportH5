@@ -2,7 +2,7 @@ body {
   margin: 0;
 }
 
-.rule-container .header {
+.rule-container,.task-record-container .header {
   position: fixed;
   top: 0;
   height: 70px;
@@ -14,7 +14,33 @@ body {
   margin-bottom: 8px;
   width: 100%;
   z-index: 1;
-  box-shadow: 1px 1px 1px 1px rgba(255, 194, 30, 0.1);
+  box-shadow:0px 2px 8px 0px rgba(0,0,0,0.06);;
+}
+
+.nc-icon-prev {
+  display: inline-block;
+    position:absolute;
+    left: 15px;
+    top: 20px;
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid #000000;
+    border-right: 2px solid #000000;
+    transform: rotate(-135deg);
+} 
+.header {
+  position: fixed;
+  top: 0;
+  height: 70px;
+  text-align: center;
+  line-height: 85px;
+  font-size: 16px;
+  color: #333333;
+  background: #fff;
+  margin-bottom: 8px;
+  width: 100%;
+  z-index: 1;
+  box-shadow:0px 2px 8px 0px rgba(0,0,0,0.06);
 }
 
 .nc-icon-prev {
@@ -886,4 +912,8 @@ a {
   background-size: 100% 100%;
   height: 9px;
   width: 9px;
+}
+.headerBold {
+  font-weight: bold;
+  line-height: 84px !important;
 }
