@@ -45,11 +45,6 @@
         />
     </Popup>
   </div>
-  
-
-
-
-
 </div>
 </template>
 <script>
@@ -99,6 +94,13 @@ export default {
     }
   },
   methods: {
+    goBack(){
+        if (this.$route.query.from == 'task') {
+          window.history.go(-1)
+        } else {
+          window.AndroidWebView.closeActivities();
+        }
+    },
     closePup(e){
       console.log(e.target)
        setTimeout(()=>{ this.popupShow = false},300)
