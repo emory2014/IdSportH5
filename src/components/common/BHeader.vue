@@ -95,14 +95,6 @@ export default {
     border-top: 2px solid #000000;
     border-right: 2px solid #000000;
     transform: rotate(-135deg);
-  /* position: absolute;
-  left: 15px;
-  top: 13px;
-  display: block;
-  background: url(../../assets/images/prev.png);
-  height: 25px;
-  width: 20px;
-  background-size: 20px 25px; */
 }
 
 .recharge-record {

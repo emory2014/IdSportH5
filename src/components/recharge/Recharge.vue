@@ -1,11 +1,11 @@
 <template>
 <div>
-  <BHeader title="Top Up Koin" recharge={true} />
+  <!-- <BHeader title="Top Up Koin" recharge={true} /> -->
+  <header class="fixHeader" :style="{paddingTop: $route.query.from == 'task' ? '18px': '0px'}">
+  　<i class="nc-icon-prev" @click="goBack()" :style="{top: $route.query.from == 'task' ? '38px': '20px'}"></i>
+  <div>Top Up Koin</div>
+</header>
   <div class="recharge-container" >
-    <!-- <div class="recharge-balance">
-      <p class="balance">{{balance}}</p>
-      <p>Poin sekarang(Rpc)</p>
-    </div> -->
     <div class="recharge-balance">
       <span>Saldo Saat Ini(Rp)</span>
       <span>{{balance|thousands}}</span>
@@ -188,6 +188,7 @@ export default {
     }
   },
   created() {
+    console.log(this.$route.query.from)
     let _this = this;
     this.getData()
   },
@@ -215,5 +216,41 @@ body {
 .bank-select li:hover {
    background-color: #E4B68B;
 }
+.fixHeader {
+  position: fixed;
+  top: 0;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  font-size: 16px;
+  color: #333333;
+  background:rgba(255,255,255,1);
+  margin-bottom: 8px;
+  width: 100%;
+  z-index: 1;
+  box-shadow:0px 2px 8px 0px rgba(0,0,0,0.06);
+}
 
+.fixHeader div {
+  width: 80%;
+  margin: auto;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-weight: bold;
+  height: 50px;
+  line-height: 50px;
+}
+
+.fixHeader .nc-icon-prev {
+    display: inline-block;
+    position:absolute;
+    left: 15px;
+    top: 20px;
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid #000000;
+    border-right: 2px solid #000000;
+    transform: rotate(-135deg);
+}
 </style>
