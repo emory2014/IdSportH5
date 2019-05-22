@@ -1,6 +1,10 @@
 <template>
     <div class="background" >
-        <BHeader  title="Riwayat Transaksi" vip={true} />
+        <!-- <BHeader  title="Riwayat Transaksi" vip={true} /> -->
+        <header class="fixRecordHeader" :style="{paddingTop: $route.query.from == 'task' ? '18px': '0px'}">
+        <i class="nc-icon-prev" @click="goBack()" :style="{top: $route.query.from == 'task' ? '38px': '20px'}"></i>
+        <div>Riwayat Transaksi</div>
+        </header>
         <Loading v-if="!data" /> 
         <div v-if="data.length">
             <div class="task-record-panel" v-for="(item,index) of data" :key="index">
@@ -129,11 +133,48 @@ let Base64 = require('js-base64').Base64
             }
         },
         created(){ 
+            console.log(this.$route.query)
             this.getData(1)
         },
     }
 </script>
 <style>
+    .fixRecordHeader{
+        position: fixed;
+        top: 0;
+        height: 50px;
+        text-align: center;
+        line-height: 50px;
+        font-size: 16px;
+        color: #333333;
+        background:rgba(255,255,255,1);
+        margin-bottom: 8px;
+        width: 100%;
+        z-index: 1;
+        box-shadow:0px 2px 8px 0px rgba(0,0,0,0.06);
+    }
+    .fixRecordHeader div {
+        width: 80%;
+        margin: auto;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        font-weight: bold;
+        height: 50px;
+        line-height: 50px;
+    }
+
+    .fixRecordHeader .nc-icon-prev {
+        display: inline-block;
+        position:absolute;
+        left: 15px;
+        top: 20px;
+        width: 10px;
+        height: 10px;
+        border-top: 2px solid #000000;
+        border-right: 2px solid #000000;
+        transform: rotate(-135deg);
+    }
     .background {
         padding-top: 70px;
         background-color: rgb(248, 248, 248);

@@ -1,11 +1,11 @@
 <template>
 <div>
   <!-- <BHeader title="Top Up Koin" recharge={true} /> -->
-  <header class="fixHeader" :style="{paddingTop: $route.query.from == 'task' ? '18px': '18px'}">
-  　<i class="nc-icon-prev" @click="goBack()" :style="{top: $route.query.from == 'task' ? '38px': '38px'}"></i>
+  <header class="fixHeader" :style="{paddingTop: $route.query.from == 'task' ? '18px': '0px'}">
+  　<i class="nc-icon-prev" @click="goBack()" :style="{top: $route.query.from == 'task' ? '38px': '20px'}"></i>
   <div>Top Up Koin</div>
-  <router-link to="/record" v-if="recharge">
-    <span class="recharge-record">Riwayat Transaksi</span>
+  <router-link :to="{ path: '/record', query: {from: $route.query.from} }" v-if="recharge">
+    <span class="recharge-record" :style="{top: $route.query.from == 'task' ? '18px': '1px'}">Riwayat Transaksi</span>
   </router-link>
 </header>
   <div class="recharge-container" >
@@ -222,7 +222,6 @@ body {
    background-color: #E4B68B;
 }
 .fixHeader {
-  padding-top: 18px;
   position: fixed;
   top: 0;
   height: 50px;
@@ -264,6 +263,6 @@ body {
   color: #999999;
   font-size: 12px;
   right: 10px;
-  top: 18px;
+  top: 1px;
 }
 </style>
