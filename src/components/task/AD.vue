@@ -231,9 +231,9 @@ export default {
   },
   created(){
     window.AndroidWebView.showLoading()
+    this.getData()
   },
   mounted() {
-    this.getData()
     window.AndroidWebView.dismissLoading()
   },
   destroyed(){
