@@ -1,7 +1,7 @@
 <template>
 <div class="ad-container" :style="{paddingTop: $route.query.from == 'task' ? '72px': '72px'}">
   <header class="header" :style="{borderTop: $route.query.from == 'task' ? 'solid #fff': ''}">
-    　<i class="nc-icon-prev" @click="goBack()" style="top:38px"></i>
+    　<i class="nc-icon-prev" @click="goBack()" style="top:48px"></i>
     <div class="task-process-sec" v-if="data">
       <div class="label"><span class="hightlight">{{task}}</span>/{{allTask}}</div>
       <div class="process"><span class="finished" :style="contentStyleObj"></span></div>
@@ -245,6 +245,7 @@ export default {
 </script>
 <style>
   .ad-container .header {
+    padding-top: 10px;
     position: fixed;
     top: 0;
     height: 70px;
