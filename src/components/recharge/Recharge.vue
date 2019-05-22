@@ -114,7 +114,7 @@ export default {
           if (!this.amount) {
             this.amount = this.data.amountInfo[0].money
           }
-          this.$router.push("/process?m=" + this.amount + "&method=" + this.keyId)         
+          this.$router.push("/process?m=" + this.amount + "&method=" + this.keyId + "&from="+this.$route.query.from)         
         }
        
      

@@ -2,8 +2,8 @@
 <div>
   <div class="process-container">
     <!-- <BHeader :title="setTitle()" /> -->
-  <header class="fixProcessHeader" >
-  　<i class="nc-icon-prev" @click="goBack()"></i>
+  <header class="fixProcessHeader" :style="{paddingTop: $route.query.from == 'task' ? '18px': '0px'}">
+  　<i class="nc-icon-prev" @click="goBack()" :style="{top: $route.query.from == 'task' ? '38px': '20px'}"></i>
   <div>{{setTitle()}}</div>
 </header>
     <div :class="[method == 1 ? 'show':'hide']">
@@ -693,7 +693,6 @@ export default {
   mounted() {
     this.getData()
     this.setTab()
-    console.log(this.method)
   }
 }
 </script>
