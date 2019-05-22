@@ -4,6 +4,9 @@
   <header class="fixHeader" :style="{paddingTop: $route.query.from == 'task' ? '18px': '0px'}">
   　<i class="nc-icon-prev" @click="goBack()" :style="{top: $route.query.from == 'task' ? '38px': '20px'}"></i>
   <div>Top Up Koin</div>
+  <router-link to="/record" v-if="recharge">
+    <span class="recharge-record">Riwayat Transaksi</span>
+  </router-link>
 </header>
   <div class="recharge-container" >
     <div class="recharge-balance">
@@ -254,5 +257,12 @@ body {
     border-top: 2px solid #000000;
     border-right: 2px solid #000000;
     transform: rotate(-135deg);
+}
+.recharge-record {
+  position: absolute;
+  color: #999999;
+  font-size: 12px;
+  right: 10px;
+  top: 1px;
 }
 </style>

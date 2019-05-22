@@ -356,3 +356,42 @@
   background-size: 100% 100%;
   top: 209px
 }
+.fixProcessHeader {
+  padding-top: 18px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  font-size: 16px;
+  color: #333333;
+  background:rgba(255,255,255,1);
+  margin-bottom: 8px;
+  width: 100%;
+  z-index: 1;
+  box-shadow:0px 2px 8px 0px rgba(0,0,0,0.06);
+}
+
+.fixProcessHeader div {
+  width: 80%;
+  margin: auto;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-weight: bold;
+  height: 50px;
+  line-height: 50px;
+}
+
+.fixProcessHeader .nc-icon-prev {
+    display: inline-block;
+    position:absolute;
+    left: 15px;
+    top: 38px;
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid #000000;
+    border-right: 2px solid #000000;
+    transform: rotate(-135deg);
+}

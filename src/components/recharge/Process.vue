@@ -1,10 +1,11 @@
 <template>
 <div>
   <div class="process-container">
-    <BHeader :title="setTitle()" />
-    <!-- <div class="" v-html="tab">
-        <div class="item active">ATM</div><div class="item">ONLINE</div><div class="item">MBANKING</div>
-   </div> -->
+    <!-- <BHeader :title="setTitle()" /> -->
+  <header class="fixProcessHeader" >
+  　<i class="nc-icon-prev" @click="goBack()"></i>
+  <div>{{setTitle()}}</div>
+</header>
     <div :class="[method == 1 ? 'show':'hide']">
       <div class="cont-panel">
         <div class="top">
@@ -13,7 +14,7 @@
           <p class="code">{{data}}</p>
           <p class="subtitle">Kode Pembayaran</p>
         </div>
-<i class="fixDash"></i>
+        <i class="fixDash"></i>
         <div class="text-cont  fix" >
           <ol>
             <li>Catat Kode Pembayaran di atas dan datang ke gerai Alfamart, Alfa Midi, Alfa Express, dan Lawson </li>
@@ -64,7 +65,7 @@
           <p class="code">{{data}}</p>
           <p class="subtitle">Kode Pembayaran</p>
         </div>
-<i class="dash"></i>
+        <i class="dash"></i>
         <div class="text-cont">
           <p>Daftarkan VA anda untuk pertama kali</p>
           <ol>
@@ -102,7 +103,7 @@
           <p class="code">{{data}}</p>
           <p class="subtitle">Kode Pembayaran</p>
         </div>
-<i class="dash"></i>
+        <i class="dash"></i>
         <div class="text-cont">
           <p>Daftarkan VA anda untuk pertama kali</p>
           <ol>
@@ -207,7 +208,7 @@
           <p class="code">{{data}}</p>
           <p class="subtitle">Kode Pembayaran</p>
         </div>
-<i class="dash"></i>  
+        <i class="dash"></i>  
         <div class="text-cont">
           <ol>
             <li>Masukkan kartu dan pin atm.</li>
@@ -229,7 +230,7 @@
           <p class="code">{{data}}</p>
           <p class="subtitle">Kode Pembayaran</p>
         </div>
-<i class="dash"></i> 
+        <i class="dash"></i> 
         <div class="text-cont">
           <ol>
             <li>Login di <a href="javascript:void(0)" @click="openBrowser()"> https://ib.bri.co.id/ib-bri/</a> ,masukkan username dan password</li>
@@ -251,7 +252,7 @@
           <p class="code">{{data}}</p>
           <p class="subtitle">Kode Pembayaran</p>
         </div>
-<i class="dash"></i> 
+        <i class="dash"></i> 
         <div class="text-cont">
           <ol>
             <li>Masuk ke aplikias BRI Mobile.</li>
@@ -426,7 +427,7 @@
           <p class="code">{{data}}</p>
           <p class="subtitle">Kode Pembayaran</p>
         </div>
-<i class="dash"></i>
+        <i class="dash"></i>
         <div class="text-cont">
           <ol>
             <li>Kunjungi Internet Banking Permata</li>
@@ -447,7 +448,7 @@
           <p class="code">{{data}}</p>
           <p class="subtitle">Kode Pembayaran</p>
         </div>
-<i class="dash"></i>
+        <i class="dash"></i>
         <div class="text-cont">
           <ol>
             <li>Buka Aplikasi Mobile Banking Permata di HP</li>
@@ -473,7 +474,7 @@
           <p class="code">{{data}}</p>
           <p class="subtitle">Kode Pembayaran</p>
         </div>
-<i class="dash"></i>
+        <i class="dash"></i>
         <div class="text-cont">
           <ol>
             <li>Pilih “Transfer” pada menu </li>
@@ -493,7 +494,7 @@
           <p class="code">{{data}}</p>
           <p class="subtitle">Kode Pembayaran</p>
         </div>
-<i class="dash"></i>
+        <i class="dash"></i>
         <div class="text-cont">
           <ol>
             <li>Pilih “Transfer” pada menu </li>
@@ -514,7 +515,7 @@
           <p class="code">{{data}}</p>
           <p class="subtitle">Kode Pembayaran</p>
         </div>
-<i class="dash"></i>
+        <i class="dash"></i>
         <div class="text-cont">
           <ol>
             <li>Pilih “Transfer” pada menu</li>
@@ -612,6 +613,9 @@ export default {
     }
   },
   methods: {
+    goBack(){
+      window.history.go(-1)
+    },
     openBrowser(){
       window.AndroidWebView.goBrowser('https://ib.bri.co.id/ib-bri/')
     },
