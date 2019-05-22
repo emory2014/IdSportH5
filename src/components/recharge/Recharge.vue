@@ -1,8 +1,8 @@
 <template>
 <div>
   <!-- <BHeader title="Top Up Koin" recharge={true} /> -->
-  <header class="fixHeader" :style="{paddingTop: $route.query.from == 'task' ? '18px': '0px'}">
-  　<i class="nc-icon-prev" @click="goBack()" :style="{top: $route.query.from == 'task' ? '38px': '20px'}"></i>
+  <header class="fixHeader" :style="{paddingTop: $route.query.from == 'task' ? '18px': '18px'}">
+  　<i class="nc-icon-prev" @click="goBack()" :style="{top: $route.query.from == 'task' ? '38px': '38px'}"></i>
   <div>Top Up Koin</div>
   <router-link to="/record" v-if="recharge">
     <span class="recharge-record">Riwayat Transaksi</span>
@@ -222,6 +222,7 @@ body {
    background-color: #E4B68B;
 }
 .fixHeader {
+  padding-top: 18px;
   position: fixed;
   top: 0;
   height: 50px;
@@ -263,6 +264,6 @@ body {
   color: #999999;
   font-size: 12px;
   right: 10px;
-  top: 1px;
+  top: 18px;
 }
 </style>

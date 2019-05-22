@@ -97,11 +97,11 @@ export default {
     transform: rotate(-135deg);
 }
 
-.recharge-record {
+/* .recharge-record {
   position: absolute;
   color: #999999;
   font-size: 12px;
   right: 10px;
   top: 1px;
-}
+} */
 </style>
