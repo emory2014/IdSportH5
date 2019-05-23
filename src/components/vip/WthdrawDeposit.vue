@@ -162,10 +162,9 @@ let Base64 = require('js-base64').Base64
                 }
             this.validateTel()
                 if(!this.submitFlag) {
-                    return false;
+                }else{
+                    this.submitFlag = false
                 }
-                this.submitFlag = false
-
             if(parseInt(this.$route.query.m) < amount){
                 // 您的可提取金额不足
                 this.toastPop("Jumlah penarikan Anda tidak mencukupi");
