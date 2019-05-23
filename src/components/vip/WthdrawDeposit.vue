@@ -161,15 +161,17 @@ let Base64 = require('js-base64').Base64
                     return false;
                 }
             this.validateTel()
-                if(!this.submitFlag) {
-                }else{
-                    this.submitFlag = false
-                }
             if(parseInt(this.$route.query.m) < amount){
                 // 您的可提取金额不足
                 this.toastPop("Jumlah penarikan Anda tidak mencukupi");
                 return false;
             }
+
+            if(!this.submitFlag) {
+                return false
+            }
+            this.submitFlag = false
+            
                 this.getAppToken()
                 this.$http({
                     url: '/api/vip/redeem?t='+(new Date()).getTime(),
