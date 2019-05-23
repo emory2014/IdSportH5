@@ -152,10 +152,11 @@ export default {
   props: {
 
   },
-  created() {
-    this.$nextTick(() => {
-
-    })
+  created(){
+    // window.AndroidWebView.showLoading();
+    var that = this;
+    this.token = this.getAppToken()
+    this.getData()
   },
   beforeDestroy() {
     clearTimeout(this.timeout1)
@@ -433,12 +434,6 @@ export default {
         console.log('error: ', res);
       });
     }
-  },
-  created(){
-    // window.AndroidWebView.showLoading();
-    var that = this;
-    this.token = this.getAppToken()
-    this.getData()
   },
   mounted() {
     // window.AndroidWebView.dismissLoading()

@@ -244,43 +244,5 @@ export default {
 }
 </script>
 <style>
-.ad-cont {
-  padding: 15px;
-}
-
-.ad-cont img {
-  width: 100%;
-}
-
-.ad-cont p, .ad-cont div {
-  font-size: 16px;
-  color: #333;
-  text-align: justify;
-  word-break: break-all;
-}
-.ad-title {
-  font-size: 18px !important;
-  color: #333;
-  font-weight: bold;
-}
-  .ad-container .header {
-    padding-top: 10px;
-    position: fixed;
-    top: 0;
-    height: 70px;
-    text-align: center;
-    line-height: 85px;
-    font-size: 16px;
-    color: #333333;
-    background: #fff;
-    margin-bottom: 8px;
-    width: 100%;
-    z-index: 1;
-    box-shadow:0px 2px 8px 0px rgba(0,0,0,0.06);;
-  }
-
-</style>
-
-<style>
-@import "../../assets/css/task.css"
+  @import "../../assets/css/task.css"
 </style>
