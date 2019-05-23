@@ -18,8 +18,8 @@
     
 </ul> 
 
-<div :class="[defaultShow ? 'show':'hide']" class="vip-record-default">
-    <!-- <img src="../../assets/images/vip/vip-default-pic.png" /> -->
+<div :class="[defaultShow ? 'show':'hide']" class="record-default">
+    <img src="../../assets/images/vip/noVipRecord.png" />
     <p>“ Sementara tidak ada konten ”</p>
 </div>
 
@@ -141,12 +141,16 @@ let Base64 = require('js-base64').Base64
     }
 </script>
 <style>
-@import  "../../assets/css/vip.css";
-</style>
-<style scoped>
-    .vip-record-default {
-        padding-top: 270px;
-        color:#999999;
+    .record-default {
+        padding-top: 180px;
+        text-align: center
+    }
+    .record-default img{
+        width: 76px;
+        height: 118px;
+    }
+    .record-default p{
+        color: #999999;
         font-size: 14px;
     }
     .background {
@@ -157,5 +161,9 @@ let Base64 = require('js-base64').Base64
         right: 0;
         bottom: 0;
         }
+</style>
+
+<style>
+@import  "../../assets/css/vip.css";
 </style>
 
