@@ -108,10 +108,10 @@
       <div class="task-confirm-text success">
         Saldo dan Koin kamu tidak <br>mencukupi silakan Top Up Koin <br>  kamu.
       </div>
-      <router-link :to="{ path: '/recharge', query: {from: 'task'} }">
+      <!-- <router-link :to="{ path: '/recharge', query: {from: 'task'} }">
         <div class="task-success-btn" style="color:#E93F3F">Top Up </div>
-      </router-link>
-
+      </router-link> -->
+      <div @click="goRecharge()" class="task-success-btn" style="color:#E93F3F">Top Up </div>
     </div>
   </div>
 
@@ -163,6 +163,9 @@ export default {
     clearInterval(this.interval)
   },
   methods: {
+    goRecharge(){
+      this.$router.push({ path: '/recharge', query: {from: 'task'} })
+    },
     confirmBuyTask(id, expend,income) {
       this.activeMissionsId = id
       this.expend = expend
