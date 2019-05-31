@@ -105,7 +105,6 @@ export default {
         }
     },
     closePup(e){
-      console.log(e.target)
        setTimeout(()=>{ this.popupShow = false},300)
         if(e.target.className.indexOf("van-picker-column__item") > -1){
           if(e.target.innerHTML.indexOf('MANDIRI') > -1){
@@ -156,6 +155,7 @@ export default {
           this.banks = this.data.banks
           this.balance = res.data.data.gold
           if (this.from) {
+            this.amount = this.data.amountInfo[2].money
             this.buy = this.data.amountInfo[2].buy
             this.gift = this.data.amountInfo[2].gift
           } else {
