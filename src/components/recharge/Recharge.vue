@@ -21,7 +21,7 @@
     </div>
     <p class="recharge-text" v-if="buy">Koin yang didapat：<span class="recharge-val">Rpc.{{parseMoney(buy)}}</span></p>
     <p class="recharge-text" v-if="gift">Bonus pembelian Koin：<span class="recharge-val">Rpc.{{parseMoney(gift)}}</span></p>
-    <div class="recharge-btn" @click="recharge()">Beil</div>
+    <div class="recharge-btn" @click="recharge()">Beli</div>
 
   </div>
 
