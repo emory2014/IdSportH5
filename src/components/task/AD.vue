@@ -197,8 +197,8 @@ export default {
         },
         data: {
           token: this.token,
-          mid: this.$route.query.mid
-          // mid: 4
+         // mid: this.$route.query.mid
+           mid: 4
         },
         transformRequest: [function(data) {
           let ret = ''
@@ -243,13 +243,13 @@ export default {
 
 }
 </script>
-<style>
+<style scoped>
 .ad-cont {
   padding: 15px;
 }
 
 .ad-cont img {
-  width: 100%;
+  width: 100% !important;
 }
 
 .ad-cont p, .ad-cont div {
