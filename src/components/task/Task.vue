@@ -204,6 +204,7 @@ export default {
     var that = this;
     this.token = this.getAppToken();
     this.getData();
+    window.doubleGold = this.doubleGold;//观看视频后 安卓调用
   },
   beforeDestroy() {
     clearTimeout(this.timeout1);
