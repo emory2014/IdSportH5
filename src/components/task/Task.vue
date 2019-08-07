@@ -215,44 +215,8 @@ export default {
       var that = this;
       //关闭开宝箱的弹窗
       this.boxShow = false;
-      //视频广告点击上报
-      this.$http({
-        url: "/api/ad/videoClick",
-        method: "post",
-        headers: {
-          "Content-type": "application/x-www-form-urlencoded"
-        },
-        data: {
-          token: that.token,
-          type: that.num,
-          time: new Date().getTime(),
-        },
-        transformRequest: [
-          function(data) {
-            let ret = "";
-            for (let it in data) {
-              ret +=
-                encodeURIComponent(it) +
-                "=" +
-                encodeURIComponent(data[it]) +
-                "&";
-            }
-            return ret;
-          }
-        ]
-      })
-        .then(res => {
-          console.log(res)
-          if (res.data.status.code == 200) {
-            //视屏广告
-            window.AndroidWebView.showAtdVideoAd(that.num, that.prize);
-          } else {
-            that.$toast.bottom(res.data.status.message);
-          }
-        })
-        .catch(res => {
-          console.log("error: ", res);
-        });
+      //视屏广告
+      window.AndroidWebView.showAtdVideoAd(that.num, that.prize);
     },
     close() {
       this.boxShow = false;
