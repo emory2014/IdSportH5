@@ -197,8 +197,8 @@ export default {
         },
         data: {
           token: this.token,
-         // mid: this.$route.query.mid
-           mid: 4
+         mid: this.$route.query.mid
+           //mid: 4
         },
         transformRequest: [function(data) {
           let ret = ''
