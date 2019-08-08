@@ -175,11 +175,12 @@
       </div>
       <img class="close" @click="close" src="../../assets/images/closeBox.png" />
     </div>
+   <div class="showpopup" @click="ceshixiaoxi">{{appVersion}}</div>
   </div>
 </template>
 <script>
 import TaskScrollItem from "./TaskScrollItem.vue";
-import { Toast, Dialog } from "vant";
+import { Toast, Dialog ,Popup,Notify} from "vant";
 export default {
   name: "Task",
   components: {
@@ -212,7 +213,8 @@ export default {
       num: 0,
       showDoubleBtn: false, //观看视频翻倍
       Terima: false, //收下按钮
-      taskSuccessPop: false //完成任务弹窗
+      taskSuccessPop: false ,//完成任务弹窗
+      showpopup:false,//ceshi
     };
   },
   props: {},
@@ -229,15 +231,13 @@ export default {
     clearInterval(this.interval);
   },
   methods: {
+    ceshixiaoxi(){
+      this.showpopup=false
+    },
     //newPackage
     newPackage() {
       this.appVersion = "5.0.5";
-      Dialog.alert({
-        title: "获取版本号",
-        message:this.appVersion
-      }).then(() => {
-        // on close
-      });
+      this.showpopup=true;
       if (this.appVersion >= "5.0.5") {
         //版本号大于5.0.5 检查广告
         //3:任务奖励视频  6:任务奖励插屏
@@ -614,8 +614,7 @@ export default {
     //任务完成后提交信息
     submitMission() {
       var that = this;
-      that
-        .$http({
+      that.$http({
           url: "/api/mission/submit",
           method: "post",
           headers: {
@@ -729,6 +728,18 @@ export default {
   width: 100%;
   display: block;
   margin: 0 auto;
+}
+.taskBox .showpopup{
+left: 50%;
+margin-left: -100px;
+position: fixed;
+top: 40%;
+background: #000;
+color: #fff;
+text-align: center;
+width: 200px;
+border-radius:8px;
+line-height: 30px;
 }
 </style>
 
