@@ -179,11 +179,11 @@
 </template>
 <script>
 import TaskScrollItem from "./TaskScrollItem.vue";
-import { Toast } from 'vant';
+import { Toast, Dialog } from "vant";
 export default {
   name: "Task",
   components: {
-    TaskScrollItem,
+    TaskScrollItem
   },
   data() {
     return {
@@ -217,7 +217,8 @@ export default {
   },
   props: {},
   created() {
-    // window.AndroidWebView.showLoading();
+    
+    window.AndroidWebView.showLoading();
     var that = this;
     this.token = this.getAppToken();
     this.getData();
@@ -226,22 +227,28 @@ export default {
     window.newPackage = this.newPackage; //获取版本号
   },
   beforeDestroy() {
-       clearTimeout(this.timeout1);
-       clearInterval(this.interval);
+    clearTimeout(this.timeout1);
+    clearInterval(this.interval);
   },
   methods: {
     //newPackage
-    newPackage(){
-      this.appVersion="5.0.5";
-      if (that.appVersion >= "5.0.5") {
+    newPackage() {
+      this.appVersion = "5.0.5";
+      Dialog.alert({
+        title: "获取版本号",
+        message:this.appVersion
+      }).then(() => {
+        // on close
+      });
+      if (this.appVersion >= "5.0.5") {
         //版本号大于5.0.5 检查广告
         //3:任务奖励视频  6:任务奖励插屏
-        that.num = window.AndroidWebView.isReadyAd();
+        this.num = window.AndroidWebView.isReadyAd();
       }
     },
     //完成任务
-    taskSuccess(){
-      this.submitMission()
+    taskSuccess() {
+      this.submitMission();
       this.taskSuccessPop = true;
       this.getData();
     },
@@ -314,8 +321,8 @@ export default {
       //先检查有没有视频
       if ((that.num == 3 || that.num == 6) && that.appVersion >= "5.0.5") {
         //视屏广告
-        window.AndroidWebView.showAtdVideoAd("7","");
-      }else{
+        window.AndroidWebView.showAtdVideoAd("7", "");
+      } else {
         that.$router.push({
           path: "/ad",
           query: {
@@ -324,17 +331,17 @@ export default {
           }
         });
       }
-      
     },
     //开始做任务
     toAd() {
       var that = this;
-      this.successShow =false;//购买成功弹框消失
+      this.successShow = false; //购买成功弹框消失
       //先检查有没有视频
       if ((that.num == 3 || that.num == 6) && that.appVersion >= "5.0.5") {
         //视屏广告
-        window.AndroidWebView.showAtdVideoAd("7","");
-      }else{//原来的逻辑
+        window.AndroidWebView.showAtdVideoAd("7", "");
+      } else {
+        //原来的逻辑
         that.$router.push({
           path: "/ad",
           query: {
@@ -343,7 +350,6 @@ export default {
           }
         });
       }
-      
     },
     //购买任务
     bugTask() {
@@ -451,7 +457,7 @@ export default {
     },
     //开宝箱
     openBox() {
-      var that = this
+      var that = this;
       that.token = that.getAppToken();
       if (that.appVersion >= "5.0.5") {
         //插屏广告
@@ -462,30 +468,31 @@ export default {
       } else {
         that.showDoubleBtn = false;
       }
-      that.$http({
-        url: "/api/openTreasureBox",
-        method: "post",
-        headers: {
-          "Content-type": "application/x-www-form-urlencoded"
-        },
-        data: {
-          token: that.token,
-          version: that.appVersion
-        },
-        transformRequest: [
-          function(data) {
-            let ret = "";
-            for (let it in data) {
-              ret +=
-                encodeURIComponent(it) +
-                "=" +
-                encodeURIComponent(data[it]) +
-                "&";
+      that
+        .$http({
+          url: "/api/openTreasureBox",
+          method: "post",
+          headers: {
+            "Content-type": "application/x-www-form-urlencoded"
+          },
+          data: {
+            token: that.token,
+            version: that.appVersion
+          },
+          transformRequest: [
+            function(data) {
+              let ret = "";
+              for (let it in data) {
+                ret +=
+                  encodeURIComponent(it) +
+                  "=" +
+                  encodeURIComponent(data[it]) +
+                  "&";
+              }
+              return ret;
             }
-            return ret;
-          }
-        ]
-      })
+          ]
+        })
         .then(res => {
           if (res.data.status.code == 200) {
             that.prize = res.data.data.gold;
@@ -549,7 +556,8 @@ export default {
     },
     getData() {
       var that = this;
-      that.$http({
+      that
+        .$http({
           url: "/api/mission",
           method: "post",
           headers: {
@@ -588,9 +596,6 @@ export default {
               Math.floor(new Date().getTime() / 1000);
             that.missions = dataObj.missions;
             //that.appVersion = dataObj.version; //获取版本号
-            that.$toast(that.appVersion);
-            alert(that.appVersion)
-            
             if (that.isOpen) {
               that.countDown(that.timestamp); //结束时间到开始时间的时间差，单位秒
             }
@@ -609,40 +614,47 @@ export default {
         });
     },
     //任务完成后提交信息
-    submitMission(){
-      var that = this
-      that.$http({
-        url: '/api/mission/submit',
-        method: 'post',
-        headers: {
-          'Content-type': 'application/x-www-form-urlencoded'
-        },
-        data: {
-          token: that.token,
-          mid: that.activeMissionsId,
-        },
-        transformRequest: [function(data) {
-          let ret = ''
-          for (let it in data) {
-            ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+    submitMission() {
+      var that = this;
+      that
+        .$http({
+          url: "/api/mission/submit",
+          method: "post",
+          headers: {
+            "Content-type": "application/x-www-form-urlencoded"
+          },
+          data: {
+            token: that.token,
+            mid: that.activeMissionsId
+          },
+          transformRequest: [
+            function(data) {
+              let ret = "";
+              for (let it in data) {
+                ret +=
+                  encodeURIComponent(it) +
+                  "=" +
+                  encodeURIComponent(data[it]) +
+                  "&";
+              }
+              return ret;
+            }
+          ]
+        })
+        .then(res => {
+          let resData = res.data;
+          if (resData.status.code == 200) {
+          } else if (resData.status.code == 401) {
+            //window.AndroidWebView.closeActivities();
+            window.AndroidWebView.loginApp();
+          } else {
+            window.AndroidWebView.showContent(resData.status.message);
           }
-          return ret
-        }],
-      }).then((res) => {
-        let resData = res.data
-        if (resData.status.code == 200) {
-         
-        } else if (resData.status.code == 401) {
-          //window.AndroidWebView.closeActivities();
-          window.AndroidWebView.loginApp();
-        } else {
-          window.AndroidWebView.showContent(resData.status.message);
-        }
-
-      }).catch((res) => {
-        console.log('error: ', res);
-      });
-    },
+        })
+        .catch(res => {
+          console.log("error: ", res);
+        });
+    }
   },
   mounted() {
     // window.AndroidWebView.dismissLoading()
@@ -709,14 +721,14 @@ export default {
   background: #fff;
   padding-bottom: 30px;
 }
-.taskBox .taskSuccess .taskSuccess-con .text p{
-margin: 0;
-line-height: 28px;
-font-size: 16px;
+.taskBox .taskSuccess .taskSuccess-con .text p {
+  margin: 0;
+  line-height: 28px;
+  font-size: 16px;
 }
 
 .taskBox .taskSuccess .bg {
-  width:100%;
+  width: 100%;
   display: block;
   margin: 0 auto;
 }
