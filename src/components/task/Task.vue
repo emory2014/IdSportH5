@@ -208,7 +208,7 @@ export default {
       activeMissionsId: "",
       expend: "",
       income: "",
-      appVersion: "5.0.5",
+      appVersion: "0",
       num: 0,
       showDoubleBtn: false, //观看视频翻倍
       Terima: false, //收下按钮
@@ -223,14 +223,25 @@ export default {
     this.getData();
     window.doubleGold = this.doubleGold; //观看视频后 安卓调用
     window.taskSuccess = this.taskSuccess; //任务成功
+    window.newPackage = this.newPackage; //获取版本号
   },
   beforeDestroy() {
        clearTimeout(this.timeout1);
        clearInterval(this.interval);
   },
   methods: {
+    //newPackage
+    newPackage(){
+      this.appVersion="5.0.5";
+      if (that.appVersion >= "5.0.5") {
+        //版本号大于5.0.5 检查广告
+        //3:任务奖励视频  6:任务奖励插屏
+        that.num = window.AndroidWebView.isReadyAd();
+      }
+    },
     //完成任务
     taskSuccess(){
+      this.submitMission()
       this.taskSuccessPop = true;
       this.getData();
     },
@@ -304,7 +315,6 @@ export default {
       if ((that.num == 3 || that.num == 6) && that.appVersion >= "5.0.5") {
         //视屏广告
         window.AndroidWebView.showAtdVideoAd("7","");
-        that.submitMission()
       }else{
         that.$router.push({
           path: "/ad",
@@ -319,11 +329,11 @@ export default {
     //开始做任务
     toAd() {
       var that = this;
+      this.successShow =false;//购买成功弹框消失
       //先检查有没有视频
       if ((that.num == 3 || that.num == 6) && that.appVersion >= "5.0.5") {
         //视屏广告
         window.AndroidWebView.showAtdVideoAd("7","");
-        that.submitMission()
       }else{//原来的逻辑
         that.$router.push({
           path: "/ad",
@@ -443,8 +453,6 @@ export default {
     openBox() {
       var that = this
       that.token = that.getAppToken();
-      this.$toast(that.appVersion);
-      this.$toast(that.num);
       if (that.appVersion >= "5.0.5") {
         //插屏广告
         window.AndroidWebView.showAtdInterAd("2");
@@ -580,12 +588,9 @@ export default {
               Math.floor(new Date().getTime() / 1000);
             that.missions = dataObj.missions;
             //that.appVersion = dataObj.version; //获取版本号
-            console.log(that.appVersion)
-            if (that.appVersion >= "5.0.5") {
-              //版本号大于5.0.5 检查广告
-              //3:任务奖励视频  6:任务奖励插屏
-              that.num = window.AndroidWebView.isReadyAd();
-            }
+            that.$toast(that.appVersion);
+            alert(that.appVersion)
+            
             if (that.isOpen) {
               that.countDown(that.timestamp); //结束时间到开始时间的时间差，单位秒
             }
