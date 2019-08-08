@@ -443,6 +443,7 @@ export default {
       var that = this
       that.token = that.getAppToken();
       that.$toast.bottom(that.appVersion);
+      that.$toast.bottom(that.num);
       if (that.appVersion >= "5.0.5") {
         //插屏广告
         window.AndroidWebView.showAtdInterAd("2");
