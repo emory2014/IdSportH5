@@ -175,12 +175,12 @@
       </div>
       <img class="close" @click="close" src="../../assets/images/closeBox.png" />
     </div>
-   <div class="showpopup" @click="ceshixiaoxi">{{appVersion}}</div>
+   <div class="showpopup" v-if="showpopup" @click="ceshixiaoxi">{{appVersion}}</div>
   </div>
 </template>
 <script>
 import TaskScrollItem from "./TaskScrollItem.vue";
-import { Toast, Dialog ,Popup,Notify} from "vant";
+import { Toast} from "vant";
 export default {
   name: "Task",
   components: {
@@ -237,7 +237,7 @@ export default {
     //newPackage
     newPackage() {
       this.appVersion = "5.0.5";
-      this.showpopup=true;
+      this.showpopup=true;//上线删掉
       if (this.appVersion >= "5.0.5") {
         //版本号大于5.0.5 检查广告
         //3:任务奖励视频  6:任务奖励插屏
