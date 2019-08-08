@@ -237,6 +237,7 @@ export default {
     //newPackage
     newPackage() {
       this.appVersion = "5.0.5";
+     // window.AndroidWebView.showContent(this.appVersion);
       this.showpopup=true;//上线删掉
       if (this.appVersion >= "5.0.5") {
         //版本号大于5.0.5 检查广告
@@ -248,6 +249,7 @@ export default {
     taskSuccess() {
       this.submitMission();
       this.taskSuccessPop = true;
+      this.confirmShow = false;
       this.getData();
     },
     //观看视频
