@@ -238,7 +238,7 @@ export default {
     newPackage() {
       this.appVersion = "5.0.5";
      // window.AndroidWebView.showContent(this.appVersion);
-      this.showpopup=true;//上线删掉
+     // this.showpopup=true;//上线删掉
       if (this.appVersion >= "5.0.5") {
         //版本号大于5.0.5 检查广告
         //3:任务奖励视频  6:任务奖励插屏
