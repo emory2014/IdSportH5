@@ -9,7 +9,11 @@
         <!-- <img class="light" src="../../assets/images/light@2x.png" /> -->
       </div>
       <!-- 看视频，金币翻倍 -->
-      <div class="double_btn" @click="watchVideo" v-if="showDoubleBtn" >Lihat 30s Video, Bonus Koin 2x</div>
+      <div
+        class="double_btn"
+        @click="watchVideo"
+        v-if="showDoubleBtn"
+      >Lihat 30s Video, Bonus Koin 2x</div>
       <!-- 收下 -->
       <div class="double_btn" v-if="Terima" @click="close()">Terima</div>
       <img class="close" @click="close()" src="../../assets/images/closeBox.png" />
@@ -160,6 +164,17 @@
         <div @click="goRecharge()" class="task-success-btn" style="color:#E93F3F">Top Up</div>
       </div>
     </div>
+    <!-- 任务完成弹窗 -->
+    <div class="task-confirm-mask taskSuccess" :class="[taskSuccessPop ? 'show' : 'hide']">
+      <div class="taskSuccess-con">
+        <img src="../../assets/images/bg_taskSuccess.png" class="bg" />
+        <div class="text">
+          <p style="font-weight: bold;">Tugas sudah selesai</p>
+          <p>Tugas hari ini sudah diselesaikan</p>
+        </div>
+      </div>
+      <img class="close" @click="close" src="../../assets/images/closeBox.png" />
+    </div>
   </div>
 </template>
 <script>
@@ -195,7 +210,8 @@ export default {
       appVersion: "5.0.5",
       num: 0,
       showDoubleBtn: false, //观看视频翻倍
-      Terima: false //收下按钮
+      Terima: false, //收下按钮
+      taskSuccessPop: false //完成任务弹窗
     };
   },
   props: {},
@@ -204,13 +220,19 @@ export default {
     var that = this;
     this.token = this.getAppToken();
     this.getData();
-    window.doubleGold = this.doubleGold;//观看视频后 安卓调用
+    window.doubleGold = this.doubleGold; //观看视频后 安卓调用
+    window.taskSuccess = this.taskSuccess; //任务成功
   },
   beforeDestroy() {
-    clearTimeout(this.timeout1);
-    clearInterval(this.interval);
+       clearTimeout(this.timeout1);
+       clearInterval(this.interval);
   },
   methods: {
+    //完成任务
+    taskSuccess(){
+      this.taskSuccessPop = true;
+      this.getData();
+    },
     //观看视频
     watchVideo() {
       var that = this;
@@ -221,12 +243,13 @@ export default {
     },
     close() {
       this.boxShow = false;
+      this.taskSuccessPop = false;
     },
-    doubleGold(){
-      this.prize= parseInt(this.prize) * 2//金币翻倍
-      this.boxShow = true;//开宝箱弹窗show
-      this.showDoubleBtn=false;
-      this.Terima=true;//收下按钮显示
+    doubleGold() {
+      this.prize = parseInt(this.prize) * 2; //金币翻倍
+      this.boxShow = true; //开宝箱弹窗show
+      this.showDoubleBtn = false;
+      this.Terima = true; //收下按钮显示
     },
     goRecharge() {
       this.$router.push({ path: "/recharge", query: { from: "task" } });
@@ -272,24 +295,44 @@ export default {
           console.log("error: ", res);
         });
     },
+    //继续任务
     continueTask(id) {
-      this.activeMissionsId = id;
-      this.$router.push({
-        path: "/ad",
-        query: {
-          mid: id,
-          from: "task"
-        }
-      });
+      var that = this;
+      that.activeMissionsId = id;
+      //先检查有没有视频
+      if ((that.num == 3 || that.num == 6) && that.appVersion >= "5.0.5") {
+        //视屏广告
+        window.AndroidWebView.showAtdVideoAd("7","");
+        that.submitMission()
+      }else{
+        that.$router.push({
+          path: "/ad",
+          query: {
+            mid: id,
+            from: "task"
+          }
+        });
+      }
+      
     },
+    //开始做任务
     toAd() {
-      this.$router.push({
-        path: "/ad",
-        query: {
-          mid: this.activeMissionsId,
-          from: "task"
-        }
-      });
+      var that = this;
+      //先检查有没有视频
+      if ((that.num == 3 || that.num == 6) && that.appVersion >= "5.0.5") {
+        //视屏广告
+        window.AndroidWebView.showAtdVideoAd("7");
+        that.submitMission()
+      }else{//原来的逻辑
+        that.$router.push({
+          path: "/ad",
+          query: {
+            mid: that.activeMissionsId,
+            from: "task"
+          }
+        });
+      }
+      
     },
     //购买任务
     bugTask() {
@@ -485,7 +528,6 @@ export default {
               ? "0" + second
               : second;
           this.countdownStr = hour + ":" + minute + ":" + second;
-          console.log(this.countdownStr)
           document.getElementById("countdown").innerHTML = countdownStr;
           // if (sec <= 0) {
           //   window.location.reload()
@@ -494,30 +536,31 @@ export default {
       }, 1000);
     },
     getData() {
-      var that =this
-      that.$http({
-        url: "/api/mission",
-        method: "post",
-        headers: {
-          "Content-type": "application/x-www-form-urlencoded"
-        },
-        data: {
-          token: that.token
-        },
-        transformRequest: [
-          function(data) {
-            let ret = "";
-            for (let it in data) {
-              ret +=
-                encodeURIComponent(it) +
-                "=" +
-                encodeURIComponent(data[it]) +
-                "&";
+      var that = this;
+      that
+        .$http({
+          url: "/api/mission",
+          method: "post",
+          headers: {
+            "Content-type": "application/x-www-form-urlencoded"
+          },
+          data: {
+            token: that.token
+          },
+          transformRequest: [
+            function(data) {
+              let ret = "";
+              for (let it in data) {
+                ret +=
+                  encodeURIComponent(it) +
+                  "=" +
+                  encodeURIComponent(data[it]) +
+                  "&";
+              }
+              return ret;
             }
-            return ret;
-          }
-        ]
-      })
+          ]
+        })
         .then(res => {
           if (res.data.status.code == 200) {
             console.log(res.data.data);
@@ -533,9 +576,8 @@ export default {
               dataObj.treasureBox.next -
               Math.floor(new Date().getTime() / 1000);
             that.missions = dataObj.missions;
-            that.appVersion = dataObj.version; //获取版本号
-            console.log(dataObj.version);
-            if (dataObj.version >= "5.0.5") {
+            //that.appVersion = dataObj.version; //获取版本号
+            if (that.appVersion >= "5.0.5") {
               //版本号大于5.0.5 检查广告
               //3:任务奖励视频  6:任务奖励插屏
               that.num = window.AndroidWebView.isReadyAd();
@@ -556,7 +598,42 @@ export default {
         .catch(res => {
           console.log("error: ", res);
         });
-    }
+    },
+    //任务完成后提交信息
+    submitMission(){
+      var that = this
+      that.$http({
+        url: '/api/mission/submit',
+        method: 'post',
+        headers: {
+          'Content-type': 'application/x-www-form-urlencoded'
+        },
+        data: {
+          token: that.token,
+          mid: that.activeMissionsId,
+        },
+        transformRequest: [function(data) {
+          let ret = ''
+          for (let it in data) {
+            ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+          }
+          return ret
+        }],
+      }).then((res) => {
+        let resData = res.data
+        if (resData.status.code == 200) {
+         
+        } else if (resData.status.code == 401) {
+          //window.AndroidWebView.closeActivities();
+          window.AndroidWebView.loginApp();
+        } else {
+          window.AndroidWebView.showContent(resData.status.message);
+        }
+
+      }).catch((res) => {
+        console.log('error: ', res);
+      });
+    },
   },
   mounted() {
     // window.AndroidWebView.dismissLoading()
@@ -581,8 +658,8 @@ export default {
 }
 .taskBox .close {
   display: block;
-  width: 22px;
-  height: 22px;
+  width: 30px;
+  height: 30px;
   margin: 17px auto;
 }
 .taskBox .open-text {
@@ -609,6 +686,30 @@ export default {
     transform: translateY(0);
     opacity: 1;
   }
+}
+.taskBox .taskSuccess .taskSuccess-con {
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 30%;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.taskBox .taskSuccess .taskSuccess-con .text {
+  margin: 0 auto;
+  text-align: center;
+  background: #fff;
+  padding-bottom: 30px;
+}
+.taskBox .taskSuccess .taskSuccess-con .text p{
+margin: 0;
+line-height: 28px;
+font-size: 16px;
+}
+
+.taskBox .taskSuccess .bg {
+  width:100%;
+  display: block;
+  margin: 0 auto;
 }
 </style>
 
