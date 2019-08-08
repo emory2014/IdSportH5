@@ -179,10 +179,11 @@
 </template>
 <script>
 import TaskScrollItem from "./TaskScrollItem.vue";
+import { Toast } from 'vant';
 export default {
   name: "Task",
   components: {
-    TaskScrollItem
+    TaskScrollItem,
   },
   data() {
     return {
@@ -442,8 +443,8 @@ export default {
     openBox() {
       var that = this
       that.token = that.getAppToken();
-      that.$toast.bottom(that.appVersion);
-      that.$toast.bottom(that.num);
+      this.$toast(that.appVersion);
+      this.$toast(that.num);
       if (that.appVersion >= "5.0.5") {
         //插屏广告
         window.AndroidWebView.showAtdInterAd("2");
@@ -540,8 +541,7 @@ export default {
     },
     getData() {
       var that = this;
-      that
-        .$http({
+      that.$http({
           url: "/api/mission",
           method: "post",
           headers: {
