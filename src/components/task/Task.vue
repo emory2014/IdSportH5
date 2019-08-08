@@ -217,8 +217,6 @@ export default {
   },
   props: {},
   created() {
-    
-    window.AndroidWebView.showLoading();
     var that = this;
     this.token = this.getAppToken();
     this.getData();
