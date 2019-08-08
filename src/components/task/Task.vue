@@ -321,7 +321,7 @@ export default {
       //先检查有没有视频
       if ((that.num == 3 || that.num == 6) && that.appVersion >= "5.0.5") {
         //视屏广告
-        window.AndroidWebView.showAtdVideoAd("7");
+        window.AndroidWebView.showAtdVideoAd("7","");
         that.submitMission()
       }else{//原来的逻辑
         that.$router.push({
@@ -440,25 +440,27 @@ export default {
     },
     //开宝箱
     openBox() {
-      this.token = this.getAppToken();
-      if (this.appVersion >= "5.0.5") {
+      var that = this
+      that.token = that.getAppToken();
+      that.$toast.bottom(that.appVersion);
+      if (that.appVersion >= "5.0.5") {
         //插屏广告
         window.AndroidWebView.showAtdInterAd("2");
       }
-      if ((this.num == 3 || this.num == 6) && this.appVersion >= "5.0.5") {
-        this.showDoubleBtn = true; //观看视频翻倍按钮
+      if ((that.num == 3 || that.num == 6) && that.appVersion >= "5.0.5") {
+        that.showDoubleBtn = true; //观看视频翻倍按钮
       } else {
-        this.showDoubleBtn = false;
+        that.showDoubleBtn = false;
       }
-      this.$http({
+      that.$http({
         url: "/api/openTreasureBox",
         method: "post",
         headers: {
           "Content-type": "application/x-www-form-urlencoded"
         },
         data: {
-          token: this.token,
-          version: this.appVersion
+          token: that.token,
+          version: that.appVersion
         },
         transformRequest: [
           function(data) {
@@ -476,14 +478,14 @@ export default {
       })
         .then(res => {
           if (res.data.status.code == 200) {
-            this.prize = res.data.data.gold;
-            this.boxShow = true;
+            that.prize = res.data.data.gold;
+            that.boxShow = true;
             setTimeout(() => {
-              //this.boxShow = false;
-              this.isOpen = true;
-              this.timestamp =
+              //that.boxShow = false;
+              that.isOpen = true;
+              that.timestamp =
                 res.data.data.next - Math.floor(new Date().getTime() / 1000);
-              this.countDown(this.timestamp);
+              that.countDown(that.timestamp);
             }, 3000);
           } else if (res.data.status.code == 401) {
             //window.AndroidWebView.closeActivities();
@@ -577,6 +579,7 @@ export default {
               Math.floor(new Date().getTime() / 1000);
             that.missions = dataObj.missions;
             //that.appVersion = dataObj.version; //获取版本号
+            console.log(that.appVersion)
             if (that.appVersion >= "5.0.5") {
               //版本号大于5.0.5 检查广告
               //3:任务奖励视频  6:任务奖励插屏
