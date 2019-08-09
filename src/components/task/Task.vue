@@ -336,6 +336,7 @@ export default {
     toAd() {
       var that = this;
       this.successShow = false; //购买成功弹框消失
+      this.confirmShow = false; //确认购买 弹框消失
       //先检查有没有视频
       if ((that.num == 3 || that.num == 6) && that.appVersion >= "5.0.5") {
         //视屏广告
@@ -353,16 +354,17 @@ export default {
     },
     //购买任务
     bugTask() {
-      this.token = this.getAppToken();
-      this.$http({
+      var that = this;
+      that.token = this.getAppToken();
+      that.$http({
         url: "/api/mission/buy",
         method: "post",
         headers: {
           "Content-type": "application/x-www-form-urlencoded"
         },
         data: {
-          token: this.token,
-          mid: this.activeMissionsId
+          token: that.token,
+          mid: that.activeMissionsId
         },
         transformRequest: [
           function(data) {
@@ -380,16 +382,18 @@ export default {
       })
         .then(res => {
           if (res.data.status.code == 200) {
-            this.successShow = true;
+            that.successShow = true;// 购买成功弹框
+            that.confirmShow = false;// 确认购买
+            
           } else if (res.data.status.code == 518) {
-            this.confirmShow = false;
-            this.balanceShow = true;
+            that.confirmShow = false;
+            that.balanceShow = true;
           } else if (res.data.status.code == 401) {
             //window.AndroidWebView.closeActivities();
 
             window.AndroidWebView.loginApp();
           } else {
-            this.$toast.bottom(res.data.status.message);
+            that.$toast.bottom(res.data.status.message);
           }
         })
         .catch(res => {
