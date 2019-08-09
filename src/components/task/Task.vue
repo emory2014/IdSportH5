@@ -330,42 +330,49 @@ export default {
     continueTask(id) {
       var that = this;
       that.activeMissionsId = id;
-      //先检查有没有视频
-      if ((that.num == 3 || that.num == 6) && that.appVersion >= "5.0.5") {
-        that.synchWatchVideo=true;
+      this.synchWatchVideo=true;
+      //视屏广告
+      window.AndroidWebView.showAtdVideoAd("7", "");
+      // //先检查有没有视频
+      // if ((that.num == 3 || that.num == 6) && that.appVersion >= "5.0.5") {
+      //   that.synchWatchVideo=true;
 
-        //视屏广告
-        window.AndroidWebView.showAtdVideoAd("7", "");
-      } else {
-        that.$router.push({
-          path: "/ad",
-          query: {
-            mid: id,
-            from: "task"
-          }
-        });
-      }
+      //   //视屏广告
+      //   window.AndroidWebView.showAtdVideoAd("7", "");
+      // } else {
+      //   that.$router.push({
+      //     path: "/ad",
+      //     query: {
+      //       mid: id,
+      //       from: "task"
+      //     }
+      //   });
+      // }
     },
     //开始做任务
     toAd() {
       var that = this;
       this.successShow = false; //购买成功弹框消失
       this.confirmShow = false; //确认购买 弹框消失
-      //先检查有没有视频
-      if ((that.num == 3 || that.num == 6) && that.appVersion >= "5.0.5") {
-        that.synchWatchVideo=true;
-        //视屏广告
-        window.AndroidWebView.showAtdVideoAd("7", "");
-      } else {
-        //原来的逻辑
-        that.$router.push({
-          path: "/ad",
-          query: {
-            mid: that.activeMissionsId,
-            from: "task"
-          }
-        });
-      }
+
+      this.synchWatchVideo=true;
+      //视屏广告
+      window.AndroidWebView.showAtdVideoAd("7", "");
+      // //先检查有没有视频
+      // if ((that.num == 3 || that.num == 6) && that.appVersion >= "5.0.5") {
+      //   that.synchWatchVideo=true;
+      //   //视屏广告
+      //   window.AndroidWebView.showAtdVideoAd("7", "");
+      // } else {
+      //   //原来的逻辑
+      //   that.$router.push({
+      //     path: "/ad",
+      //     query: {
+      //       mid: that.activeMissionsId,
+      //       from: "task"
+      //     }
+      //   });
+      // }
     },
     toAd2(){
       this.synchWatchVideo = false;
