@@ -149,6 +149,15 @@
         <div class="task-success-btn" style="color:#E93F3F" @click="toAd()">Dapetin Bonus</div>
       </div>
     </div>
+    <!-- 调视频任务同时 弹框 -->
+    <div class="task-confirm-mask" :class="[synchWatchVideo ? 'show' : 'hide']">
+      <div class="task-confirm-cont">
+        <div class="task-confirm-text success">
+          没吊起来视频
+        </div>
+        <div class="task-success-btn" style="color:#E93F3F" @click="toAd2()">去老广告</div>
+      </div>
+    </div>
 
     <!-- 余额不足弹框 -->
     <div class="task-confirm-mask" :class="[balanceShow ? 'show' : 'hide']">
@@ -214,7 +223,9 @@ export default {
       showDoubleBtn: false, //观看视频翻倍
       Terima: false, //收下按钮
       taskSuccessPop: false ,//完成任务弹窗
+      synchWatchVideo:false,//调视频任务同时 弹框
       showpopup:false,//ceshi
+
     };
   },
   props: {},
@@ -250,6 +261,7 @@ export default {
       this.submitMission();
       this.taskSuccessPop = true;
       this.confirmShow = false;
+      this.synchWatchVideo = false;
       this.getData();
     },
     //观看视频
@@ -339,6 +351,7 @@ export default {
       this.confirmShow = false; //确认购买 弹框消失
       //先检查有没有视频
       if ((that.num == 3 || that.num == 6) && that.appVersion >= "5.0.5") {
+        that.synchWatchVideo=true;
         //视屏广告
         window.AndroidWebView.showAtdVideoAd("7", "");
       } else {
@@ -351,6 +364,16 @@ export default {
           }
         });
       }
+    },
+    toAd2(){
+      this.synchWatchVideo = false;
+      this.$router.push({
+          path: "/ad",
+          query: {
+            mid: this.activeMissionsId,
+            from: "task"
+          }
+        });
     },
     //购买任务
     bugTask() {
