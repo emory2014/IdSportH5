@@ -20,7 +20,7 @@ export default {
         var content = window.AndroidWebView.getAppToken();
         var token = Base64.decode(content)
         return token
-        return '293ff5900ffa0275db8a115be1470c35'
+        return 'eeaa4f1e5c3ed0d5b08626f001d9af1f'
       }
   }
 
