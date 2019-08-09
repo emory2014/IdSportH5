@@ -153,9 +153,9 @@
     <div class="task-confirm-mask" :class="[synchWatchVideo ? 'show' : 'hide']">
       <div class="task-confirm-cont">
         <div class="task-confirm-text success">
-          没吊起来视频
+          Lihat iklan berturut turut dan dapatkan koin emas
         </div>
-        <div class="task-success-btn" style="color:#E93F3F" @click="toAd2()">去老广告</div>
+        <div class="task-success-btn" style="color:#E93F3F" @click="toAd2()">Lihat sekarang</div>
       </div>
     </div>
 
@@ -332,6 +332,8 @@ export default {
       that.activeMissionsId = id;
       //先检查有没有视频
       if ((that.num == 3 || that.num == 6) && that.appVersion >= "5.0.5") {
+        that.synchWatchVideo=true;
+
         //视屏广告
         window.AndroidWebView.showAtdVideoAd("7", "");
       } else {
