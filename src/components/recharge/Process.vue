@@ -18,10 +18,10 @@
         <div class="text-cont  fix" >
           <ol>
             <li>Catat Kode Pembayaran di atas dan datang ke gerai Alfamart, Alfa Midi, Alfa Express, dan Lawson </li>
-            <li> Beritahukan ke kasir bahwa anda ingin melakukan pembayaran Nama Merchant ”BMY” </li>
+            <li> Beritahukan ke kasir bahwa anda ingin melakukan pembayaran Nama Merchant ”WAYANG PAY” </li>
             <li> Jika kasir tidak mengetahui mengenai pembayaran Nama Merchant, informasikan ke kasir untuk membuka terminal e-transaction, pilih "no. 2 menu Pembayaran atau cari pada menu search" c </li>
-            <li> Minta kasir untuk menekan “Shift” dan “?” lalu ketik Nama Merchant “BMY”, setelah itu klik OK </li>
-            <li>Minta kasir untuk pilih "no.1 Nama Merchan - Pembayaran Nama Merchant" </li>
+            <li> Minta kasir untuk menekan “Shift” dan “?” lalu ketik Nama Merchant “WAYANG PAY”, setelah itu klik OK </li>
+            <li>Minta kasir untuk pilih "no.1 WAYANG PAY - Pembayaran WAYANG PAY" </li>
             <li>Kasir akan menanyakan Kode Pembayaran. Berikan Kode Pembayaran anda <span class="yellow">{{data}}</span>. Kasir akan melakukan konfirmasi data konsumen berupa Nama Merchant “BMY”, Nama Konsumen, dan Nominal. Lakukan pembayaran ke
               kasir sejumlah nominal yang disebutkan </li>
             <li>Terima struk sebagai bukti pembayaran sudah sukses dilakukan. Notifikasi pembayaran akan langsung diterima oleh Merchant</li>
