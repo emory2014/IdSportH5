@@ -17,12 +17,12 @@
         <i class="fixDash"></i>
         <div class="text-cont  fix" >
           <ol>
-            <li>Catat Kode Pembayaran di atas dan datang ke gerai Alfamart, Alfa Midi, Alfa Express, dan Lawson </li>
-            <li> Beritahukan ke kasir bahwa anda ingin melakukan pembayaran Nama Merchant ”Finpay021” </li>
-            <li> Jika kasir tidak mengetahui mengenai pembayaran Nama Merchant, informasikan ke kasir untuk membuka terminal e-transaction, pilih "no. 2 menu Pembayaran atau cari pada menu search"</li>
-            <li> Minta kasir untuk menekan “Shift” dan “?” lalu ketik Nama Merchant “Finpay021”, setelah itu klik OK </li>
-            <li>Minta kasir untuk pilih "no.1 Finpay021 - Pembayaran Finpay021" </li>
-            <li>Kasir akan menanyakan Kode Pembayaran. Berikan Kode Pembayaran anda <span class="yellow">{{data}}</span>. Kasir akan melakukan konfirmasi data konsumen berupa Nama Merchant “Finpay021”, Nama Konsumen, dan Nominal. Lakukan pembayaran ke
+            <li>Catat Kode Pembayaran di atas dan datang ke gerai Alfamart, Alfa Midi, Alfa Express, Lawson atau DAN+DAN terdekat </li>
+            <li> Beritahukan ke kasir bahwa anda ingin melakukan pembayaran ”WAYANGPAY(via nicepay)” </li>
+            <li> Jika kasir tidak mengetahui mengenai pembayaran “WAYANGPAY(via nicepay)”, informasikan ke kasir untuk membuka terminal e-transaction, pilih "no. 2 menu Pembayaran atau cari pada menu search"</li>
+            <li> Minta kasir untuk menekan “Shift” dan “?” lalu ketik Nama Merchant “WAYANGPAY(via nicepay)”, setelah itu klik OK </li>
+            <li>Minta kasir untuk pilih "no.1 WAYANGPAY - Pembayaran WAYANGPAY(via nicepay)" </li>
+            <li>Kasir akan menanyakan Kode Pembayaran. Berikan Kode Pembayaran anda <span class="yellow">{{data}}</span>. Kasir akan melakukan konfirmasi data konsumen berupa Nama Merchant “WAYANGPAY(via nicepay)”, Nama Konsumen, dan Nominal. Lakukan pembayaran ke
               kasir sejumlah nominal yang disebutkan </li>
             <li>Terima struk sebagai bukti pembayaran sudah sukses dilakukan. Notifikasi pembayaran akan langsung diterima oleh Merchant</li>
             <li>Selesai.</li>
