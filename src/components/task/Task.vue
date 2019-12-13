@@ -40,7 +40,7 @@
           <span class="day">{{item.day}}</span>
         </li>
       </ul>
-      <div v-if="!today" class="task-btn-large" @click="signIn()">Absen untuk dapat Koin</div>
+      <div v-if="!today" class="task-btn-large" @click="handleBeforeSignIn()">Absen untuk dapat Koin</div>
       <div v-else class="task-btn-large disabled">Sudah absen {{continuousDays}} hari</div>
     </div>
 
@@ -233,6 +233,7 @@ export default {
     var that = this;
     this.token = this.getAppToken();
     this.getData();
+    window.signInHandle = this.signInHandle; //观看广告后 再签到 安卓调用
     window.doubleGold = this.doubleGold; //观看视频后 安卓调用
     window.taskSuccess = this.taskSuccess; //任务成功
     window.newPackage = this.newPackage; //获取版本号
@@ -416,7 +417,7 @@ export default {
           if (res.data.status.code == 200) {
             that.successShow = true;// 购买成功弹框
             that.confirmShow = false;// 确认购买
-            
+
           } else if (res.data.status.code == 518) {
             that.confirmShow = false;
             that.balanceShow = true;
@@ -448,7 +449,15 @@ export default {
       // window.AndroidWebView.showGoldMall();
       window.AndroidWebView.showChangeRpc2Rp();
     },
-    signIn() {
+    handleBeforeSignIn(){
+      var params = window.AndroidWebView.isReadySigninVideoAd();
+      if (params == "1") {
+        window.AndroidWebView.showAtdSigninVideoAd()
+      }else {
+        this.signInHandle()
+      }
+    },
+    signInHandle() {
       // if ((!this.token || this.token == null) && !window.AndroidWebView) { // rn获取token
       //   this.token = this.$store.state.tokenModule.token
       // } else if ((!this.token || this.token == null) && window.AndroidWebView && window.AndroidWebView.getAppToken) {
@@ -780,4 +789,3 @@ border-radius:8px;
 line-height: 30px;
 }
 </style>
-
