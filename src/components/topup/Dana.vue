@@ -78,7 +78,7 @@ export default {
 </script>
 <style>
 .fixHeader {
-  padding-top:25px;
+  /* padding-top:25px; */
   position: fixed;
   top: 0;
   height: 50px;
@@ -108,7 +108,7 @@ export default {
     display: inline-block;
     position:absolute;
     left: 15px;
-    top: 45px;
+    top: 20px;
     width: 10px;
     height: 10px;
     border-top: 2px solid #000000;
@@ -175,7 +175,7 @@ export default {
   color: #fff;
   text-align: center;
   background: #c5c5c5;
-  border-radius: 22.5px;
+  border-radius: 4px;
   font-size: 18px;
   position: fixed;
   left: 15px;
