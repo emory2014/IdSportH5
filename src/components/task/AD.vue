@@ -231,7 +231,7 @@ export default {
   },
   created(){
     window.AndroidWebView.showLoading()
-    
+
   },
   mounted() {
     this.getData()
@@ -281,6 +281,6 @@ export default {
 
 </style>
 
-<style>
-@import "../../assets/css/task.css"
+<style src="../../assets/css/task.css">
+/* @import "../../assets/css/task.css" */
 </style>

@@ -39,15 +39,15 @@
         <li v-for="(item,key,index) of data.banks" :key="index" @click="selectBank(key)">{{item}}</li>
     </ul> -->
   <!-- </div> -->
-  <div @click="closePup($event)">
+  <!-- <div @click="closePup($event)">
     <Popup v-model="popupShow" position="bottom">
       <Picker
-        :columns="dataList" 
-        @change="onChange" 
-        :default-index="2" 
+        :columns="dataList"
+        @change="onChange"
+        :default-index="2"
         />
     </Popup>
-  </div>
+  </div> -->
 </div>
 </template>
 <script>
@@ -83,18 +83,18 @@ export default {
     }
   },
   computed: {
-    dataList(){
-      let res = Object.keys(this.banks).reduce((r,c) => {
-        return [
-          ...r,
-          {
-            text:this.banks[c],
-            id: c
-          }
-        ]      
-      },[])
-      return res
-    }
+    // dataList(){
+    //   let res = Object.keys(this.banks).reduce((r,c) => {
+    //     return [
+    //       ...r,
+    //       {
+    //         text:this.banks[c],
+    //         id: c
+    //       }
+    //     ]
+    //   },[])
+    //   return res
+    // }
   },
   methods: {
     goBack(){
@@ -113,10 +113,10 @@ export default {
           if (!this.amount) {
             this.amount = this.data.amountInfo[0].money
           }
-          this.$router.push("/process?m=" + this.amount + "&method=" + this.keyId + "&from="+this.$route.query.from)         
+          this.$router.push("/process?m=" + this.amount + "&method=" + this.keyId + "&from="+this.$route.query.from)
         }
-       
-     
+
+
     },
     onChange(picker, value, index) {
       let keyId = value.id;
@@ -159,6 +159,7 @@ export default {
             this.buy = this.data.amountInfo[2].buy
             this.gift = this.data.amountInfo[2].gift
           } else {
+            this.amount = this.data.amountInfo[0].money
             this.buy = this.data.amountInfo[0].buy
             this.gift = this.data.amountInfo[0].gift
           }
@@ -175,8 +176,13 @@ export default {
       });
 
     },
-    recharge() {   
-      this.popupShow = true 
+    recharge() {
+      // this.popupShow = true
+      this.$store.dispatch("changeRechargeInfo", {
+        price: this.amount
+      });
+      console.log(this.$store.state.rechargeInfo)
+        this.$router.push("/topup")
     },
     addClass(index, money, buy, gift) {
       this.active = index

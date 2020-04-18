@@ -33,6 +33,6 @@ export default {
   }
 }
 </script>
-<style>
-@import "../../assets/css/task.css"
+<style src="../../assets/css/task.css">
+/* @import "../../assets/css/task.css" */
 </style>
