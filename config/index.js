@@ -62,8 +62,8 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: 'http://front.danaunta.com/',
-    // assetsPublicPath: '/',
+    // assetsPublicPath: 'http://front.danaunta.com/',
+    assetsPublicPath: '/',
     /**
      * Source Maps
      */
