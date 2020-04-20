@@ -59,7 +59,8 @@ export default {
             amount: this.$route.query.m,
             method: this.$route.query.method,
             way: this.$route.query.way,
-            type: this.$store.state.rechargeInfo.type
+            type: this.$store.state.rechargeInfo.type,
+            mobile: this.value
           }
         }).then((res) => {
           if (res.data.status.code == 200) {
