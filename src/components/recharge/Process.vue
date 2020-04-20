@@ -30,7 +30,25 @@
         </div>
       </div>
     </div>
-
+    <div :class="[method == 15 ? 'show':'hide']">
+          <div class="cont-panel">
+            <p class="title">{{amount}}</p>
+            <p class="subtitle">Jumlah</p>
+            <p class="code">{{data}}</p>
+            <p class="subtitle">Kode Pembayaran</p>
+            <div class="text-cont">
+              <ol>
+                <li>Temukan Indomaret </li>
+                <li>Masukkan PLASAMAL di kios </li>
+                <li>Ketika hasilnya keluar, klik ikon PLASAMAL</li>
+                <li>Masukkan nomor telepon dan kode pembayaran <span class="yellow">{{data}}</span> Anda dan klik Lanjut</li>
+                <li>Tinjau informasi dan klik Lanjut</li>
+                <li>Pilih pembayaran tunai atau non tunai</li>
+                <li>Pilih pembayaran tunai dan bawa tanda terima dari mesin ke kasir untuk pembayaran</li>
+              </ol>
+            </div>
+          </div>
+        </div>
     <div :class="method == 2 ? 'show': 'hide'">
       <div class="tab-cont">
         <div class="item" :class="[active == 1 ?'active':'']" @click="addClass(1)">ATM</div>
@@ -643,6 +661,8 @@ export default {
         return "PERMATA"
       } else if (method == 11) {
         return "BII"
+      }else if (method == 15) {
+        return "Indomaret"
       }
 
     },
