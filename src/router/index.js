@@ -44,7 +44,7 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',
+  mode: process.env.NODE_ENV === 'production' ? "history" : "hash",
   // mode: 'hash',
   base: '/web/',
   routes: [
@@ -62,7 +62,7 @@ export default new Router({
       path: '/task',
       name: 'Task',
       component: resolve => require(['@/components/task/Task'], resolve)
-    }, 
+    },
     {
       path: '/sign-rule',
       name: 'SignRule',
@@ -198,5 +198,20 @@ export default new Router({
       name: 'HowPlay',
       component: resolve => require(['@/components/questions/HowPlay'], resolve)
     },
+      {
+      path: '/topup', //充值
+      name: 'TopUp',
+      component: resolve => require(['@/components/topup/TopUp'], resolve)
+  },
+  {
+      path: '/ovo', //充值
+      name: 'Ovo',
+      component: resolve => require(['@/components/topup/Ovo'], resolve)
+  },
+  {
+      path: '/dana', //充值
+      name: 'Dana',
+      component: resolve => require(['@/components/topup/Dana'], resolve)
+  }
   ]
 })

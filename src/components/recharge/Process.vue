@@ -208,7 +208,7 @@
           <p class="code">{{data}}</p>
           <p class="subtitle">Kode Pembayaran</p>
         </div>
-        <i class="dash"></i>  
+        <i class="dash"></i>
         <div class="text-cont">
           <ol>
             <li>Masukkan kartu dan pin atm.</li>
@@ -230,7 +230,7 @@
           <p class="code">{{data}}</p>
           <p class="subtitle">Kode Pembayaran</p>
         </div>
-        <i class="dash"></i> 
+        <i class="dash"></i>
         <div class="text-cont">
           <ol>
             <li>Login di <a href="javascript:void(0)" @click="openBrowser()"> https://ib.bri.co.id/ib-bri/</a> ,masukkan username dan password</li>
@@ -252,13 +252,13 @@
           <p class="code">{{data}}</p>
           <p class="subtitle">Kode Pembayaran</p>
         </div>
-        <i class="dash"></i> 
+        <i class="dash"></i>
         <div class="text-cont">
           <ol>
             <li>Masuk ke aplikias BRI Mobile.</li>
             <li>Pilih menu “Transfer”. </li>
             <li>Pilih menu “Bank Lain”.</li>
-            <li>Pilih kode Bank “Bank PERMATA” 
+            <li>Pilih kode Bank “Bank PERMATA”
               <span class="yellow"> (013) </span>.
             </li>
             <li>Masukkan nomor rekening (Kode Pembayaran) yang dituju dengan <span class="yellow">({{data}})</span> . </li>
@@ -673,7 +673,8 @@ export default {
         data: {
           token: token,
           amount: this.$route.query.m,
-          method: this.$route.query.method
+          method: this.$route.query.method,
+          way: this.$route.query.way,
         }
       }).then((res) => {
         if (res.data.status.code == 200) {
@@ -699,4 +700,3 @@ export default {
 <style >
  @import "../../assets/css/recharge.css";
 </style>
-

@@ -4,8 +4,9 @@ import Vue from 'vue'
 import axios from 'axios';
 import App from './App'
 import router from './router'
+import store from "./store";
 import utils from './lib/utils.js'
-
+import 'lib-flexible/flexible'
 // Vue.prototype.$utils = utils
 
 Vue.prototype.$http = axios;
@@ -33,7 +34,7 @@ Vue.filter('thousands',function(num) {
 new Vue({
    el: '#app',
    router,
+    store,
    template: '<App />',
   components: { App }
  })
-
