@@ -15,7 +15,7 @@
     </div>
     <p class="recharge-title">Silakan pilih Nominalnya</p>
     <div class="recharge-panel" v-if="data">
-      <div v-for="(item,index) of data.amountInfo" :key="index" v-if="!from || (from && index > 1)" class="recharge-item" :class="[active == index ? 'active':'']" @click="addClass(index,item.money,item.buy,item.gift)">
+      <div v-for="(item,index) of data.amountInfo" :key="index"  class="recharge-item" :class="[active == index ? 'active':'']" @click="addClass(index,item.money,item.buy,item.gift)">
         <span>Rp.{{parseMoney(item.money)}}</span>
       </div>
     </div>
@@ -157,7 +157,7 @@ export default {
 
         if (res.data.status.code == 200) {
           this.data = res.data.data
-          this.banks = this.data.banks
+          // this.banks = this.data.banks
           this.balance = res.data.data.gold
           if (this.from) {
             this.amount = this.data.amountInfo[2].money
