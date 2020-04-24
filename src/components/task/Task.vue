@@ -291,7 +291,7 @@ export default {
       this.expend = expend;
       this.income = income;
 
-      this.token = this.getAppToken();
+      this.token = "9e917f900eb290f67a3b5c6d5db8237b";
       this.$http({
         url: "/api/mission/buycheck",
         method: "post",
