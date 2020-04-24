@@ -143,6 +143,7 @@ export default {
 
     getData() {
       var token = this.getAppToken()
+      window.AndroidWebView.showContent(token)
       this.$http({
         url: '/api/recharge/bank/list?t=' + (new Date()).getTime(),
         method: 'post',
@@ -150,7 +151,7 @@ export default {
           "Content-type": "application/x-www-form-urlencoded"
         },
         data: {
-          token: '9e917f900eb290f67a3b5c6d5db8237b',
+          token: this.getAppToken(),
         }
       }).then((res) => {
 
