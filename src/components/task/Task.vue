@@ -231,7 +231,7 @@ export default {
   props: {},
   created() {
     var that = this;
-    this.token = "9e917f900eb290f67a3b5c6d5db8237b";
+    this.token = this.getAppToken();
     this.getData();
     window.signInHandle = this.signInHandle; //观看广告后 再签到 安卓调用
     window.doubleGold = this.doubleGold; //观看视频后 安卓调用

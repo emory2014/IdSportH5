@@ -142,7 +142,7 @@ export default {
     },
 
     getData() {
-      var token = '9e917f900eb290f67a3b5c6d5db8237b'
+      var token = this.getAppToken()
 
       this.$http({
         url: '/api/recharge/bank/list?t=' + (new Date()).getTime(),
