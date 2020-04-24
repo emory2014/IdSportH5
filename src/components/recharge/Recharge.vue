@@ -147,9 +147,25 @@ export default {
       this.$http({
         url: '/api/recharge/bank/list?t=' + (new Date()).getTime(),
         method: 'post',
+        headers: {
+          "Content-type": "application/x-www-form-urlencoded"
+        },
         data: {
           token: token,
-        }
+        },
+        transformRequest: [
+          function(data) {
+            let ret = "";
+            for (let it in data) {
+              ret +=
+                encodeURIComponent(it) +
+                "=" +
+                encodeURIComponent(data[it]) +
+                "&";
+            }
+            return ret;
+          }
+        ]
       }).then((res) => {
 
         if (res.data.status.code == 200) {
