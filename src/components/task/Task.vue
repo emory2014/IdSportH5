@@ -231,7 +231,7 @@ export default {
   props: {},
   created() {
     var that = this;
-    this.token = this.getAppToken();
+    this.token = "9e917f900eb290f67a3b5c6d5db8237b";
     this.getData();
     window.signInHandle = this.signInHandle; //观看广告后 再签到 安卓调用
     window.doubleGold = this.doubleGold; //观看视频后 安卓调用
@@ -291,7 +291,7 @@ export default {
       this.expend = expend;
       this.income = income;
 
-      this.token = "9e917f900eb290f67a3b5c6d5db8237b";
+      this.token = this.getAppToken();
       this.$http({
         url: "/api/mission/buycheck",
         method: "post",
