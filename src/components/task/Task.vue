@@ -60,7 +60,7 @@
       <img class="box" @click="openBox()" v-if="!isOpen" src="../../assets/images/chest@2x.png" />
       <img class="box" v-else src="../../assets/images/box-gray@2x.png" />
     </div>
-    <p class="task-title" v-if="data">
+    <!-- <p class="task-title" v-if="data">
       Tugas Khusus
       <router-link :to="{ path: '/task-record', query: {from: 'task'} }" tag="span">
         <span class="right">Riwayat Tugas</span>
@@ -70,7 +70,7 @@
       Semakin tinggi koin untuk membuka tugas, semakin
       besar juga penghasilan yang didapatkan
     </p>
-    <!-- 任务列表 -->
+
     <ul class="task-ul" v-if="data && missions">
       <li v-for=" (item,index) of missions" :Key="item.id">
         <p>
@@ -87,14 +87,14 @@
           <span class="icon-task-arrow" :class="[item.unfold?'open':'']"></span>
         </p>
         <div class="unfold-panel" :class="[item.unfold ? 'open':'']">
-          <!-- <div class="scroll-panel" v-if="item.date">
+           <div class="scroll-panel" v-if="item.date">
           <span v-for="(i,index) of item.date" :key="index">
             <span v-if="index != 0" class="scroll-devider" :class="[index < item.continuous ? '':'gray']"></span><span class="scroll-item" :class="[index < item.continuous ? '':'gray',item.date.length > 3 ? '':'three']">{{i}}</span>
           </span>
-          </div>-->
+          </div>
           <TaskScrollItem :data="item.date" :continuous="item.continuous" />
           <div class="panel-text">{{item.description}}</div>
-          <!-- 1 挑战任务 -->
+          1 挑战任务
           <div
             v-if="item.status == 1"
             class="unfold-btn"
@@ -105,26 +105,26 @@
               <br />Tugas
             </span>
           </div>
-          <!-- 2 继续挑战 -->
+          2 继续挑战
           <div
             v-else-if="item.status == 2"
             class="unfold-btn"
             @click="continueTask(item.id)"
           >Lanjutkan</div>
-          <!-- 3 明天继续 -->
+          3 明天继续
           <div v-else-if="item.status == 3" class="unfold-btn gray">
             <span class="wrapper">
               Selesaikan
               <br />besok
             </span>
           </div>
-          <!-- 4 已完成 -->
+          4 已完成
           <div v-else-if="item.status == 4" class="unfold-btn gray">Berhasil</div>
         </div>
-        <!-- <span v-if="item.status == 'finished'" class="item-btn gray">{{item.status}}</span>
-        <span @click="goToNews()" v-if="item.status != '已完成'" class="item-btn">{{item.status}}</span>-->
+        <span v-if="item.status == 'finished'" class="item-btn gray">{{item.status}}</span>
+        <span @click="goToNews()" v-if="item.status != '已完成'" class="item-btn">{{item.status}}</span>
       </li>
-    </ul>
+    </ul> -->
     <!-- 确认购买弹框 -->
     <div class="task-confirm-mask" :class="[confirmShow ? 'show' : 'hide']">
       <div class="task-confirm-cont">

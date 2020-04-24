@@ -95,11 +95,11 @@
         <p class="vip-title-text">Klik gambar dibawah untuk lihat manfaat member</p>
   </div>
   <div class="vip-access-sec">
-    <div class="item" @click="popAccess(1)">
+    <!-- <div class="item" @click="popAccess(1)">
       <i class="icon-vip read"></i>
       <p>Baca berkualitas</p>
       <span>Artikel yang berkualitas</span>
-    </div>
+    </div> -->
     <div class="item" @click="popAccess(2)">
       <i class="icon-vip invite"></i>
       <p>Bonus Undangan</p>
@@ -119,11 +119,11 @@
       <span>Artikel yang berkualitas</span>
     </div>
 
-    <div class="item" @click="popAccess(4)">
+    <!-- <div class="item" @click="popAccess(4)">
       <i class="icon-vip more"></i>
       <p>Masih banyak lagi</p>
       <span>Bonus Tinggi</span>
-    </div>
+    </div> -->
     <div class="access-text" :class="[active == 3? 'show':'hide']">
       <i class="icon-text-caret"></i><i @click="popAccessHide()" class="icon-text-close">×</i>
       Setelah jadi Member, 5 kali lipat koin baca artikel
@@ -143,8 +143,8 @@
     <div class="success-cont"  align='center'>
         <img src="../../assets/images/vip/vip-success.png">
         <img src="../../assets/images/vip/crown.png" class="crown">
-      <span class="kamu">Kamu telah berhasil</span> 
-      <span class="yellow">berhasil menjadi member</span> 
+      <span class="kamu">Kamu telah berhasil</span>
+      <span class="yellow">berhasil menjadi member</span>
       <p class="text">Nikmati manfaat-manfaat dari <br>  keuntungan menjadi Member </p>
       <!-- 立即体验 -->
       <div class="exprerirence" @click="() => { this.successShow = false }">Nikmati Sekarang</div>

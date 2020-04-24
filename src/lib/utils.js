@@ -22,7 +22,7 @@ export default {
           var token = Base64.decode(content)
           return token
         }else {
-          return "74a937f5d643c3d50b37c44ad676d252"
+          return "9e917f900eb290f67a3b5c6d5db8237b"
         }
       },
       // 金钱数量 没有小数点
