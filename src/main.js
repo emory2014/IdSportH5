@@ -9,7 +9,14 @@ import utils from './lib/utils.js'
 import 'lib-flexible/flexible'
 // Vue.prototype.$utils = utils
 
-Vue.prototype.$http = axios;
+
+
+const host = process.dev.NODE_ENV == "production" ? "http://idsport.jiajiahebao.com" : ""
+const instance = axios.create({
+  baseURL: host
+})
+
+Vue.prototype.$http = instance;
 
 Vue.config.productionTip = false
 
