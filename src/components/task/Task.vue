@@ -295,26 +295,26 @@ export default {
       this.$http({
         url: "/api/mission/buycheck",
         method: "post",
-        headers: {
-          "Content-type": "application/x-www-form-urlencoded"
-        },
+        // headers: {
+        //   "Content-type": "application/x-www-form-urlencoded"
+        // },
         data: {
           token: this.token,
           mid: this.activeMissionsId
         },
-        transformRequest: [
-          function(data) {
-            let ret = "";
-            for (let it in data) {
-              ret +=
-                encodeURIComponent(it) +
-                "=" +
-                encodeURIComponent(data[it]) +
-                "&";
-            }
-            return ret;
-          }
-        ]
+        // transformRequest: [
+        //   function(data) {
+        //     let ret = "";
+        //     for (let it in data) {
+        //       ret +=
+        //         encodeURIComponent(it) +
+        //         "=" +
+        //         encodeURIComponent(data[it]) +
+        //         "&";
+        //     }
+        //     return ret;
+        //   }
+        // ]
       })
         .then(res => {
           if (res.data.status.code == 570) {
