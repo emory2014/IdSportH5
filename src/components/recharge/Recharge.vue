@@ -142,7 +142,6 @@ export default {
     },
 
     getData() {
-      window.AndroidWebView.showContent('token'+this.getAppToken());
       var token = this.getAppToken()
       this.$http({
         url: '/api/recharge/bank/list?t=' + (new Date()).getTime(),
@@ -151,21 +150,8 @@ export default {
           "Content-type": "application/x-www-form-urlencoded"
         },
         data: {
-          token: token,
-        },
-        transformRequest: [
-          function(data) {
-            let ret = "";
-            for (let it in data) {
-              ret +=
-                encodeURIComponent(it) +
-                "=" +
-                encodeURIComponent(data[it]) +
-                "&";
-            }
-            return ret;
-          }
-        ]
+          token: '9e917f900eb290f67a3b5c6d5db8237b',
+        }
       }).then((res) => {
 
         if (res.data.status.code == 200) {
