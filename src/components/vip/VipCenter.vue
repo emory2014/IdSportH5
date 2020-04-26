@@ -133,11 +133,11 @@
       Stay tuned karena masih banyak lagi hak istimewa yang didapat
     </div> -->
   </div>
-  <div class="btnContainer">
+  <!-- <div class="btnContainer">
     <a href="https://www.youtube.com/watch?v=d1ItTqU_VFw">
       <div class="vip-play-btn"></div>
     </a>
-  </div>
+  </div> -->
   <!-- 开通成功 -->
   <div class="vip-success-mask" :class="[successShow?'show':'hide']">
     <div class="success-cont"  align='center'>
