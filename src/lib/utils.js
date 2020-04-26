@@ -18,11 +18,10 @@ export default {
       },
       Vue.prototype.getAppToken = function() {
         if (process.env.NODE_ENV === 'production') {
-          // var content = window.AndroidWebView.getAppToken();
-          // var token = Base64.decode(content)
-          // window.AndroidWebView.showContent(token)
-          // return token
-          return "9e917f900eb290f67a3b5c6d5db8237b"
+          var content = window.AndroidWebView.getAppToken();
+          var token = Base64.decode(content)
+          return token
+          // return "9e917f900eb290f67a3b5c6d5db8237b"
         }else {
           return "9e917f900eb290f67a3b5c6d5db8237b"
         }

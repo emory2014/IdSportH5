@@ -450,12 +450,12 @@ export default {
       window.AndroidWebView.showChangeRpc2Rp();
     },
     handleBeforeSignIn(){
-      // var params = window.AndroidWebView.isReadySigninVideoAd();
-      // if (params == "1") {
-      //   window.AndroidWebView.showAtdSigninVideoAd()
-      // }else {
+      var params = window.AndroidWebView.isReadySigninVideoAd();
+      if (params == "1") {
+        window.AndroidWebView.showAtdSigninVideoAd()
+      }else {
         this.signInHandle()
-      // }
+      }
     },
     signInHandle() {
       // if ((!this.token || this.token == null) && !window.AndroidWebView) { // rn获取token
