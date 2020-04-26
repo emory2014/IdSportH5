@@ -605,9 +605,9 @@ export default {
         .$http({
           url: "/api/mission",
           method: "post",
-          // headers: {
-          //   "Content-type": "application/x-www-form-urlencoded"
-          // },
+          headers: {
+            "Content-type": "application/x-www-form-urlencoded"
+          },
           data: {
             token: that.token
           },
