@@ -1,6 +1,11 @@
 <template>
   <div style="padding-top:110px" class="taskBox">
-    <header class="beheader">Tugas</header>
+    <!-- <header class="beheader">Tugas</header> -->
+    <header class="fixHeader" :style="{paddingTop: $route.query.from == 'task' ? '18px': '0px'}">
+    　<i class="nc-icon-prev" @click="goBack()" :style="{top: $route.query.from == 'task' ? '38px': '20px'}"></i>
+    <div>Tugas</div>
+  
+  </header>
     <!-- 开宝箱成功弹窗 -->
     <div class="open-mask" :class="[boxShow ? 'show':'hide']">
       <div class="open-text">+{{prize}}Koin</div>
@@ -243,6 +248,13 @@ export default {
     clearInterval(this.interval);
   },
   methods: {
+    goBack(){
+        if (this.$route.query.from == 'task') {
+          window.history.go(-1)
+        } else {
+          window.AndroidWebView.closeActivities();
+        }
+    },
     ceshixiaoxi(){
       this.showpopup=false
     },
@@ -709,6 +721,43 @@ export default {
 @import "../../assets/css/task.css";
 </style>
 <style scoped>
+.fixHeader {
+  position: fixed;
+  top: 0;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  font-size: 16px;
+  color: #333333;
+  background:rgba(255,255,255,1);
+  margin-bottom: 8px;
+  width: 100%;
+  z-index: 1;
+  box-shadow:0px 2px 8px 0px rgba(0,0,0,0.06);
+}
+
+.fixHeader div {
+  width: 80%;
+  margin: auto;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-weight: bold;
+  height: 50px;
+  line-height: 50px;
+}
+
+.fixHeader .nc-icon-prev {
+    display: inline-block;
+    position:absolute;
+    left: 15px;
+    top: 20px;
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid #000000;
+    border-right: 2px solid #000000;
+    transform: rotate(-135deg);
+}
 .taskBox .double_btn {
   margin: 0 auto;
   width: 85%;

@@ -105,33 +105,33 @@
       <p>Bonus Undangan</p>
       <span>Bonus Tinggi</span>
     </div>
-    <div class="access-text" :class="[active == 1? 'show':'hide']">
+    <!-- <div class="access-text" :class="[active == 1? 'show':'hide']">
       <i class="icon-text-caret"></i><i @click="popAccessHide()" class="icon-text-close">×</i>
       Jadi Member, nikmati artikel berkualitas tinggi setiap hari, baca hadiah dan dapatkan lebih banyak
-    </div>
-    <div class="access-text" :class="[active == 2? 'show':'hide']">
-      <i class="icon-text-caret right"></i><i @click="popAccessHide()" class="icon-text-close">×</i>
-      Bonus 20% setiap teman yang diundang berhasil jadi Member. Tambah bonus 5% jika teman dari teman yang diundang berhasil jadi member, tanpa batas, melakukan penarikan dengan cepat.
-    </div>
+    </div> -->
+
     <div class="item" @click="popAccess(3)">
       <i class="icon-vip coin"></i>
-      <p>Baca berkualitas</p>
-      <span>Artikel yang berkualitas</span>
+      <p>Buat lebih banyak</p>
+      <span>Gandakan ganjarannya</span>
     </div>
-
+    <div class="access-text" :class="[active == 2? 'show':'hide']">
+      <i class="icon-text-caret "></i><i @click="popAccessHide()" class="icon-text-close">×</i>
+      Bonus 20% setiap teman yang diundang berhasil jadi Member. Tambah bonus 5% jika teman dari teman yang diundang berhasil jadi member, tanpa batas, melakukan penarikan dengan cepat.
+    </div>
     <!-- <div class="item" @click="popAccess(4)">
       <i class="icon-vip more"></i>
       <p>Masih banyak lagi</p>
       <span>Bonus Tinggi</span>
     </div> -->
     <div class="access-text" :class="[active == 3? 'show':'hide']">
-      <i class="icon-text-caret"></i><i @click="popAccessHide()" class="icon-text-close">×</i>
+      <i class="icon-text-caret right"></i><i @click="popAccessHide()" class="icon-text-close">×</i>
       Setelah jadi Member, 5 kali lipat koin baca artikel
     </div>
-    <div class="access-text" :class="[active == 4? 'show':'hide']">
+    <!-- <div class="access-text" :class="[active == 4? 'show':'hide']">
       <i class="icon-text-caret right"></i><i @click="popAccessHide()" class="icon-text-close">×</i>
       Stay tuned karena masih banyak lagi hak istimewa yang didapat
-    </div>
+    </div> -->
   </div>
   <div class="btnContainer">
     <a href="https://www.youtube.com/watch?v=d1ItTqU_VFw">
