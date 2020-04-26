@@ -311,13 +311,13 @@ export default {
           token: this.token,
           vip_package_price: this.vip_package_price
         },
-        transformRequest: [function(data) {
-          let ret = ''
-          for (let it in data) {
-            ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
-          }
-          return ret
-        }],
+        // transformRequest: [function(data) {
+        //   let ret = ''
+        //   for (let it in data) {
+        //     ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+        //   }
+        //   return ret
+        // }],
       }).then((res) => {
         this.wdFlag = true
         if (res.data.status.code == 200) {
@@ -355,13 +355,13 @@ export default {
           token: this.token,
           vip_package_price: this.vip_package_price
         },
-        transformRequest: [function(data) {
-          let ret = ''
-          for (let it in data) {
-            ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
-          }
-          return ret
-        }],
+        // transformRequest: [function(data) {
+        //   let ret = ''
+        //   for (let it in data) {
+        //     ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+        //   }
+        //   return ret
+        // }],
       }).then((res) => {
         if (res.data.status.code == 200) {
           this.successShow = true
@@ -416,13 +416,13 @@ export default {
       data: {
         token: this.token,
       },
-      transformRequest: [function(data) {
-        let ret = ''
-        for (let it in data) {
-          ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
-        }
-        return ret
-      }],
+      // transformRequest: [function(data) {
+      //   let ret = ''
+      //   for (let it in data) {
+      //     ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+      //   }
+      //   return ret
+      // }],
     }).then((res) => {
       if (res.data.status.code == 200) {
         this.vipPackage = res.data.data
@@ -444,14 +444,14 @@ export default {
       data: {
         token: this.token,
       },
-      transformRequest: [function(data) {
-        console.log('token', data)
-        let ret = ''
-        for (let it in data) {
-          ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
-        }
-        return ret
-      }],
+      // transformRequest: [function(data) {
+      //   console.log('token', data)
+      //   let ret = ''
+      //   for (let it in data) {
+      //     ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+      //   }
+      //   return ret
+      // }],
     }).then((res) => {
 
       if (res.data.status.code == 200) {
@@ -477,13 +477,13 @@ export default {
       data: {
         token: this.token
       },
-      transformRequest: [function(data) {
-        let ret = ''
-        for (let it in data) {
-          ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
-        }
-        return ret
-      }],
+      // transformRequest: [function(data) {
+      //   let ret = ''
+      //   for (let it in data) {
+      //     ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+      //   }
+      //   return ret
+      // }],
     }).then((res) => {
 
       if (res.data.status.code == 200) {

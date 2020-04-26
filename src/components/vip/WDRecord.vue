@@ -1,12 +1,12 @@
 <template>
 <div class="vip-container background">
 <BHeader  title="Penarikan" vip={true} />
- <Loading v-if="!data" /> 
+ <Loading v-if="!data" />
 <ul v-if="data" class="wd-record-ul">
     <li :class="themeChoice(item.status)" v-for="(item,index) of data.history" :key="index">
         <div>
             <span>Jumlah penarikan</span>
-            <span class="money">+{{item.total_amount|thousands}}</span> 
+            <span class="money">+{{item.total_amount|thousands}}</span>
             <span class="name" :class="[item.status == 'Berhasil'?'success':'']">{{item.status}}</span>
         </div>
         <p>Nama：<span>{{item.username}}</span></p>
@@ -15,8 +15,8 @@
         <p>Waktu：<span>{{item.create_time}}</span></p>
         <p v-if="item.status == 'Gagal'">Saran: <span class="wd-detail">{{item.comment}}</span></p>
     </li>
-    
-</ul> 
+
+</ul>
 
 <div :class="[defaultShow ? 'show':'hide']" class="record-default">
     <img src="../../assets/images/vip/noVipRecord.png" />
@@ -73,7 +73,7 @@ let Base64 = require('js-base64').Base64
            scrollGetData(){
               let _this = this;
                window.addEventListener('scroll',function(){
-           
+
                 // 判断是否滚动到底部
 
                 if(document.body.scrollTop + window.innerHeight <= document.body.offsetHeight) {
@@ -103,15 +103,15 @@ let Base64 = require('js-base64').Base64
                         type: 3,
                         page:page
                     },
-                    transformRequest: [function (data) {
-                        let ret = ''
-                        for (let it in data) {
-                        ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
-                    }
-                    return ret
-                    }],
+                    // transformRequest: [function (data) {
+                    //     let ret = ''
+                    //     for (let it in data) {
+                    //     ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+                    // }
+                    // return ret
+                    // }],
                 }).then((res) => {
-                   
+
                     if (res.data.status.code == 200) {
                         this.data = res.data.data
                         this.totalPage = res.data.data.page_info.total_page
@@ -122,9 +122,9 @@ let Base64 = require('js-base64').Base64
                         }else{
                             this.defaultShow = false
                         }
-                        
+
                 }else if (res.data.status.code == 401) {
-                        
+
                     }else{
                         this.toastPop(res.data.status.message)
                     }
@@ -136,7 +136,7 @@ let Base64 = require('js-base64').Base64
         },
            mounted(){
             this.getData(1)
-            
+
         }
     }
 </script>
@@ -166,4 +166,3 @@ let Base64 = require('js-base64').Base64
 <style>
 @import  "../../assets/css/vip.css";
 </style>
-

@@ -158,13 +158,13 @@ export default {
           token: this.token,
           mid: this.$route.query.mid
         },
-        transformRequest: [function(data) {
-          let ret = ''
-          for (let it in data) {
-            ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
-          }
-          return ret
-        }],
+        // transformRequest: [function(data) {
+        //   let ret = ''
+        //   for (let it in data) {
+        //     ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+        //   }
+        //   return ret
+        // }],
       }).then((res) => {
         let resData = res.data
         if (resData.status.code == 200) {
@@ -200,13 +200,13 @@ export default {
          mid: this.$route.query.mid
            //mid: 4
         },
-        transformRequest: [function(data) {
-          let ret = ''
-          for (let it in data) {
-            ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
-          }
-          return ret
-        }],
+        // transformRequest: [function(data) {
+        //   let ret = ''
+        //   for (let it in data) {
+        //     ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+        //   }
+        //   return ret
+        // }],
       }).then((res) => {
         let resData = res.data
         if (resData.status.code == 200) {

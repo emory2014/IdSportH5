@@ -15,7 +15,7 @@
         <p>{{info.vip_total_number|thousands}}
             <span>orang</span>
         </p>
-        <span>Jumlah Undangan Member </span>       
+        <span>Jumlah Undangan Member </span>
     </div>
 </div>
 
@@ -71,7 +71,7 @@ let Base64 = require('js-base64').Base64
             scrollGetData(){
               let _this = this;
                window.addEventListener('scroll',function(){
-           
+
                 // 判断是否滚动到底部
 
                 if(document.body.scrollTop + window.innerHeight <= document.body.offsetHeight) {
@@ -101,15 +101,15 @@ let Base64 = require('js-base64').Base64
                         type: 3,
                         page:page
                     },
-                    transformRequest: [function (data) {
-                        let ret = ''
-                        for (let it in data) {
-                        ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
-                    }
-                    return ret
-                    }],
+                    // transformRequest: [function (data) {
+                    //     let ret = ''
+                    //     for (let it in data) {
+                    //     ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+                    // }
+                    // return ret
+                    // }],
                 }).then((res) => {
-                   
+
                     if (res.data.status.code == 200) {
                         this.data = res.data.data.list
                         if(!this.data.length){
@@ -117,9 +117,9 @@ let Base64 = require('js-base64').Base64
                         }
                         this.totalPage = res.data.data.page_info.total_page
                         this.currentPage = res.data.data.page_info.current_page
-                        
+
                 }else if (res.data.status.code == 401) {
-                        
+
                     }else{
                         this.toastPop(res.data.status.message)
                     }
@@ -145,21 +145,21 @@ let Base64 = require('js-base64').Base64
                     data:{
                         token: this.token,
                     },
-                    transformRequest: [function (data) {
-                        let ret = ''
-                        for (let it in data) {
-                        ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
-                    }
-                    return ret
-                    }],
+                    // transformRequest: [function (data) {
+                    //     let ret = ''
+                    //     for (let it in data) {
+                    //     ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+                    // }
+                    // return ret
+                    // }],
                 }).then((res) => {
-                    
+
                     if (res.data.status.code == 200) {
                         this.info = res.data.data
-                       
-                        
+
+
                 }else if (res.data.status.code == 401) {
-                        
+
                     }else{
                         this.toastPop(res.data.status.message)
                     }
@@ -177,12 +177,12 @@ let Base64 = require('js-base64').Base64
         padding-top: 65px;
         text-align: center;
         color:#999999;
-        font-size: 14px;      
+        font-size: 14px;
     }
     .vip-default-text img {
         width: 76px;
         height: 118px;
-    } 
+    }
 </style>
 <style>
     @import  "../../assets/css/vip.css";

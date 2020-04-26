@@ -399,19 +399,19 @@ export default {
           token: that.token,
           mid: that.activeMissionsId
         },
-        transformRequest: [
-          function(data) {
-            let ret = "";
-            for (let it in data) {
-              ret +=
-                encodeURIComponent(it) +
-                "=" +
-                encodeURIComponent(data[it]) +
-                "&";
-            }
-            return ret;
-          }
-        ]
+        // transformRequest: [
+        //   function(data) {
+        //     let ret = "";
+        //     for (let it in data) {
+        //       ret +=
+        //         encodeURIComponent(it) +
+        //         "=" +
+        //         encodeURIComponent(data[it]) +
+        //         "&";
+        //     }
+        //     return ret;
+        //   }
+        // ]
       })
         .then(res => {
           if (res.data.status.code == 200) {
@@ -472,19 +472,19 @@ export default {
         data: {
           token: this.token
         },
-        transformRequest: [
-          function(data) {
-            let ret = "";
-            for (let it in data) {
-              ret +=
-                encodeURIComponent(it) +
-                "=" +
-                encodeURIComponent(data[it]) +
-                "&";
-            }
-            return ret;
-          }
-        ]
+        // transformRequest: [
+        //   function(data) {
+        //     let ret = "";
+        //     for (let it in data) {
+        //       ret +=
+        //         encodeURIComponent(it) +
+        //         "=" +
+        //         encodeURIComponent(data[it]) +
+        //         "&";
+        //     }
+        //     return ret;
+        //   }
+        // ]
       })
         .then(res => {
           if (res.data.status.code == 200) {
@@ -524,19 +524,19 @@ export default {
             token: that.token,
             version: that.appVersion
           },
-          transformRequest: [
-            function(data) {
-              let ret = "";
-              for (let it in data) {
-                ret +=
-                  encodeURIComponent(it) +
-                  "=" +
-                  encodeURIComponent(data[it]) +
-                  "&";
-              }
-              return ret;
-            }
-          ]
+          // transformRequest: [
+          //   function(data) {
+          //     let ret = "";
+          //     for (let it in data) {
+          //       ret +=
+          //         encodeURIComponent(it) +
+          //         "=" +
+          //         encodeURIComponent(data[it]) +
+          //         "&";
+          //     }
+          //     return ret;
+          //   }
+          // ]
         })
         .then(res => {
           if (res.data.status.code == 200) {
@@ -671,19 +671,19 @@ export default {
             token: that.token,
             mid: that.activeMissionsId
           },
-          transformRequest: [
-            function(data) {
-              let ret = "";
-              for (let it in data) {
-                ret +=
-                  encodeURIComponent(it) +
-                  "=" +
-                  encodeURIComponent(data[it]) +
-                  "&";
-              }
-              return ret;
-            }
-          ]
+          // transformRequest: [
+          //   function(data) {
+          //     let ret = "";
+          //     for (let it in data) {
+          //       ret +=
+          //         encodeURIComponent(it) +
+          //         "=" +
+          //         encodeURIComponent(data[it]) +
+          //         "&";
+          //     }
+          //     return ret;
+          //   }
+          // ]
         })
         .then(res => {
           let resData = res.data;

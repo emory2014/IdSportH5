@@ -10,7 +10,7 @@
         <i class="icon-input name"></i>
         <input ref="name" type="text" @blur="validateName()" v-model="name" placeholder="Nama pemilik rekening" />
     </div>
- 
+
     <div class="vip-input-group">
         <i class="icon-input bankno"></i>
         <input ref="bankno" type="text" @blur="validateBankno()" v-model="bankno" placeholder="Nomor rekening" />
@@ -40,10 +40,10 @@
 
     <p class="wd-tip-title">Peringatan </p>
     <ol class="wd-ol">
-        <li>Transfer lewat rekening, harus memastikan nomorrekening 
+        <li>Transfer lewat rekening, harus memastikan nomorrekening
      yang di mastkin bener</li>
      <li>
-         Pengantian akun akan di butuhkan 7 hari kerja, tidakermasuk 
+         Pengantian akun akan di butuhkan 7 hari kerja, tidakermasuk
      pas hari pengantinya dan hari libur
      </li>
     </ol>
@@ -74,7 +74,7 @@ let Base64 = require('js-base64').Base64
             toastShow: false,
             submitFlag: true,
             bankShow: false
-            
+
             }
         },
         props: {
@@ -84,7 +84,7 @@ let Base64 = require('js-base64').Base64
           wdMoney(type){
                 this.active = type
         },
-      
+
         getAppToken(){
             var content=window.AndroidWebView.getAppToken();
             var token = Base64.decode(content);
@@ -139,10 +139,10 @@ let Base64 = require('js-base64').Base64
                     this.toastPop("Nomor handphone tidak boleh kosong");
                     return false;
                 }
-            
+
         },
         submitWD(){
-            
+
             //this.token = 'e8bc2672c51e0e94540a77ee2df1b9a6'
             let amount = 20000;
             if(this.active ==1 ) {
@@ -171,7 +171,7 @@ let Base64 = require('js-base64').Base64
                 return false
             }
             this.submitFlag = false
-            
+
                 this.getAppToken()
                 this.$http({
                     url: '/api/vip/redeem?t='+(new Date()).getTime(),
@@ -187,20 +187,20 @@ let Base64 = require('js-base64').Base64
                         name: this.name,
                         mobile: this.tel,
                     },
-                    transformRequest: [function (data) {
-                        let ret = ''
-                        for (let it in data) {
-                        ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
-                    }
-                    return ret
-                    }],
+                    // transformRequest: [function (data) {
+                    //     let ret = ''
+                    //     for (let it in data) {
+                    //     ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+                    // }
+                    // return ret
+                    // }],
                     }).then((res) => {
                        this.submitFlag = true
                     if (res.data.status.code == 200) {
-                            this.toastPop('success') 
+                            this.toastPop('success')
                             this.$router.push("/wd-record")
                     }else if (res.data.status.code == 401) {
-                            
+
                     }else{
                         this.toastPop(res.data.status.message)
                     }

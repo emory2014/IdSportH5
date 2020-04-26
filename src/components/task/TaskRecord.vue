@@ -84,13 +84,13 @@ export default {
           token: this.token,
           page: page
         },
-        transformRequest: [function(data) {
-          let ret = ''
-          for (let it in data) {
-            ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
-          }
-          return ret
-        }],
+        // transformRequest: [function(data) {
+        //   let ret = ''
+        //   for (let it in data) {
+        //     ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+        //   }
+        //   return ret
+        // }],
       }).then((res) => {
         this.flag = true;
         this.loading = false
