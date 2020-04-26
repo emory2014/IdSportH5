@@ -466,9 +466,9 @@ export default {
       this.$http({
         url: "/api/signIn",
         method: "post",
-        headers: {
-          "Content-type": "application/x-www-form-urlencoded"
-        },
+        // headers: {
+        //   "Content-type": "application/x-www-form-urlencoded"
+        // },
         data: {
           token: this.token
         },
@@ -605,9 +605,9 @@ export default {
         .$http({
           url: "/api/mission",
           method: "post",
-          headers: {
-            "Content-type": "application/x-www-form-urlencoded"
-          },
+          // headers: {
+          //   "Content-type": "application/x-www-form-urlencoded"
+          // },
           data: {
             token: that.token
           },
@@ -664,9 +664,9 @@ export default {
       that.$http({
           url: "/api/mission/submit",
           method: "post",
-          headers: {
-            "Content-type": "application/x-www-form-urlencoded"
-          },
+          // headers: {
+          //   "Content-type": "application/x-www-form-urlencoded"
+          // },
           data: {
             token: that.token,
             mid: that.activeMissionsId
