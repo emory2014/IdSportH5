@@ -118,10 +118,11 @@ export default {
     };
   },
   created() {
-    this.getType();
+    // this.getType();
   },
   mounted(){
     // this.bank = this.$store.state.rechargeInfo.banks
+    this.getType();
   },
   computed: {
     topupInfo() {
