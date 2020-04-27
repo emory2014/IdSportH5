@@ -11,7 +11,9 @@ import 'lib-flexible/flexible'
 
 
 
-const host = process.env.NODE_ENV == "production" ? "http://idsport.jiajiahebao.com" : ""
+// const host = process.env.NODE_ENV == "production" ? "http://idsport.jiajiahebao.com" : ""
+const host = process.env.NODE_ENV == "production" ? "http://api.ayolariapp.com" : ""
+
 const instance = axios.create({
   baseURL: host
 })
