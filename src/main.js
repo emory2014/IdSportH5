@@ -10,9 +10,9 @@ import 'lib-flexible/flexible'
 // Vue.prototype.$utils = utils
 
 
-
-// const host = process.env.NODE_ENV == "production" ? "http://idsport.jiajiahebao.com" : ""
-const host = process.env.NODE_ENV == "production" ? "http://api.ayolariapp.com" : ""
+const api = location.hostname == 'idsporth5.jiajiahebao.com' ? 'http://idsport.jiajiahebao.com' : 'http://api.ayolariapp.com'
+const host = process.env.NODE_ENV == "production" ? api : ""
+// const host = process.env.NODE_ENV == "production" ? "http://api.ayolariapp.com" : ""
 
 const instance = axios.create({
   baseURL: host
