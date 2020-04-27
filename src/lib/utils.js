@@ -23,9 +23,9 @@ export default {
           // // window.AndroidWebView.showContent(token)
           // return token
 
-          return "0fb0129199a50db68ad2eb2ed8884340"
+          return "5288dda31450053568852f76773ee386"
         }else {
-          return "0fb0129199a50db68ad2eb2ed8884340"
+          return "5288dda31450053568852f76773ee386"
         }
       },
       // 金钱数量 没有小数点
