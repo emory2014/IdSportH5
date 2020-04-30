@@ -7,32 +7,32 @@
                <p>Mengajari kamu bermain Ayo Lari <br>
                     Mudah meghasilkan uang</p>
                     Masih tidak tahu cara menghasilkan uang jajan!
-                    Dibawah ini kita sama sama liat bagaimana 
+                    Dibawah ini kita sama sama liat bagaimana
                     menghasilkan uang.
           </div>
-         
-          <p class="sub-title bt" :class="[ open == 1 ? 'open':'']" @click="fold(1)">Bonus membaca artikel<i class="icon-arrow"></i></p>
+
+          <!-- <p class="sub-title bt" :class="[ open == 1 ? 'open':'']" @click="fold(1)">Bonus membaca artikel<i class="icon-arrow"></i></p>
           <div class="ques-anwser" :class="[ open == 1 ? 'open':'']" @click="fold(1)">
-               (1) Setelah Login kalian bisa melihat artikel yang 
-      kami sarankan untuk ada baca di Ayo Lari,jika 
-      kalian melihat artikel yang menarik kalian bisa 
-      langsung klik untuk baca, baca seluruhnya,kalian 
+               (1) Setelah Login kalian bisa melihat artikel yang
+      kami sarankan untuk ada baca di Ayo Lari,jika
+      kalian melihat artikel yang menarik kalian bisa
+      langsung klik untuk baca, baca seluruhnya,kalian
       bisa secara acak dapat bonus sampai <span class="redMark">100 RPC</span>.
       <img src="../../assets/images/question/readBonus@2x.png" />
-      (2) Setiap kamu membaca artikel menarik dan kamu 
-      bagikan ke teman-teman,kalian bisa dapat bonus <span class="redMark">30 RPC</span> (teman yang sama hanya dihitung 1 kali 
+      (2) Setiap kamu membaca artikel menarik dan kamu
+      bagikan ke teman-teman,kalian bisa dapat bonus <span class="redMark">30 RPC</span> (teman yang sama hanya dihitung 1 kali
       bonus)
       <img src="../../assets/images/question/ques6@2x.png" />
-      
-          </div>
-         
+
+          </div> -->
+
           <p class="sub-title" :class="[ open == 2 ? 'open':'']" @click="fold(2)">Bonus Tugas<i class="icon-arrow"></i></p>
           <div class="ques-anwser" :class="[ open == 2 ? 'open':'']" @click="fold(2)">
               (1) Setiap hari absen bisa dapat RPC : Buka News
-                Cat  klik <span class="redMark">"Tugas" -> "Absen"</span> langsung dapat bonus.  (Perhatikan: Jika tidak absen sehari, absen akan 
+                Cat  klik <span class="redMark">"Tugas" -> "Absen"</span> langsung dapat bonus.  (Perhatikan: Jika tidak absen sehari, absen akan
                 diulang dari awal)
                 <img src="../../assets/images/question/Bitmap@2x.png" />
-            (2) Buka Kotak Emas : buka kotak emas tiap 4 jam 
+            (2) Buka Kotak Emas : buka kotak emas tiap 4 jam
                 sekali, bonus 10 RPC tiap kali buka kotak emas
                 <img src="../../assets/images/question/Bitmap8@2x.png" />
             (3) tantangan : beli tugas yang dipilih,dan menyelesaikan tugasnya,
@@ -40,10 +40,10 @@
                 <img src="../../assets/images/question/Bitmap9@2x.png" />
 
           </div>
-        
+
           <p class="sub-title" :class="[ open == 3 ? 'open':'']" @click="fold(3)">Bonus tinggi mengundang teman <i class="icon-arrow"></i></p>
           <div class="ques-anwser" :class="[ open == 3 ? 'open':'']" @click="fold(3)">
-              Bisa langsung dapat bonus tertinggi jika mengundang teman, setiap mengundang 1 orang teman kamu akan dapat Rp.6000 (dibagikan bertahap, 
+              Bisa langsung dapat bonus tertinggi jika mengundang teman, setiap mengundang 1 orang teman kamu akan dapat Rp.6000 (dibagikan bertahap,
               silahkan cek peraturan untuk lebih detail);<br>
               Buka Ayo Lari klik <span class="redMark">"Saya" -> "Mengundang teman" -> salin URL,</span> bagikan URL Undangan lewat Facebook dan WhatsApp, lalu teman kamu akan memasukkan nomor handphone dan langsung unduh lalu
                 pendaftaran berhasil, mengundang teman juga telah berhasil.
@@ -54,13 +54,13 @@
 
         <p class="sub-title" :class="[ open == 4 ? 'open':'']" @click="fold(4)">Penghasilan dan penarikan <i class="icon-arrow"></i></p>
           <div class="ques-anwser" :class="[ open == 4 ? 'open':'']" @click="fold(4)">
-            (1) Cek Penghasilan : Bonus RPC dapat dihasilkan 
-            dari kegiatan diatas, bisa dicek di <span class="redMark">"Saya -> 
+            (1) Cek Penghasilan : Bonus RPC dapat dihasilkan
+            dari kegiatan diatas, bisa dicek di <span class="redMark">"Saya ->
             Penghasilan saya"</span>.
                 <img src="../../assets/images/question/que12@2x.png" />
                 <img src="../../assets/images/question/que13@2x.png" />
             (2) Tukarkan RPC dan tarik uang tunai : RPC yang didapat dapat ditukarkan dengan Pencairan Cepat atau Pencairan Bersyarat.Pencairan Cepat: 1 RPC = Rp 0.05,
-            - dan RPC yang ditukarkan bisa langsung dicairkan.Pencairan Bersyarat : 1 RPC = Rp 2,- lalu RPC yang diturkankan harus mengundang teman baru bisa dicairkan. 
+            - dan RPC yang ditukarkan bisa langsung dicairkan.Pencairan Bersyarat : 1 RPC = Rp 2,- lalu RPC yang diturkankan harus mengundang teman baru bisa dicairkan.
             (Perhatikan : Waktu melakukan penarikan, informasi rekening harus diisi dengan benar)
             Langkah-langkah melakukan penarikan : Klik <span class="redMark">"Saya" -> "Tukar Koin" -> "Pilih Pencairan Cepat atau Pencairan Bersyarat"</span>
                 <img src="../../assets/images/question/que14@2x.png" />
