@@ -7,13 +7,13 @@
          <div class="ques-invite-text">
              Saat Anda mengadakan pesta dengan teman dan keluarga, mengobrol, bertemu, dan sebagainya.
             Anda dapat merekomendasikan 
-            NewsCash langsung kepada kerabat Anda, 
+            Ayo Lari langsung kepada kerabat Anda, 
             menggunakan Facebook, WhatsApp atau langsung membagikan URL yang disalin ke teman Anda untuk diunduh dan diinstal.
             
          </div>
         <ol class="ques-invite-ol">
             <li>
-               Buka <span class="yellow">NewsCash</span>, pada pojok kanan bawah klik  <span class="yellow">"Saya" (1) </span>
+               Buka <span class="yellow">Ayo Lari</span>, pada pojok kanan bawah klik  <span class="yellow">"Saya" (1) </span>
             </li>
             <li>
               klik <span class="yellow"> "Undang Teman" (2) </span> untuk masuk ke halaman mengundang teman.
@@ -22,12 +22,12 @@
             <li>
                  Klik "Copy Url" untuk bisa langsung kirim tautan ke 
                 temanmu atau grup, bagikan kebanyak teman 
-                untuk unduh NewsCash, juga bisa lewat Facebook,
+                untuk unduh Ayo Lari, juga bisa lewat Facebook,
                 WhatsApp untuk bagikan tautan. Saat teman anda 
                 klik tautan yang kamu kirim, mereka akan diminta 
                 masukkan "Nomor Handphone", klik "Segera 
                 Unduh" akan langsung diarahkan ke Google Play 
-                Store untuk unduh aplikasi NewsCash, 
+                Store untuk unduh aplikasi Ayo Lari, 
                 mengundang teman sukses.
                 <img src="../../assets/images/question/que2@2x.png" />
                 <img src="../../assets/images/question/que3@2x.png" />

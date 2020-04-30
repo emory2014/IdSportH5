@@ -1,10 +1,10 @@
 <template>
   <div class="question-container">
-          <BHeader title="Cara menggunakan NewsCash" />
+          <BHeader title="Cara menggunakan Ayo Lari" />
           <div class="fixContant">
           <div class="ques-play-title">
                <img src="../../assets/images/question/logo@2x.png" />
-               <p>Mengajari kamu bermain NewsCash <br>
+               <p>Mengajari kamu bermain Ayo Lari <br>
                     Mudah meghasilkan uang</p>
                     Masih tidak tahu cara menghasilkan uang jajan!
                     Dibawah ini kita sama sama liat bagaimana 
@@ -14,7 +14,7 @@
           <p class="sub-title bt" :class="[ open == 1 ? 'open':'']" @click="fold(1)">Bonus membaca artikel<i class="icon-arrow"></i></p>
           <div class="ques-anwser" :class="[ open == 1 ? 'open':'']" @click="fold(1)">
                (1) Setelah Login kalian bisa melihat artikel yang 
-      kami sarankan untuk ada baca di NewsCash,jika 
+      kami sarankan untuk ada baca di Ayo Lari,jika 
       kalian melihat artikel yang menarik kalian bisa 
       langsung klik untuk baca, baca seluruhnya,kalian 
       bisa secara acak dapat bonus sampai <span class="redMark">100 RPC</span>.
@@ -45,7 +45,7 @@
           <div class="ques-anwser" :class="[ open == 3 ? 'open':'']" @click="fold(3)">
               Bisa langsung dapat bonus tertinggi jika mengundang teman, setiap mengundang 1 orang teman kamu akan dapat Rp.6000 (dibagikan bertahap, 
               silahkan cek peraturan untuk lebih detail);<br>
-              Buka NewsCash klik <span class="redMark">"Saya" -> "Mengundang teman" -> salin URL,</span> bagikan URL Undangan lewat Facebook dan WhatsApp, lalu teman kamu akan memasukkan nomor handphone dan langsung unduh lalu
+              Buka Ayo Lari klik <span class="redMark">"Saya" -> "Mengundang teman" -> salin URL,</span> bagikan URL Undangan lewat Facebook dan WhatsApp, lalu teman kamu akan memasukkan nomor handphone dan langsung unduh lalu
                 pendaftaran berhasil, mengundang teman juga telah berhasil.
                 <img src="../../assets/images/question/que10@2x.png" />
                 <img src="../../assets/images/question/que11@2x.png" />

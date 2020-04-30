@@ -75,7 +75,7 @@ jawab pertanyaan menangkan Bonus" /> -->
         <li>
             <i class="order-box">2</i>
             <p class="text">
-                Jika kesempatan jawaban harian habis, Anda bisa mengundang teman. Setiap kali Anda mengundang teman dan mengunduh lalu login aplikasi NewsCash, anda diberikan kesempatan 1x lagi untuk menjawab kuis, atau menggunakan Koin untuk mendapatkan kesempatan menjawab. Tukar 1x dapat 1x kesempatan, jumlah koin yang dibutuhkan 100 Koin;
+                Jika kesempatan jawaban harian habis, Anda bisa mengundang teman. Setiap kali Anda mengundang teman dan mengunduh lalu login aplikasi Ayo Lari, anda diberikan kesempatan 1x lagi untuk menjawab kuis, atau menggunakan Koin untuk mendapatkan kesempatan menjawab. Tukar 1x dapat 1x kesempatan, jumlah koin yang dibutuhkan 100 Koin;
             </p>
         </li>
          <li>
@@ -107,7 +107,7 @@ jawab pertanyaan menangkan Bonus" /> -->
          <li>
             <i class="order-box">7</i>
             <p class="text">
-                  Jika ada pelanggaran terhadap partisipasin dalam permainan, NewsCash berhak membatalkan partisipasin dari event, dan jika perlu berhak untuk mengambil langkah hukum;
+                  Jika ada pelanggaran terhadap partisipasin dalam permainan, Ayo Lari berhak membatalkan partisipasin dari event, dan jika perlu berhak untuk mengambil langkah hukum;
             </p>
         </li>
          <li>
