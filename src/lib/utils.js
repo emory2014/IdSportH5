@@ -18,12 +18,13 @@ export default {
       },
       Vue.prototype.getAppToken = function() {
         if (process.env.NODE_ENV === 'production') {
-          var content = window.AndroidWebView.getAppToken();
-          var token = Base64.decode(content)
+          // var content = window.AndroidWebView.getAppToken();
+          // var token = Base64.decode(content)
           // window.AndroidWebView.showContent(token)
-          return token
+          // return token
+          return "d4a3b72f49ad9e4b967f6e46742d0688"
         }else {
-          return "7f5dd7324012268db426217cf79b9f68"
+          return "d4a3b72f49ad9e4b967f6e46742d0688"
         }
       },
       // 金钱数量 没有小数点
