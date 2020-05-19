@@ -22,9 +22,9 @@ export default {
           // var token = Base64.decode(content)
           // window.AndroidWebView.showContent(token)
           // return token
-          return "d4a3b72f49ad9e4b967f6e46742d0688"
+          return "6548f3fb69b370f8038ba518aac03df4"
         }else {
-          return "d4a3b72f49ad9e4b967f6e46742d0688"
+          return "6548f3fb69b370f8038ba518aac03df4"
         }
       },
       // 金钱数量 没有小数点
