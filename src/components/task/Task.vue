@@ -459,6 +459,8 @@ export default {
       }
     },
     signInHandle() {
+      var that = this
+      that.token = that.getAppToken();
       // if ((!this.token || this.token == null) && !window.AndroidWebView) { // rn获取token
       //   this.token = this.$store.state.tokenModule.token
       // } else if ((!this.token || this.token == null) && window.AndroidWebView && window.AndroidWebView.getAppToken) {
@@ -471,7 +473,7 @@ export default {
           "Content-type": "application/x-www-form-urlencoded"
         },
         data: {
-          token: this.token
+          token: that.token
         },
         // transformRequest: [
         //   function(data) {
