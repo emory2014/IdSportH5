@@ -19,14 +19,14 @@
                kalian juga bisa mendapatkan penghasilan.
           </div>
           <router-link to="/how-play"><p class="sub-title"><i class="icon-hot"></i>Cara menggunakan Ayo Lari <i class="icon-link"></i></p></router-link>
-          <p class="sub-title" :class="[ open == 2 ? 'open':'']" @click="fold(2)">Berita tidak muncul <i class="icon-arrow"></i></p>
+          <!-- <p class="sub-title" :class="[ open == 2 ? 'open':'']" @click="fold(2)">Berita tidak muncul <i class="icon-arrow"></i></p>
           <div class="ques-anwser" :class="[ open == 2 ? 'open':'']" @click="fold(2)">
-              Apakah kamu tidak bisa memuat semua berita atau hanya sebagian saja?
+            Apakah kamu tidak bisa berolahraga atau hanya sebagian saja?
 
-                Silahkan untuk meng-screenshoot error atau masalah dengan judul berita
+              Silahkan untuk meng-screenshoot error atau masalah dengan bug yang terjadi
 
-                dan kirimkan ke kami di Kendala Customer. Kami akan segera memeriksanya.
-          </div>
+              dan kirimkan ke kami di Kendala Customer. Kami akan segera memeriksanya.
+          </div> -->
           <div class="ques-title" id="rpc">
               RPC
           </div>
@@ -48,19 +48,19 @@
 
             Bonus Buka Kotak Emas : Setiap 4 jam sekali buka bisa dapat bonus!
           </div>
-          <p class="sub-title" :class="[ open == 5 ? 'open':'']" @click="fold(5)">Baca Berita tidak dapat RPC terus bagaimana?<i class="icon-arrow"></i></p>
+          <!-- <p class="sub-title" :class="[ open == 5 ? 'open':'']" @click="fold(5)">Baca Berita tidak dapat RPC terus bagaimana?<i class="icon-arrow"></i></p>
           <div class="ques-anwser" :class="[ open == 5 ? 'open':'']" @click="fold(5)">
-            Situasi 1: Sebagian besar berita perlu dimuat selama beberapa saat
+            Situasi 1:  Sebagian besar berita perlu dimuat selama beberapa saat
 
             untuk mendapatkan koin emas, jadi harap bersabar menunggu.<br>
 
 
-            Situasi 2 : Mungkin sebagian berita sudah kamu baca, bonus juga sudah
+            Situasi 2 :  Mungkin Anda sudah berolahraga dan menukar koinnya, bonus juga sudah
 
-            didapat, setiap berita hanya bisa dapat bonus 1 kali.<br>
+            didapat, setiap Langkah  hanya bisa dapat bonus 1 kali.<br>
 
 
-            Situasi 3 : Bonus dari berita sudah masuk, tapi karena jaringan bermasalah,
+            Situasi 3 : Bonus dari Ayo lari sudah masuk, tapi karena jaringan bermasalah,
 
             pemberitahuan bonus tidak muncul.<br>
 
@@ -70,7 +70,7 @@
             Ayo Lari kamu adalah yang paling baru, jika belum silahkan perbaharui
 
             ke versi paling baru.<br>
-          </div>
+          </div> -->
           <div class="ques-title" id="invite">
               Mengundang
           </div>
@@ -120,7 +120,7 @@
           <p class="sub-title" :class="[ open == 9 ? 'open':'']" @click="fold(9)">Kenapa  akun saya diblokir?<i class="icon-arrow"></i></p>
           <div class="ques-anwser" :class="[ open == 9 ? 'open':'']" @click="fold(9)">
                Ayo Lari memiliki mekanisme anti-kecurangan yang sangat ketat.
-               Jika sekali ditemukan bahwa ada kecurangan maka akan dilarang selamanya, 
+               Jika sekali ditemukan bahwa ada kecurangan maka akan dilarang selamanya,
                kami berharap semua orang dapat bekerja sama untuk demi menjaga kelancaran dan ketertiban Ayo Lari.
           </div>
 

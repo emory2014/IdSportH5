@@ -1,7 +1,7 @@
 <template>
 <div class="invite-container">
 <div v-if="getparam('version')">
-    <BHeader title="Undang Teman" backToApp={true} /> 
+    <BHeader title="Undang Teman" backToApp={true} />
     <div class="invite-share-sec">
        <router-link to="invite-record"> <p class="my-invite-text">Undangan saya</p></router-link>
         <p class="my-invite-title">Setiap mengundang 1teman akan  mendapatkan bonus sebesar</p>
@@ -19,33 +19,33 @@
 </div>
     <img class="ques1" src="../../assets/images/invite-title.png">
     <div class="invite-sec">
-        <div class="invite-header"> 
-            <i class="icon-que"></i>  
+        <div class="invite-header">
+            <i class="icon-que"></i>
             Contoh 1
-            <i class="icon-que"></i> 
+            <i class="icon-que"></i>
             </div>
         <img class="ques1" src="../../assets/images/invite-ques1.png">
         <div class="contoh-1-text">
-            Bonus undang teman yang Anda dapatkan adalah sebesar Rp. 6000, tetapi bonus yang masuk ke Pencairan Pokok adalah Rp. 2000. 
+            Bonus undang teman yang Anda dapatkan adalah sebesar Rp. 6000, tetapi bonus yang masuk ke Pencairan Pokok adalah Rp. 2000.
             Undang teman lebih banyak dan kumpulkan bonus, minimal Rp. 20.000 sudah bisa dicairkan loh~
         </div>
         <p class="contoh-1-title">Peringatan:</p>
         <ol class="invite-order-list">
-            <li>Teman yang anda undang harus pengguna baru dan teman yang diundang setelah login WAJIB membaca berita/artikel baru akan menerima bonus.
+            <li>Teman yang anda undang harus pengguna baru dan teman yang diundang setelah login WAJIB mengikuti ay o lari baru akan menerima bonus.
 </li>
-            <li>Jika dalam undangan teman diselidiki ada 
-                kecurangan, maka saldo anda akan 
+            <li>Jika dalam undangan teman diselidiki ada
+                kecurangan, maka saldo anda akan
                 dikosongkan.</li>
-            <li>Anda bisa mengundang teman lewat 
+            <li>Anda bisa mengundang teman lewat
                 Facebook atau Whatsapp</li>
         </ol>
     </div>
 
     <div class="invite-sec">
-        <div class="invite-header"> 
-            <i class="icon-que"></i>  
+        <div class="invite-header">
+            <i class="icon-que"></i>
             Contoh 2
-            <i class="icon-que"></i> 
+            <i class="icon-que"></i>
             </div>
         <ul>
                 <li class="rule title">
@@ -65,26 +65,26 @@
     </div>
 
     <div class="invite-sec">
-        <div class="invite-header"> 
-            <i class="icon-que"></i>  
+        <div class="invite-header">
+            <i class="icon-que"></i>
             Peraturan Undang Teman
-            <i class="icon-que"></i> 
+            <i class="icon-que"></i>
             </div>
         <p class="invite-text">
-1.Setiap Anda Undang Teman dan melakukan Pendaftaran,maka teman anda akan mendapatkan Bonus 
+1.Setiap Anda Undang Teman dan melakukan Pendaftaran,maka teman anda akan mendapatkan Bonus
 Sebesar Rp.10.000 dan Anda juga akan dapat Bonus Undang teman sebesar Rp.6000.
         </p>
         <p class="invite-text">
-            2.Setiap Anda mengundang teman, saldo pencairan Anda otomatis akan bertambah Rp. 2000 
-            ( Rp. 1000 dari undang teman dan Rp. 1000 dari Bonus koin). Pencairan dana  dapat dilakukan dengan minimum limit Rp. 20.000 (berarti Anda harus mengundang 10 teman). Pencairan dengan limit lainnya mengikuti peraturan yang ada. 
+            2.Setiap Anda mengundang teman, saldo pencairan Anda otomatis akan bertambah Rp. 2000
+            ( Rp. 1000 dari undang teman dan Rp. 1000 dari Bonus koin). Pencairan dana  dapat dilakukan dengan minimum limit Rp. 20.000 (berarti Anda harus mengundang 10 teman). Pencairan dengan limit lainnya mengikuti peraturan yang ada.
         </p>
     </div>
 
     <div class="invite-sec">
-        <div class="invite-header"> 
-            <i class="icon-que"></i>  
+        <div class="invite-header">
+            <i class="icon-que"></i>
             Peringkat undang teman
-            <i class="icon-que"></i> 
+            <i class="icon-que"></i>
             </div>
             <ul>
                 <li class="title"><span class="rank">Peringkat</span>
@@ -105,7 +105,7 @@ let Base64 = require('js-base64').Base64;
         name: 'Invite',
          components: {
            BHeader,
-        
+
         },
         data(){
             return {
@@ -113,9 +113,9 @@ let Base64 = require('js-base64').Base64;
                 version: ''
             }
         },
-       
+
         methods: {
-         facebookShare(){ 
+         facebookShare(){
                var content=window.AndroidWebView.getAppToken();
                 let token = Base64.decode(content)
                 this.$http({
@@ -197,7 +197,7 @@ let Base64 = require('js-base64').Base64;
              this.getData()
         },
         beforeDestroy() {
-            
+
         },
     }
 </script>
@@ -358,7 +358,7 @@ let Base64 = require('js-base64').Base64;
 .contoh-1-text {
     font-size: 12px;
     color: #fff;
-    background: linear-gradient(to right, #44b3ff , #414cff);  
+    background: linear-gradient(to right, #44b3ff , #414cff);
     width: 90%;
     margin: 10px auto;
     border-radius: 5px;

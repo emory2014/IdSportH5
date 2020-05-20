@@ -106,7 +106,6 @@
             <li>Masukkan nomer rekening tujuan dengan nomor yang tadi didaftarkan .</li>
             <!-- <li>Masukkan nominal (<span class="yellow">{{amount}}</span>) </li> -->
             <li>Masukkan nominal yang ingin dibayarkan</li>
-            <li>Masukkan berita sesuai dengan keinginan (optional).</li>
             <li>Untuk Layanan Transfer pilih LLG.</li>
             <li>Masukkan 8 Angka yang tertera ke dalam Key BCA Anda .</li>
             <li> Masukkan Respon yang terdapat dalam Key BCA anda kedalamnya</li>
